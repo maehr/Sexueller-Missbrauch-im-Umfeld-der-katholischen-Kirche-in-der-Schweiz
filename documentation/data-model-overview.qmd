@@ -1,86 +1,24 @@
-# Data Model and Data Entry Templates: Complete Overview
+# Data Model and Data Entry: Overview
 
-This document provides a comprehensive overview of the data model and data entry templates for the research database on sexual abuse in the Swiss Catholic Church.
+This document provides an overview of the data model and data entry templates for the research database on sexual abuse in the Swiss Catholic Church.
 
-## Document Purpose
+## Architecture
 
-This overview addresses [GitHub Issue #2](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues/2), which requests clear separation between:
-
-1.  **Data Model** (persistent structure - what is stored)
-2.  **Data Entry** (UI/workflow logic - how data is entered)
-
-This separation enables:
-
--   Independent versioning of structure and interface
--   Reuse of schemas in import/export scripts
--   UI changes without data model changes
--   Multiple entry interfaces for the same data
-
-## Architecture Overview
-
-``` mermaid
-graph TB
-    subgraph "Research Database"
-        MW[Semantic MediaWiki + Cargo + PageForms]
-    end
-
-    subgraph "Data Model<br/>(What/Storage)"
-        DM1[Entity schemas]
-        DM2[Field types]
-        DM3[Relationships]
-        DM4[Vocabularies]
-        DM5[EDTF dates]
-        DM6[Cargo tables]
-    end
-
-    subgraph "Data Entry<br/>(How/Interface)"
-        DE1[Templates]
-        DE2[Forms]
-        DE3[Categories]
-        DE4[Validation]
-        DE5[Help text]
-        DE6[Conditional UI]
-    end
-
-    subgraph "Analysis & Reporting"
-        AR1[Python]
-        AR2[Statistics]
-        AR3[Visualization]
-    end
-
-    MW --> DM1
-    MW --> DE1
-    DM1 --> AR1
-    DE1 --> AR1
-```
+The database separates **data model** (persistent structure) from **data entry** (UI/forms), enabling independent evolution of structure and interface.
 
 ## Directory Structure
 
-```         
-.
-├── data/schemas/                        # Data Model (persistent structure)
-│   ├── README.md                        # Schema overview
-│   ├── erm-diagram.md                   # Entity-Relationship Model
-│   ├── edtf-documentation.md            # Date format documentation
-│   ├── faelle-schema.md                 # Case entity schema
-│   ├── betroffene-schema.md             # Affected persons schema
-│   ├── beschuldigte-schema.md           # Accused persons schema
-│   ├── kirchliche-institutionen-schema.md   # Church institutions schema
-│   ├── strafverfolgungsbehoerden-schema.md  # Law enforcement schema
-│   ├── fachgremien-schema.md            # Expert committees schema
-│   ├── templates/                       # Data Entry (UI/workflow)
-│   │   ├── index.qmd                    # Templates overview
-│   │   ├── Vorlage_*.xml                # Display templates
-│   │   ├── Formular_*.xml               # Entry forms
-│   │   └── Kategorie_*.xml              # Cargo declarations
-│   └── vocabularies/                    # Controlled vocabularies
-│       ├── index.qmd
-│       ├── kantone.json
-│       ├── bistuemer.json
-│       └── fallstatus.json
-│
-└── documentation/
-    └── data-model-overview.qmd          # This document
+```text
+data/
+├── schemas/              # Entity schemas and data model
+│   ├── *-schema.md      # Entity definitions
+│   ├── erm-diagram.qmd  # Relationships
+│   ├── edtf-documentation.md
+│   └── vocabularies/    # Controlled terms
+└── templates/           # MediaWiki templates and forms
+    ├── Vorlage_*.xml    # Display templates
+    ├── Formular_*.xml   # Entry forms
+    └── Kategorie_*.xml  # Cargo declarations
 ```
 
 ## Core Entities
@@ -107,415 +45,126 @@ graph LR
 
 ### 1. FALL (Case)
 
-**Purpose**: Central entity representing individual abuse cases
+Central entity representing individual abuse cases with timeline, source criticism score, institutional response, and legal proceedings.
 
-**Key Fields**:
-
--   Unique case identifier
--   Timeline (EDTF dates for uncertain periods)
--   Source criticism score (1-10 reliability)
--   Institutional response
--   Legal proceedings
--   Outcome
-
-**Schema**: [data/schemas/faelle-schema.md](../data/schemas/faelle-schema.md)
+**Schema**: [faelle-schema.md](../data/schemas/faelle-schema.md)
 
 ### 2. BETROFFENER (Affected Person)
 
-**Purpose**: Victims/survivors (pseudonymized)
+Pseudonymized victims/survivors with demographics, contact status, and institutional relationships.
 
-**Key Fields**:
-
--   Pseudonym identifier
--   Demographics (anonymized)
--   Contact status
--   Support received
--   Relationship to institutions
-
-**Schema**: [data/schemas/betroffene-schema.md](../data/schemas/betroffene-schema.md)
+**Schema**: [betroffene-schema.md](../data/schemas/betroffene-schema.md)
 
 ### 3. BESCHULDIGTER (Accused Person)
 
-**Purpose**: Accused individuals (clergy, employees, volunteers)
+Accused individuals (clergy, employees, volunteers) with clerical roles, institutional affiliations, and transfer history.
 
-**Key Fields**:
-
--   Pseudonym identifier
--   Clerical role and status
--   Institutional affiliations
--   Transfer history (critical for pattern detection)
--   Proceedings status
-
-**Schema**: [data/schemas/beschuldigte-schema.md](../data/schemas/beschuldigte-schema.md)
+**Schema**: [beschuldigte-schema.md](../data/schemas/beschuldigte-schema.md)
 
 ### 4. KIRCHLICHE_INSTITUTION (Church Institution)
 
-**Purpose**: Churches, schools, homes, religious orders, etc.
+Churches, schools, homes, religious orders with type, location, and diocese/order affiliation.
 
-**Key Fields**:
-
--   Institution type
--   Geographic location
--   Diocese/order affiliation
--   Historical names
--   Foundation/dissolution dates
-
-**Schema**: [data/schemas/kirchliche-institutionen-schema.md](../data/schemas/kirchliche-institutionen-schema.md)
+**Schema**: [kirchliche-institutionen-schema.md](../data/schemas/kirchliche-institutionen-schema.md)
 
 ### 5. STRAFVERFOLGUNGSBEHOERDE (Law Enforcement)
 
-**Purpose**: Prosecuting authorities and victim support services
+Prosecuting authorities and victim support services with type, jurisdiction, and area of responsibility.
 
-**Key Fields**:
-
--   Authority type
--   Jurisdiction (canton/federal)
--   Contact information
--   Area of responsibility
-
-**Schema**: [data/schemas/strafverfolgungsbehoerden-schema.md](../data/schemas/strafverfolgungsbehoerden-schema.md)
+**Schema**: [strafverfolgungsbehoerden-schema.md](../data/schemas/strafverfolgungsbehoerden-schema.md)
 
 ### 6. FACHGREMIUM (Expert Committee)
 
-**Purpose**: Review boards, commissions, advisory panels
+Review boards, commissions, advisory panels with type, mandate, and composition.
 
-**Key Fields**:
-
--   Committee type
--   Mandate and composition
--   Operating organization
--   Independence status
--   Reporting structure
-
-**Schema**: [data/schemas/fachgremien-schema.md](../data/schemas/fachgremien-schema.md)
+**Schema**: [fachgremien-schema.md](../data/schemas/fachgremien-schema.md)
 
 ## Entity Relationships
 
-See the detailed Entity-Relationship Diagram: [data/schemas/erm-diagram.qmd](../data/schemas/erm-diagram.qmd)
+See detailed diagram: [erm-diagram.qmd](../data/schemas/erm-diagram.qmd)
 
-**Key Relationships**:
-
--   Cases link to affected persons, accused persons, institutions, authorities, and committees
--   Accused persons may be affiliated with multiple institutions over time
--   Institutions may be involved in multiple cases
--   Authorities may investigate multiple cases
--   Committees may review multiple cases
-
-**Cardinalities**:
-
--   One case → Many affected persons
--   One case → Many accused persons
--   Many accused → Many institutions (enables transfer tracking)
--   Many cases → Many authorities
+- Cases link to affected persons, accused persons, institutions, authorities, and committees
+- Many-to-many relationships enable tracking of institutional transfers and multi-entity cases
 
 ## EDTF Date Handling
 
-The database uses **Extended Date/Time Format (EDTF)** for historical dates that may be:
+The database uses **Extended Date/Time Format (EDTF)** for uncertain (`1985?`), approximate (`1985~`), partial (`1985`), and range (`1985/1990`) dates. This accommodates incomplete records and protects privacy.
 
--   **Uncertain** (`1985?`)
--   **Approximate** (`1985~`)
--   **Partial** (`1985` without month/day)
--   **Ranges** (`1985/1990`)
-
-This is critical because:
-
--   Victims may not remember exact dates
--   Archival records may be incomplete
--   Dates protect privacy through generalization
--   Historical sources vary in precision
-
-**Full Documentation**: [data/schemas/edtf-documentation.md](../data/schemas/edtf-documentation.md)
+**Documentation**: [edtf-documentation.md](../data/schemas/edtf-documentation.md)
 
 ## Controlled Vocabularies
 
-Machine-readable vocabularies ensure consistency and enable analysis:
+Machine-readable vocabularies (geographic, institutional, personal, case-related) ensure consistency and enable analysis. Each includes German, French, and Italian labels.
 
--   **Geographic**: Cantons, language regions, dioceses
--   **Institutional**: Institution types, authority types, committee types
--   **Personal**: Gender, clerical roles
--   **Case-related**: Case status, outcomes, proceedings status
+**Directory**: [vocabularies/](../data/schemas/vocabularies/)
 
-**Directory**: [data/schemas/vocabularies/](../data/schemas/vocabularies/)
+## Source Criticism
 
-Each vocabulary includes German, French, and Italian labels to support Switzerland's multilingual context.
-
-## Source Criticism Integration
-
-Unlike simple "true/false" values, this data model integrates **Quellenkritik (source criticism)** as scored assessments:
-
-**Quellenkritik Score** (1-10):
-
--   Assesses source reliability
--   Documents provenance
--   Captures institutional perspective
--   Enables quantitative analysis of concealment
-
-This allows researchers to:
-
--   Detect patterns in documentation quality
--   Identify systematic gaps
--   Weight evidence in analysis
--   Compare church vs. state records
+The data model integrates **Quellenkritik** as scored assessments (1-10) to assess source reliability, document provenance, and enable quantitative analysis of documentation quality and systematic gaps.
 
 ## Data Entry Templates
 
 **Location**: [data/templates/](../data/templates/)
 
-Templates define the **user interface** for data entry:
+Three template types define data entry:
 
-### Template Types
+1. **Vorlagen (Display)** - Format entity pages and store to Cargo
+2. **Formulare (Forms)** - Interactive entry with validation and controlled vocabularies
+3. **Kategorien (Categories)** - Cargo table structure and category membership
 
-1.  **Vorlagen (Display Templates)**
-    -   How entity data is displayed on pages
-    -   Format infoboxes and structured displays
-    -   Store data to Cargo tables
-2.  **Formulare (Entry Forms)**
-    -   Interactive forms for data entry
-    -   Dropdowns from controlled vocabularies
-    -   Conditional fields
-    -   Validation and help text
-3.  **Kategorien (Categories)**
-    -   Define Cargo table structure
-    -   Assign category membership
-    -   Default queries for category pages
-
-### Current Status
-
-The MediaWiki template files have been successfully documented and integrated into the project. See the [Templates documentation](../data/templates/index.qmd) for comprehensive details on all data entry forms, display templates, and category pages.
-
-The schema documentation provides all necessary information to:
-
-1.  Understand the data model and entity relationships
-2.  Work with the MediaWiki templates
-3.  Validate data structures and field definitions
+See [Templates documentation](../data/templates/index.qmd) for details.
 
 ## Privacy and Ethics
 
-⚠️ **CRITICAL**: This data model is designed for **synthetic/dummy data only**.
+⚠️ **CRITICAL**: This repository documents structure only. Real research data is stored in **ETH Zürich LeoMed** secure infrastructure under GDPR/DSGVO and research ethics protocols.
 
-Real research data contains highly sensitive personal information and is:
+**Privacy by Design**:
 
--   Stored in **ETH Zürich LeoMed** secure infrastructure
--   Subject to **GDPR/DSGVO** and Swiss data protection laws
--   Protected by **research ethics protocols**
--   Requires **informed consent**
-
-**This repository**:
-
--   Documents the **structure** (for replication)
--   Provides **synthetic examples** (for demonstration)
--   Contains **no real personal data**
-
-### Privacy by Design
-
-The data model incorporates privacy principles:
-
-1.  **Pseudonymization**: No real names in database
-2.  **EDTF dates**: Approximate dates protect re-identification
-3.  **Separate storage**: Real data physically separate from public docs
-4.  **Access controls**: Who can view what (to be implemented)
-5.  **Audit logging**: Track data access (to be implemented)
+1. Pseudonymization (no real names)
+2. EDTF dates (protect re-identification)
+3. Separate storage (real data isolated)
+4. Access controls and audit logging
 
 ## Research Significance
 
-This data model enables:
-
-### 1. Pattern Detection
-
--   Systematic transfers of accused clergy
--   Geographic distribution of cases
--   Temporal trends
--   Institutional response patterns
-
-### 2. Quantitative Analysis
-
--   Source criticism scores
--   Case timelines and durations
--   Institutional vs. state responses
--   Support provided to victims
-
-### 3. Cross-Language Harmonization
-
--   "Trading Zone" between historians and data scientists
--   Harmonize terminology across German/French/Italian regions
--   Consistent coding of varying clerical titles
-
-### 4. Methodological Innovation
-
--   Moving beyond "truth value" to reliability scoring
--   Operationalizing source criticism
--   Relational database for fragmented archives
+Enables pattern detection (transfers, geographic distribution), quantitative analysis (source criticism, timelines), cross-language harmonization (German/French/Italian), and methodological innovation (operationalizing source criticism).
 
 ## Technical Stack
 
-**Database**:
+- **Database**: Semantic MediaWiki + Cargo + Page Forms
+- **Analysis**: Python, R, Jupyter (scripts in `src/` and `analysis/`)
+- **Version Control**: Git/GitHub
 
--   **Semantic MediaWiki**: Collaborative wiki platform
--   **Cargo**: Structured data storage and querying
--   **Page Forms**: Form-based data entry
+## Workflow
 
-**Analysis**:
+**Template Developers**: Review schemas → Create templates/forms → Define Cargo tables → Export XML
 
--   **Python**: Data processing and statistics (scripts in `src/` and `analysis/`)
--   **R**: Statistical analysis and visualization
--   **Jupyter**: Notebooks for reproducible analysis
+**Data Entry**: Login → Navigate to `Special:FormStart/[EntityType]` → Fill form → Save to Cargo
 
-**Version Control**:
+**Analysts**: Query Cargo → Export → Process in Python → Analyze → Visualize → Document
 
--   **Git/GitHub**: Schema versioning and collaboration
+## Versioning
 
-## Implementation Workflow
-
-``` mermaid
-sequenceDiagram
-    participant Dev as Template Developer
-    participant Entry as Data Entry Personnel
-    participant MW as MediaWiki
-    participant Cargo as Cargo Database
-    participant Analyst as Analyst
-
-    Dev->>Dev: Review schemas
-    Dev->>MW: Create templates & forms
-    Dev->>Cargo: Define table structure
-    Dev->>Dev: Export as XML
-
-    Entry->>MW: Login & navigate to form
-    Entry->>MW: Fill form fields (controlled vocab)
-    Entry->>MW: Use EDTF dates
-    Entry->>MW: Add source criticism score
-    MW->>Cargo: Store structured data
-
-    Analyst->>Cargo: Query data
-    Analyst->>Analyst: Export to Python
-    Analyst->>Analyst: Statistical analysis
-    Analyst->>Analyst: Generate visualizations
-    Analyst->>Analyst: Document in notebooks
-```
-
-### For Template Developers
-
-1.  Review entity schemas in `data/schemas/`
-2.  Create MediaWiki templates following schema specifications
-3.  Define Cargo table declarations in category pages
-4.  Create PageForms forms with controlled vocabularies
-5.  Test data entry and validation
-6.  Export as XML and commit to `data/templates/`
-
-### For Data Entry Personnel
-
-1.  Log into Semantic MediaWiki instance
-2.  Navigate to `Special:FormStart/[EntityType]`
-3.  Fill form fields (use controlled vocabularies)
-4.  Use EDTF format for dates
-5.  Provide source criticism assessment
-6.  Save (data stored to Cargo tables)
-
-### For Analysts
-
-1.  Query Cargo tables using Semantic MediaWiki query language
-2.  Export data using Cargo query API
-3.  Process in Python using scripts in `src/` and `analysis/`
-4.  Perform statistical analysis
-5.  Generate visualizations
-6.  Document in Jupyter notebooks
-
-## Versioning and Evolution
-
-### Schema Versioning
-
-Schemas use **Semantic Versioning**:
-
--   **MAJOR**: Breaking changes (rename/remove fields)
--   **MINOR**: Add fields (backward compatible)
--   **PATCH**: Clarifications, documentation
-
-### Vocabulary Versioning
-
-Controlled vocabularies are versioned separately:
-
--   Each vocabulary file includes version number
--   Changes documented in repository CHANGELOG
--   Forms can reference specific vocabulary versions
-
-### Migration
-
-When schemas change:
-
-1.  Update schema documentation
-2.  Update templates and forms
-3.  Migrate existing data (if needed)
-4.  Update analysis scripts
-5.  Document breaking changes
+Schemas use Semantic Versioning (MAJOR: breaking changes, MINOR: add fields, PATCH: documentation). Vocabularies versioned separately. Changes documented in CHANGELOG.
 
 ## Quality Assurance
 
-### Validation Layers
+**Validation**: PageForms (entry) → Cargo (storage) → Python scripts (schemas) → Human review
 
-1.  **Form Validation**: PageForms validates on entry
-2.  **Cargo Validation**: Type checking on storage
-3.  **Script Validation**: Python scripts validate against schemas
-4.  **Human Review**: Expert review of entries
-
-### Data Quality Metrics
-
-Track:
-
--   Completeness (required fields filled)
--   Consistency (controlled vocabulary compliance)
--   Source quality (quellenkritik scores)
--   Relationship integrity (valid entity links)
-
-## Next Steps
-
-To complete Issue #2 implementation:
-
--   [x] Create directory structure
--   [x] Document entity schemas with Cargo declarations
--   [x] Create ERM diagram
--   [x] Document EDTF date handling
--   [x] Create controlled vocabularies (initial set)
--   [x] Document separation of data model and data entry
--   [ ] **Obtain actual XML template files** (currently inaccessible)
--   [ ] Import templates into MediaWiki test instance
--   [ ] Test forms and data entry workflow
--   [ ] Validate template-schema alignment
--   [ ] Create example synthetic records for each entity
--   [ ] Document import/export procedures
+**Metrics**: Completeness, consistency, source quality, relationship integrity
 
 ## References
 
-### Internal Documentation
+**Internal**: [Schemas](../data/schemas/index.qmd) · [Templates](../data/templates/index.qmd) · [ERM](../data/schemas/erm-diagram.qmd) · [EDTF](../data/schemas/edtf-documentation.md) · [Vocabularies](../data/schemas/vocabularies/)
 
--   [Data Schemas README](../data/schemas/index.qmd)
--   [Templates README](../data/templates/index.qmd)
--   [ERM Diagram](../data/schemas/erm-diagram.qmd)
--   [EDTF Documentation](../data/schemas/edtf-documentation.md)
--   [Controlled Vocabularies](../data/schemas/vocabularies/)
+**External**: [Semantic MediaWiki](https://www.semantic-mediawiki.org/) · [Cargo](https://www.mediawiki.org/wiki/Extension:Cargo) · [Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms) · [EDTF](https://www.loc.gov/standards/datetime/)
 
-### External Resources
+**Project**: [README](../README.md) · [UZH Project](https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html)
 
--   Semantic MediaWiki: https://www.semantic-mediawiki.org/
--   Cargo Extension: https://www.mediawiki.org/wiki/Extension:Cargo
--   Page Forms: https://www.mediawiki.org/wiki/Extension:Page_Forms
--   EDTF Specification: https://www.loc.gov/standards/datetime/
--   The Turing Way: https://the-turing-way.netlify.app/
+## Next Steps
 
-### Research Context
+- [ ] Import templates into MediaWiki test instance
+- [ ] Test forms and data entry workflow
+- [ ] Create example synthetic records
+- [ ] Document import/export procedures
 
--   Main README: [../README.md](../README.md)
--   UZH Research Project: https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html
-
-## Support
-
-For questions:
-
--   GitHub Issues: Technical questions, bug reports
--   GitHub Discussions: General questions, ideas
--   See main [README.md](../README.md) for contact information
-
-------------------------------------------------------------------------
-
-**Document Status**: Complete overview of data model and templates structure\
-**Last Updated**: 2024-11-21\
-**Related Issue**: [#2](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues/2)\
-**Maintainer**: [\@maehr](https://github.com/maehr)
