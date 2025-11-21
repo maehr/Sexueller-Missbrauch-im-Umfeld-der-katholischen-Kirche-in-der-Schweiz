@@ -1,6 +1,6 @@
-Package: "REPO_NAME"
+Package: "sexueller.missbrauch.kirche.schweiz"
 Type: Project
-Title: "REPO_NAME"
+Title: "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz"
 Version: 0.1.0
 Suggests:
     languageserver,
