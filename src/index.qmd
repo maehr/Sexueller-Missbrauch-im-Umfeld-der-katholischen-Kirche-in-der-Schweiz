@@ -60,8 +60,11 @@ To start a local development environment:
 
 2. **Edit the `.env` file** with your desired configuration:
 
-   - Set strong passwords for `DB_PASSWORD`
-   - Generate new secret keys for `MW_SECRET_KEY` and `MW_UPGRADE_KEY`
+   - Set strong passwords for `DB_PASSWORD` and `STAGING_DB_PASSWORD`
+   - Generate secret keys:
+     - `MW_SECRET_KEY`: 64 hexadecimal characters - `openssl rand -hex 32`
+     - `MW_UPGRADE_KEY`: 16 hexadecimal characters - `openssl rand -hex 8`
+     - Do the same for staging keys
    - Adjust `MW_SERVER` to match your development URL
 
 3. **Start the development environment:**
@@ -152,7 +155,7 @@ For detailed security configuration, see the [Security section in DEPLOYMENT.qmd
 
 Common issues and solutions:
 
-- **Port conflicts** - Change port mappings in docker-compose files if 8080/8081/8082 are in use
+- **Port conflicts** - Change port mappings in docker-compose files if ports are in use (dev uses 8080, prod uses 8080/8081/8082/8090)
 - **Permission errors** - Ensure Docker has proper permissions on volume directories
 - **Database connection errors** - Check `.env` file configuration matches docker-compose settings
 - **Extension errors** - Run `docker exec mediawiki php maintenance/update.php --quick`

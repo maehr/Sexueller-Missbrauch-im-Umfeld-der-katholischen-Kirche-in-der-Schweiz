@@ -1,6 +1,6 @@
 # PageForms Extension Configuration
 
-This document describes how the [Page Forms extension](https://www.mediawiki.org/wiki/Extension:Page_Forms) (formerly known as Semantic Forms) is configured in this MediaWiki instance.
+This document describes how the [Page Forms extension](https://www.mediawiki.org/wiki/Extension:Page_Forms) is configured in this MediaWiki instance.
 
 ## Overview
 

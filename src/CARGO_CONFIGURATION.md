@@ -39,7 +39,7 @@ $wgDBpassword = getenv('MW_DB_PASSWORD') ?: 'wikipassword';
 
 ### Cache Settings
 
-For this research project, caching is disabled to ensure data consistency during iterative development:
+For this research project, caching is disabled to ensure data consistency during development and data entry:
 
 ```php
 $wgCachePages = false;
@@ -48,7 +48,7 @@ $wgParserCacheType = CACHE_NONE;
 $wgUseFileCache = false;
 ```
 
-**Note**: In a production environment with stable data, you may want to enable caching for better performance.
+**Note**: This setting ensures that changes to Cargo tables and queries are immediately reflected without cache invalidation issues. This is particularly important during the active data collection and entry phase. In a production environment with stable data and high traffic, you may want to enable caching for better performance, though this requires careful cache invalidation when data changes.
 
 ## Usage in This Project
 
