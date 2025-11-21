@@ -160,11 +160,3 @@ Schemas use Semantic Versioning (MAJOR: breaking changes, MINOR: add fields, PAT
 **External**: [Semantic MediaWiki](https://www.semantic-mediawiki.org/) · [Cargo](https://www.mediawiki.org/wiki/Extension:Cargo) · [Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms) · [EDTF](https://www.loc.gov/standards/datetime/)
 
 **Project**: [README](../README.md) · [UZH Project](https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html)
-
-## Next Steps
-
-- [ ] Import templates into MediaWiki test instance
-- [ ] Test forms and data entry workflow
-- [ ] Create example synthetic records
-- [ ] Document import/export procedures
-

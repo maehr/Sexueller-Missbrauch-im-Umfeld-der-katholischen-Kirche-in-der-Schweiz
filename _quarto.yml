@@ -70,6 +70,8 @@ format:
     code-copy: true
     code-overflow: wrap
     canonical-url: true
+    mermaid:
+      theme: neutral
 
 freeze: true
 
