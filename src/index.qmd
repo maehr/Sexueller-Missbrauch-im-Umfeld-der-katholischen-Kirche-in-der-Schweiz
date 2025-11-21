@@ -1,0 +1,37 @@
+# Deployment
+
+This directory contains all deployment configuration and scripts for the MediaWiki instance.
+
+## 📖 Comprehensive Documentation
+
+For complete deployment documentation including system architecture diagrams, deployment workflows, and troubleshooting guides, see:
+
+**[📋 Comprehensive Deployment Documentation](DEPLOYMENT.qmd)**
+
+This document includes:
+
+- System architecture with Mermaid diagrams
+- Development, staging, and production workflows
+- Database management and backup procedures
+- CI/CD pipeline visualization
+- Security and access control
+- Monitoring and troubleshooting guides
+
+## Files
+
+- `DEPLOYMENT.qmd` - Comprehensive deployment documentation with Mermaid diagrams
+- `Dockerfile` - Custom MediaWiki image with required extensions and configurations
+- `docker-compose.dev.yml` - Docker Compose configuration for development environment
+- `docker-compose.prod.yml` - Docker Compose configuration for production environment
+- `LocalSettings.php` - MediaWiki configuration file
+- `staging_LocalSettings.php` - MediaWiki configuration file for staging
+- `example.env` - Environment variables template
+- `backup_db.sh` - Database backup script
+- `restore_db.sh` - Database restore script
+- `setup_services_podman.sh` - Podman service setup script
+- `sync_prod_to_staging.sh` - Production to staging synchronization script
+- `Caddyfile` - Caddy reverse proxy configuration
+
+## Quick Start
+
+See the main [README.md](../README.md) for quick start instructions and the [comprehensive deployment documentation](DEPLOYMENT.qmd) for detailed deployment procedures.

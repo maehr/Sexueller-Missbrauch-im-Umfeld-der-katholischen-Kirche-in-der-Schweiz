@@ -1,0 +1,773 @@
+# Comprehensive Deployment Documentation
+
+This document provides a complete overview of the deployment architecture, processes, and environments for the Missbrauch Kath Info Wiki MediaWiki instance.
+
+## Table of Contents
+
+1.  [System Architecture](#system-architecture)
+2.  [Deployment Environments](#deployment-environments)
+3.  [Development Workflow](#development-workflow)
+4.  [Production Deployment](#production-deployment)
+5.  [Staging Environment](#staging-environment)
+6.  [Database Management](#database-management)
+7.  [CI/CD Pipeline](#cicd-pipeline)
+8.  [Infrastructure Components](#infrastructure-components)
+9.  [Security and Access](#security-and-access)
+10. [Monitoring and Maintenance](#monitoring-and-maintenance)
+11. [Troubleshooting](#troubleshooting)
+
+## System Architecture {#system-architecture}
+
+The MediaWiki instance follows a containerized microservices architecture with clear separation between development, staging, and production environments.
+
+```{mermaid}
+graph TB
+    subgraph "External Access"
+        User[👤 End Users]
+        Admin[👨‍💻 Administrators]
+        Researcher[👨‍🔬 Researchers]
+    end
+
+    subgraph "Load Balancer / Reverse Proxy"
+        Caddy[🔄 Caddy Proxy<br/>SSL Termination]
+    end
+
+    subgraph "Application Layer"
+        MW_Prod[📖 MediaWiki Production<br/>Port 8080]
+        MW_Staging[📖 MediaWiki Staging<br/>Port 8081]
+        PhpMyAdmin[🗄️ phpMyAdmin<br/>Port 8082]
+        FileServer[📁 Caddy File Server<br/>Port 8090]
+    end
+
+    subgraph "Database Layer"
+        DB_Prod[(🗄️ MariaDB Production<br/>my_wiki)]
+        DB_Staging[(🗄️ MariaDB Staging<br/>my_wiki)]
+    end
+
+    subgraph "Storage Layer"
+        Images_Prod[📁 Production Images<br/>./mediawiki_images]
+        Images_Staging[📁 Staging Images<br/>./staging_mediawiki_images]
+        DB_Data_Prod[💾 Production DB Data<br/>./db_data]
+        DB_Data_Staging[💾 Staging DB Data<br/>./staging_db_data]
+        Backups[💾 Backup Storage<br/>./backups]
+        ClusterWork[📁 Cluster Work Files<br/>/cluster/work/histuzh]
+    end
+
+    User --> Caddy
+    Admin --> Caddy
+    Researcher --> Caddy
+
+    Caddy --> MW_Prod
+    Caddy --> MW_Staging
+    Admin --> PhpMyAdmin
+    Admin --> FileServer
+
+    MW_Prod --> DB_Prod
+    MW_Staging --> DB_Staging
+
+    MW_Prod --> Images_Prod
+    MW_Staging --> Images_Staging
+
+    DB_Prod --> DB_Data_Prod
+    DB_Staging --> DB_Data_Staging
+
+    PhpMyAdmin --> DB_Staging
+    FileServer --> ClusterWork
+
+    style MW_Prod fill:#e1f5fe
+    style MW_Staging fill:#fff3e0
+    style DB_Prod fill:#e8f5e8
+    style DB_Staging fill:#fff8e1
+    style Caddy fill:#f3e5f5
+```
+
+## Deployment Environments {#deployment-environments}
+
+The system supports three main environments with different purposes and configurations:
+
+```{mermaid}
+graph LR
+    subgraph "Development Environment"
+        Dev[🛠️ Development<br/>Local Docker Build<br/>Live Reload<br/>Debug Mode]
+    end
+
+    subgraph "Staging Environment"
+        Staging[🧪 Staging<br/>Production Mirror<br/>Testing & QA<br/>Data Sync from Prod]
+    end
+
+    subgraph "Production Environment"
+        Prod[🚀 Production<br/>Live System<br/>User Access<br/>Research Data]
+    end
+
+    Dev -->|Deploy & Test| Staging
+    Staging -->|Validate & Promote| Prod
+    Prod -->|Data Sync| Staging
+
+    style Dev fill:#e3f2fd
+    style Staging fill:#fff3e0
+    style Prod fill:#e8f5e8
+```
+
+### Environment Details
+
+| Environment | Port | Purpose | Docker Compose File | Database |
+|---------------|---------------|---------------|---------------|---------------|
+| Development | 8080 | Local development and testing | `docker-compose.dev.yml` | `db_data` (volume) |
+| Staging | 8081 | Pre-production testing | `docker-compose.prod.yml` | `staging_db_data` |
+| Production | 8080 | Live research environment | `docker-compose.prod.yml` | `db_data` |
+
+## Development Workflow {#development-workflow}
+
+The development workflow follows containerized development practices with live reload capabilities:
+
+```{mermaid}
+flowchart TD
+    Start([👨‍💻 Developer Starts Work]) --> Clone[📥 Clone Repository]
+    Clone --> EnvSetup[⚙️ Setup .env File]
+    EnvSetup --> DevBuild[🔨 docker-compose -f deployment/docker-compose.dev.yml up --build]
+
+    DevBuild --> DevRunning{🏃 Development Environment Running}
+    DevRunning --> |Yes| DevWork[💻 Development Work]
+    DevRunning --> |No| Troubleshoot[🔧 Troubleshoot Issues]
+
+    DevWork --> CodeChange[📝 Make Code Changes]
+    CodeChange --> Test[🧪 Test Changes]
+    Test --> Validate{✅ Changes Valid?}
+
+    Validate --> |No| CodeChange
+    Validate --> |Yes| Commit[💾 Commit Changes]
+
+    Commit --> Push[📤 Push to GitHub]
+    Push --> PR[🔄 Create Pull Request]
+
+    PR --> Review[👀 Code Review]
+    Review --> Approved{✅ Approved?}
+
+    Approved --> |No| CodeChange
+    Approved --> |Yes| Merge[🔀 Merge to Main]
+
+    Merge --> StagingDeploy[🚀 Deploy to Staging]
+    StagingDeploy --> StagingTest[🧪 Staging Testing]
+    StagingTest --> ProdDeploy[🏭 Production Deployment]
+
+    Troubleshoot --> DevBuild
+
+    style Start fill:#e3f2fd
+    style DevRunning fill:#fff3e0
+    style Validate fill:#e8f5e8
+    style Approved fill:#e8f5e8
+```
+
+### Development Commands
+
+``` bash
+# Start development environment
+docker-compose -f deployment/docker-compose.dev.yml up -d --build
+
+# View logs
+docker-compose -f deployment/docker-compose.dev.yml logs -f
+
+# Update database schema
+docker-compose -f deployment/docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
+
+# Run queue jobs
+docker-compose -f deployment/docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+```
+
+## Production Deployment {#production-deployment}
+
+Production deployment follows a systematic approach ensuring high availability and data integrity:
+
+```{mermaid}
+flowchart TD
+    PrepImage[🔨 Build Docker Image<br/>docker build -f deployment/Dockerfile -t mediawiki:latest .]
+    SaveImage[💾 Save Image<br/>docker image save mediawiki -o mediawiki_image.tar]
+
+    subgraph "Target Server Preparation"
+        TransferImage[📤 Transfer Image to Server<br/>scp/rsync]
+        LoadImage[📥 Load Image<br/>docker load < mediawiki_image.tar]
+        EnvConfig[⚙️ Configure Environment<br/>.env file setup]
+    end
+
+    subgraph "Pre-Deployment Checks"
+        BackupCheck[💾 Verify Backup System]
+        ResourceCheck[🔍 Check Server Resources]
+        AccessCheck[🔐 Verify Access Permissions]
+    end
+
+    subgraph "Deployment Execution"
+        StopServices[⏹️ Stop Existing Services<br/>docker-compose down]
+        StartServices[▶️ Start New Services<br/>docker-compose up -d]
+        HealthCheck[🏥 Health Check Services]
+    end
+
+    subgraph "Post-Deployment"
+        SchemaUpdate[🔄 Update Database Schema<br/>maintenance/update.php]
+        QueueJobs[⚡ Process Queue Jobs<br/>maintenance/runJobs.php]
+        FinalTest[✅ Final Validation Tests]
+    end
+
+    PrepImage --> SaveImage
+    SaveImage --> TransferImage
+    TransferImage --> LoadImage
+    LoadImage --> EnvConfig
+
+    EnvConfig --> BackupCheck
+    BackupCheck --> ResourceCheck
+    ResourceCheck --> AccessCheck
+
+    AccessCheck --> StopServices
+    StopServices --> StartServices
+    StartServices --> HealthCheck
+
+    HealthCheck --> SchemaUpdate
+    SchemaUpdate --> QueueJobs
+    QueueJobs --> FinalTest
+
+    HealthCheck --> |Failed| StopServices
+    FinalTest --> |Failed| StopServices
+
+    style PrepImage fill:#e3f2fd
+    style HealthCheck fill:#fff3e0
+    style FinalTest fill:#e8f5e8
+```
+
+### Production Deployment Commands
+
+``` bash
+# 1. Build and save image (local) - Dockerfile is in deployment directory
+docker build -f deployment/Dockerfile -t mediawiki:latest .
+docker image save mediawiki -o mediawiki_image.tar
+
+# 2. Transfer to production server
+rsync -av -e "ssh -J user@jump-server" ./mediawiki_image.tar server-user@prod-server:/path/
+
+# 3. Deploy on production server
+docker load < mediawiki_image.tar
+docker-compose -f deployment/docker-compose.prod.yml up -d
+
+# 4. Post-deployment tasks
+docker exec mediawiki php maintenance/update.php --quick
+docker exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+```
+
+## Staging Environment {#staging-environment}
+
+The staging environment provides a production-like testing environment with data synchronization capabilities:
+
+```{mermaid}
+flowchart TD
+    subgraph "Production Environment"
+        ProdMW[📖 Production MediaWiki]
+        ProdDB[(🗄️ Production Database)]
+        ProdImages[📁 Production Images]
+    end
+
+    subgraph "Staging Sync Process"
+        SyncScript[🔄 sync_prod_to_staging.sh]
+        StopProd[⏹️ Stop Production]
+        CopyDB[📋 Copy Database Volume]
+        CopyImages[📋 Copy Images Volume]
+        RestartProd[▶️ Restart Production]
+    end
+
+    subgraph "Staging Environment"
+        StagingMW[📖 Staging MediaWiki<br/>Port 8081]
+        StagingDB[(🗄️ Staging Database)]
+        StagingImages[📁 Staging Images]
+        PhpMyAdmin[🗄️ phpMyAdmin<br/>Port 8082]
+    end
+
+    subgraph "Testing Activities"
+        UAT[👥 User Acceptance Testing]
+        DataValidation[🔍 Data Validation]
+        FeatureTest[🧪 Feature Testing]
+        PerformanceTest[⚡ Performance Testing]
+    end
+
+    ProdMW --> SyncScript
+    ProdDB --> SyncScript
+    ProdImages --> SyncScript
+
+    SyncScript --> StopProd
+    StopProd --> CopyDB
+    CopyDB --> CopyImages
+    CopyImages --> RestartProd
+
+    CopyDB --> StagingDB
+    CopyImages --> StagingImages
+
+    StagingMW --> StagingDB
+    StagingMW --> StagingImages
+    PhpMyAdmin --> StagingDB
+
+    StagingMW --> UAT
+    StagingMW --> DataValidation
+    StagingMW --> FeatureTest
+    StagingMW --> PerformanceTest
+
+    style SyncScript fill:#fff3e0
+    style StagingMW fill:#fff3e0
+    style UAT fill:#e8f5e8
+```
+
+### Staging Sync Commands
+
+``` bash
+# Synchronize production to staging
+cd /path/to/deployment
+./sync_prod_to_staging.sh
+
+# Verify staging environment
+docker-compose -f docker-compose.prod.yml ps
+curl -f http://localhost:8081/index.php/Main_Page
+```
+
+## Database Management {#database-management}
+
+Database operations include backup, restore, and synchronization processes:
+
+```{mermaid}
+flowchart TD
+    subgraph "Scheduled Operations"
+        CronJob[⏰ Cron Job<br/>Daily 00:00]
+        BackupScript[📋 backup_db.sh]
+    end
+
+    subgraph "Backup Process"
+        ProdBackup[💾 Production Backup<br/>mariadb-dump]
+        StagingBackup[💾 Staging Backup<br/>mariadb-dump]
+        BackupStorage[📁 Backup Storage<br/>./backups/]
+    end
+
+    subgraph "Restore Process"
+        RestoreScript[📋 restore_db.sh]
+        SelectBackup[🔍 Select Backup File]
+        RestoreDB[🔄 Restore Database]
+    end
+
+    subgraph "Retention Management"
+        RetentionPolicy[⏳ 180 Days Retention<br/>LeoMed Policy]
+        AutoCleanup[🧹 Automatic Cleanup]
+    end
+
+    CronJob --> BackupScript
+    BackupScript --> ProdBackup
+    BackupScript --> StagingBackup
+
+    ProdBackup --> BackupStorage
+    StagingBackup --> BackupStorage
+
+    BackupStorage --> RestoreScript
+    RestoreScript --> SelectBackup
+    SelectBackup --> RestoreDB
+
+    BackupStorage --> RetentionPolicy
+    RetentionPolicy --> AutoCleanup
+
+    style CronJob fill:#e3f2fd
+    style BackupStorage fill:#fff3e0
+    style RetentionPolicy fill:#ffebee
+```
+
+### Database Commands
+
+``` bash
+# Manual backup
+./deployment/backup_db.sh
+
+# Restore from backup
+./deployment/restore_db.sh backups/prod_backup_2024-12-01_10-45.sql
+
+# Direct database operations
+docker exec -it db mariadb -u root -p
+docker exec mediawiki php maintenance/update.php --quick
+```
+
+## CI/CD Pipeline {#cicd-pipeline}
+
+The CI/CD pipeline handles documentation building and deployment through GitHub Actions:
+
+```{mermaid}
+flowchart TD
+    subgraph "Source Control"
+        Commit[💾 Git Commit]
+        Push[📤 Git Push]
+        PR[🔄 Pull Request]
+    end
+
+    subgraph "GitHub Actions Pipeline"
+        Trigger[⚡ Workflow Trigger]
+        Lint[🔍 Lint Check<br/>Prettier]
+        Build[🔨 Build & Optimize<br/>Quarto + JamPack]
+        Test[🧪 Dead Link Check<br/>wget spider]
+        Deploy[🚀 Deploy to GitHub Pages]
+    end
+
+    subgraph "Artifacts"
+        BuildArtifacts[📦 Built Site Artifacts]
+        StaticSite[📄 GitHub Pages Site]
+    end
+
+    subgraph "Quality Gates"
+        LintPass{✅ Lint Pass?}
+        BuildPass{✅ Build Pass?}
+        TestPass{✅ Tests Pass?}
+    end
+
+    Commit --> Push
+    Push --> Trigger
+    PR --> Trigger
+
+    Trigger --> Lint
+    Lint --> LintPass
+    LintPass --> |Yes| Build
+    LintPass --> |No| Lint
+
+    Build --> BuildPass
+    BuildPass --> |Yes| BuildArtifacts
+    BuildPass --> |No| Build
+
+    BuildArtifacts --> Test
+    Test --> TestPass
+    TestPass --> |Yes| Deploy
+    TestPass --> |No| Test
+
+    Deploy --> StaticSite
+
+    style Trigger fill:#e3f2fd
+    style LintPass fill:#fff3e0
+    style BuildPass fill:#fff3e0
+    style TestPass fill:#e8f5e8
+    style Deploy fill:#e8f5e8
+```
+
+## Infrastructure Components {#infrastructure-components}
+
+The system consists of several containerized components working together, built from a custom Dockerfile that includes all necessary MediaWiki extensions and configurations.
+
+### Dockerfile Configuration
+
+The deployment includes a custom Dockerfile (`deployment/Dockerfile`) that extends the official MediaWiki 1.43.1 image with:
+
+-   **MediaWiki Extensions**: Cargo, DataTransfer, PageForms, PageSchemas, and PdfBook extensions
+-   **System Packages**: Git, OpenSSL, and htmldoc for enhanced functionality
+-   **Custom Assets**: UZH logo integration
+-   **Proper Permissions**: Configured file permissions for web server access
+
+``` dockerfile
+FROM mediawiki:1.43.1
+
+# Install necessary packages for MediaWiki extensions
+RUN echo "deb https://deb.debian.org/debian/ bookworm main contrib non-free" >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends git openssl htmldoc && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install MediaWiki extensions from official repositories
+RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/Cargo /var/www/html/extensions/Cargo
+RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/DataTransfer /var/www/html/extensions/DataTransfer
+RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms /var/www/html/extensions/PageForms
+RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageSchemas /var/www/html/extensions/PageSchemas
+RUN git clone https://github.com/debtcompliance/PdfBook/ /var/www/html/extensions/PdfBook
+
+# Integrate custom branding assets
+COPY assets/uzh-logo.svg /var/www/html/resources/assets/uzh-logo.svg
+RUN chown www-data:www-data /var/www/html/resources/assets/uzh-logo.svg
+
+# Set proper permissions for MediaWiki
+RUN chown -R www-data:www-data /var/www/html/extensions
+```
+
+### Container Architecture
+
+```{mermaid}
+graph TB
+    subgraph "Container Network"
+        subgraph "Web Services"
+            MW[🌐 MediaWiki Container<br/>mediawiki:latest<br/>Port 80→8080]
+            MWS[🌐 MediaWiki Staging<br/>mediawiki:latest<br/>Port 80→8081]
+            Caddy[🔄 Caddy Proxy<br/>caddy:latest<br/>Port 443]
+            PMA[🗄️ phpMyAdmin<br/>phpmyadmin:latest<br/>Port 80→8082]
+            FS[📁 File Server<br/>caddy:2<br/>Port 80→8090]
+        end
+
+        subgraph "Database Services"
+            DB[🗄️ MariaDB Production<br/>mariadb:11<br/>Port 3306]
+            DBS[🗄️ MariaDB Staging<br/>mariadb:11<br/>Port 3306]
+        end
+    end
+
+    subgraph "Volume Mounts"
+        DBData[💾 ./db_data]
+        DBDataStaging[💾 ./staging_db_data]
+        Images[📁 ./mediawiki_images]
+        ImagesStaging[📁 ./staging_mediawiki_images]
+        LocalSettings[⚙️ ./LocalSettings.php]
+        StagingSettings[⚙️ ./staging_LocalSettings.php]
+        ClusterWork[📁 /cluster/work/histuzh]
+    end
+
+    subgraph "Environment Configuration"
+        EnvProd[🔧 Production .env]
+        EnvStaging[🔧 Staging .env]
+        Secrets[🔐 Secrets Management]
+    end
+
+    MW --> DB
+    MWS --> DBS
+    PMA --> DBS
+
+    DB --> DBData
+    DBS --> DBDataStaging
+    MW --> Images
+    MWS --> ImagesStaging
+    MW --> LocalSettings
+    MWS --> StagingSettings
+    FS --> ClusterWork
+
+    EnvProd --> MW
+    EnvProd --> DB
+    EnvStaging --> MWS
+    EnvStaging --> DBS
+
+    Secrets --> EnvProd
+    Secrets --> EnvStaging
+
+    style MW fill:#e1f5fe
+    style MWS fill:#fff3e0
+    style DB fill:#e8f5e8
+    style DBS fill:#fff8e1
+```
+
+## Security and Access {#security-and-access}
+
+Access control and security measures are implemented at multiple levels:
+
+```{mermaid}
+flowchart TD
+    subgraph "External Access Control"
+        Internet[🌐 Internet]
+        JumpServer[🚪 Jump Server<br/>jump-server.domain.ltd]
+        SSHKey[🔑 SSH Key Authentication]
+    end
+
+    subgraph "Network Security"
+        Firewall[🔥 Firewall Rules]
+        VPN[🔒 VPN/Network Isolation]
+        SSL[🛡️ SSL/TLS Termination]
+    end
+
+    subgraph "Application Security"
+        MediaWikiAuth[👤 MediaWiki Authentication]
+        AdminAccess[👨‍💻 Admin Access Control]
+        UserPermissions[🎭 User Permissions]
+    end
+
+    subgraph "Infrastructure Security"
+        DockerSecurity[🐳 Docker Security]
+        FilePermissions[📁 File Permissions]
+        DBSecurity[🗄️ Database Security]
+    end
+
+    subgraph "Data Protection"
+        Encryption[🔐 Data Encryption]
+        Backups[💾 Secure Backups]
+        DataRetention[⏳ Data Retention Policy]
+    end
+
+    Internet --> JumpServer
+    JumpServer --> SSHKey
+    SSHKey --> Firewall
+
+    Firewall --> VPN
+    VPN --> SSL
+    SSL --> MediaWikiAuth
+
+    MediaWikiAuth --> AdminAccess
+    AdminAccess --> UserPermissions
+
+    UserPermissions --> DockerSecurity
+    DockerSecurity --> FilePermissions
+    FilePermissions --> DBSecurity
+
+    DBSecurity --> Encryption
+    Encryption --> Backups
+    Backups --> DataRetention
+
+    style SSHKey fill:#ffebee
+    style SSL fill:#e8f5e8
+    style Encryption fill:#e3f2fd
+```
+
+### Access Patterns
+
+| Access Type | Method | Authentication | Purpose |
+|------------------|------------------|------------------|-------------------|
+| SSH Access | Jump Server + SSH Key | SSH Key Pair | Server administration |
+| Web GUI | LeoMed Dashboard | ETHZ Credentials | Remote desktop access |
+| MediaWiki | Direct URL | MediaWiki accounts | Content management |
+| Database | phpMyAdmin | Database credentials | Database administration |
+
+## Monitoring and Maintenance {#monitoring-and-maintenance}
+
+Regular monitoring and maintenance ensure system reliability:
+
+```{mermaid}
+flowchart TD
+    subgraph "Automated Monitoring"
+        CronJobs[⏰ Cron Jobs]
+        HealthChecks[🏥 Health Checks]
+        LogRotation[📜 Log Rotation]
+    end
+
+    subgraph "Manual Monitoring"
+        SystemHealth[🖥️ System Health]
+        DiskSpace[💾 Disk Space]
+        Performance[⚡ Performance Metrics]
+    end
+
+    subgraph "Maintenance Tasks"
+        Updates[🔄 System Updates]
+        Cleanup[🧹 Cleanup Tasks]
+        Optimization[⚡ Database Optimization]
+    end
+
+    subgraph "Alert Systems"
+        FailureAlerts[🚨 Failure Alerts]
+        ResourceAlerts[📊 Resource Alerts]
+        SecurityAlerts[🔒 Security Alerts]
+    end
+
+    CronJobs --> HealthChecks
+    HealthChecks --> SystemHealth
+    SystemHealth --> Performance
+
+    CronJobs --> LogRotation
+    LogRotation --> Cleanup
+
+    SystemHealth --> DiskSpace
+    DiskSpace --> ResourceAlerts
+
+    Performance --> Optimization
+    HealthChecks --> FailureAlerts
+
+    Updates --> SystemHealth
+    Cleanup --> Optimization
+
+    style CronJobs fill:#e3f2fd
+    style HealthChecks fill:#fff3e0
+    style FailureAlerts fill:#ffebee
+```
+
+### Monitoring Commands
+
+``` bash
+# Check container status
+docker-compose -f deployment/docker-compose.prod.yml ps
+
+# View logs
+docker-compose -f deployment/docker-compose.prod.yml logs -f mediawiki
+
+# Check disk space
+df -h
+
+# Monitor system resources
+htop
+```
+
+## Troubleshooting {#troubleshooting}
+
+Common issues and their solutions:
+
+```{mermaid}
+flowchart TD
+    subgraph "Common Issues"
+        ServiceDown[🔴 Service Down]
+        DatabaseError[🗄️ Database Connection Error]
+        StorageIssue[💾 Storage Full]
+        PerformanceIssue[⚡ Performance Degradation]
+    end
+
+    subgraph "Diagnostic Steps"
+        CheckLogs[📜 Check Logs]
+        CheckResources[🖥️ Check Resources]
+        CheckConfig[⚙️ Check Configuration]
+        CheckNetwork[🌐 Check Network]
+    end
+
+    subgraph "Resolution Actions"
+        RestartServices[🔄 Restart Services]
+        CleanupStorage[🧹 Cleanup Storage]
+        UpdateConfig[⚙️ Update Configuration]
+        ScaleResources[📈 Scale Resources]
+    end
+
+    subgraph "Escalation"
+        Documentation[📚 Check Documentation]
+        Support[🎫 Contact Support]
+        Emergency[🚨 Emergency Procedures]
+    end
+
+    ServiceDown --> CheckLogs
+    DatabaseError --> CheckConfig
+    StorageIssue --> CheckResources
+    PerformanceIssue --> CheckResources
+
+    CheckLogs --> RestartServices
+    CheckResources --> CleanupStorage
+    CheckConfig --> UpdateConfig
+    CheckNetwork --> ScaleResources
+
+    RestartServices --> Documentation
+    CleanupStorage --> Documentation
+    UpdateConfig --> Support
+    ScaleResources --> Emergency
+
+    style ServiceDown fill:#ffebee
+    style CheckLogs fill:#fff3e0
+    style RestartServices fill:#e8f5e8
+```
+
+### Troubleshooting Commands
+
+``` bash
+# Check service status
+docker ps -a
+docker-compose -f deployment/docker-compose.prod.yml ps
+
+# View detailed logs
+docker logs mediawiki --tail 100
+docker logs db --tail 100
+
+# Restart services
+docker-compose -f deployment/docker-compose.prod.yml restart
+
+# Clean up resources
+docker system prune -f
+docker volume prune -f
+
+# Check database connectivity
+docker exec -it db mariadb -u wikiuser -p -e "SHOW DATABASES;"
+
+# Reset permissions
+docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
+```
+
+## Server Information
+
+### ETHZ Production Server
+
+-   **Server**: `server.domain.ltdh`
+-   **Jump Server**: `jump-server.domain.ltd`
+-   **GUI Access**: [LeoMed Dashboard](https://ondemand-histuzh.leomed.ethz.ch/pun/sys/dashboard/batch_connect/sessions)
+-   **SSH Access**: `ssh -J user@jump-server.domain.ltd -l server-user server.domain.ltdh`
+-   **Web Access**: `http://server.domain.ltdh:8080`
+
+## Additional Resources
+
+-   [Main README](../README.md) - Project overview and quick start
+-   [LeoMed User Documentation](https://unlimited.ethz.ch/spaces/LeoMed2/pages/80691191/LeoMed+user+documentation)
+-   [Data Transfer Guide](https://unlimited.ethz.ch/spaces/LeoMed2/pages/87050871/Data+transfer+with+scp+sftp+or+rsync)
+-   [Project Evolution](../documentation/EVOLUTION.md)
+-   [Project Timeline](../documentation/TIMELINE.md)
