@@ -47,4 +47,122 @@ This document includes:
 
 ## Quick Start
 
-See the main [README.md](../README.md) for quick start instructions and the [comprehensive deployment documentation](DEPLOYMENT.qmd) for detailed deployment procedures.
+### Development Environment
+
+To start a local development environment:
+
+1. **Copy the environment template:**
+
+   ```bash
+   cd src
+   cp example.env .env
+   ```
+
+2. **Edit the `.env` file** with your desired configuration:
+
+   - Set strong passwords for `DB_PASSWORD`
+   - Generate new secret keys for `MW_SECRET_KEY` and `MW_UPGRADE_KEY`
+   - Adjust `MW_SERVER` to match your development URL
+
+3. **Start the development environment:**
+
+   ```bash
+   docker-compose -f docker-compose.dev.yml up -d --build
+   ```
+
+4. **Access MediaWiki:**
+
+   - Open your browser to `http://localhost:8080`
+   - Complete the MediaWiki installation wizard if this is first run
+   - Or log in with existing credentials
+
+5. **Update database schema** (after first installation or when extensions change):
+
+   ```bash
+   docker exec mediawiki php maintenance/update.php --quick
+   ```
+
+### Production Environment
+
+For production deployment instructions, see the [Comprehensive Deployment Documentation](DEPLOYMENT.qmd).
+
+### Extension Configuration
+
+- **[Cargo Extension](CARGO_CONFIGURATION.md)** - Learn how to configure and use Cargo for structured data storage and queries
+- **[PageForms Extension](PAGEFORMS_CONFIGURATION.md)** - Learn how to configure and use PageForms for structured data entry
+
+## Prerequisites
+
+- **Docker** or **Podman** - Container runtime
+- **Docker Compose** - Container orchestration (usually included with Docker Desktop)
+- **Git** - For cloning the repository
+
+## System Requirements
+
+### Minimum Requirements (Development)
+
+- 2 CPU cores
+- 4 GB RAM
+- 10 GB disk space
+
+### Recommended Requirements (Production)
+
+- 4+ CPU cores
+- 8+ GB RAM
+- 50+ GB disk space (depending on data volume)
+
+## Key Features
+
+This deployment setup provides:
+
+- ✅ **MediaWiki 1.43.1** with REL1_43 extensions
+- ✅ **Cargo** for structured data storage and queries
+- ✅ **PageForms** for user-friendly structured data entry
+- ✅ **PageSchemas** for schema definitions
+- ✅ **DataTransfer** for data import/export
+- ✅ **MariaDB 11** database backend
+- ✅ **Development and Production** configurations
+- ✅ **Staging environment** for testing
+- ✅ **Automatic backups** (production)
+- ✅ **Caddy reverse proxy** with automatic HTTPS
+- ✅ **phpMyAdmin** for database management (staging)
+
+## Supported Platforms
+
+These deployment configurations have been tested on:
+
+- **Linux** (Ubuntu 22.04+, Debian 12+)
+- **macOS** (with Docker Desktop)
+- **Windows** (with Docker Desktop and WSL2)
+
+## Security Considerations
+
+⚠️ **Important Security Notes:**
+
+1. **Change default passwords** - Never use the example passwords in production
+2. **Generate new secret keys** - Use `openssl rand -hex 32` to generate secure keys
+3. **Use HTTPS in production** - The Caddy configuration includes automatic HTTPS
+4. **Restrict access** - Configure firewall rules and network policies
+5. **Regular backups** - Use the provided backup scripts
+6. **Keep updated** - Regularly update the Docker images and extensions
+
+For detailed security configuration, see the [Security section in DEPLOYMENT.qmd](DEPLOYMENT.qmd#security-and-access).
+
+## Troubleshooting
+
+Common issues and solutions:
+
+- **Port conflicts** - Change port mappings in docker-compose files if 8080/8081/8082 are in use
+- **Permission errors** - Ensure Docker has proper permissions on volume directories
+- **Database connection errors** - Check `.env` file configuration matches docker-compose settings
+- **Extension errors** - Run `docker exec mediawiki php maintenance/update.php --quick`
+
+For more troubleshooting help, see the [Troubleshooting section in DEPLOYMENT.qmd](DEPLOYMENT.qmd#troubleshooting).
+
+## Additional Resources
+
+- [Main README](../README.md) - Project overview
+- [MediaWiki Documentation](https://www.mediawiki.org/wiki/Documentation)
+- [Docker Documentation](https://docs.docker.com/)
+- [Cargo Extension](https://www.mediawiki.org/wiki/Extension:Cargo)
+- [PageForms Extension](https://www.mediawiki.org/wiki/Extension:Page_Forms)
