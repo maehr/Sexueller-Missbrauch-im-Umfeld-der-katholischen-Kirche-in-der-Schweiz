@@ -1,6 +1,8 @@
 /*-- scss:defaults --*/
 
 // 1. UZH Color Palette
+
+// 1. UZH Color Palette (from _brand.yml)
 $blue: #0028a5;
 $cyan: #4ac9e3;
 $apple: #a5d233;
@@ -8,30 +10,38 @@ $gold: #ffc845;
 $orange: #fc4c02;
 $berry: #bf0d3e;
 
-// Base colors (must be defined before use)
+// Base colors (from _brand.yml)
 $light: #fafafa;
 $dark: #333333;
 
 // 2. Bootstrap Color Mapping
+
 $primary: $blue;
-$secondary: $dark; // Changed from $cyan for better contrast
+$secondary: $dark;
+$tertiary: $apple;
 $success: $apple;
-$info: $blue; // Changed from $cyan for better contrast
+$info: $cyan;
 $warning: $gold;
 $danger: $berry;
-
 $body-color: $dark;
 $body-bg: #ffffff;
 
 // 3. Typography Configuration
+
 $font-family-sans-serif:
 	'Source Sans 3',
 	system-ui,
 	-apple-system,
 	sans-serif;
 $font-family-base: $font-family-sans-serif;
+$font-family-headings:
+	'Source Sans 3',
+	system-ui,
+	-apple-system,
+	sans-serif;
+$font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
 
-// Scale & Hierarchy
+// Scale & Hierarchy (keep existing values)
 $font-size-base: 1.125rem;
 $line-height-base: 1.6;
 $headings-font-weight: 700;
@@ -39,48 +49,19 @@ $h1-font-size: 2.75rem;
 $h2-font-size: 2.2rem;
 $h3-font-size: 1.6rem;
 
-// Figure captions
-$figure-caption-color: $dark;
-$figure-caption-font-size: 0.9rem;
-
-// 4. Component Variables (Replaces manual CSS rules)
-
-// Navbar: Set variables so we don't have to write manual CSS classes
-$navbar-bg: $primary;
-$navbar-dark-color: rgba(255, 255, 255, 0.8);
-$navbar-dark-hover-color: #ffffff;
-$navbar-dark-active-color: #ffffff;
-$navbar-brand-color: #ffffff;
-$navbar-brand-hover-color: #ffffff;
-
 // Breadcrumbs
 $breadcrumb-divider: quote('›'); // Native Bootstrap 5 variable for dividers
 $breadcrumb-bg: transparent;
 $breadcrumb-padding-y: 1rem;
-
-/*-- scss:rules --*/
-
-// 5. Specific Quarto Overrides
-// Sometimes Quarto's sidebar needs specific targeting not covered by Bootstrap vars
-#quarto-sidebar,
-#quarto-margin-sidebar {
-	.nav-link {
-		color: $body-color;
-		font-weight: 600;
-
-		&:hover {
-			color: $primary;
-		}
-		&.active {
-			color: $primary;
-			font-weight: 700;
-		}
-	}
-}
 
 // Optional: Custom CSS Variables for usage in raw HTML/JS
 :root {
 	--uzh-blue: #{$blue};
 	--uzh-cyan: #{$cyan};
 	--uzh-apple: #{$apple};
+	--uzh-gold: #{$gold};
+	--uzh-orange: #{$orange};
+	--uzh-berry: #{$berry};
+	--uzh-light: #{$light};
+	--uzh-dark: #{$dark};
 }

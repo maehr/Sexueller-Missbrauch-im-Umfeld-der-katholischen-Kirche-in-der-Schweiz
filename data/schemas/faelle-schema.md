@@ -146,23 +146,20 @@ _table=Fälle
 
 ## Validation Rules
 
-1. `Betroffener` and `Beschuldigter` are mandatory - must reference existing pages in their respective categories
-2. Page references must exist in the wiki (validated by Cargo Page type)
-3. List fields (Institutioneller Kontext, Fachgremien, Strafverfolgungsbehörden) can contain multiple page references separated by semicolons
-4. Boolean fields accept true/false values
-5. Date fields can contain EDTF format strings
-
-## Notes
-
-- **Page Type**: Cargo's `Page` type stores references to wiki pages by their title. This validates that referenced pages exist and enables relationship queries.
-- **List of Page**: Multi-value fields use `List (;) of Page` to store multiple page references separated by semicolons.
-- **EDTF Dates**: Date fields store EDTF strings (e.g., "1985", "1985~", "1985/1990") in Cargo Date type. Cargo stores these as text strings that can be parsed by EDTF libraries in analysis scripts.
-- **Page Naming**: Case pages are automatically named using the pattern `<Betroffener> <Beschuldigter>` (e.g., "Person A Pfarrer X")
-- **Relationships**: PageForms uses `values from category=CategoryName` to populate dropdowns/tokens fields with page titles from specific categories
-- **Privacy**: This schema is for synthetic/dummy data only. Real data is stored securely per GDPR requirements.
-
-## References
-
-- EDTF Specification: [edtf-documentation.md](edtf-documentation.md)
-- Controlled Vocabularies: [vocabularies/](vocabularies/)
-- Related Entities: [beschuldigte-schema.md](beschuldigte-schema.md), [betroffene-schema.md](betroffene-schema.md)
+1. `Betroffener` is mandatory - must reference existing page in category Betroffene
+2. `Beschuldigter` is mandatory - must reference existing page in category Beschuldigte
+3. `Alter Betroffener operationalisiert` must be one of: minderjährig, volljährig
+4. `Funktion` values must be from: Priester, Pfarrer, Kaplan/Vikar/Pfarrhelfer (geweiht), Ordensbruder/Ordensschwester, Pater, Spiritual, Pfarr-Resignat, Katechet/-in, Pastoralassistent/-in, Gemeindeleiter/-in, Sakristan/-in, Diakon, Ständiger Diakon, Chorherr/Domherr, Novize/Novizin, Diözesanbischof, Erzbischof, Weihbischof, Apostolischer Vikar, Titularbischof, Kardinal, Lehrer/-in, Vorsteher/-in Gemeinschaft, Erzieher/-in, Rektor/Direktor/Präfekt, Missionar/-in, Andere
+5. `Frequenz` must be one of: einmalig, mehrmalig
+6. `Physischer Kontakt` must be one of: kein physischer Kontakt, physischer Kontakt
+7. `Art des Missbrauch` values must be from: Kuss, Zungenkuss, Umarmung, Exhibition des Opfers, Exhibition des Täters, Selbstbefriedigung des Opfers, Selbstbefriedigung des Täters, Berührungen über den Kleidern, Berührung unter den Kleidern, Berührungen der Genitalien des Opfers, Berührungen der Genitalien des Täters, orale Penetration am Opfer, orale Penetration am Täter, vaginale Penetration am Opfer, vaginale Penetration am Täter, anale Penetration am Opfer, anale Penetration am Täter, Andere, Versuch
+8. `Kanton` must be one of: Aargau, Appenzell Ausserrhoden, Appenzell Innerrhoden, Basel-Landschaft, Basel-Stadt, Bern, Freiburg, Genf, Glarus, Graubünden, Jura, Luzern, Neuenburg, Nidwalden, Obwalden, Schaffhausen, Schwyz, Solothurn, St. Gallen, Tessin, Thurgau, Uri, Waadt, Wallis, Zug, Zürich, Fürstentum Liechtenstein, Ausland, andere
+9. `Institutioneller Kontext` must reference existing pages in category Kirchliche_Institutionen
+10. `Fachgremien` must reference existing pages in category Fachgremien
+11. `Kanonische Voruntersuchung` must be one of: Ja, Nein, Andere
+12. `Genugtuungskommission behandelt` must be one of: Ja - angenommen, Ja - abgelehnt, Ja - Ergebnis unklar, Nein
+13. `Strafverfolgungsbehörden informiert` must be one of: Ja, Nein, andere
+14. `Strafverfolgungsbehörden` must reference existing pages in category Strafverfolgungsbehörden
+15. `Strafverfolgungsbehörden Urteil` must be one of: Nichtannahme, Freigesprochen, Verurteilt, Eingestellt
+16. `Quellenkritik` must be one of: Score 1, Score 2, Score 3
+17. Page name is auto-generated as: `<Betroffener> <Beschuldigter>`

@@ -2,7 +2,7 @@
 
 ## Description
 
-The BETROFFENER entity represents a person affected by sexual abuse (victim/survivor). This entity uses pseudonyms and anonymized data to protect privacy. Real identifying information is stored separately in secure infrastructure per GDPR requirements.
+The BETROFFENER entity represents a person affected by sexual abuse (victim/survivor). This documentation uses synthetic data only.
 
 ## Fields
 
@@ -93,49 +93,7 @@ _table=Betroffene
 
 ## Validation Rules
 
-1. `id` must be unique across all affected persons
-2. `id` should follow the pattern `BET-XXX` where XXX is a sequential number
-3. `geschlecht` must be one of the defined vocabulary values if provided
-4. `kontaktstatus` must be one of the defined vocabulary values if provided
-5. `geburtsdatum_edtf` should use EDTF format for approximate/uncertain dates
-
-## Privacy and Ethical Considerations
-
-⚠️ **CRITICAL**: This schema is designed for **synthetic/dummy data only**.
-
-Real data involving affected persons contains highly sensitive personal information and is subject to:
-
-- **GDPR/DSGVO** requirements
-- **Swiss data protection laws** (nFADP)
-- **Research ethics protocols**
-- **Informed consent** requirements
-
-Real research data is stored in:
-
-- **ETH Zürich LeoMed infrastructure** (secure, access-controlled)
-- Separate from this public repository
-- With strict access controls and audit logging
-
-### Anonymization Principles
-
-When creating synthetic data:
-
-1. Use pseudonyms, never real names
-2. Approximate or range dates (EDTF) rather than exact dates
-3. Generalize locations where necessary
-4. Remove or obscure any identifying details
-5. Ensure no combination of fields can re-identify individuals
-
-## Notes
-
-- **Pseudonymization**: All names are pseudonyms in research database
-- **EDTF Dates**: Use approximate dates (e.g., "1965~") to protect privacy while maintaining analytical utility
-- **Relationship Tracking**: Links to cases enable pattern analysis while maintaining privacy
-- **Support Tracking**: Documents institutional and state responses to affected persons
-
-## References
-
-- EDTF Specification: [edtf-documentation.md](edtf-documentation.md)
-- Controlled Vocabularies: [vocabularies/](vocabularies/)
-- Related Entities: [faelle-schema.md](faelle-schema.md), [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md)
-- Privacy Documentation: See main README.md and GDPR compliance notes
+1. `Nummer` is mandatory (required field in form)
+2. `Geschlecht` must be one of: männlich, weiblich, andere
+3. `Institutioneller Kontext` must reference existing pages in category Kirchliche_Institutionen
+4. Page name is auto-generated as: `<Nachname> <Vorname> BET<Nummer>`

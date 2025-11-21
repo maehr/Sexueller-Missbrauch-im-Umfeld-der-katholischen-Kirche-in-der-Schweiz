@@ -91,50 +91,6 @@ _table=Strafverfolgungsbehörden
 
 ## Validation Rules
 
-1. `id` must be unique across all authorities
-2. `id` should follow the pattern `SVB-XXX` where XXX is a sequential number
-3. `typ` must be one of the defined vocabulary values
-4. `kanton` must be one of the defined vocabulary values
-
-## Research Significance
-
-### State Response Analysis
-
-This entity enables analysis of:
-
-1. **Reporting Patterns**: Which cases were reported to authorities
-2. **Jurisdictional Issues**: Cases crossing cantonal boundaries
-3. **Temporal Changes**: How state response evolved over time
-4. **Coordination**: Interaction between church and state authorities
-5. **Victim Support**: Availability and use of victim support services
-
-### Institutional Comparison
-
-Tracking state authorities allows comparison of:
-
-- Church institutional responses vs. state responses
-- Timing: when church acted vs. when state was involved
-- Outcomes: church measures vs. legal proceedings
-- Geographic variations: differences between cantons
-
-### Historical Context
-
-The schema accounts for:
-
-- Changes in Swiss criminal procedure (e.g., abolition of examining magistrates)
-- Evolution of victim support services
-- Changes in statute of limitations
-- Institutional reforms over time
-
-## Notes
-
-- **Historical Changes**: Swiss criminal procedure has undergone reforms; `anmerkungen` field can document institutional changes
-- **Federal vs. Cantonal**: Most cases involve cantonal authorities, but federal authorities may be involved in special circumstances
-- **Victim Support**: Opferhilfestellen (victim support services) are important for understanding support provided to affected persons
-- **Contact Information**: May change over time; record as of time of research
-
-## References
-
-- Controlled Vocabularies: [vocabularies/](vocabularies/)
-- Related Entities: [faelle-schema.md](faelle-schema.md)
-- Legal Context: Swiss Criminal Code (StGB), Victim Support Act (OHG)
+1. `Name` serves as the page title and must be unique
+2. All fields are optional (no mandatory fields in form)
+3. Page name is set to: `<Name>`

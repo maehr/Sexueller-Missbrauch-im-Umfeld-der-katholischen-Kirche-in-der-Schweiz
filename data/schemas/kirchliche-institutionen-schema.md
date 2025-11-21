@@ -110,51 +110,6 @@ _table=Kirchliche_Institutionen
 
 ## Validation Rules
 
-1. `id` must be unique across all institutions
-2. `id` should follow the pattern `INST-XXX` where XXX is a sequential number
-3. `typ` must be one of the defined vocabulary values
-4. `kanton` should be one of the defined vocabulary values if provided
-5. `sprachregion` should be one of the defined vocabulary values if provided
-6. If `aufloesung_jahr` is provided, it should be later than `gruendungsjahr`
-
-## Research Significance
-
-### Geographic and Institutional Analysis
-
-This entity enables:
-
-1. **Geographic Patterns**: Mapping cases across cantons and language regions
-2. **Institutional Types**: Analyzing which types of institutions had more cases
-3. **Diocesan Patterns**: Comparing patterns across different dioceses
-4. **Historical Context**: Tracking institutions over time, including closures
-5. **Cross-Border Transfers**: Detecting movement of accused clergy between jurisdictions
-
-### Language Region Considerations
-
-The `sprachregion` field is important because:
-
-- Different language regions have different clerical title conventions
-- Language regions may have different documentation practices
-- Cultural differences may affect reporting patterns
-- Enables "Trading Zone" analysis (harmonization across language regions)
-
-### Historical Name Tracking
-
-The `name_historisch` field enables:
-
-- Tracking institutions across name changes
-- Linking historical records to current institutions
-- Understanding institutional continuity or discontinuity
-
-## Notes
-
-- **Historical Names**: Many institutions have changed names over time; tracking this is essential for archival research
-- **Dissolved Institutions**: Record dissolution dates for historical institutions that no longer exist
-- **Hierarchical Relationships**: Some institutions are nested (e.g., school within parish); document in `traegerschaft` or `anmerkungen`
-- **Multi-Site Organizations**: Religious orders may have multiple houses; create separate records for each location
-
-## References
-
-- Controlled Vocabularies: [vocabularies/](vocabularies/)
-- Related Entities: [faelle-schema.md](faelle-schema.md), [beschuldigte-schema.md](beschuldigte-schema.md)
-- Geographic Data: Consider adding geospatial coordinates for mapping in future versions
+1. `Name` serves as the page title and must be unique
+2. All fields are optional (no mandatory fields in form)
+3. Page name is set to: `<Name>`

@@ -83,8 +83,6 @@ _table=TableName
 }
 ```
 
-```         
-
 ## Usage
 
 These schemas serve as:

@@ -2,7 +2,7 @@
 
 ## Description
 
-The BESCHULDIGTER entity represents a person accused of sexual abuse. This typically includes clergy, religious order members, church employees, and volunteers. This entity uses pseudonyms in the research database while maintaining linkages to roles and institutions.
+The BESCHULDIGTER entity represents a person accused of sexual abuse. This typically includes clergy, religious order members, church employees, and volunteers. This documentation uses synthetic data only.
 
 ## Fields
 
@@ -131,53 +131,10 @@ _table=Beschuldigte
 
 ## Validation Rules
 
-1. `id` must be unique across all accused persons
-2. `id` should follow the pattern `BESCH-XXX` where XXX is a sequential number
-3. `geschlecht` must be one of the defined vocabulary values if provided
-4. `funktion_rolle` should be one of the defined vocabulary values if provided
-5. `bistum_diozese` should be one of the defined vocabulary values if provided
-6. `status_verfahren` should be one of the defined vocabulary values if provided
-7. If provided, `taetigkeitsorte` and `taetigkeitszeitraeume` lists should have matching lengths
-
-## Research Significance
-
-### Pattern Detection
-
-This schema enables detection of:
-
-1. **Systematic Transfers**: Tracking movement of accused clergy across parishes and dioceses
-2. **Concealment Strategies**: Identifying patterns where transfers coincide with allegations
-3. **Cross-Border Issues**: Detecting transfers across diocesan or national boundaries
-4. **Institutional Responses**: Documenting church vs. state measures
-5. **Temporal Patterns**: Analyzing when institutions took action
-
-### Quellenkritik Integration
-
-The `versetzungshistorie` field is particularly important for source criticism:
-
-- Documents official vs. informal explanations for transfers
-- Captures discrepancies in institutional records
-- Enables comparison of church records with witness testimonies
-
-## Privacy Considerations
-
-⚠️ **Note**: While accused persons have reduced privacy expectations compared to victims, this schema still uses pseudonyms in the research database. Real identifying information is stored separately in secure infrastructure.
-
-However:
-
-- Public figures (e.g., bishops) may be identifiable from role/location combinations
-- Convicted individuals may have public records
-- Research ethics still require careful handling of all personal data
-
-## Notes
-
-- **Versetzungshistorie**: Critical field for detecting concealment patterns
-- **Multiple Affiliations**: An accused person may have multiple institutional affiliations over time
-- **EDTF Dates**: Use for uncertain ordination or birth dates
-- **List Fields**: Use semicolon separator for Cargo list fields
-
-## References
-
-- EDTF Specification: [edtf-documentation.md](edtf-documentation.md)
-- Controlled Vocabularies: [vocabularies/](vocabularies/)
-- Related Entities: [faelle-schema.md](faelle-schema.md), [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md)
+1. `Nummer` is mandatory (required field in form)
+2. `Geschlecht` must be one of: männlich, weiblich, andere
+3. `Nationalität` must be one of: Schweizer, Ausländer
+4. `Funktion` values must be from: Priester, Pfarrer, Kaplan/Vikar/Pfarrhelfer (geweiht), Ordensbruder/Ordensschwester, Pater, Spiritual, Pfarr-Resignat, Katechet/-in, Pastoralassistent/-in, Gemeindeleiter/-in, Sakristan/-in, Diakon, Ständiger Diakon, Chorherr/Domherr, Novize/Novizin, Diözesanbischof, Erzbischof, Weihbischof, Apostolischer Vikar, Titularbischof, Kardinal, Lehrer/-in, Vorsteher/-in Gemeinschaft, Erzieher/-in, Rektor/Direktor/Präfekt, Missionar/-in, Andere
+5. `Weihegrad` must be one of: Weltpriester, Ordenspriester, Laie ohne Gelübde, Laie mit Gelübde, ständiger Diakon, temporärer Diakon, Bischof
+6. `Institutioneller Kontext` must reference existing pages in category Kirchliche_Institutionen
+7. Page name is auto-generated as: `<Nachname> <Vorname> TAE<Nummer>`
