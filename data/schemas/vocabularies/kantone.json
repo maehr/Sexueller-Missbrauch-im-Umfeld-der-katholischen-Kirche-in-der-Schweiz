@@ -1,0 +1,206 @@
+{
+  "vocabulary_name": "Swiss Cantons",
+  "description": "List of Swiss cantons and special values for use in geographic fields",
+  "version": "1.0.0",
+  "last_updated": "2024-11-21",
+  "values": [
+    {
+      "code": "ag",
+      "label_de": "Aargau",
+      "label_fr": "Argovie",
+      "label_it": "Argovia",
+      "sort_order": 10
+    },
+    {
+      "code": "ai",
+      "label_de": "Appenzell Innerrhoden",
+      "label_fr": "Appenzell Rhodes-Intérieures",
+      "label_it": "Appenzello Interno",
+      "sort_order": 20
+    },
+    {
+      "code": "ar",
+      "label_de": "Appenzell Ausserrhoden",
+      "label_fr": "Appenzell Rhodes-Extérieures",
+      "label_it": "Appenzello Esterno",
+      "sort_order": 30
+    },
+    {
+      "code": "be",
+      "label_de": "Bern",
+      "label_fr": "Berne",
+      "label_it": "Berna",
+      "sort_order": 40
+    },
+    {
+      "code": "bl",
+      "label_de": "Basel-Landschaft",
+      "label_fr": "Bâle-Campagne",
+      "label_it": "Basilea Campagna",
+      "sort_order": 50
+    },
+    {
+      "code": "bs",
+      "label_de": "Basel-Stadt",
+      "label_fr": "Bâle-Ville",
+      "label_it": "Basilea Città",
+      "sort_order": 60
+    },
+    {
+      "code": "fr",
+      "label_de": "Freiburg",
+      "label_fr": "Fribourg",
+      "label_it": "Friburgo",
+      "sort_order": 70
+    },
+    {
+      "code": "ge",
+      "label_de": "Genf",
+      "label_fr": "Genève",
+      "label_it": "Ginevra",
+      "sort_order": 80
+    },
+    {
+      "code": "gl",
+      "label_de": "Glarus",
+      "label_fr": "Glaris",
+      "label_it": "Glarona",
+      "sort_order": 90
+    },
+    {
+      "code": "gr",
+      "label_de": "Graubünden",
+      "label_fr": "Grisons",
+      "label_it": "Grigioni",
+      "sort_order": 100
+    },
+    {
+      "code": "ju",
+      "label_de": "Jura",
+      "label_fr": "Jura",
+      "label_it": "Giura",
+      "sort_order": 110
+    },
+    {
+      "code": "lu",
+      "label_de": "Luzern",
+      "label_fr": "Lucerne",
+      "label_it": "Lucerna",
+      "sort_order": 120
+    },
+    {
+      "code": "ne",
+      "label_de": "Neuenburg",
+      "label_fr": "Neuchâtel",
+      "label_it": "Neuchâtel",
+      "sort_order": 130
+    },
+    {
+      "code": "nw",
+      "label_de": "Nidwalden",
+      "label_fr": "Nidwald",
+      "label_it": "Nidvaldo",
+      "sort_order": 140
+    },
+    {
+      "code": "ow",
+      "label_de": "Obwalden",
+      "label_fr": "Obwald",
+      "label_it": "Obvaldo",
+      "sort_order": 150
+    },
+    {
+      "code": "sg",
+      "label_de": "St. Gallen",
+      "label_fr": "Saint-Gall",
+      "label_it": "San Gallo",
+      "sort_order": 160
+    },
+    {
+      "code": "sh",
+      "label_de": "Schaffhausen",
+      "label_fr": "Schaffhouse",
+      "label_it": "Sciaffusa",
+      "sort_order": 170
+    },
+    {
+      "code": "so",
+      "label_de": "Solothurn",
+      "label_fr": "Soleure",
+      "label_it": "Soletta",
+      "sort_order": 180
+    },
+    {
+      "code": "sz",
+      "label_de": "Schwyz",
+      "label_fr": "Schwytz",
+      "label_it": "Svitto",
+      "sort_order": 190
+    },
+    {
+      "code": "tg",
+      "label_de": "Thurgau",
+      "label_fr": "Thurgovie",
+      "label_it": "Turgovia",
+      "sort_order": 200
+    },
+    {
+      "code": "ti",
+      "label_de": "Tessin",
+      "label_fr": "Tessin",
+      "label_it": "Ticino",
+      "sort_order": 210
+    },
+    {
+      "code": "ur",
+      "label_de": "Uri",
+      "label_fr": "Uri",
+      "label_it": "Uri",
+      "sort_order": 220
+    },
+    {
+      "code": "vd",
+      "label_de": "Waadt",
+      "label_fr": "Vaud",
+      "label_it": "Vaud",
+      "sort_order": 230
+    },
+    {
+      "code": "vs",
+      "label_de": "Wallis",
+      "label_fr": "Valais",
+      "label_it": "Vallese",
+      "sort_order": 240
+    },
+    {
+      "code": "zg",
+      "label_de": "Zug",
+      "label_fr": "Zoug",
+      "label_it": "Zugo",
+      "sort_order": 250
+    },
+    {
+      "code": "zh",
+      "label_de": "Zürich",
+      "label_fr": "Zurich",
+      "label_it": "Zurigo",
+      "sort_order": 260
+    },
+    {
+      "code": "bund",
+      "label_de": "Bund",
+      "label_fr": "Confédération",
+      "label_it": "Confederazione",
+      "description": "Federal level",
+      "sort_order": 270
+    },
+    {
+      "code": "ausland",
+      "label_de": "Ausland",
+      "label_fr": "Étranger",
+      "label_it": "Estero",
+      "description": "Foreign/outside Switzerland",
+      "sort_order": 280
+    }
+  ]
+}

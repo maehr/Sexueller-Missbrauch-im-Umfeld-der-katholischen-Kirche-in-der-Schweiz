@@ -1,0 +1,73 @@
+{
+  "vocabulary_name": "Swiss Catholic Dioceses",
+  "description": "Catholic dioceses and territorial abbeys in Switzerland",
+  "version": "1.0.0",
+  "last_updated": "2024-11-21",
+  "values": [
+    {
+      "code": "basel",
+      "label_de": "Bistum Basel",
+      "label_fr": "Diocèse de Bâle",
+      "label_it": "Diocesi di Basilea",
+      "sort_order": 10
+    },
+    {
+      "code": "chur",
+      "label_de": "Bistum Chur",
+      "label_fr": "Diocèse de Coire",
+      "label_it": "Diocesi di Coira",
+      "sort_order": 20
+    },
+    {
+      "code": "lausanne_genf_freiburg",
+      "label_de": "Bistum Lausanne, Genf und Freiburg",
+      "label_fr": "Diocèse de Lausanne, Genève et Fribourg",
+      "label_it": "Diocesi di Losanna, Ginevra e Friburgo",
+      "sort_order": 30
+    },
+    {
+      "code": "lugano",
+      "label_de": "Bistum Lugano",
+      "label_fr": "Diocèse de Lugano",
+      "label_it": "Diocesi di Lugano",
+      "sort_order": 40
+    },
+    {
+      "code": "sitten",
+      "label_de": "Bistum Sitten",
+      "label_fr": "Diocèse de Sion",
+      "label_it": "Diocesi di Sion",
+      "sort_order": 50
+    },
+    {
+      "code": "stgallen",
+      "label_de": "Bistum St. Gallen",
+      "label_fr": "Diocèse de Saint-Gall",
+      "label_it": "Diocesi di San Gallo",
+      "sort_order": 60
+    },
+    {
+      "code": "abtei_einsiedeln",
+      "label_de": "Territorialabtei Einsiedeln",
+      "label_fr": "Abbaye territoriale d'Einsiedeln",
+      "label_it": "Abbazia territoriale di Einsiedeln",
+      "sort_order": 70
+    },
+    {
+      "code": "extern",
+      "label_de": "Extern / Ausland",
+      "label_fr": "Externe / Étranger",
+      "label_it": "Esterno / Estero",
+      "description": "Foreign diocese or external jurisdiction",
+      "sort_order": 80
+    },
+    {
+      "code": "unbekannt",
+      "label_de": "Unbekannt",
+      "label_fr": "Inconnu",
+      "label_it": "Sconosciuto",
+      "description": "Unknown diocese",
+      "sort_order": 90
+    }
+  ]
+}

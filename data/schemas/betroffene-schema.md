@@ -1,0 +1,137 @@
+# Schema: BETROFFENER (Affected Person)
+
+## Description
+
+The BETROFFENER entity represents a person affected by sexual abuse (victim/survivor). This entity uses pseudonyms and anonymized data to protect privacy. Real identifying information is stored separately in secure infrastructure per GDPR requirements.
+
+## Fields
+
+| Field Name | Type | Required | Description | Controlled Vocabulary |
+|------------|------|----------|-------------|----------------------|
+| id | String (PK) | Yes | Unique identifier for the person | Auto-generated (e.g., BET-001) |
+| name_pseudonym | String | Yes | Pseudonymized name or identifier | Free text |
+| geschlecht | String | No | Gender | See Gender vocabulary |
+| geburtsdatum_edtf | Date (EDTF) | No | Date of birth (anonymized/approximate) | EDTF format |
+| geburtsort | String | No | Place of birth (anonymized if necessary) | Free text |
+| kontaktstatus | String | No | Status of contact with research team | See Contact Status vocabulary |
+| erstkontakt_datum | Date | No | Date of first contact | Standard date format |
+| beziehung_institution | String | No | Relationship to church institution | Free text |
+| zeitraum_kontakt | String | No | Period of contact with institution/accused | Free text or date range |
+| unterstuetzung_erhalten | String | No | Support received | See Support vocabulary |
+| anmerkungen | Text | No | Additional notes (anonymized) | Free text |
+
+## Cargo Table Declaration
+
+```wikitext
+{{#cargo_declare:
+_table=Betroffene
+|id=String (unique)
+|name_pseudonym=String
+|geschlecht=String
+|geburtsdatum_edtf=Date
+|geburtsort=String
+|kontaktstatus=String
+|erstkontakt_datum=Date
+|beziehung_institution=String
+|zeitraum_kontakt=String
+|unterstuetzung_erhalten=String
+|anmerkungen=Text
+}}
+```
+
+## Controlled Vocabularies
+
+### Geschlecht (Gender)
+- `maennlich` - Male
+- `weiblich` - Female
+- `divers` - Non-binary/Diverse
+- `unbekannt` - Unknown
+- `keine_angabe` - Prefer not to say
+
+### Kontaktstatus (Contact Status)
+- `erstkontakt` - Initial contact
+- `aktiv` - Active communication
+- `abgeschlossen` - Contact concluded
+- `kein_kontakt` - No contact established
+- `kontakt_abgebrochen` - Contact discontinued
+- `verstorben` - Deceased
+
+### Unterstuetzung_erhalten (Support Received)
+- `keine` - None
+- `beratung` - Counseling
+- `therapie` - Therapy
+- `finanzielle_entschaedigung` - Financial compensation
+- `rechtsbeistand` - Legal assistance
+- `kirche_anerkennungszahlung` - Church recognition payment
+- `staatliche_unterstuetzung` - State support
+- `unklar` - Unclear
+
+## Relationships
+
+- **Fälle** (Many-to-Many): Affected persons are involved in one or more cases
+- **Kirchliche Institutionen** (Many-to-Many): May have contacted or been associated with institutions
+
+## Example Record
+
+```json
+{
+  "id": "BET-001",
+  "name_pseudonym": "Person A",
+  "geschlecht": "maennlich",
+  "geburtsdatum_edtf": "1965~",
+  "geburtsort": "Basel (anonymisiert)",
+  "kontaktstatus": "aktiv",
+  "erstkontakt_datum": "2023-05-20",
+  "beziehung_institution": "Ehemaliger Messdiener",
+  "zeitraum_kontakt": "1978-1982",
+  "unterstuetzung_erhalten": "beratung, therapie",
+  "anmerkungen": "Person hat sich direkt an die Forschungsgruppe gewandt. Bereit zur weiteren Zusammenarbeit."
+}
+```
+
+## Validation Rules
+
+1. `id` must be unique across all affected persons
+2. `id` should follow the pattern `BET-XXX` where XXX is a sequential number
+3. `geschlecht` must be one of the defined vocabulary values if provided
+4. `kontaktstatus` must be one of the defined vocabulary values if provided
+5. `geburtsdatum_edtf` should use EDTF format for approximate/uncertain dates
+
+## Privacy and Ethical Considerations
+
+⚠️ **CRITICAL**: This schema is designed for **synthetic/dummy data only**.
+
+Real data involving affected persons contains highly sensitive personal information and is subject to:
+
+- **GDPR/DSGVO** requirements
+- **Swiss data protection laws** (nFADP)
+- **Research ethics protocols**
+- **Informed consent** requirements
+
+Real research data is stored in:
+- **ETH Zürich LeoMed infrastructure** (secure, access-controlled)
+- Separate from this public repository
+- With strict access controls and audit logging
+
+### Anonymization Principles
+
+When creating synthetic data:
+1. Use pseudonyms, never real names
+2. Approximate or range dates (EDTF) rather than exact dates
+3. Generalize locations where necessary
+4. Remove or obscure any identifying details
+5. Ensure no combination of fields can re-identify individuals
+
+## Notes
+
+- **Pseudonymization**: All names are pseudonyms in research database
+- **EDTF Dates**: Use approximate dates (e.g., "1965~") to protect privacy while maintaining analytical utility
+- **Relationship Tracking**: Links to cases enable pattern analysis while maintaining privacy
+- **Support Tracking**: Documents institutional and state responses to affected persons
+
+## References
+
+- EDTF Specification: [edtf-documentation.md](edtf-documentation.md)
+- Controlled Vocabularies: [vocabularies/](vocabularies/)
+- Related Entities: [faelle-schema.md](faelle-schema.md), [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md)
+- Privacy Documentation: See main README.md and GDPR compliance notes

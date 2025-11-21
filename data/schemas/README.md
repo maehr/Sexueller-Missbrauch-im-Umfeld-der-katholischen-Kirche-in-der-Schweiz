@@ -1,0 +1,97 @@
+# Data Schemas and Data Model
+
+This directory contains the formal data model definitions for the research database on sexual abuse in the Swiss Catholic Church.
+
+## Purpose
+
+This separates the **persistent data structure** (what is stored) from the **data entry interfaces** (how data is entered). This separation:
+
+- Simplifies versioning of data structures
+- Enables re-use of schemas in import/export scripts
+- Allows UI changes without breaking the data model
+- Provides machine-readable schemas for validation
+
+## Contents
+
+### 1. Entity-Relationship Model (ERM)
+
+The [erm-diagram.md](erm-diagram.md) file contains a Mermaid diagram showing relationships between all entities in the database.
+
+### 2. Entity Schemas
+
+Each entity has a dedicated schema file defining:
+
+- Field names and types
+- Required vs. optional fields
+- Controlled vocabularies
+- Example records
+- Cargo table declarations
+
+Available entity schemas:
+
+- [beschuldigte-schema.md](beschuldigte-schema.md) - Accused persons
+- [betroffene-schema.md](betroffene-schema.md) - Affected persons/victims
+- [fachgremien-schema.md](fachgremien-schema.md) - Expert committees
+- [faelle-schema.md](faelle-schema.md) - Cases
+- [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md) - Church institutions
+- [strafverfolgungsbehoerden-schema.md](strafverfolgungsbehoerden-schema.md) - Law enforcement authorities
+
+### 3. EDTF Date Fields
+
+The [edtf-documentation.md](edtf-documentation.md) file documents Extended Date/Time Format (EDTF) fields used throughout the database for handling uncertain, approximate, or partial dates.
+
+### 4. Controlled Vocabularies
+
+Machine-readable controlled vocabulary files:
+
+- [vocabularies/](vocabularies/) - JSON files with controlled terms for various fields
+
+## Schema Format
+
+Each entity schema follows this structure:
+
+```markdown
+# Entity Name
+
+## Description
+Brief description of the entity and its role in the data model.
+
+## Fields
+
+| Field Name | Type | Required | Description | Controlled Vocabulary |
+|------------|------|----------|-------------|----------------------|
+| field_name | type | yes/no   | description | link if applicable   |
+
+## Cargo Table Declaration
+
+```cargo
+{{#cargo_declare:
+_table=TableName
+|FieldName=Type
+|...
+}}
+```
+
+## Example Record
+
+```json
+{
+  "field_name": "example_value",
+  ...
+}
+```
+```
+
+## Usage
+
+These schemas serve as:
+
+1. **Developer Reference**: Technical specification for database structure
+2. **Validation Source**: Machine-readable format for data validation scripts
+3. **Documentation**: Clear record of data model decisions and evolution
+4. **Import/Export**: Foundation for data transformation scripts
+
+## Related
+
+- See [../../templates/](../../templates/) for PageForms and data entry templates
+- See [../../documentation/](../../documentation/) for methodology documentation
