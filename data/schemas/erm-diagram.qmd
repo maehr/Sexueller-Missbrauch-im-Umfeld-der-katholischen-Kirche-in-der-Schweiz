@@ -1,0 +1,184 @@
+# Entity-Relationship Model (ERM)
+
+This diagram shows the relationships between the main entities in the research database.
+
+## Mermaid Diagram
+
+```{mermaid}
+erDiagram
+    FALL ||--o{ BETROFFENER : "involves"
+    FALL ||--o{ BESCHULDIGTER : "involves"
+    FALL }o--|| KIRCHLICHE_INSTITUTION : "associated-with"
+    FALL }o--o| STRAFVERFOLGUNGSBEHOERDE : "reported-to"
+    FALL }o--o| FACHGREMIUM : "reviewed-by"
+
+    BESCHULDIGTER }o--o{ KIRCHLICHE_INSTITUTION : "affiliated-with"
+    BETROFFENER }o--o| KIRCHLICHE_INSTITUTION : "contacted"
+
+    STRAFVERFOLGUNGSBEHOERDE }o--o{ FALL : "investigates"
+    FACHGREMIUM }o--o{ FALL : "evaluates"
+
+    FALL {
+        string fallnummer PK
+        string titel
+        date meldedatum
+        string status
+        string quellenkritik_score
+        text zusammenfassung
+        string edtf_zeitraum
+    }
+
+    BETROFFENER {
+        string id PK
+        string name_pseudonym
+        string geschlecht
+        date geburtsdatum_edtf
+        string kontaktstatus
+        text anmerkungen
+    }
+
+    BESCHULDIGTER {
+        string id PK
+        string name_pseudonym
+        string funktion_rolle
+        string ordensgemeinschaft
+        date geburtsdatum_edtf
+        string status_verfahren
+        text anmerkungen
+    }
+
+    KIRCHLICHE_INSTITUTION {
+        string id PK
+        string name
+        string typ
+        string bistum_ordensgemeinschaft
+        string ort_kanton
+        date gruendungsjahr
+        text anmerkungen
+    }
+
+    STRAFVERFOLGUNGSBEHOERDE {
+        string id PK
+        string name
+        string typ
+        string kanton
+        string zustaendigkeit
+        text kontaktinformationen
+    }
+
+    FACHGREMIUM {
+        string id PK
+        string name
+        string typ
+        date einrichtungsdatum
+        string mandat
+        text zusammensetzung
+    }
+```
+
+## Entity Descriptions
+
+### FALL (Case)
+
+Central entity representing an individual case of abuse. Links affected persons, accused persons, institutions, and authorities.
+
+### BETROFFENER (Affected Person)
+
+Represents a victim or affected person. May be linked to multiple cases and institutions.
+
+### BESCHULDIGTER (Accused Person)
+
+Represents an accused individual. May be affiliated with multiple institutions and involved in multiple cases.
+
+### KIRCHLICHE_INSTITUTION (Church Institution)
+
+Represents a church institution (diocese, parish, religious order, school, etc.) where abuse occurred or that is relevant to a case.
+
+### STRAFVERFOLGUNGSBEHOERDE (Law Enforcement Authority)
+
+Represents a prosecuting authority or law enforcement agency involved in investigating or prosecuting cases.
+
+### FACHGREMIUM (Expert Committee)
+
+Represents an expert panel, review board, or commission that evaluates cases, provides assessments, or makes recommendations.
+
+## Relationship Descriptions
+
+### FALL ↔ BETROFFENER
+
+A case involves one or more affected persons. An affected person may be involved in multiple cases.
+
+### FALL ↔ BESCHULDIGTER
+
+A case involves one or more accused persons. An accused person may be involved in multiple cases.
+
+### FALL ↔ KIRCHLICHE_INSTITUTION
+
+A case is associated with one or more church institutions (location of abuse, institution of accused, etc.).
+
+### FALL ↔ STRAFVERFOLGUNGSBEHOERDE
+
+A case may be reported to or investigated by law enforcement authorities.
+
+### FALL ↔ FACHGREMIUM
+
+A case may be reviewed or evaluated by expert committees.
+
+### BESCHULDIGTER ↔ KIRCHLICHE_INSTITUTION
+
+An accused person may be affiliated with one or more church institutions (employment, membership, assignment).
+
+### BETROFFENER ↔ KIRCHLICHE_INSTITUTION
+
+An affected person may have contacted or been associated with church institutions.
+
+## Normalization Notes
+
+The data model follows **Third Normal Form (3NF)** principles:
+
+1.  **No repeating groups**: Each entity has atomic values
+2.  **Full functional dependency**: All non-key attributes depend on the entire primary key
+3.  **No transitive dependencies**: Non-key attributes depend only on the primary key
+
+This enables:
+
+-   Detection of patterns across entities (e.g., repeated transfers of accused clergy)
+-   Flexible querying and reporting
+-   Data integrity through referential constraints
+-   Scalability as the research progresses
+
+## Source Criticism Integration
+
+The data model integrates **Quellenkritik (source criticism)** as a scored assessment rather than simple truth values:
+
+-   Each FALL includes a `quellenkritik_score` field
+-   Scores assess source reliability, provenance, and institutional perspective
+-   Enables quantitative analysis of concealment strategies
+-   Supports detection of systemic patterns in documentation
+
+## EDTF Date Handling
+
+The model uses **Extended Date/Time Format (EDTF)** for dates that may be:
+
+-   Uncertain (e.g., "circa 1985")
+-   Approximate (e.g., "mid-1980s")
+-   Partial (e.g., "1985" without day/month)
+-   Ranges (e.g., "1985/1990")
+
+See [edtf-documentation.md](edtf-documentation.md) for details.
+
+## Future Extensions
+
+Potential extensions to the data model:
+
+1.  **Archival Sources**: Link cases to specific archival documents and collections
+2.  **Temporal Tracking**: Add versioning to track changes in case status over time
+3.  **Geographic Data**: Add geospatial coordinates for mapping and spatial analysis
+4.  **Document Attachments**: Reference system for scanned documents (stored securely)
+5.  **Network Analysis**: Enhanced relationship tracking for social network analysis
+
+## References
+
+-   Semantic MediaWiki: https://www.semantic-mediawiki.org/
+-   Cargo Extension: https://www.mediawiki.org/wiki/Extension:Cargo
+-   EDTF Specification: https://www.loc.gov/standards/datetime/

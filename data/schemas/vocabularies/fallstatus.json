@@ -1,0 +1,56 @@
+{
+	"vocabulary_name": "Case Status",
+	"description": "Status values for abuse cases",
+	"version": "1.0.0",
+	"last_updated": "2024-11-21",
+	"values": [
+		{
+			"code": "offen",
+			"label_de": "Offen",
+			"label_fr": "Ouvert",
+			"label_it": "Aperto",
+			"description": "Case is open and active",
+			"sort_order": 10
+		},
+		{
+			"code": "in_bearbeitung",
+			"label_de": "In Bearbeitung",
+			"label_fr": "En cours de traitement",
+			"label_it": "In lavorazione",
+			"description": "Case is under investigation or review",
+			"sort_order": 20
+		},
+		{
+			"code": "abgeschlossen",
+			"label_de": "Abgeschlossen",
+			"label_fr": "Clôturé",
+			"label_it": "Concluso",
+			"description": "Case is closed/complete",
+			"sort_order": 30
+		},
+		{
+			"code": "archiviert",
+			"label_de": "Archiviert",
+			"label_fr": "Archivé",
+			"label_it": "Archiviato",
+			"description": "Case is archived (no longer active)",
+			"sort_order": 40
+		},
+		{
+			"code": "zurueckgewiesen",
+			"label_de": "Zurückgewiesen",
+			"label_fr": "Rejeté",
+			"label_it": "Respinto",
+			"description": "Case was rejected or dismissed",
+			"sort_order": 50
+		},
+		{
+			"code": "ausstehend",
+			"label_de": "Ausstehend",
+			"label_fr": "En attente",
+			"label_it": "In sospeso",
+			"description": "Case is pending (awaiting action or information)",
+			"sort_order": 60
+		}
+	]
+}
