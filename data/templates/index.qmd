@@ -270,9 +270,9 @@ Real research data is stored in ETH Zürich LeoMed infrastructure, not in a publ
 
 ## Related Documentation
 
-- Data Model: [../data/schemas/README.md](../data/schemas/README.md)
-- Schema Files: [../data/schemas/](../data/schemas/)
-- Controlled Vocabularies: [../data/schemas/vocabularies/](../data/schemas/vocabularies/)
+- Data Model: [../schemas/index.qmd](../schemas/index.qmd)
+- Schema Files: [../schemas/](../schemas/)
+- Controlled Vocabularies: [../schemas/vocabularies/](../schemas/vocabularies/)
 
 ## Extension Documentation
 
