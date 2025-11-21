@@ -10,9 +10,9 @@ The FALL entity represents an individual case of sexual abuse. It is the central
 |------------|------|----------|-------------|----------------------|
 | fallnummer | String (PK) | Yes | Unique case identifier | Auto-generated or manual |
 | titel | String | Yes | Brief descriptive title of the case | Free text |
-| meldedatum | Date (EDTF) | No | Date when the case was first reported | EDTF format |
-| tatzeit_von | Date (EDTF) | No | Start date/period of alleged abuse | EDTF format |
-| tatzeit_bis | Date (EDTF) | No | End date/period of alleged abuse | EDTF format |
+| meldedatum | Date | No | Date when the case was first reported | EDTF format as string |
+| tatzeit_von | Date | No | Start date/period of alleged abuse | EDTF format as string |
+| tatzeit_bis | Date | No | End date/period of alleged abuse | EDTF format as string |
 | tatort | String | No | Location where abuse occurred | Free text or place vocabulary |
 | status | String | Yes | Current status of the case | See Status vocabulary |
 | quellenkritik_score | Integer | No | Source criticism reliability score (1-10) | 1=unreliable, 10=highly reliable |
@@ -111,7 +111,7 @@ _table=Faelle
 
 ## Notes
 
-- **EDTF Dates**: Use EDTF format for uncertain, approximate, or partial dates (e.g., "1985", "1985~", "1985/1990")
+- **EDTF Dates**: Date fields store EDTF strings (e.g., "1985", "1985~", "1985/1990") in Cargo Date type. Cargo stores these as text strings that can be parsed by EDTF libraries in analysis scripts.
 - **Quellenkritik**: The source criticism score enables quantitative analysis of source reliability and detection of concealment patterns
 - **Relationships**: Use Cargo relationship tables or Semantic MediaWiki properties to link cases to other entities
 - **Privacy**: This schema is for synthetic/dummy data only. Real data is stored securely per GDPR requirements.

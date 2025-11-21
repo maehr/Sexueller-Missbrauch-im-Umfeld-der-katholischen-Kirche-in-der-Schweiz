@@ -16,8 +16,8 @@ The KIRCHLICHE_INSTITUTION entity represents church institutions including dioce
 | ort_gemeinde | String | No | Town/municipality | Free text |
 | kanton | String | No | Canton | See Canton vocabulary |
 | adresse | Text | No | Address | Free text |
-| gruendungsjahr | Date (EDTF) | No | Year of foundation | EDTF format |
-| aufloesung_jahr | Date (EDTF) | No | Year of dissolution (if applicable) | EDTF format |
+| gruendungsjahr | Date | No | Year of foundation | EDTF format as string |
+| aufloesung_jahr | Date | No | Year of dissolution (if applicable) | EDTF format as string |
 | traegerschaft | String | No | Operating organization | Free text |
 | sprachregion | String | No | Language region | See Language Region vocabulary |
 | anmerkungen | Text | No | Additional notes | Free text |

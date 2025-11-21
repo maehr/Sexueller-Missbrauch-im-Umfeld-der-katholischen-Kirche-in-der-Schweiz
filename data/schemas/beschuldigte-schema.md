@@ -11,12 +11,12 @@ The BESCHULDIGTER entity represents a person accused of sexual abuse. This typic
 | id | String (PK) | Yes | Unique identifier for the person | Auto-generated (e.g., BESCH-001) |
 | name_pseudonym | String | Yes | Pseudonymized name or identifier | Free text |
 | geschlecht | String | No | Gender | See Gender vocabulary |
-| geburtsdatum_edtf | Date (EDTF) | No | Date of birth (approximate if necessary) | EDTF format |
+| geburtsdatum_edtf | Date | No | Date of birth (approximate if necessary) | EDTF format as string |
 | geburtsort | String | No | Place of birth | Free text |
 | funktion_rolle | String | No | Function/role in the church | See Role vocabulary |
 | ordensgemeinschaft | String | No | Religious order/congregation | Free text or order vocabulary |
 | bistum_diozese | String | No | Diocese or jurisdiction | See Diocese vocabulary |
-| weihedatum | Date (EDTF) | No | Ordination date | EDTF format |
+| weihedatum | Date | No | Ordination date | EDTF format as string |
 | taetigkeitsorte | List | No | Locations/parishes where active | List of strings |
 | taetigkeitszeitraeume | List | No | Periods of activity at locations | List of date ranges |
 | status_verfahren | String | No | Status of proceedings | See Proceedings Status vocabulary |

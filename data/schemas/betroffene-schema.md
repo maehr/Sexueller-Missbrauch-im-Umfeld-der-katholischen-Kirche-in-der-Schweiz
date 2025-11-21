@@ -11,7 +11,7 @@ The BETROFFENER entity represents a person affected by sexual abuse (victim/surv
 | id | String (PK) | Yes | Unique identifier for the person | Auto-generated (e.g., BET-001) |
 | name_pseudonym | String | Yes | Pseudonymized name or identifier | Free text |
 | geschlecht | String | No | Gender | See Gender vocabulary |
-| geburtsdatum_edtf | Date (EDTF) | No | Date of birth (anonymized/approximate) | EDTF format |
+| geburtsdatum_edtf | Date | No | Date of birth (anonymized/approximate) | EDTF format as string |
 | geburtsort | String | No | Place of birth (anonymized if necessary) | Free text |
 | kontaktstatus | String | No | Status of contact with research team | See Contact Status vocabulary |
 | erstkontakt_datum | Date | No | Date of first contact | Standard date format |

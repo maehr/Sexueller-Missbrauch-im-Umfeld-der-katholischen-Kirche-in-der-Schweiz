@@ -13,26 +13,38 @@ Controlled vocabularies ensure:
 
 ## Available Vocabularies
 
-### Geographic
+### Currently Implemented
+
+#### Geographic
 - [kantone.json](kantone.json) - Swiss cantons
-- [sprachregionen.json](sprachregionen.json) - Language regions
-
-### Institutional
-- [institutionstypen.json](institutionstypen.json) - Types of church institutions
 - [bistuemer.json](bistuemer.json) - Swiss dioceses
-- [behoerdentypen.json](behoerdentypen.json) - Types of law enforcement authorities
-- [gremientypen.json](gremientypen.json) - Types of expert committees
 
-### Personal
-- [geschlecht.json](geschlecht.json) - Gender values
-- [rollen.json](rollen.json) - Clerical and church roles
-
-### Case-Related
+#### Case-Related
 - [fallstatus.json](fallstatus.json) - Case status values
-- [ausgang.json](ausgang.json) - Case outcomes
-- [verfahrensstatus.json](verfahrensstatus.json) - Status of proceedings
-- [kontaktstatus.json](kontaktstatus.json) - Contact status with affected persons
-- [unterstuetzung.json](unterstuetzung.json) - Types of support received
+
+### Planned Vocabularies
+
+The following vocabularies are documented in entity schemas but not yet created as JSON files:
+
+#### Geographic
+- sprachregionen.json - Language regions (Deutschschweiz, Romandie, Tessin, etc.)
+
+#### Institutional
+- institutionstypen.json - Types of church institutions (parish, diocese, school, etc.)
+- behoerdentypen.json - Types of law enforcement authorities
+- gremientypen.json - Types of expert committees
+
+#### Personal
+- geschlecht.json - Gender values
+- rollen.json - Clerical and church roles
+
+#### Case-Related
+- ausgang.json - Case outcomes
+- verfahrensstatus.json - Status of proceedings
+- kontaktstatus.json - Contact status with affected persons
+- unterstuetzung.json - Types of support received
+
+These vocabularies are defined inline in the entity schema files and should be extracted to JSON files as data entry needs arise.
 
 ## JSON Format
 

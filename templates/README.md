@@ -157,8 +157,10 @@ Forms use dropdown fields populated from controlled vocabularies:
 Or from vocabulary files:
 
 ```wikitext
-{{{field|kanton|input type=combobox|values from url=/vocabularies/kantone.json}}}
+{{{field|kanton|input type=combobox|values from url=vocabularies/kantone.json}}}
 ```
+
+Note: The path should be relative to the wiki root or configured based on your MediaWiki installation's vocabulary file location.
 
 ### Conditional Fields
 
