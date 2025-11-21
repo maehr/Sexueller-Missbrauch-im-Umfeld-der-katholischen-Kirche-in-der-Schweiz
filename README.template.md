@@ -37,9 +37,7 @@ The investigation of sexual abuse within the Swiss Catholic Church presents a du
 This repository documents the project's transition from a "shared Excel table" workflow to a secure, relational, and collaborative research database built on Semantic MediaWiki. We posit that this technical infrastructure is not merely a logistical container but a **methodological investment**. By moving to a relational data model, the project was able to:
 
 1. **Operationalize "Quellenkritik" (Source Criticism):** Moving beyond simple "truth values" to a scored assessment of source reliability, provenance, and institutional perspective.
-    
 2. **Uncover Systemic Patterns:** Enabling the quantitative detection of concealment strategies, such as the systematic transfer of accused clerics across parish and diocesan borders.
-    
 3. **Enable Collaborative Hermeneutics:** Creating a "Trading Zone" where historians and data scientists harmonize disparate archival sources (e.g., varying clerical titles across language regions).
 
 This repository allows the digital history community to replicate our technical framework and adapt our data models for similar sensitive research contexts.
@@ -70,6 +68,7 @@ The data in this repository consists of:
 - **Methodology Documentation**: Documentation of the research methodology, data collection procedures, and ethical considerations
 
 **Important Notes**:
+
 - All datasets provided are **synthetic (dummy data)** generated for demonstration purposes only
 - Real research data containing sensitive personal information is stored securely within the ETH Zürich _LeoMed_ infrastructure
 - Data models include field names, descriptions, and controlled vocabularies maintained as part of the repository
@@ -100,13 +99,13 @@ curl -i https://zenodo.org/api/records/ZENODO_RECORD
 
 This project is maintained by [@maehr](https://github.com/maehr). Please understand that we can't provide individual support via email. We also believe that help is much more valuable when it's shared publicly, so more people can benefit from it.
 
-| Type                                   | Platforms                                                                                                                       |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Type                                   | Platforms                                                                                                                        |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 🚨 **Bug Reports**                     | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
 | 📊 **Report bad data**                 | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
 | 📚 **Docs Issue**                      | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
 | 🎁 **Feature Requests**                | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
-| 🛡 **Report a security vulnerability** | See [SECURITY.md](SECURITY.md)                                                                                                  |
+| 🛡 **Report a security vulnerability** | See [SECURITY.md](SECURITY.md)                                                                                                   |
 | 💬 **General Questions**               | [GitHub Discussions](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/discussions) |
 
 ## Roadmap

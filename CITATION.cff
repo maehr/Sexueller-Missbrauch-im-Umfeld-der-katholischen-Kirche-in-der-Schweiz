@@ -1,7 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this repository or data, please cite it as below."
-title: "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz"
-abstract: "This repository serves as the Replication Kit and Technical Framework for the historical research project investigating sexual abuse in the Swiss Catholic Church since the mid-20th century. It contains the data models, schemas, methodologies, and analysis scripts discussed in the associated article."
+message: 'If you use this repository or data, please cite it as below.'
+title: 'Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz'
+abstract: 'This repository serves as the Replication Kit and Technical Framework for the historical research project investigating sexual abuse in the Swiss Catholic Church since the mid-20th century. It contains the data models, schemas, methodologies, and analysis scripts discussed in the associated article.'
 type: dataset
 authors:
   - family-names: Mähr
