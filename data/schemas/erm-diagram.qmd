@@ -4,7 +4,7 @@ This diagram shows the relationships between the main entities in the research d
 
 ## Mermaid Diagram
 
-```mermaid
+```{mermaid}
 erDiagram
     FALL ||--o{ BETROFFENER : "involves"
     FALL ||--o{ BESCHULDIGTER : "involves"
@@ -136,34 +136,34 @@ An affected person may have contacted or been associated with church institution
 
 The data model follows **Third Normal Form (3NF)** principles:
 
-1. **No repeating groups**: Each entity has atomic values
-2. **Full functional dependency**: All non-key attributes depend on the entire primary key
-3. **No transitive dependencies**: Non-key attributes depend only on the primary key
+1.  **No repeating groups**: Each entity has atomic values
+2.  **Full functional dependency**: All non-key attributes depend on the entire primary key
+3.  **No transitive dependencies**: Non-key attributes depend only on the primary key
 
 This enables:
 
-- Detection of patterns across entities (e.g., repeated transfers of accused clergy)
-- Flexible querying and reporting
-- Data integrity through referential constraints
-- Scalability as the research progresses
+-   Detection of patterns across entities (e.g., repeated transfers of accused clergy)
+-   Flexible querying and reporting
+-   Data integrity through referential constraints
+-   Scalability as the research progresses
 
 ## Source Criticism Integration
 
 The data model integrates **Quellenkritik (source criticism)** as a scored assessment rather than simple truth values:
 
-- Each FALL includes a `quellenkritik_score` field
-- Scores assess source reliability, provenance, and institutional perspective
-- Enables quantitative analysis of concealment strategies
-- Supports detection of systemic patterns in documentation
+-   Each FALL includes a `quellenkritik_score` field
+-   Scores assess source reliability, provenance, and institutional perspective
+-   Enables quantitative analysis of concealment strategies
+-   Supports detection of systemic patterns in documentation
 
 ## EDTF Date Handling
 
 The model uses **Extended Date/Time Format (EDTF)** for dates that may be:
 
-- Uncertain (e.g., "circa 1985")
-- Approximate (e.g., "mid-1980s")
-- Partial (e.g., "1985" without day/month)
-- Ranges (e.g., "1985/1990")
+-   Uncertain (e.g., "circa 1985")
+-   Approximate (e.g., "mid-1980s")
+-   Partial (e.g., "1985" without day/month)
+-   Ranges (e.g., "1985/1990")
 
 See [edtf-documentation.md](edtf-documentation.md) for details.
 
@@ -171,14 +171,14 @@ See [edtf-documentation.md](edtf-documentation.md) for details.
 
 Potential extensions to the data model:
 
-1. **Archival Sources**: Link cases to specific archival documents and collections
-2. **Temporal Tracking**: Add versioning to track changes in case status over time
-3. **Geographic Data**: Add geospatial coordinates for mapping and spatial analysis
-4. **Document Attachments**: Reference system for scanned documents (stored securely)
-5. **Network Analysis**: Enhanced relationship tracking for social network analysis
+1.  **Archival Sources**: Link cases to specific archival documents and collections
+2.  **Temporal Tracking**: Add versioning to track changes in case status over time
+3.  **Geographic Data**: Add geospatial coordinates for mapping and spatial analysis
+4.  **Document Attachments**: Reference system for scanned documents (stored securely)
+5.  **Network Analysis**: Enhanced relationship tracking for social network analysis
 
 ## References
 
-- Semantic MediaWiki: https://www.semantic-mediawiki.org/
-- Cargo Extension: https://www.mediawiki.org/wiki/Extension:Cargo
-- EDTF Specification: https://www.loc.gov/standards/datetime/
+-   Semantic MediaWiki: https://www.semantic-mediawiki.org/
+-   Cargo Extension: https://www.mediawiki.org/wiki/Extension:Cargo
+-   EDTF Specification: https://www.loc.gov/standards/datetime/

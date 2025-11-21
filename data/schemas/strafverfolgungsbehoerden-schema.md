@@ -6,10 +6,10 @@ The STRAFVERFOLGUNGSBEHOERDE entity represents prosecuting authorities, law enfo
 
 ## Fields
 
-| Field Name | Type   | Required | Description                                               | Controlled Vocabulary/Notes     |
-| ---------- | ------ | -------- | --------------------------------------------------------- | ------------------------------- |
-| Name       | String | Yes      | Official name of the authority (serves as page title)     | Free text                       |
-| Typ        | String | No       | Type of authority                                         | See Authority Type vocabulary   |
+| Field Name | Type   | Required | Description                                           | Controlled Vocabulary/Notes   |
+| ---------- | ------ | -------- | ----------------------------------------------------- | ----------------------------- |
+| Name       | String | Yes      | Official name of the authority (serves as page title) | Free text                     |
+| Typ        | String | No       | Type of authority                                     | See Authority Type vocabulary |
 
 **Note:** The actual template uses a simplified schema with Name and Typ as the primary fields. Page title serves as the unique identifier.
 

@@ -334,7 +334,7 @@ This is separate from the structured `Vorlage_Fall.xml` and provides space for q
 
 #### `Vorlage_Beschuldigter.xml` - Accused Person Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class Beschuldigter {
         +String Vorname
@@ -369,7 +369,7 @@ classDiagram
 
 #### `Vorlage_Betroffener.xml` - Victim Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class Betroffener {
         +String Vorname
@@ -401,7 +401,7 @@ classDiagram
 
 #### `Vorlage_Fall.xml` - Case Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class Fall {
         +Page Betroffener
@@ -457,7 +457,7 @@ classDiagram
 
 #### `Vorlage_Kirchliche_Institution.xml` - Church Institution Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class KirchlicheInstitution {
         +String Name
@@ -487,7 +487,7 @@ classDiagram
 
 #### `Vorlage_Fachgremium.xml` - Expert Committee Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class Fachgremium {
         +String Name
@@ -510,7 +510,7 @@ classDiagram
 
 #### `Vorlage_Strafverfolgungsbehörde.xml` - Prosecution Authority Template
 
-```mermaid
+```{mermaid}
 classDiagram
     class Strafverfolgungsbehörde {
         +String Name
@@ -588,7 +588,7 @@ A comprehensive analytics page using Cargo queries for statistical analysis and 
 
 ### Data Flow
 
-```mermaid
+```{mermaid}
 flowchart TB
     subgraph "Data Entry Layer"
         F1[Formular: Beschuldigter]
@@ -647,7 +647,7 @@ flowchart TB
 
 ### Entity Relationships
 
-```mermaid
+```{mermaid}
 erDiagram
     Fall ||--o| Betroffener : "involves victim"
     Fall ||--o| Beschuldigter : "involves perpetrator"
@@ -715,7 +715,7 @@ erDiagram
 
 ### Data Entry Workflow
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     actor Researcher
     participant Forms as Formular Pages

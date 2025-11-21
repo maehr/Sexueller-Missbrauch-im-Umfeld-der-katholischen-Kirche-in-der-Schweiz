@@ -6,10 +6,10 @@ The KIRCHLICHE_INSTITUTION entity represents church institutions including dioce
 
 ## Fields
 
-| Field Name | Type   | Required | Description                                             | Controlled Vocabulary/Notes       |
-| ---------- | ------ | -------- | ------------------------------------------------------- | --------------------------------- |
-| Name       | String | Yes      | Official name of the institution (serves as page title) | Free text                         |
-| Typ        | String | No       | Type of institution                                     | See Institution Type vocabulary   |
+| Field Name | Type   | Required | Description                                             | Controlled Vocabulary/Notes     |
+| ---------- | ------ | -------- | ------------------------------------------------------- | ------------------------------- |
+| Name       | String | Yes      | Official name of the institution (serves as page title) | Free text                       |
+| Typ        | String | No       | Type of institution                                     | See Institution Type vocabulary |
 
 **Note:** The actual template uses a simplified schema with Name and Typ as the primary fields. Page title serves as the unique identifier.
 

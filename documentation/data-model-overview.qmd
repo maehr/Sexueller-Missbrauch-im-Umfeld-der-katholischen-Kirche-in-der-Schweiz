@@ -25,7 +25,7 @@ data/
 
 The database tracks six primary entities:
 
-``` mermaid
+```{mermaid}
 graph LR
     Fall[FALL<br/>Case]
     Betroffener[BETROFFENER<br/>Affected Person]

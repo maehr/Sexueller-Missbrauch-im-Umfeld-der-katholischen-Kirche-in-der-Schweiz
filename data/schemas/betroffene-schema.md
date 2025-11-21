@@ -6,15 +6,15 @@ The BETROFFENER entity represents a person affected by sexual abuse (victim/surv
 
 ## Fields
 
-| Field Name               | Type         | Required | Description                                     | Controlled Vocabulary/Notes               |
-| ------------------------ | ------------ | -------- | ----------------------------------------------- | ----------------------------------------- |
-| Nummer                   | String       | No       | Unique identifier/number                        | Auto-generated or manual                  |
-| Vorname                  | String       | No       | First name (pseudonymized)                      | Free text                                 |
-| Nachname                 | String       | No       | Last name (pseudonymized)                       | Free text                                 |
-| Geschlecht               | String       | No       | Gender                                          | männlich, weiblich, divers, keine Angabe  |
-| Geburtsdatum             | Date         | No       | Date of birth (anonymized/approximate)          | EDTF format as string                     |
-| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                  | Checkbox                                  |
-| Institutioneller Kontext | List of Page | No       | Church institutions associated with (page titles)| From category Kirchliche_Institutionen   |
+| Field Name               | Type         | Required | Description                                       | Controlled Vocabulary/Notes              |
+| ------------------------ | ------------ | -------- | ------------------------------------------------- | ---------------------------------------- |
+| Nummer                   | String       | No       | Unique identifier/number                          | Auto-generated or manual                 |
+| Vorname                  | String       | No       | First name (pseudonymized)                        | Free text                                |
+| Nachname                 | String       | No       | Last name (pseudonymized)                         | Free text                                |
+| Geschlecht               | String       | No       | Gender                                            | männlich, weiblich, divers, keine Angabe |
+| Geburtsdatum             | Date         | No       | Date of birth (anonymized/approximate)            | EDTF format as string                    |
+| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                    | Checkbox                                 |
+| Institutioneller Kontext | List of Page | No       | Church institutions associated with (page titles) | From category Kirchliche_Institutionen   |
 
 ## Cargo Table Declaration
 
@@ -32,6 +32,7 @@ _table=Betroffene
 ```
 
 **Note on Cargo Types:**
+
 - `Page` - Stores reference to another wiki page by its title
 - `List (;) of Page` - Stores multiple page references
 - `Boolean` - True/false checkbox

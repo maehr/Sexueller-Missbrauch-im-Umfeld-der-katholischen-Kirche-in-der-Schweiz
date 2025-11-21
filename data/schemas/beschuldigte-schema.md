@@ -6,20 +6,20 @@ The BESCHULDIGTER entity represents a person accused of sexual abuse. This typic
 
 ## Fields
 
-| Field Name               | Type         | Required | Description                                     | Controlled Vocabulary/Notes               |
-| ------------------------ | ------------ | -------- | ----------------------------------------------- | ----------------------------------------- |
-| Nummer                   | String       | No       | Unique identifier/number                        | Auto-generated or manual                  |
-| Vorname                  | String       | No       | First name (pseudonymized)                      | Free text                                 |
-| Nachname                 | String       | No       | Last name (pseudonymized)                       | Free text                                 |
-| Geschlecht               | String       | No       | Gender                                          | männlich, weiblich, divers, keine Angabe  |
-| Geburtsdatum             | Date         | No       | Date of birth                                   | EDTF format as string                     |
-| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                  | Checkbox                                  |
-| Sterbedatum              | Date         | No       | Date of death (if applicable)                   | EDTF format as string                     |
-| Nationalität             | String       | No       | Nationality                                     | Free text                                 |
-| Weihedatum               | Date         | No       | Ordination date                                 | EDTF format as string                     |
-| Weihegrad                | String       | No       | Ordination level/degree                         | Free text                                 |
-| Funktion                 | String       | No       | Function/role in the church                     | Checkboxes with multiple options          |
-| Institutioneller Kontext | List of Page | No       | Church institutions affiliated with (page titles)| From category Kirchliche_Institutionen   |
+| Field Name               | Type         | Required | Description                                       | Controlled Vocabulary/Notes              |
+| ------------------------ | ------------ | -------- | ------------------------------------------------- | ---------------------------------------- |
+| Nummer                   | String       | No       | Unique identifier/number                          | Auto-generated or manual                 |
+| Vorname                  | String       | No       | First name (pseudonymized)                        | Free text                                |
+| Nachname                 | String       | No       | Last name (pseudonymized)                         | Free text                                |
+| Geschlecht               | String       | No       | Gender                                            | männlich, weiblich, divers, keine Angabe |
+| Geburtsdatum             | Date         | No       | Date of birth                                     | EDTF format as string                    |
+| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                    | Checkbox                                 |
+| Sterbedatum              | Date         | No       | Date of death (if applicable)                     | EDTF format as string                    |
+| Nationalität             | String       | No       | Nationality                                       | Free text                                |
+| Weihedatum               | Date         | No       | Ordination date                                   | EDTF format as string                    |
+| Weihegrad                | String       | No       | Ordination level/degree                           | Free text                                |
+| Funktion                 | String       | No       | Function/role in the church                       | Checkboxes with multiple options         |
+| Institutioneller Kontext | List of Page | No       | Church institutions affiliated with (page titles) | From category Kirchliche_Institutionen   |
 
 ## Cargo Table Declaration
 
@@ -42,6 +42,7 @@ _table=Beschuldigte
 ```
 
 **Note on Cargo Types:**
+
 - `Page` - Stores reference to another wiki page by its title
 - `List (;) of Page` - Stores multiple page references
 - `Boolean` - True/false checkbox
