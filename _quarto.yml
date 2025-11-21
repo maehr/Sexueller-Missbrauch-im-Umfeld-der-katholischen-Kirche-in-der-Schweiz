@@ -40,7 +40,7 @@ website:
           - documentation/data-model-overview.qmd
           - data/schemas/index.qmd
           - text: MediaWiki Templates
-            href: templates/index.qmd
+            href: data/templates/index.qmd
       - href: report.md
         contents: project-management/*
       - section: Sexueller Missbrauch

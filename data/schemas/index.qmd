@@ -6,10 +6,10 @@ This directory contains the formal data model definitions for the research datab
 
 This separates the **persistent data structure** (what is stored) from the **data entry interfaces** (how data is entered). This separation:
 
-- Simplifies versioning of data structures
-- Enables re-use of schemas in import/export scripts
-- Allows UI changes without breaking the data model
-- Provides machine-readable schemas for validation
+-   Simplifies versioning of data structures
+-   Enables re-use of schemas in import/export scripts
+-   Allows UI changes without breaking the data model
+-   Provides machine-readable schemas for validation
 
 ## Contents
 
@@ -21,20 +21,20 @@ The [erm-diagram.qmd](erm-diagram.qmd) file contains a Mermaid diagram showing r
 
 Each entity has a dedicated schema file defining:
 
-- Field names and types
-- Required vs. optional fields
-- Controlled vocabularies
-- Example records
-- Cargo table declarations
+-   Field names and types
+-   Required vs. optional fields
+-   Controlled vocabularies
+-   Example records
+-   Cargo table declarations
 
 Available entity schemas:
 
-- [beschuldigte-schema.md](beschuldigte-schema.md) - Accused persons
-- [betroffene-schema.md](betroffene-schema.md) - Affected persons/victims
-- [fachgremien-schema.md](fachgremien-schema.md) - Expert committees
-- [faelle-schema.md](faelle-schema.md) - Cases
-- [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md) - Church institutions
-- [strafverfolgungsbehoerden-schema.md](strafverfolgungsbehoerden-schema.md) - Law enforcement authorities
+-   [beschuldigte-schema.md](beschuldigte-schema.md) - Accused persons
+-   [betroffene-schema.md](betroffene-schema.md) - Affected persons/victims
+-   [fachgremien-schema.md](fachgremien-schema.md) - Expert committees
+-   [faelle-schema.md](faelle-schema.md) - Cases
+-   [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md) - Church institutions
+-   [strafverfolgungsbehoerden-schema.md](strafverfolgungsbehoerden-schema.md) - Law enforcement authorities
 
 ### 3. EDTF Date Fields
 
@@ -44,13 +44,13 @@ The [edtf-documentation.md](edtf-documentation.md) file documents Extended Date/
 
 Machine-readable controlled vocabulary files:
 
-- [vocabularies/](vocabularies/) - JSON files with controlled terms for various fields
+-   [vocabularies/](vocabularies/) - JSON files with controlled terms for various fields
 
 ## Schema Format
 
 Each entity schema follows this structure:
 
-````markdown
+```` markdown
 # Entity Name
 
 ## Description
@@ -76,14 +76,14 @@ _table=TableName
 
 ## Example Record
 
-```json
+``` json
 {
   "field_name": "example_value",
   ...
 }
 ```
 
-```
+```         
 
 ## Usage
 
@@ -96,6 +96,6 @@ These schemas serve as:
 
 ## Related
 
-- See [../../templates/](../../templates/) for PageForms and data entry templates
+- See [../templates/](../templates/) for PageForms and data entry templates
 - See [../../documentation/](../../documentation/) for methodology documentation
 ```

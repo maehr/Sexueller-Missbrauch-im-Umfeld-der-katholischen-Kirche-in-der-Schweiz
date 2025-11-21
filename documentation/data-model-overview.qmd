@@ -68,17 +68,16 @@ graph TB
 │   ├── kirchliche-institutionen-schema.md   # Church institutions schema
 │   ├── strafverfolgungsbehoerden-schema.md  # Law enforcement schema
 │   ├── fachgremien-schema.md            # Expert committees schema
+│   ├── templates/                       # Data Entry (UI/workflow)
+│   │   ├── index.qmd                    # Templates overview
+│   │   ├── Vorlage_*.xml                # Display templates
+│   │   ├── Formular_*.xml               # Entry forms
+│   │   └── Kategorie_*.xml              # Cargo declarations
 │   └── vocabularies/                    # Controlled vocabularies
-│       ├── README.md
+│       ├── index.qmd
 │       ├── kantone.json
 │       ├── bistuemer.json
 │       └── fallstatus.json
-│
-├── templates/                           # Data Entry (UI/workflow)
-│   ├── README.md                        # Templates overview
-│   ├── Vorlage_*.xml                    # Display templates (pending)
-│   ├── Formular_*.xml                   # Entry forms (pending)
-│   └── Kategorie_*.xml                  # Cargo declarations (pending)
 │
 └── documentation/
     └── data-model-overview.qmd          # This document
@@ -260,7 +259,7 @@ This allows researchers to:
 
 ## Data Entry Templates
 
-**Location**: [templates/](../templates/)
+**Location**: [data/templates/](../data/templates/)
 
 Templates define the **user interface** for data entry:
 
@@ -282,7 +281,7 @@ Templates define the **user interface** for data entry:
 
 ### Current Status
 
-The MediaWiki template files have been successfully documented and integrated into the project. See the [Templates documentation](../templates/index.qmd) for comprehensive details on all data entry forms, display templates, and category pages.
+The MediaWiki template files have been successfully documented and integrated into the project. See the [Templates documentation](../data/templates/index.qmd) for comprehensive details on all data entry forms, display templates, and category pages.
 
 The schema documentation provides all necessary information to:
 
@@ -400,7 +399,7 @@ sequenceDiagram
 3.  Define Cargo table declarations in category pages
 4.  Create PageForms forms with controlled vocabularies
 5.  Test data entry and validation
-6.  Export as XML and commit to `templates/`
+6.  Export as XML and commit to `data/templates/`
 
 ### For Data Entry Personnel
 
@@ -488,7 +487,7 @@ To complete Issue #2 implementation:
 ### Internal Documentation
 
 -   [Data Schemas README](../data/schemas/index.qmd)
--   [Templates README](../templates/index.qmd)
+-   [Templates README](../data/templates/index.qmd)
 -   [ERM Diagram](../data/schemas/erm-diagram.qmd)
 -   [EDTF Documentation](../data/schemas/edtf-documentation.md)
 -   [Controlled Vocabularies](../data/schemas/vocabularies/)

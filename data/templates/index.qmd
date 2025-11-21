@@ -14,8 +14,8 @@ This directory separates **data entry interfaces** (how data is entered) from th
 ## Directory Structure
 
 ```
-templates/
-├── README.md                           # This file
+data/templates/
+├── index.qmd                           # This file
 ├── Vorlage_*.xml                       # MediaWiki templates for data display
 ├── Formular_*.xml                      # PageForms form definitions for data entry
 ├── Kategorie_*.xml                     # Category pages with Cargo declarations

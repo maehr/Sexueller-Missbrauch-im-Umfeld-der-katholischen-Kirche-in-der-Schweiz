@@ -37,10 +37,12 @@ This repository allows the digital history community to replicate our technical 
 The structure of this repository follows the [Advanced Structure for Data Analysis](https://the-turing-way.netlify.app/project-design/project-repo/project-repo-advanced.html) of _The Turing Way_ and is organized as follows:
 
 - `analysis/`: scripts and notebooks used to analyze the data
-- `assets/`: images, logos, etc. used in the README and other documentation
 - `build/`: scripts and notebooks used to build the data
-- `data/`: data files
+- `data/`: data files, including schemas, controlled vocabularies, and MediaWiki templates
+  - `data/schemas/`: data model definitions and entity schemas
+  - `data/templates/`: MediaWiki templates and forms for data entry
 - `documentation/`: documentation for the data and the repository
+- `paper/`: the research paper submitted to ZfdG
 - `project-management/`: project management documents (e.g., meeting notes, project plans, etc.)
 - `src/`: source code for the data (e.g., scripts used to collect or process the data)
 - `test/`: tests for the data and source code
