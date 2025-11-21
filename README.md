@@ -52,7 +52,7 @@ The data in this repository consists of:
 
 - **Data Models and Schemas**: Relational database schemas developed for Semantic MediaWiki, including entity relationships for persons, institutions, events, and archival sources
 - **Synthetic Datasets**: Dummy data that demonstrates the structure and functionality of the analysis scripts without containing any real personal information
-- **Analysis Scripts**: Python and R scripts for data processing, statistical analysis, and visualization
+- **Analysis Scripts**: Python scripts for data processing, statistical analysis, and visualization
 - **Methodology Documentation**: Documentation of the research methodology, data collection procedures, and ethical considerations
 
 **Important Notes**:
