@@ -32,7 +32,7 @@ This repository documents the project's transition from a "shared Excel table" w
 
 This repository allows the digital history community to replicate our technical framework and adapt our data models for similar sensitive research contexts.
 
-## Repository Structure
+## 📁 Repository Structure
 
 The structure of this repository follows the [Advanced Structure for Data Analysis](https://the-turing-way.netlify.app/project-design/project-repo/project-repo-advanced.html) of _The Turing Way_ and is organized as follows:
 
@@ -46,7 +46,7 @@ The structure of this repository follows the [Advanced Structure for Data Analys
 - `test/`: tests for the data and source code
 - `report.md`: a report describing the analysis of the data
 
-## Data Description
+## 📊 Data Description
 
 The data in this repository consists of:
 
@@ -63,7 +63,7 @@ The data in this repository consists of:
 - Code is released under GNU Affero General Public License v3.0 (AGPL-3.0)
 - Documentation and data schemas are released under Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-## Use
+## 🔬 Use
 
 These data are openly available to everyone and can be used for any research or educational purpose. If you use this data in your research, please cite as specified in [CITATION.cff](CITATION.cff). The following citation formats are also available through _Zenodo_:
 
@@ -83,7 +83,7 @@ _Zenodo_ provides an [API (REST & OAI-PMH)](https://developers.zenodo.org/) to a
 curl -i https://zenodo.org/api/records/ZENODO_RECORD
 ```
 
-## Support
+## 💬 Support
 
 This project is maintained by [@maehr](https://github.com/maehr). Please understand that we can't provide individual support via email. We also believe that help is much more valuable when it's shared publicly, so more people can benefit from it.
 
@@ -96,19 +96,19 @@ This project is maintained by [@maehr](https://github.com/maehr). Please underst
 | 🛡 **Report a security vulnerability** | See [SECURITY.md](SECURITY.md)                                                                                                   |
 | 💬 **General Questions**               | [GitHub Discussions](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/discussions) |
 
-## Roadmap
+## 🗺️ Roadmap
 
 No changes are currently planned.
 
-## Contributing
+## 🤝 Contributing
 
 All contributions to this repository are welcome! If you find errors or problems with the data, or if you want to add new data or features, please open an issue or pull request. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## Versioning
+## 🔢 Versioning
 
 We use [SemVer](http://semver.org/) for versioning. The available versions are listed in the [tags on this repository](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/tags).
 
-## Authors and acknowledgment
+## 👥 Authors and acknowledgment
 
 - **Dr. Moritz Mähr** - _Conceptualization, Software, Writing_ - [@maehr](https://github.com/maehr) - [ORCID: 0000-0002-1367-1618](https://orcid.org/0000-0002-1367-1618)
 - **Dr. Lucas Federer** - _Methodology, Investigation, Data Curation_ - [ORCID: 0000-0002-3071-3058](https://orcid.org/0000-0002-3071-3058)
@@ -116,7 +116,7 @@ We use [SemVer](http://semver.org/) for versioning. The available versions are l
 
 See also the list of [contributors](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/graphs/contributors) who contributed to this project.
 
-## License
+## 📜 License
 
 The data in this repository is released under the Creative Commons Attribution 4.0 International (CC BY 4.0) License - see the [LICENSE-CCBY](LICENSE-CCBY.md) file for details. By using this data, you agree to give appropriate credit to the original author(s) and to indicate if any modifications have been made.
 

@@ -51,6 +51,7 @@ website:
 
 format:
   html:
+    page-layout: full
     toc: true
     theme:
       - brand
