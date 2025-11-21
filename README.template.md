@@ -1,13 +1,50 @@
-# REPO_NAME
+# Digital Infrastructure: Sexual Abuse in the Environment of the Catholic Church in Switzerland
 
-This repository contains SHORT_DESCRIPTION. The data in this repository is openly available to everyone and is intended to support reproducible research.
+### _Digitale Infrastruktur: Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz_
 
-[![GitHub issues](https://img.shields.io/github/issues/USERNAME/REPO_NAME.svg)](https://github.com/USERNAME/REPO_NAME/issues)
-[![GitHub forks](https://img.shields.io/github/forks/USERNAME/REPO_NAME.svg)](https://github.com/USERNAME/REPO_NAME/network)
-[![GitHub stars](https://img.shields.io/github/stars/USERNAME/REPO_NAME.svg)](https://github.com/USERNAME/REPO_NAME/stargazers)
-[![Code license](https://img.shields.io/github/license/USERNAME/REPO_NAME.svg)](https://github.com/USERNAME/REPO_NAME/blob/main/LICENSE-AGPL.md)
-[![Data license](https://img.shields.io/github/license/USERNAME/REPO_NAME.svg)](https://github.com/USERNAME/REPO_NAME/blob/main/LICENSE-CCBY.md)
+**Project Status:** Main Study (2024–2026)  
+**Institution:** University of Zurich (UZH), Department of History  
+**Technical Stack:** Semantic MediaWiki, Cargo, PageForms, Python/R  
+**Publication:** To be published in _Zeitschrift für digitale Geisteswissenschaften_ (ZfdG)
+
+https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html
+
+---
+
+[![GitHub issues](https://img.shields.io/github/issues/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)
+[![GitHub forks](https://img.shields.io/github/forks/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/network)
+[![GitHub stars](https://img.shields.io/github/stars/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/stargazers)
+[![Code license](https://img.shields.io/github/license/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/blob/main/LICENSE-AGPL.md)
+[![Data license](https://img.shields.io/github/license/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/blob/main/LICENSE-CCBY.md)
 [![DOI](https://zenodo.org/badge/GITHUB_REPO_ID.svg)](https://zenodo.org/badge/latestdoi/ZENODO_RECORD)
+
+## 📋 Short Description
+
+This repository serves as the **Replication Kit** and **Technical Framework** for the historical research project investigating sexual abuse in the Swiss Catholic Church since the mid-20th century.
+
+It contains the data models, schemas, methodologies, and analysis scripts discussed in the associated article. This repository is archived with a permanent DOI on **Zenodo**.
+
+**⚠️ IMPORTANT NOTE ON DATA PRIVACY:** Due to strict ethical standards, GDPR/DSGVO regulations, and the highly sensitive nature of the source material (containing severe rights violations and medical records), **this repository contains NO real personal data.** Any datasets provided here are **synthetic (dummy data)** generated solely to demonstrate the data structure and functionality of the analysis scripts. Real research data is stored securely within the ETH Zürich _LeoMed_ infrastructure.
+
+---
+
+## 🧩 Abstract
+
+_Based on the article: "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz: Aufbau einer partizipativen, iterativen und sicheren Forschungsdatenbank"_
+
+The investigation of sexual abuse within the Swiss Catholic Church presents a dual challenge: managing a fragmented, heterogeneous archive landscape and adhering to the highest ethical standards regarding sensitive personal data.
+
+This repository documents the project's transition from a "shared Excel table" workflow to a secure, relational, and collaborative research database built on Semantic MediaWiki. We posit that this technical infrastructure is not merely a logistical container but a **methodological investment**. By moving to a relational data model, the project was able to:
+
+1. **Operationalize "Quellenkritik" (Source Criticism):** Moving beyond simple "truth values" to a scored assessment of source reliability, provenance, and institutional perspective.
+    
+2. **Uncover Systemic Patterns:** Enabling the quantitative detection of concealment strategies, such as the systematic transfer of accused clerics across parish and diocesan borders.
+    
+3. **Enable Collaborative Hermeneutics:** Creating a "Trading Zone" where historians and data scientists harmonize disparate archival sources (e.g., varying clerical titles across language regions).
+
+This repository allows the digital history community to replicate our technical framework and adapt our data models for similar sensitive research contexts.
+
+---
 
 ## Repository Structure
 
@@ -25,9 +62,19 @@ The structure of this repository follows the [Advanced Structure for Data Analys
 
 ## Data Description
 
-- TODO Describe the data in this repository, including what it represents, how it was collected or obtained, any preprocessing or cleaning that was done, and any limitations or potential biases.
-- TODO Data models, including field names, descriptions, and controlled values, should be clearly documented in a static document that is maintained with the data and is part of the products.
-- TODO All rights and intellectual property issues should be clearly documented. Where possible, data and products should be released under open licenses (Creative Commons, GNU, BSD, MPL).
+The data in this repository consists of:
+
+- **Data Models and Schemas**: Relational database schemas developed for Semantic MediaWiki, including entity relationships for persons, institutions, events, and archival sources
+- **Synthetic Datasets**: Dummy data that demonstrates the structure and functionality of the analysis scripts without containing any real personal information
+- **Analysis Scripts**: Python and R scripts for data processing, statistical analysis, and visualization
+- **Methodology Documentation**: Documentation of the research methodology, data collection procedures, and ethical considerations
+
+**Important Notes**:
+- All datasets provided are **synthetic (dummy data)** generated for demonstration purposes only
+- Real research data containing sensitive personal information is stored securely within the ETH Zürich _LeoMed_ infrastructure
+- Data models include field names, descriptions, and controlled vocabularies maintained as part of the repository
+- Code is released under GNU Affero General Public License v3.0 (AGPL-3.0)
+- Documentation and data schemas are released under Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 ## Use
 
@@ -51,16 +98,16 @@ curl -i https://zenodo.org/api/records/ZENODO_RECORD
 
 ## Support
 
-This project is maintained by [@USERNAME](https://github.com/USERNAME). Please understand that we can't provide individual support via email. We also believe that help is much more valuable when it's shared publicly, so more people can benefit from it.
+This project is maintained by [@maehr](https://github.com/maehr). Please understand that we can't provide individual support via email. We also believe that help is much more valuable when it's shared publicly, so more people can benefit from it.
 
-| Type                                   | Platforms                                                               |
-| -------------------------------------- | ----------------------------------------------------------------------- |
-| 🚨 **Bug Reports**                     | [GitHub Issue Tracker](https://github.com/USERNAME/REPO_NAME/issues)    |
-| 📊 **Report bad data**                 | [GitHub Issue Tracker](https://github.com/USERNAME/REPO_NAME/issues)    |
-| 📚 **Docs Issue**                      | [GitHub Issue Tracker](https://github.com/USERNAME/REPO_NAME/issues)    |
-| 🎁 **Feature Requests**                | [GitHub Issue Tracker](https://github.com/USERNAME/REPO_NAME/issues)    |
-| 🛡 **Report a security vulnerability** | See [SECURITY.md](SECURITY.md)                                          |
-| 💬 **General Questions**               | [GitHub Discussions](https://github.com/USERNAME/REPO_NAME/discussions) |
+| Type                                   | Platforms                                                                                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 🚨 **Bug Reports**                     | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
+| 📊 **Report bad data**                 | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
+| 📚 **Docs Issue**                      | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
+| 🎁 **Feature Requests**                | [GitHub Issue Tracker](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)    |
+| 🛡 **Report a security vulnerability** | See [SECURITY.md](SECURITY.md)                                                                                                  |
+| 💬 **General Questions**               | [GitHub Discussions](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/discussions) |
 
 ## Roadmap
 
@@ -72,13 +119,15 @@ All contributions to this repository are welcome! If you find errors or problems
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. The available versions are listed in the [tags on this repository](https://github.com/USERNAME/REPO_NAME/tags).
+We use [SemVer](http://semver.org/) for versioning. The available versions are listed in the [tags on this repository](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/tags).
 
 ## Authors and acknowledgment
 
-- **FULLNAME** - _Initial work_ - [USERNAME](https://github.com/USERNAME)
+- **Dr. Moritz Mähr** - _Conceptualization, Software, Writing_ - [@maehr](https://github.com/maehr) - [ORCID: 0000-0002-1367-1618](https://orcid.org/0000-0002-1367-1618)
+- **Dr. Lucas Federer** - _Methodology, Investigation, Data Curation_ - [ORCID: 0000-0002-3071-3058](https://orcid.org/0000-0002-3071-3058)
+- **Dr. Magda Kaspar** - _Methodology, Investigation, Data Curation_ - [ORCID: 0000-0003-3102-9749](https://orcid.org/0000-0003-3102-9749)
 
-See also the list of [contributors](https://github.com/USERNAME/REPO_NAME/graphs/contributors) who contributed to this project.
+See also the list of [contributors](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/graphs/contributors) who contributed to this project.
 
 ## License
 

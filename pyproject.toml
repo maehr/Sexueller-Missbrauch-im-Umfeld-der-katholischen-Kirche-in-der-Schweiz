@@ -1,8 +1,12 @@
 [project]
-name = "REPO_NAME"
+name = "sexueller-missbrauch-im-umfeld-der-katholischen-kirche-in-der-schweiz"
 version = "0.1.0"
-description = "SHORT_DESCRIPTION"
-authors = [{ name = "FULLNAME", email = "[INSERT CONTACT METHOD]" }]
+description = "Replication Kit and Technical Framework for historical research on sexual abuse in the Swiss Catholic Church"
+authors = [
+    { name = "Moritz Mähr", email = "moritz.maehr@gmail.com" },
+    { name = "Lucas Federer", email = "lucas.federer@uzh.ch" },
+    { name = "Magda Kaspar", email = "magda.kaspar@uzh.ch" }
+]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
@@ -36,7 +40,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["REPO_NAME"]
+known-first-party = ["sexueller-missbrauch-im-umfeld-der-katholischen-kirche-in-der-schweiz"]
 
 [tool.ruff.format]
 quote-style = "double"

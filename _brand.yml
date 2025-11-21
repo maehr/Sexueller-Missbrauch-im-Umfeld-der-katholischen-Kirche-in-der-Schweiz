@@ -1,9 +1,9 @@
 meta:
-  name: REPO_NAME
+  name: Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz
   link:
-    home: https://USERNAME.github.io/REPO_NAME
-    github: https://github.com/USERNAME
+    home: https://maehr.github.io/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz
+    github: https://github.com/maehr
   description: |
-    SHORT_DESCRIPTION
+    Replication Kit and Technical Framework for historical research on sexual abuse in the Swiss Catholic Church
 
 # Go to https://quarto.org/docs/authoring/brand.html to learn more about multiformat branding with brand.yml
