@@ -760,7 +760,7 @@ docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
 
 -   **Server**: `server.domain.ltdh`
 -   **Jump Server**: `jump-server.domain.ltd`
--   **GUI Access**: [LeoMed Dashboard](https://ondemand-histuzh.leomed.ethz.ch/pun/sys/dashboard/batch_connect/sessions)
+-   **GUI Access**: LeoMed Dashboard (link not provided here for security)
 -   **SSH Access**: `ssh -J user@jump-server.domain.ltd -l server-user server.domain.ltdh`
 -   **Web Access**: `http://server.domain.ltdh:8080`
 
