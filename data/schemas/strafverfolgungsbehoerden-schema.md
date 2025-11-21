@@ -6,32 +6,24 @@ The STRAFVERFOLGUNGSBEHOERDE entity represents prosecuting authorities, law enfo
 
 ## Fields
 
-| Field Name           | Type        | Required | Description                         | Controlled Vocabulary          |
-| -------------------- | ----------- | -------- | ----------------------------------- | ------------------------------ |
-| id                   | String (PK) | Yes      | Unique identifier for the authority | Auto-generated (e.g., SVB-001) |
-| name                 | String      | Yes      | Official name of the authority      | Free text                      |
-| typ                  | String      | Yes      | Type of authority                   | See Authority Type vocabulary  |
-| kanton               | String      | Yes      | Canton                              | See Canton vocabulary          |
-| ort                  | String      | No       | Location/seat                       | Free text                      |
-| zustaendigkeit       | Text        | No       | Area of responsibility              | Free text                      |
-| kontaktinformationen | Text        | No       | Contact information                 | Free text                      |
-| anmerkungen          | Text        | No       | Additional notes                    | Free text                      |
+| Field Name | Type   | Required | Description                                               | Controlled Vocabulary/Notes     |
+| ---------- | ------ | -------- | --------------------------------------------------------- | ------------------------------- |
+| Name       | String | Yes      | Official name of the authority (serves as page title)     | Free text                       |
+| Typ        | String | No       | Type of authority                                         | See Authority Type vocabulary   |
+
+**Note:** The actual template uses a simplified schema with Name and Typ as the primary fields. Page title serves as the unique identifier.
 
 ## Cargo Table Declaration
 
 ```wikitext
 {{#cargo_declare:
-_table=Strafverfolgungsbehoerden
-|id=String (unique)
-|name=String
-|typ=String
-|kanton=String
-|ort=String
-|zustaendigkeit=Text
-|kontaktinformationen=Text
-|anmerkungen=Text
+_table=Strafverfolgungsbehörden
+|Name=String
+|Typ=String
 }}
 ```
+
+**Note:** The actual MediaWiki template stores only Name and Typ. The page title itself serves as the unique identifier and name for the authority.
 
 ## Controlled Vocabularies
 

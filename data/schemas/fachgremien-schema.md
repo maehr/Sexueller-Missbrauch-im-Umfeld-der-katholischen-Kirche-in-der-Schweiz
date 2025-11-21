@@ -6,36 +6,24 @@ The FACHGREMIUM entity represents expert panels, review boards, commissions, and
 
 ## Fields
 
-| Field Name        | Type        | Required | Description                         | Controlled Vocabulary         |
-| ----------------- | ----------- | -------- | ----------------------------------- | ----------------------------- |
-| id                | String (PK) | Yes      | Unique identifier for the committee | Auto-generated (e.g., FG-001) |
-| name              | String      | Yes      | Official name of the committee      | Free text                     |
-| typ               | String      | Yes      | Type of committee                   | See Committee Type vocabulary |
-| traegerschaft     | String      | No       | Sponsoring/operating organization   | Free text                     |
-| einrichtungsdatum | Date        | No       | Date of establishment               | Standard date format          |
-| aufloesung_datum  | Date        | No       | Date of dissolution (if applicable) | Standard date format          |
-| mandat            | Text        | No       | Mandate and responsibilities        | Free text                     |
-| zusammensetzung   | Text        | No       | Composition of the committee        | Free text                     |
-| berichtswesen     | Text        | No       | Reporting structure and outputs     | Free text                     |
-| anmerkungen       | Text        | No       | Additional notes                    | Free text                     |
+| Field Name | Type   | Required | Description                                              | Controlled Vocabulary/Notes   |
+| ---------- | ------ | -------- | -------------------------------------------------------- | ----------------------------- |
+| Name       | String | Yes      | Official name of the committee (serves as page title)    | Free text                     |
+| Typ        | String | No       | Type of committee                                        | See Committee Type vocabulary |
+
+**Note:** The actual template uses a simplified schema with Name and Typ as the primary fields. Page title serves as the unique identifier.
 
 ## Cargo Table Declaration
 
 ```wikitext
 {{#cargo_declare:
 _table=Fachgremien
-|id=String (unique)
-|name=String
-|typ=String
-|traegerschaft=String
-|einrichtungsdatum=Date
-|aufloesung_datum=Date
-|mandat=Text
-|zusammensetzung=Text
-|berichtswesen=Text
-|anmerkungen=Text
+|Name=String
+|Typ=String
 }}
 ```
+
+**Note:** The actual MediaWiki template stores only Name and Typ. The page title itself serves as the unique identifier and name for the committee.
 
 ## Controlled Vocabularies
 

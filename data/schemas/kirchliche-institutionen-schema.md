@@ -6,42 +6,24 @@ The KIRCHLICHE_INSTITUTION entity represents church institutions including dioce
 
 ## Fields
 
-| Field Name                | Type        | Required | Description                           | Controlled Vocabulary           |
-| ------------------------- | ----------- | -------- | ------------------------------------- | ------------------------------- |
-| id                        | String (PK) | Yes      | Unique identifier for the institution | Auto-generated (e.g., INST-001) |
-| name                      | String      | Yes      | Official name of the institution      | Free text                       |
-| name_historisch           | List        | No       | Historical names of the institution   | List of strings                 |
-| typ                       | String      | Yes      | Type of institution                   | See Institution Type vocabulary |
-| bistum_ordensgemeinschaft | String      | No       | Parent diocese or religious order     | Free text                       |
-| ort_gemeinde              | String      | No       | Town/municipality                     | Free text                       |
-| kanton                    | String      | No       | Canton                                | See Canton vocabulary           |
-| adresse                   | Text        | No       | Address                               | Free text                       |
-| gruendungsjahr            | Date        | No       | Year of foundation                    | EDTF format as string           |
-| aufloesung_jahr           | Date        | No       | Year of dissolution (if applicable)   | EDTF format as string           |
-| traegerschaft             | String      | No       | Operating organization                | Free text                       |
-| sprachregion              | String      | No       | Language region                       | See Language Region vocabulary  |
-| anmerkungen               | Text        | No       | Additional notes                      | Free text                       |
+| Field Name | Type   | Required | Description                                             | Controlled Vocabulary/Notes       |
+| ---------- | ------ | -------- | ------------------------------------------------------- | --------------------------------- |
+| Name       | String | Yes      | Official name of the institution (serves as page title) | Free text                         |
+| Typ        | String | No       | Type of institution                                     | See Institution Type vocabulary   |
+
+**Note:** The actual template uses a simplified schema with Name and Typ as the primary fields. Page title serves as the unique identifier.
 
 ## Cargo Table Declaration
 
 ```wikitext
 {{#cargo_declare:
 _table=Kirchliche_Institutionen
-|id=String (unique)
-|name=String
-|name_historisch=List (;) of String
-|typ=String
-|bistum_ordensgemeinschaft=String
-|ort_gemeinde=String
-|kanton=String
-|adresse=Text
-|gruendungsjahr=Date
-|aufloesung_jahr=Date
-|traegerschaft=String
-|sprachregion=String
-|anmerkungen=Text
+|Name=String
+|Typ=String
 }}
 ```
+
+**Note:** The actual MediaWiki template stores only Name and Typ. The page title itself serves as the unique identifier and name for the institution.
 
 ## Controlled Vocabularies
 

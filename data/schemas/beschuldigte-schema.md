@@ -6,48 +6,46 @@ The BESCHULDIGTER entity represents a person accused of sexual abuse. This typic
 
 ## Fields
 
-| Field Name            | Type        | Required | Description                              | Controlled Vocabulary             |
-| --------------------- | ----------- | -------- | ---------------------------------------- | --------------------------------- |
-| id                    | String (PK) | Yes      | Unique identifier for the person         | Auto-generated (e.g., BESCH-001)  |
-| name_pseudonym        | String      | Yes      | Pseudonymized name or identifier         | Free text                         |
-| geschlecht            | String      | No       | Gender                                   | See Gender vocabulary             |
-| geburtsdatum_edtf     | Date        | No       | Date of birth (approximate if necessary) | EDTF format as string             |
-| geburtsort            | String      | No       | Place of birth                           | Free text                         |
-| funktion_rolle        | String      | No       | Function/role in the church              | See Role vocabulary               |
-| ordensgemeinschaft    | String      | No       | Religious order/congregation             | Free text or order vocabulary     |
-| bistum_diozese        | String      | No       | Diocese or jurisdiction                  | See Diocese vocabulary            |
-| weihedatum            | Date        | No       | Ordination date                          | EDTF format as string             |
-| taetigkeitsorte       | List        | No       | Locations/parishes where active          | List of strings                   |
-| taetigkeitszeitraeume | List        | No       | Periods of activity at locations         | List of date ranges               |
-| status_verfahren      | String      | No       | Status of proceedings                    | See Proceedings Status vocabulary |
-| massnahmen_kirche     | Text        | No       | Measures taken by church                 | Free text                         |
-| massnahmen_staat      | Text        | No       | Measures taken by state                  | Free text                         |
-| versetzungshistorie   | Text        | No       | History of transfers/reassignments       | Free text                         |
-| anmerkungen           | Text        | No       | Additional notes                         | Free text                         |
+| Field Name               | Type         | Required | Description                                     | Controlled Vocabulary/Notes               |
+| ------------------------ | ------------ | -------- | ----------------------------------------------- | ----------------------------------------- |
+| Nummer                   | String       | No       | Unique identifier/number                        | Auto-generated or manual                  |
+| Vorname                  | String       | No       | First name (pseudonymized)                      | Free text                                 |
+| Nachname                 | String       | No       | Last name (pseudonymized)                       | Free text                                 |
+| Geschlecht               | String       | No       | Gender                                          | männlich, weiblich, divers, keine Angabe  |
+| Geburtsdatum             | Date         | No       | Date of birth                                   | EDTF format as string                     |
+| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                  | Checkbox                                  |
+| Sterbedatum              | Date         | No       | Date of death (if applicable)                   | EDTF format as string                     |
+| Nationalität             | String       | No       | Nationality                                     | Free text                                 |
+| Weihedatum               | Date         | No       | Ordination date                                 | EDTF format as string                     |
+| Weihegrad                | String       | No       | Ordination level/degree                         | Free text                                 |
+| Funktion                 | String       | No       | Function/role in the church                     | Checkboxes with multiple options          |
+| Institutioneller Kontext | List of Page | No       | Church institutions affiliated with (page titles)| From category Kirchliche_Institutionen   |
 
 ## Cargo Table Declaration
 
 ```wikitext
 {{#cargo_declare:
 _table=Beschuldigte
-|id=String (unique)
-|name_pseudonym=String
-|geschlecht=String
-|geburtsdatum_edtf=Date
-|geburtsort=String
-|funktion_rolle=String
-|ordensgemeinschaft=String
-|bistum_diozese=String
-|weihedatum=Date
-|taetigkeitsorte=List (;) of String
-|taetigkeitszeitraeume=List (;) of String
-|status_verfahren=String
-|massnahmen_kirche=Text
-|massnahmen_staat=Text
-|versetzungshistorie=Text
-|anmerkungen=Text
+|Nummer=String
+|Vorname=String
+|Nachname=String
+|Geschlecht=String
+|Geburtsdatum=Date
+|Geburtsdatum gesichert=Boolean
+|Sterbedatum=Date
+|Nationalität=String
+|Weihedatum=Date
+|Weihegrad=String
+|Funktion=String
+|Institutioneller Kontext=List (;) of Page
 }}
 ```
+
+**Note on Cargo Types:**
+- `Page` - Stores reference to another wiki page by its title
+- `List (;) of Page` - Stores multiple page references
+- `Boolean` - True/false checkbox
+- `Date` - Date field (can contain EDTF strings)
 
 ## Controlled Vocabularies
 

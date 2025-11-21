@@ -6,38 +6,36 @@ The BETROFFENER entity represents a person affected by sexual abuse (victim/surv
 
 ## Fields
 
-| Field Name              | Type        | Required | Description                                | Controlled Vocabulary          |
-| ----------------------- | ----------- | -------- | ------------------------------------------ | ------------------------------ |
-| id                      | String (PK) | Yes      | Unique identifier for the person           | Auto-generated (e.g., BET-001) |
-| name_pseudonym          | String      | Yes      | Pseudonymized name or identifier           | Free text                      |
-| geschlecht              | String      | No       | Gender                                     | See Gender vocabulary          |
-| geburtsdatum_edtf       | Date        | No       | Date of birth (anonymized/approximate)     | EDTF format as string          |
-| geburtsort              | String      | No       | Place of birth (anonymized if necessary)   | Free text                      |
-| kontaktstatus           | String      | No       | Status of contact with research team       | See Contact Status vocabulary  |
-| erstkontakt_datum       | Date        | No       | Date of first contact                      | Standard date format           |
-| beziehung_institution   | String      | No       | Relationship to church institution         | Free text                      |
-| zeitraum_kontakt        | String      | No       | Period of contact with institution/accused | Free text or date range        |
-| unterstuetzung_erhalten | String      | No       | Support received                           | See Support vocabulary         |
-| anmerkungen             | Text        | No       | Additional notes (anonymized)              | Free text                      |
+| Field Name               | Type         | Required | Description                                     | Controlled Vocabulary/Notes               |
+| ------------------------ | ------------ | -------- | ----------------------------------------------- | ----------------------------------------- |
+| Nummer                   | String       | No       | Unique identifier/number                        | Auto-generated or manual                  |
+| Vorname                  | String       | No       | First name (pseudonymized)                      | Free text                                 |
+| Nachname                 | String       | No       | Last name (pseudonymized)                       | Free text                                 |
+| Geschlecht               | String       | No       | Gender                                          | männlich, weiblich, divers, keine Angabe  |
+| Geburtsdatum             | Date         | No       | Date of birth (anonymized/approximate)          | EDTF format as string                     |
+| Geburtsdatum gesichert   | Boolean      | No       | Whether birth date is verified                  | Checkbox                                  |
+| Institutioneller Kontext | List of Page | No       | Church institutions associated with (page titles)| From category Kirchliche_Institutionen   |
 
 ## Cargo Table Declaration
 
 ```wikitext
 {{#cargo_declare:
 _table=Betroffene
-|id=String (unique)
-|name_pseudonym=String
-|geschlecht=String
-|geburtsdatum_edtf=Date
-|geburtsort=String
-|kontaktstatus=String
-|erstkontakt_datum=Date
-|beziehung_institution=String
-|zeitraum_kontakt=String
-|unterstuetzung_erhalten=String
-|anmerkungen=Text
+|Nummer=String
+|Vorname=String
+|Nachname=String
+|Geschlecht=String
+|Geburtsdatum=Date
+|Geburtsdatum gesichert=Boolean
+|Institutioneller Kontext=List (;) of Page
 }}
 ```
+
+**Note on Cargo Types:**
+- `Page` - Stores reference to another wiki page by its title
+- `List (;) of Page` - Stores multiple page references
+- `Boolean` - True/false checkbox
+- `Date` - Date field (can contain EDTF strings)
 
 ## Controlled Vocabularies
 
