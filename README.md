@@ -44,7 +44,10 @@ The structure of this repository follows the [Advanced Structure for Data Analys
 - `documentation/`: documentation for the data and the repository
 - `paper/`: the research paper submitted to ZfdG
 - `project-management/`: project management documents (e.g., meeting notes, project plans, etc.)
-- `src/`: source code for the data (e.g., scripts used to collect or process the data)
+- `src/`: deployment infrastructure and configuration files
+  - Infrastructure-as-Code examples (Docker Compose, Dockerfile)
+  - MediaWiki configuration and extension setup
+  - Comprehensive deployment documentation
 - `test/`: tests for the data and source code
 - `report.md`: a report describing the analysis of the data
 
@@ -64,6 +67,43 @@ The data in this repository consists of:
 - Data models include field names, descriptions, and controlled vocabularies maintained as part of the repository
 - Code is released under GNU Affero General Public License v3.0 (AGPL-3.0)
 - Documentation and data schemas are released under Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+## 🚀 Deployment & Infrastructure
+
+This repository includes comprehensive Infrastructure-as-Code examples and deployment documentation for the MediaWiki-based research database. The deployment setup uses Docker and includes:
+
+- **MediaWiki 1.43.1** with custom extensions (Cargo, PageForms, PageSchemas, DataTransfer, PdfBook)
+- **MariaDB 11** for database storage
+- **Caddy** as reverse proxy and file server
+- **phpMyAdmin** for database administration (staging)
+
+### Quick Start
+
+For local development:
+
+```bash
+cd src
+cp example.env .env
+# Edit .env with your configuration
+docker-compose -f docker-compose.dev.yml up -d --build
+```
+
+### Documentation
+
+Detailed deployment and configuration documentation is available:
+
+- **[Deployment Overview](src/index.qmd)** - File structure and quick start
+- **[Comprehensive Deployment Guide](src/DEPLOYMENT.qmd)** - Complete deployment workflows with architecture diagrams
+- **[Cargo Configuration](src/CARGO_CONFIGURATION.md)** - Cargo extension setup and usage
+- **[PageForms Configuration](src/PAGEFORMS_CONFIGURATION.md)** - PageForms extension setup and usage
+
+### Infrastructure Files
+
+- `src/Dockerfile` - Custom MediaWiki image with all required extensions
+- `src/docker-compose.dev.yml` - Development environment configuration
+- `src/docker-compose.prod.yml` - Production and staging environment configuration
+- `src/LocalSettings.php` - MediaWiki configuration
+- `src/example.env` - Environment variables template
 
 ## 🔬 Use
 

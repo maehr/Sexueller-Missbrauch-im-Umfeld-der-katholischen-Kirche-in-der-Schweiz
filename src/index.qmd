@@ -19,18 +19,31 @@ This document includes:
 
 ## Files
 
+### Documentation
+
 - `DEPLOYMENT.qmd` - Comprehensive deployment documentation with Mermaid diagrams
+- `CARGO_CONFIGURATION.md` - Cargo extension configuration and usage guide
+- `PAGEFORMS_CONFIGURATION.md` - PageForms extension configuration and usage guide
+
+### Infrastructure as Code
+
 - `Dockerfile` - Custom MediaWiki image with required extensions and configurations
 - `docker-compose.dev.yml` - Docker Compose configuration for development environment
 - `docker-compose.prod.yml` - Docker Compose configuration for production environment
-- `LocalSettings.php` - MediaWiki configuration file
+
+### Configuration Files
+
+- `LocalSettings.php` - MediaWiki configuration file for production
 - `staging_LocalSettings.php` - MediaWiki configuration file for staging
 - `example.env` - Environment variables template
+- `Caddyfile` - Caddy reverse proxy configuration
+
+### Scripts
+
 - `backup_db.sh` - Database backup script
 - `restore_db.sh` - Database restore script
 - `setup_services_podman.sh` - Podman service setup script
 - `sync_prod_to_staging.sh` - Production to staging synchronization script
-- `Caddyfile` - Caddy reverse proxy configuration
 
 ## Quick Start
 
