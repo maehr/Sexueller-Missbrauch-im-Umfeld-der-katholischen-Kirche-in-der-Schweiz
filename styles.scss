@@ -1,0 +1,179 @@
+/*
+  UZH Corporate palette & web-ready style tokens
+  Consolidated Framework
+*/
+
+/*-- scss:defaults --*/
+
+/* 2.1 Farbvariablen (SCSS / Bootstrap 5) */
+$blue: #0028a5;
+$cyan: #4ac9e3;
+$apple: #a5d233;
+$gold: #ffc845;
+$orange: #fc4c02;
+$berry: #bf0d3e;
+
+$foreground: #333333;
+$background: #ffffff;
+$white: #ffffff;
+
+// Bootstrap mapping
+$primary: $blue;
+$secondary: $cyan;
+$tertiary: $apple;
+
+$success: $apple;
+$info: $cyan;
+$warning: $gold;
+$danger: $berry;
+
+$light: #fafafa;
+$dark: #333333;
+
+// Additional UI neutrals
+$border-color: #ededed;
+$muted: #6e6e6e;
+
+/* 3. Typografie (Bootstrap + Quarto-kompatibel) */
+$font-family-sans-serif:
+	'Source Sans 3',
+	system-ui,
+	-apple-system,
+	sans-serif !default;
+$font-family-base: $font-family-sans-serif;
+$font-family-headings: $font-family-sans-serif;
+$font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+// Scale
+$font-size-base: 1.125rem; // ~18px
+$line-height-base: 1.6;
+
+// Headings (UZH-like large typographic hierarchy)
+$headings-font-weight: 700;
+$h1-font-size: 2.75rem; // ~44px
+$h2-font-size: 2.2rem;
+$h3-font-size: 1.6rem;
+
+/*-- scss:rules --*/
+
+/* 4. Layout + Komponenten (UZH-Stil nachgebildet) */
+
+/* 4.1 Globaler Weissraum */
+body {
+	background: $background;
+	color: $foreground;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 1200px;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+/* 4.2 Navigation (Minimalistisch, UZH-ähnlich) */
+.navbar {
+	background: $primary;
+	border-bottom: 1px solid $border-color;
+}
+
+.navbar-brand {
+	color: $white !important;
+}
+
+.navbar .nav-link {
+	font-weight: 600;
+	color: rgba($white, 0.8) !important;
+	padding: 0.75rem 1rem;
+}
+
+.navbar .nav-link:hover {
+	color: $white !important;
+	text-decoration: underline;
+}
+
+.navbar .nav-link.active {
+	color: $white !important;
+	border-bottom: 3px solid $white;
+	padding-bottom: calc(0.75rem - 3px);
+}
+
+/* 4.3 Sidebars */
+#quarto-sidebar {
+	background-color: $background;
+	border-right: 1px solid $border-color;
+	padding-right: 1rem;
+}
+
+#quarto-margin-sidebar {
+	background-color: $background;
+	border-left: 1px solid $border-color;
+	padding-left: 1rem;
+}
+
+/* Sidebar Navigation Links */
+#quarto-sidebar .nav-link,
+#quarto-margin-sidebar .nav-link {
+	color: #000000 !important; /* High contrast */
+	font-weight: 600;
+}
+
+#quarto-sidebar .nav-link:hover,
+#quarto-margin-sidebar .nav-link:hover {
+	color: $primary !important;
+	text-decoration: none;
+}
+
+#quarto-sidebar .nav-link.active,
+#quarto-margin-sidebar .nav-link.active {
+	color: $primary !important;
+	font-weight: 700;
+	background-color: transparent; /* Avoid blocky background */
+}
+
+/* 4.4 Breadcrumbs */
+.breadcrumb {
+	background: none;
+	padding: 1rem 0;
+	font-size: 0.9rem;
+	color: $muted;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+	content: '›';
+	color: $muted;
+	padding: 0 0.5rem;
+}
+
+/* 4.4 Abschnittstitel und Text */
+h1 {
+	margin-top: 3rem;
+	margin-bottom: 2rem;
+}
+
+p {
+	margin-bottom: 1.5rem;
+}
+
+/* 4.5 Divider/Streifen */
+.hr-light {
+	border: 0;
+	border-top: 1px solid $border-color;
+}
+
+/* :root Variables for framework-agnostic usage */
+:root {
+	--uzh-blue: #{$blue};
+	--uzh-cyan: #{$cyan};
+	--uzh-apple: #{$apple};
+	--uzh-gold: #{$gold};
+	--uzh-orange: #{$orange};
+	--uzh-berry: #{$berry};
+	--color-primary: #{$primary};
+	--color-secondary: #{$secondary};
+	--color-success: #{$success};
+	--color-info: #{$info};
+	--color-warning: #{$warning};
+	--color-danger: #{$danger};
+}

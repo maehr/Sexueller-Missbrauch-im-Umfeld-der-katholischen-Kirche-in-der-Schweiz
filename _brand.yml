@@ -3,7 +3,35 @@ meta:
   link:
     home: https://maehr.github.io/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz
     github: https://github.com/maehr
-  description: |
+  description: >
     Replication Kit and Technical Framework for historical research on sexual abuse in the Swiss Catholic Church
 
+color:
+  palette:
+    blue: '#0028A5'
+    cyan: '#4AC9E3'
+    apple: '#A5D233'
+    gold: '#FFC845'
+    orange: '#FC4C02'
+    berry: '#BF0D3E'
+  foreground: '#333333'
+  background: '#FFFFFF'
+  primary: '#0028A5'
+  secondary: '#4AC9E3'
+  tertiary: '#A5D233'
+  success: '#A5D233'
+  info: '#4AC9E3'
+  warning: '#FFC845'
+  danger: '#BF0D3E'
+  light: '#FAFAFA'
+  dark: '#333333'
+
+typography:
+  fonts:
+    - family: Source Sans 3
+      source: google
+      weight: [300, 400, 600, 700, 800]
+  base: Source Sans 3, system-ui, -apple-system, sans-serif
+  headings: Source Sans 3, system-ui, -apple-system, sans-serif
+  monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace
 # Go to https://quarto.org/docs/authoring/brand.html to learn more about multiformat branding with brand.yml
