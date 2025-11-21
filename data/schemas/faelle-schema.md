@@ -6,24 +6,24 @@ The FALL entity represents an individual case of sexual abuse. It is the central
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| fallnummer | String (PK) | Yes | Unique case identifier | Auto-generated or manual |
-| titel | String | Yes | Brief descriptive title of the case | Free text |
-| meldedatum | Date | No | Date when the case was first reported | EDTF format as string |
-| tatzeit_von | Date | No | Start date/period of alleged abuse | EDTF format as string |
-| tatzeit_bis | Date | No | End date/period of alleged abuse | EDTF format as string |
-| tatort | String | No | Location where abuse occurred | Free text or place vocabulary |
-| status | String | Yes | Current status of the case | See Status vocabulary |
-| quellenkritik_score | Integer | No | Source criticism reliability score (1-10) | 1=unreliable, 10=highly reliable |
-| quellenkritik_anmerkungen | Text | No | Notes on source assessment | Free text |
-| zusammenfassung | Text | No | Summary of the case | Free text |
-| institutionelle_reaktion | Text | No | Description of institutional response | Free text |
-| rechtliche_schritte | Text | No | Legal actions taken | Free text |
-| ausgang | String | No | Outcome of the case | See Outcome vocabulary |
-| aktenzeichen | String | No | Official file reference number | Free text |
-| archivquelle | String | No | Archival source reference | Free text |
-| anmerkungen | Text | No | Additional notes and comments | Free text |
+| Field Name                | Type        | Required | Description                               | Controlled Vocabulary            |
+| ------------------------- | ----------- | -------- | ----------------------------------------- | -------------------------------- |
+| fallnummer                | String (PK) | Yes      | Unique case identifier                    | Auto-generated or manual         |
+| titel                     | String      | Yes      | Brief descriptive title of the case       | Free text                        |
+| meldedatum                | Date        | No       | Date when the case was first reported     | EDTF format as string            |
+| tatzeit_von               | Date        | No       | Start date/period of alleged abuse        | EDTF format as string            |
+| tatzeit_bis               | Date        | No       | End date/period of alleged abuse          | EDTF format as string            |
+| tatort                    | String      | No       | Location where abuse occurred             | Free text or place vocabulary    |
+| status                    | String      | Yes      | Current status of the case                | See Status vocabulary            |
+| quellenkritik_score       | Integer     | No       | Source criticism reliability score (1-10) | 1=unreliable, 10=highly reliable |
+| quellenkritik_anmerkungen | Text        | No       | Notes on source assessment                | Free text                        |
+| zusammenfassung           | Text        | No       | Summary of the case                       | Free text                        |
+| institutionelle_reaktion  | Text        | No       | Description of institutional response     | Free text                        |
+| rechtliche_schritte       | Text        | No       | Legal actions taken                       | Free text                        |
+| ausgang                   | String      | No       | Outcome of the case                       | See Outcome vocabulary           |
+| aktenzeichen              | String      | No       | Official file reference number            | Free text                        |
+| archivquelle              | String      | No       | Archival source reference                 | Free text                        |
+| anmerkungen               | Text        | No       | Additional notes and comments             | Free text                        |
 
 ## Cargo Table Declaration
 
@@ -52,6 +52,7 @@ _table=Faelle
 ## Controlled Vocabularies
 
 ### Status
+
 - `offen` - Open/Active
 - `in_bearbeitung` - Under investigation
 - `abgeschlossen` - Closed/Complete
@@ -60,6 +61,7 @@ _table=Faelle
 - `ausstehend` - Pending
 
 ### Ausgang (Outcome)
+
 - `bestaetigt` - Confirmed
 - `teilweise_bestaetigt` - Partially confirmed
 - `nicht_bestaetigt` - Not confirmed
@@ -82,22 +84,22 @@ _table=Faelle
 
 ```json
 {
-  "fallnummer": "FALL-2024-001",
-  "titel": "Missbrauchsvorwurf gegen Pfarrer in Diözese Basel",
-  "meldedatum": "2023-03-15",
-  "tatzeit_von": "1985",
-  "tatzeit_bis": "1990/1995",
-  "tatort": "Pfarrei St. Martin, Basel",
-  "status": "in_bearbeitung",
-  "quellenkritik_score": 7,
-  "quellenkritik_anmerkungen": "Primärquelle: Brief der betroffenen Person. Sekundärquelle: Kirchliche Akten.",
-  "zusammenfassung": "Vorwurf des sexuellen Missbrauchs eines Minderjährigen durch einen Pfarrer im Zeitraum 1985-1990.",
-  "institutionelle_reaktion": "Suspendierung des Beschuldigten nach Bekanntwerden der Vorwürfe.",
-  "rechtliche_schritte": "Strafanzeige eingereicht bei Staatsanwaltschaft Basel-Stadt.",
-  "ausgang": "unklar",
-  "aktenzeichen": "AZ-BS-2023-456",
-  "archivquelle": "Bistumsarchiv Basel, Bestand 15, Karton 234",
-  "anmerkungen": "Fall erfordert weitere Recherche in den Archiven der betroffenen Pfarrei."
+	"fallnummer": "FALL-2024-001",
+	"titel": "Missbrauchsvorwurf gegen Pfarrer in Diözese Basel",
+	"meldedatum": "2023-03-15",
+	"tatzeit_von": "1985",
+	"tatzeit_bis": "1990/1995",
+	"tatort": "Pfarrei St. Martin, Basel",
+	"status": "in_bearbeitung",
+	"quellenkritik_score": 7,
+	"quellenkritik_anmerkungen": "Primärquelle: Brief der betroffenen Person. Sekundärquelle: Kirchliche Akten.",
+	"zusammenfassung": "Vorwurf des sexuellen Missbrauchs eines Minderjährigen durch einen Pfarrer im Zeitraum 1985-1990.",
+	"institutionelle_reaktion": "Suspendierung des Beschuldigten nach Bekanntwerden der Vorwürfe.",
+	"rechtliche_schritte": "Strafanzeige eingereicht bei Staatsanwaltschaft Basel-Stadt.",
+	"ausgang": "unklar",
+	"aktenzeichen": "AZ-BS-2023-456",
+	"archivquelle": "Bistumsarchiv Basel, Bestand 15, Karton 234",
+	"anmerkungen": "Fall erfordert weitere Recherche in den Archiven der betroffenen Pfarrei."
 }
 ```
 

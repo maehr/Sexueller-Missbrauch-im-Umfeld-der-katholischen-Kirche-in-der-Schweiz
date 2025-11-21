@@ -1,0 +1,316 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</sitename>
+    <dbname>my_wiki</dbname>
+    <base>http://server.domain.ltd:PORT/index.php/Hauptseite</base>
+    <generator>MediaWiki 1.43.1</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</namespace>
+      <namespace key="5" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts Diskussion</namespace>
+      <namespace key="6" case="first-letter">Datei</namespace>
+      <namespace key="7" case="first-letter">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="first-letter">Vorlage</namespace>
+      <namespace key="11" case="first-letter">Vorlage Diskussion</namespace>
+      <namespace key="12" case="first-letter">Hilfe</namespace>
+      <namespace key="13" case="first-letter">Hilfe Diskussion</namespace>
+      <namespace key="14" case="first-letter">Kategorie</namespace>
+      <namespace key="15" case="first-letter">Kategorie Diskussion</namespace>
+      <namespace key="106" case="first-letter">Formular</namespace>
+      <namespace key="107" case="first-letter">Formular Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Kategorie:Fälle</title>
+    <ns>14</ns>
+    <id>7</id>
+    <revision>
+      <id>16474</id>
+      <parentid>15514</parentid>
+      <timestamp>2025-09-15T09:34:31Z</timestamp>
+      <contributor>
+        <username>MoritzMaehr</username>
+        <id>1</id>
+      </contributor>
+      <origin>16474</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="13345" sha1="bbcor6eg3dhunx1n0o5vcw9tltdt84r" xml:space="preserve">&lt;PageSchema&gt;
+  &lt;pageforms_Form name="Fall"&gt;
+    &lt;PageNameFormula&gt;&amp;lt;Fall[Betroffener]&amp;gt; &amp;lt;Fall[Beschuldigter]&amp;gt;&lt;/PageNameFormula&gt;
+    &lt;CreateTitle&gt;Fall erfassen&lt;/CreateTitle&gt;
+    &lt;standardInputs inputFreeText="1" freeTextLabel="Freitext"/&gt;
+  &lt;/pageforms_Form&gt;
+  &lt;Template name="Fall" format="infobox"&gt;
+    &lt;cargo_TemplateDetails&gt;
+      &lt;Table&gt;Fälle&lt;/Table&gt;
+    &lt;/cargo_TemplateDetails&gt;
+    &lt;pageforms_TemplateDetails/&gt;
+    &lt;Field name="Betroffener"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Page&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;combobox&lt;/InputType&gt;
+        &lt;Parameter name="values from category"&gt;Betroffene&lt;/Parameter&gt;
+        &lt;Parameter name="mandatory"/&gt;
+        &lt;TextBeforeField&gt;[[Spezial:Mit_Formular_bearbeiten/Betroffener|Neuer Betroffener erfassen]]&lt;/TextBeforeField&gt;
+        &lt;Description&gt;Wähle eine/n Betroffene/n aus, den/die du zuvor erfasst hast.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Alter Betroffener"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;Description&gt;Alter des Betroffenen zum Zeitpunkt der Tat&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Alter Betroffener gesichert"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Boolean&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;checkbox&lt;/InputType&gt;
+        &lt;Description&gt;Kreuze an, ob das Geburtsdatum gesichert ist. Wenn du das Geburtsdatum nicht kennst, dann lass das Feld leer.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Alter Betroffener operationalisiert"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;minderjährig,volljährig&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Beschuldigter"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Page&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;combobox&lt;/InputType&gt;
+        &lt;Parameter name="values from category"&gt;Beschuldigte&lt;/Parameter&gt;
+        &lt;Parameter name="mandatory"/&gt;
+        &lt;TextBeforeField&gt;[[Spezial:Mit_Formular_bearbeiten/Beschuldigter|Neuer Beschuldigter erfassen]]&lt;/TextBeforeField&gt;
+        &lt;Description&gt;Wähle eine/n Beschuldigte/n aus, den/die du zuvor erfasst hast.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Funktion" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;checkboxes&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Priester,Pfarrer,Kaplan/Vikar/Pfarrhelfer (geweiht),Ordensbruder/Ordensschwester,Pater,Spiritual,Pfarr-Resignat,Katechet/-in,Pastoralassistent/-in,Gemeindeleiter/-in,Sakristan/-in,Diakon,Ständiger Diakon,Chorherr/Domherr,Novize/Novizin,Diözesanbischof,Erzbischof,Weihbischof,Apostolischer Vikar,Titularbischof,Kardinal,Lehrer/-in,Vorsteher/-in Gemeinschaft,Erzieher/-in,Rektor/Direktor/Präfekt,Missionar/-in,Andere&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Alter Beschuldigter"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;Description&gt;Alter des Beschuldigten zum Zeitpunkt der Tat&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Alter Beschuldigter gesichert"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Boolean&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;checkbox&lt;/InputType&gt;
+        &lt;Description&gt;Kreuze an, ob das Geburtsdatum gesichert ist. Wenn du das Geburtsdatum nicht kennst, dann lass das Feld leer.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Beziehung Betroffener Beschuldigter" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput/&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Tatzeitpunkt Tatzeitraum"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;text&lt;/InputType&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Frequenz"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;einmalig,mehrmalig&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Physischer Kontakt"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;kein physischer Kontakt,physischer Kontakt&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Art des Missbrauch" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;checkboxes&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Kuss,Zungenkuss,Umarmung,Exhibition des Opfers,Exhibition des Täters,Selbstbefriedigung des Opfers,Selbstbefriedigung des Täters,Berührungen über den Kleidern,Berührung unter den Kleidern,Berührungen der Genitalien des Opfers,Berührungen der Genitalien des Täters,orale Penetration am Opfer,orale Penetration am Täter,vaginale Penetration am Opfer,vaginale Penetration am Täter,anale Penetration am Opfer,anale Penetration am Täter,Andere,Versuch&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Tatort" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;text with autocomplete&lt;/InputType&gt;
+        &lt;Description&gt;Gib den Tatort an. Es handelt sich dabei um den Namen des geografischen Ortes, also die Stadt in dem das Ferienlager war, der Ort in dem der Beichtstuhl steht, der Ort in sich der Wald befindet, wo der Missbrauch stattfand.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Kanton"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Aargau,Appenzell Ausserrhoden,Appenzell Innerrhoden,Basel-Landschaft,Basel-Stadt,Bern,Freiburg,Genf,Glarus,Graubünden,Jura,Luzern,Neuenburg,Nidwalden,Obwalden,Schaffhausen,Schwyz,Solothurn,St. Gallen,Tessin,Thurgau,Uri,Waadt,Wallis,Zug,Zürich,Fürstentum Liechtenstein,Ausland,andere&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Tatkontext"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;text&lt;/InputType&gt;
+        &lt;Description&gt;Gib den Tatkontext an. Es handelt sich dabei um den Kontext in dem der Missbrauch stattfand, also z.B. Ferienlager, Beichte, Pfarrhaus, Schule, etc.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Institutioneller Kontext" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Page&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;tokens&lt;/InputType&gt;
+        &lt;Parameter name="values from category"&gt;Kirchliche_Institutionen&lt;/Parameter&gt;
+        &lt;TextBeforeField&gt;[[Spezial:Mit_Formular_bearbeiten/Kirchliche_Institution|Neue kirchliche Institutionen erfassen]]&lt;/TextBeforeField&gt;
+        &lt;Description&gt;Gib den institutionellen Kontext an, also die Verantwortungsträger. Beispielsweise die Pfarrei, die involviert ist, das Bistum das die Verantwortung trägt, die Ordensgemeinschaft, der der Täter angehört. Mehrfachauswahl möglich. Institutionen bitte zuvor erfassen.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Meldung an Kirche"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;date&lt;/InputType&gt;
+        &lt;Description&gt;Gib das Datum an, an dem die kirchlichen Verantwortungsträger vom Fall erfahren haben. Leer lassen, wenn die Kirche nicht informiert wurde.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Ägide"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;dropdown&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Bistum Basel 1936-1967: Franz von Streng,Bistum Basel 1967-1982: Anton Hänggi,Bistum Basel 1982-1993: Otto Wüst,Bistum Basel 1994-1995: Hansjörg Vogel,Bistum Basel 1996-2010: Kurt Koch,Bistum Basel 2010-:  Felix Gmür,Bistum LGF 1945-1970: François Charrière,Bistum LGF 1970-1995: Pierre Mamie,Bistum LGF 1995-1998: Amédée Grab,Bistum LGF 1999-2010 Bernard Genoud,Bistum LGF 2011-: Charles Morerod,Bistum Sitten 1952-1977: Nestor Adam,Bistum Sitten 1977-1995: Henry Schwery,Bistum Sitten 1995-2014 Norbert Brunner,Bistum Sitten 2014-: Jean-Marie Lovey,Bistum Chur 1941-1962: Christianus Caminada,Bistum Chur 1962-1990: Johannes Vonderach,Bistum Chur 1990-1997: Wolfgang Haas,Bistum Chur 1997-2007: Amédéé Grab,Bistum Chur 2007-2019: Vitus Huonder,Bistum Chur 2019-2021: AA Pierre Bürcher,Bistum Chur 2021-: Joseph Maria Bonnemain,Bistum St. Gallen 1938-1957: Joseph Meile,Bistum St. Gallen 1957-1976: Joseph Hasler,Bistum St. Gallen 1976-1994: Otmar Mäder,Bistum St. Gallen 1995-2006: Ivo Fürer,Bistum St. Gallen 2006-2025: Markus Büchel,Bistum St. Gallen 2025-: Beat Grögli,Bistum Lugano 1971-1978: Giuseppe Martinoli,Bistum Lugano 1978-1985: Ernesto Togni,Bistum Lugano 1986-1995: Eugenio Corecco,Bistum Lugano 1995-2004: Giuseppe Torti,Bistum Lugano 2004-2013: Pier Giacomo Grampa,Bistum Lugano 2013-2022: Valerio Lazzeri,Bistum Lugano 2022-: AA Alain de Raemy,Andere&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Fachgremien" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Page&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;tokens&lt;/InputType&gt;
+        &lt;Parameter name="values from category"&gt;Fachgremien&lt;/Parameter&gt;
+        &lt;TextBeforeField&gt;[[Spezial:Mit_Formular_bearbeiten/Fachgremium|Neues Fachgremium erfassen]]&lt;/TextBeforeField&gt;
+        &lt;Description&gt;Gib die Fachgremien an, die mit dem Fall befasst sind. Mehrfachauswahl möglich. Fachgremien bitte zuvor erfassen.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Kanonische Voruntersuchung"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Ja,Nein,Andere&lt;/Parameter&gt;
+        &lt;Description&gt;Gib an, ob es eine kanonische Voruntersuchung gab. Erläutere im Freitext untern die genauen Umstände.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Genugtuungskommission behandelt"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Ja - angenommen,Ja - abgelehnt,Ja - Ergebnis unklar,Nein&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Strafverfolgungsbehörden informiert"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Ja,Nein,andere&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Strafverfolgungsbehörden" list="list"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;Page&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;tokens&lt;/InputType&gt;
+        &lt;Parameter name="values from category"&gt;Strafverfolgungsbehörden&lt;/Parameter&gt;
+        &lt;TextBeforeField&gt;[[Spezial:Mit_Formular_bearbeiten/Strafverfolgungsbehörde|Neue Strafverfolgungsbehörde erfassen]]&lt;/TextBeforeField&gt;
+        &lt;Description&gt;Gib die Strafverfolgungsbehörden an, die mit dem Fall befasst sind. Mehrfachauswahl möglich. Strafverfolgungsbehörden bitte zuvor erfassen.&lt;/Description&gt;
+        &lt;DescriptionTooltipMode&gt;on&lt;/DescriptionTooltipMode&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Strafverfolgungsbehörden Urteil"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Nichtannahme,Freigesprochen,Verurteilt,Eingestellt&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+    &lt;Field name="Quellenkritik"&gt;
+      &lt;cargo_Field&gt;
+        &lt;Type&gt;String&lt;/Type&gt;
+      &lt;/cargo_Field&gt;
+      &lt;pageforms_FormInput&gt;
+        &lt;InputType&gt;radiobutton&lt;/InputType&gt;
+        &lt;Parameter name="values"&gt;Score 1,Score 2,Score 3&lt;/Parameter&gt;
+      &lt;/pageforms_FormInput&gt;
+    &lt;/Field&gt;
+  &lt;/Template&gt;
+&lt;/PageSchema&gt;</text>
+      <sha1>bbcor6eg3dhunx1n0o5vcw9tltdt84r</sha1>
+    </revision>
+  </page>
+</mediawiki>

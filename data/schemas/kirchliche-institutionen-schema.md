@@ -6,21 +6,21 @@ The KIRCHLICHE_INSTITUTION entity represents church institutions including dioce
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| id | String (PK) | Yes | Unique identifier for the institution | Auto-generated (e.g., INST-001) |
-| name | String | Yes | Official name of the institution | Free text |
-| name_historisch | List | No | Historical names of the institution | List of strings |
-| typ | String | Yes | Type of institution | See Institution Type vocabulary |
-| bistum_ordensgemeinschaft | String | No | Parent diocese or religious order | Free text |
-| ort_gemeinde | String | No | Town/municipality | Free text |
-| kanton | String | No | Canton | See Canton vocabulary |
-| adresse | Text | No | Address | Free text |
-| gruendungsjahr | Date | No | Year of foundation | EDTF format as string |
-| aufloesung_jahr | Date | No | Year of dissolution (if applicable) | EDTF format as string |
-| traegerschaft | String | No | Operating organization | Free text |
-| sprachregion | String | No | Language region | See Language Region vocabulary |
-| anmerkungen | Text | No | Additional notes | Free text |
+| Field Name                | Type        | Required | Description                           | Controlled Vocabulary           |
+| ------------------------- | ----------- | -------- | ------------------------------------- | ------------------------------- |
+| id                        | String (PK) | Yes      | Unique identifier for the institution | Auto-generated (e.g., INST-001) |
+| name                      | String      | Yes      | Official name of the institution      | Free text                       |
+| name_historisch           | List        | No       | Historical names of the institution   | List of strings                 |
+| typ                       | String      | Yes      | Type of institution                   | See Institution Type vocabulary |
+| bistum_ordensgemeinschaft | String      | No       | Parent diocese or religious order     | Free text                       |
+| ort_gemeinde              | String      | No       | Town/municipality                     | Free text                       |
+| kanton                    | String      | No       | Canton                                | See Canton vocabulary           |
+| adresse                   | Text        | No       | Address                               | Free text                       |
+| gruendungsjahr            | Date        | No       | Year of foundation                    | EDTF format as string           |
+| aufloesung_jahr           | Date        | No       | Year of dissolution (if applicable)   | EDTF format as string           |
+| traegerschaft             | String      | No       | Operating organization                | Free text                       |
+| sprachregion              | String      | No       | Language region                       | See Language Region vocabulary  |
+| anmerkungen               | Text        | No       | Additional notes                      | Free text                       |
 
 ## Cargo Table Declaration
 
@@ -46,6 +46,7 @@ _table=Kirchliche_Institutionen
 ## Controlled Vocabularies
 
 ### Typ (Institution Type)
+
 - `bistum` - Diocese
 - `pfarrei` - Parish
 - `kloster` - Monastery/Convent
@@ -62,6 +63,7 @@ _table=Kirchliche_Institutionen
 - `sonstiges` - Other
 
 ### Kanton (Canton)
+
 - `ag` - Aargau
 - `ai` - Appenzell Innerrhoden
 - `ar` - Appenzell Ausserrhoden
@@ -91,6 +93,7 @@ _table=Kirchliche_Institutionen
 - `ausland` - Foreign
 
 ### Sprachregion (Language Region)
+
 - `deutschschweiz` - German-speaking Switzerland
 - `romandie` - French-speaking Switzerland
 - `tessin` - Italian-speaking Switzerland
@@ -107,19 +110,19 @@ _table=Kirchliche_Institutionen
 
 ```json
 {
-  "id": "INST-001",
-  "name": "Pfarrei St. Martin",
-  "name_historisch": ["Pfarrei zum Heiligen Martin", "St. Martinskirche Pfarrei"],
-  "typ": "pfarrei",
-  "bistum_ordensgemeinschaft": "Bistum Basel",
-  "ort_gemeinde": "Basel",
-  "kanton": "bs",
-  "adresse": "Martinsplatz 1, 4051 Basel",
-  "gruendungsjahr": "1850",
-  "aufloesung_jahr": null,
-  "traegerschaft": "Römisch-katholische Kirchgemeinde Basel",
-  "sprachregion": "deutschschweiz",
-  "anmerkungen": "Große Innenstadtpfarrei mit angeschlossener Grundschule bis 1980"
+	"id": "INST-001",
+	"name": "Pfarrei St. Martin",
+	"name_historisch": ["Pfarrei zum Heiligen Martin", "St. Martinskirche Pfarrei"],
+	"typ": "pfarrei",
+	"bistum_ordensgemeinschaft": "Bistum Basel",
+	"ort_gemeinde": "Basel",
+	"kanton": "bs",
+	"adresse": "Martinsplatz 1, 4051 Basel",
+	"gruendungsjahr": "1850",
+	"aufloesung_jahr": null,
+	"traegerschaft": "Römisch-katholische Kirchgemeinde Basel",
+	"sprachregion": "deutschschweiz",
+	"anmerkungen": "Große Innenstadtpfarrei mit angeschlossener Grundschule bis 1980"
 }
 ```
 
@@ -147,6 +150,7 @@ This entity enables:
 ### Language Region Considerations
 
 The `sprachregion` field is important because:
+
 - Different language regions have different clerical title conventions
 - Language regions may have different documentation practices
 - Cultural differences may affect reporting patterns
@@ -155,6 +159,7 @@ The `sprachregion` field is important because:
 ### Historical Name Tracking
 
 The `name_historisch` field enables:
+
 - Tracking institutions across name changes
 - Linking historical records to current institutions
 - Understanding institutional continuity or discontinuity

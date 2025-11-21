@@ -6,19 +6,19 @@ The BETROFFENER entity represents a person affected by sexual abuse (victim/surv
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| id | String (PK) | Yes | Unique identifier for the person | Auto-generated (e.g., BET-001) |
-| name_pseudonym | String | Yes | Pseudonymized name or identifier | Free text |
-| geschlecht | String | No | Gender | See Gender vocabulary |
-| geburtsdatum_edtf | Date | No | Date of birth (anonymized/approximate) | EDTF format as string |
-| geburtsort | String | No | Place of birth (anonymized if necessary) | Free text |
-| kontaktstatus | String | No | Status of contact with research team | See Contact Status vocabulary |
-| erstkontakt_datum | Date | No | Date of first contact | Standard date format |
-| beziehung_institution | String | No | Relationship to church institution | Free text |
-| zeitraum_kontakt | String | No | Period of contact with institution/accused | Free text or date range |
-| unterstuetzung_erhalten | String | No | Support received | See Support vocabulary |
-| anmerkungen | Text | No | Additional notes (anonymized) | Free text |
+| Field Name              | Type        | Required | Description                                | Controlled Vocabulary          |
+| ----------------------- | ----------- | -------- | ------------------------------------------ | ------------------------------ |
+| id                      | String (PK) | Yes      | Unique identifier for the person           | Auto-generated (e.g., BET-001) |
+| name_pseudonym          | String      | Yes      | Pseudonymized name or identifier           | Free text                      |
+| geschlecht              | String      | No       | Gender                                     | See Gender vocabulary          |
+| geburtsdatum_edtf       | Date        | No       | Date of birth (anonymized/approximate)     | EDTF format as string          |
+| geburtsort              | String      | No       | Place of birth (anonymized if necessary)   | Free text                      |
+| kontaktstatus           | String      | No       | Status of contact with research team       | See Contact Status vocabulary  |
+| erstkontakt_datum       | Date        | No       | Date of first contact                      | Standard date format           |
+| beziehung_institution   | String      | No       | Relationship to church institution         | Free text                      |
+| zeitraum_kontakt        | String      | No       | Period of contact with institution/accused | Free text or date range        |
+| unterstuetzung_erhalten | String      | No       | Support received                           | See Support vocabulary         |
+| anmerkungen             | Text        | No       | Additional notes (anonymized)              | Free text                      |
 
 ## Cargo Table Declaration
 
@@ -42,6 +42,7 @@ _table=Betroffene
 ## Controlled Vocabularies
 
 ### Geschlecht (Gender)
+
 - `maennlich` - Male
 - `weiblich` - Female
 - `divers` - Non-binary/Diverse
@@ -49,6 +50,7 @@ _table=Betroffene
 - `keine_angabe` - Prefer not to say
 
 ### Kontaktstatus (Contact Status)
+
 - `erstkontakt` - Initial contact
 - `aktiv` - Active communication
 - `abgeschlossen` - Contact concluded
@@ -57,6 +59,7 @@ _table=Betroffene
 - `verstorben` - Deceased
 
 ### Unterstuetzung_erhalten (Support Received)
+
 - `keine` - None
 - `beratung` - Counseling
 - `therapie` - Therapy
@@ -75,17 +78,17 @@ _table=Betroffene
 
 ```json
 {
-  "id": "BET-001",
-  "name_pseudonym": "Person A",
-  "geschlecht": "maennlich",
-  "geburtsdatum_edtf": "1965~",
-  "geburtsort": "Basel (anonymisiert)",
-  "kontaktstatus": "aktiv",
-  "erstkontakt_datum": "2023-05-20",
-  "beziehung_institution": "Ehemaliger Messdiener",
-  "zeitraum_kontakt": "1978-1982",
-  "unterstuetzung_erhalten": "beratung, therapie",
-  "anmerkungen": "Person hat sich direkt an die Forschungsgruppe gewandt. Bereit zur weiteren Zusammenarbeit."
+	"id": "BET-001",
+	"name_pseudonym": "Person A",
+	"geschlecht": "maennlich",
+	"geburtsdatum_edtf": "1965~",
+	"geburtsort": "Basel (anonymisiert)",
+	"kontaktstatus": "aktiv",
+	"erstkontakt_datum": "2023-05-20",
+	"beziehung_institution": "Ehemaliger Messdiener",
+	"zeitraum_kontakt": "1978-1982",
+	"unterstuetzung_erhalten": "beratung, therapie",
+	"anmerkungen": "Person hat sich direkt an die Forschungsgruppe gewandt. Bereit zur weiteren Zusammenarbeit."
 }
 ```
 
@@ -109,6 +112,7 @@ Real data involving affected persons contains highly sensitive personal informat
 - **Informed consent** requirements
 
 Real research data is stored in:
+
 - **ETH Zürich LeoMed infrastructure** (secure, access-controlled)
 - Separate from this public repository
 - With strict access controls and audit logging
@@ -116,6 +120,7 @@ Real research data is stored in:
 ### Anonymization Principles
 
 When creating synthetic data:
+
 1. Use pseudonyms, never real names
 2. Approximate or range dates (EDTF) rather than exact dates
 3. Generalize locations where necessary

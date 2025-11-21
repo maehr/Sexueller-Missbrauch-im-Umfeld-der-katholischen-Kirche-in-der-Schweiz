@@ -1,0 +1,243 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</sitename>
+    <dbname>my_wiki</dbname>
+    <base>http://server.domain.ltd:PORT/index.php/Hauptseite</base>
+    <generator>MediaWiki 1.43.1</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</namespace>
+      <namespace key="5" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts Diskussion</namespace>
+      <namespace key="6" case="first-letter">Datei</namespace>
+      <namespace key="7" case="first-letter">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="first-letter">Vorlage</namespace>
+      <namespace key="11" case="first-letter">Vorlage Diskussion</namespace>
+      <namespace key="12" case="first-letter">Hilfe</namespace>
+      <namespace key="13" case="first-letter">Hilfe Diskussion</namespace>
+      <namespace key="14" case="first-letter">Kategorie</namespace>
+      <namespace key="15" case="first-letter">Kategorie Diskussion</namespace>
+      <namespace key="106" case="first-letter">Formular</namespace>
+      <namespace key="107" case="first-letter">Formular Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Cargo Test</title>
+    <ns>0</ns>
+    <id>3254</id>
+    <revision>
+      <id>21531</id>
+      <parentid>20299</parentid>
+      <timestamp>2025-11-17T14:15:01Z</timestamp>
+      <contributor>
+        <username>LucasFederer</username>
+        <id>3</id>
+      </contributor>
+      <comment>/* Beschuldigte ohne Geburtsdatum Kapuziner */</comment>
+      <origin>21531</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="10896" sha1="j1fy0jbyrdeuj196ja3wneawh510v90" xml:space="preserve">== Zählungen ==
+
+=== Anzahl Fälle ===
+{{#cargo_query:
+  tables=Fälle|fields=COUNT(*)=Anzahl_Fälle|format=inline}}
+
+=== Anzahl Beschuldigte ===
+{{#cargo_query:
+  tables=Beschuldigte|fields=COUNT(*)=Anzahl_Beschuldigte|format=inline}}
+
+=== Anzahl Betroffene ===
+{{#cargo_query:
+  tables=Betroffene|fields=COUNT(*)=Anzahl_Betroffene|format=inline}}
+
+== Quellenkritik-Score ==
+{{#cargo_query:
+ tables=Fälle|fields=Quellenkritik, COUNT(*)=Anzahl|group by=Quellenkritik|format=table|headers=Score, Anzahl}}
+
+== Art des Kontakts ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Physischer_Kontakt, COUNT(*)=Anzahl|group by=Physischer_Kontakt|format=table|headers=Kontakt, Anzahl}}
+
+== Kein physischer Kontakt ==
+{{#cargo_query:
+  tables=Fälle|fields=Art_des_Missbrauch, COUNT(*)=Anzahl|where=Physischer_Kontakt="kein physischer Kontakt"|group by=Art_des_Missbrauch|order by=Anzahl DESC|format=table|headers=Art des Missbrauchs, Anzahl}}
+
+== Art des physischen Missbrauchs (Kombinationen) ==
+{{#cargo_query:
+ tables=Fälle|fields=Art_des_Missbrauch__full=Kombi, COUNT(*)=Anzahl|where=Physischer_Kontakt="physischer Kontakt"|group by=Kombi|format=table|headers=Art des Missbrauchs (Kombinationen), Anzahl}}
+
+== Art des physischen Kontakts einzeln ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Art_des_Missbrauch, COUNT(*)=Anzahl|where=Physischer_Kontakt="physischer Kontakt"|group by=Art_des_Missbrauch|format=table|headers=Art des Missbrauchs (Mehrfachnennung möglich), Anzahl}}
+
+== Weihegrade Beschuldigte ==
+{{#cargo_query:
+ tables=Beschuldigte|fields=Weihegrad, COUNT(*)=Anzahl|group by=Weihegrad|format=table|headers=Weihegrad, Anzahl}}
+
+== Funktion Beschuldigte je Fall ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Funktion, COUNT(*)=Anzahl|group by=Funktion|format=table|headers=Funktion Täter im jeweiligen Fall, Anzahl}}
+
+== Geschlecht Betroffene ==
+{{#cargo_query:
+ tables=Betroffene|fields=Geschlecht, COUNT(*)=Anzahl|group by=Geschlecht|format=table|headers=Geschlecht, Anzahl}}
+
+== Geschlecht Beschuldigte ==
+{{#cargo_query:
+ tables=Beschuldigte|fields=Geschlecht, COUNT(*)=Anzahl|group by=Geschlecht|format=table|headers=Geschlecht, Anzahl}}
+
+== Nationalität Beschuldigte ==
+{{#cargo_query:
+ tables=Beschuldigte|fields=Nationalität, COUNT(*)=Anzahl|group by=Nationalität|format=table|headers=Nationalität, Anzahl}}
+
+== Jahrgang Beschuldigte ==
+{{#cargo_query:
+  tables=Beschuldigte|fields=CONCAT((YEAR(Geburtsdatum) DIV 10) * 10, "er")=Jahrzehnt, COUNT(*)=Anzahl|group by=(YEAR(Geburtsdatum) DIV 10) * 10|order by=Jahrzehnt|format=table|headers=Jahrzehnt, Anzahl}}
+
+== Geburtsdatum Beschuldigte bekannt / unbekannt ==
+{| class="wikitable"
+!Institution
+!Geburtsdatum bekannt
+!Geburtsdatum unbekannt
+|-
+|Bistum St.Gallen
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum St.Gallen"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum St.Gallen"|format=list}}
+|-
+|Bistum Basel
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum Basel"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum Basel"|format=list}}
+|-
+|Bistum LGF
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum LGF"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum LGF"|format=list}}
+|-
+|Bistum Sion
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum Sion"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum Sion"|format=list}}
+|-
+|Bistum Lugano
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum Lugano"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum Lugano"|format=list}}
+|-
+|Bistum Chur
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Bistum Chur"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Bistum Chur"|format=list}}
+|-
+|Kapuziner
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Kapuziner"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Kapuziner"|format=list}}
+|-
+|Benediktiner
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Benediktiner"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Benediktiner"|format=list}}
+|-
+|Pallotiner
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NOT NULL AND Geburtsdatum!="" THEN 1 ELSE 0 END)=Bekannt|where=Institutioneller_Kontext HOLDS "Pallotiner"|format=list}}
+|{{#cargo_query:
+  tables=Beschuldigte|fields=SUM(CASE WHEN Geburtsdatum IS NULL OR Geburtsdatum="" THEN 1 ELSE 0 END)=Unbekannt|where=Institutioneller_Kontext HOLDS "Pallotiner"|format=list}}
+
+|}
+
+== Geburtsdatum Beschuldigte unbekannt ==
+{{#cargo_query:
+  tables=Beschuldigte|fields=COUNT(*)=Anzahl|where=Geburtsdatum IS NULL OR Geburtsdatum=""|format=table|headers=Unbekanntes Geburtsdatum}}
+
+== Tatkontext weibliche Beschuldigte ==
+{{#cargo_query:
+  tables=Fälle, Beschuldigte|join on=Fälle.Beschuldigter=Beschuldigte._pageName|fields=Fälle._pageName=Fall, , Beschuldigte.Geschlecht, Fälle.Alter_Betroffener_operationalisiert, Fälle.Tatkontext|where=Beschuldigte.Geschlecht="weiblich"|format=table|headers=Fall, Geschlecht Beschuldigte, Alter Betroffene, Tatkontext}}
+
+== Alter Betroffene zum Zeitpunkt der Tat / zu Beginn der Tatdauer ==
+{{#cargo_query:
+ tables=Fälle|fields=Alter_Betroffener_operationalisiert, COUNT(*)=Anzahl|group by=Alter_Betroffener_operationalisiert|format=table|headers=Alter Betroffene_operationalisiert, Anzahl}}
+
+== Kanton des Falls ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Kanton, COUNT(*)=Anzahl|group by=Kanton|format=table|headers=Kanton, Anzahl}}
+
+== Genugtuungsfonds ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Genugtuungskommission_behandelt, COUNT(*)=Anzahl|group by=Genugtuungskommission_behandelt|format=table|headers=Genugtuungsfonds, Anzahl}}
+
+== Fachgremien ==
+{{#cargo_query:
+  tables=Fälle|fields=Fachgremien, COUNT(*)=Anzahl|group by=Fachgremien|order by=Anzahl DESC|format=table|headers=Fachgremien, Anzahl behandelter Fälle}}
+
+== Strafverfolgung ==
+{{#cargo_query:
+  tables=Fälle|fields=Strafverfolgungsbehörden_informiert, COUNT(*)=Anzahl|group by=Strafverfolgungsbehörden_informiert|order by=Anzahl DESC|format=table|headers=Strafverfolgung informiert?, Anzahl}}
+
+== Zeitpunkt Zeitraum der Tat ==
+{{#cargo_query:
+ tables=Fälle|fields=Fälle.Tatzeitpunkt_Tatzeitraum, COUNT(*)=Anzahl|group by=Tatzeitpunkt_Tatzeitraum|format=line chart|headers=Tatzeitpunkt/Tatzeitraum, Anzahl|limit=1000}}
+
+== Troubleshooting ==
+
+=== Ohne Geschlechtsangabe ===
+{{#cargo_query:
+  tables=Beschuldigte|fields=Beschuldigte._pageName=Beschuldigter|where=Geschlecht IS NULL OR Geschlecht=""|format=table|headers=Beschuldigter|link=all}}{{#cargo_query:
+  tables=Betroffene|fields=Betroffene._pageName=Betroffene|where=Geschlecht IS NULL OR Geschlecht=""|format=table|headers=Betroffene|link=all}}
+
+=== Ordensbruder/Ordensschwester mit Weihe ===
+{{#cargo_query:
+  tables=Beschuldigte|fields=Beschuldigte._pageName=Beschuldigter, Funktion, Weihegrad|where=Funktion HOLDS "Ordensbruder/Ordensschwester" AND Weihegrad="Ordenspriester"|format=table|headers=Beschuldigter, Funktion, Weihegrad|link=all}}
+
+== Troubleshooting 2 ==
+
+=== Fälle ohne Angabe zu "physisch oder "nicht physisch" in den Bistümern St.Gallen und Chur ===
+{{#cargo_query:
+  tables=Fälle|fields=Fälle._pageName=Fall, Institutioneller_Kontext, Physischer_Kontakt|where=(Physischer_Kontakt IS NULL OR Physischer_Kontakt="")
+    AND (Institutioneller_Kontext HOLDS "Bistum St.Gallen"
+         OR Institutioneller_Kontext HOLDS "Bistum Chur")|format=table|headers=Fall, Institutioneller Kontext, Physischer Kontakt|link=all}}
+
+=== Beschuldigte ohne Geburtsdatum Bistum Basel ===
+{{#cargo_query:
+  tables=Beschuldigte|fields=Beschuldigte._pageName=Beschuldigter, Institutioneller_Kontext, Geburtsdatum|where=(Geburtsdatum IS NULL OR Geburtsdatum="")
+    AND (Institutioneller_Kontext HOLDS "Bistum Basel"
+         OR Institutioneller_Kontext HOLDS "Basel")|format=table|headers=Beschuldigter, Institutioneller Kontext, Geburtsdatum|link=all}}
+
+=== Altersangaben Betroffene mit falschem Format ===
+{{#cargo_query:
+  tables=Fälle|fields=Fälle._pageName=Fall, Alter_Betroffener|where=Alter_Betroffener LIKE "%-%"|format=table|headers=Fall, Alter Betroffener|link=all}}
+
+== Fälle mit FachgremiumFehlt ==
+{{#cargo_query:
+  tables=Fälle|fields=Fälle._pageName=Fall, Fachgremien, Institutioneller_Kontext|where=Fachgremien HOLDS "FachgremiumFehlt"|format=table|headers=Fall, Fachgremien, Institutioneller Kontext|link=all}}
+
+== Fälle ohne Quellenkritik-Score ==
+{{#cargo_query:
+  tables=Fälle|fields=Fälle._pageName=Fall, Institutioneller_Kontext|where=Quellenkritik IS NULL OR Quellenkritik=""|format=table|headers=Fall, Institutioneller Kontext|link=all}}
+
+== Fälle Basel ohne Ägide ==
+{{#cargo_query:
+  tables=Fälle|fields=Fälle._pageName=Fall, Institutioneller_Kontext, Fälle.Ägide|where=(Institutioneller_Kontext HOLDS "Bistum Basel") 
+    AND (Fälle.Ägide IS NULL OR Fälle.Ägide="")|format=table|headers=Fall, Institutioneller Kontext, Agide|link=all}}</text>
+      <sha1>j1fy0jbyrdeuj196ja3wneawh510v90</sha1>
+    </revision>
+  </page>
+</mediawiki>

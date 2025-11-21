@@ -11,10 +11,10 @@ erDiagram
     FALL }o--|| KIRCHLICHE_INSTITUTION : "associated-with"
     FALL }o--o| STRAFVERFOLGUNGSBEHOERDE : "reported-to"
     FALL }o--o| FACHGREMIUM : "reviewed-by"
-    
+
     BESCHULDIGTER }o--o{ KIRCHLICHE_INSTITUTION : "affiliated-with"
     BETROFFENER }o--o| KIRCHLICHE_INSTITUTION : "contacted"
-    
+
     STRAFVERFOLGUNGSBEHOERDE }o--o{ FALL : "investigates"
     FACHGREMIUM }o--o{ FALL : "evaluates"
 
@@ -27,7 +27,7 @@ erDiagram
         text zusammenfassung
         string edtf_zeitraum
     }
-    
+
     BETROFFENER {
         string id PK
         string name_pseudonym
@@ -36,7 +36,7 @@ erDiagram
         string kontaktstatus
         text anmerkungen
     }
-    
+
     BESCHULDIGTER {
         string id PK
         string name_pseudonym
@@ -46,7 +46,7 @@ erDiagram
         string status_verfahren
         text anmerkungen
     }
-    
+
     KIRCHLICHE_INSTITUTION {
         string id PK
         string name
@@ -56,7 +56,7 @@ erDiagram
         date gruendungsjahr
         text anmerkungen
     }
-    
+
     STRAFVERFOLGUNGSBEHOERDE {
         string id PK
         string name
@@ -65,7 +65,7 @@ erDiagram
         string zustaendigkeit
         text kontaktinformationen
     }
-    
+
     FACHGREMIUM {
         string id PK
         string name
@@ -79,44 +79,57 @@ erDiagram
 ## Entity Descriptions
 
 ### FALL (Case)
+
 Central entity representing an individual case of abuse. Links affected persons, accused persons, institutions, and authorities.
 
 ### BETROFFENER (Affected Person)
+
 Represents a victim or affected person. May be linked to multiple cases and institutions.
 
 ### BESCHULDIGTER (Accused Person)
+
 Represents an accused individual. May be affiliated with multiple institutions and involved in multiple cases.
 
 ### KIRCHLICHE_INSTITUTION (Church Institution)
+
 Represents a church institution (diocese, parish, religious order, school, etc.) where abuse occurred or that is relevant to a case.
 
 ### STRAFVERFOLGUNGSBEHOERDE (Law Enforcement Authority)
+
 Represents a prosecuting authority or law enforcement agency involved in investigating or prosecuting cases.
 
 ### FACHGREMIUM (Expert Committee)
+
 Represents an expert panel, review board, or commission that evaluates cases, provides assessments, or makes recommendations.
 
 ## Relationship Descriptions
 
 ### FALL ↔ BETROFFENER
+
 A case involves one or more affected persons. An affected person may be involved in multiple cases.
 
 ### FALL ↔ BESCHULDIGTER
+
 A case involves one or more accused persons. An accused person may be involved in multiple cases.
 
 ### FALL ↔ KIRCHLICHE_INSTITUTION
+
 A case is associated with one or more church institutions (location of abuse, institution of accused, etc.).
 
 ### FALL ↔ STRAFVERFOLGUNGSBEHOERDE
+
 A case may be reported to or investigated by law enforcement authorities.
 
 ### FALL ↔ FACHGREMIUM
+
 A case may be reviewed or evaluated by expert committees.
 
 ### BESCHULDIGTER ↔ KIRCHLICHE_INSTITUTION
+
 An accused person may be affiliated with one or more church institutions (employment, membership, assignment).
 
 ### BETROFFENER ↔ KIRCHLICHE_INSTITUTION
+
 An affected person may have contacted or been associated with church institutions.
 
 ## Normalization Notes
@@ -128,6 +141,7 @@ The data model follows **Third Normal Form (3NF)** principles:
 3. **No transitive dependencies**: Non-key attributes depend only on the primary key
 
 This enables:
+
 - Detection of patterns across entities (e.g., repeated transfers of accused clergy)
 - Flexible querying and reporting
 - Data integrity through referential constraints
@@ -145,6 +159,7 @@ The data model integrates **Quellenkritik (source criticism)** as a scored asses
 ## EDTF Date Handling
 
 The model uses **Extended Date/Time Format (EDTF)** for dates that may be:
+
 - Uncertain (e.g., "circa 1985")
 - Approximate (e.g., "mid-1980s")
 - Partial (e.g., "1985" without day/month)

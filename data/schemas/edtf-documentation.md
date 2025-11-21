@@ -91,18 +91,22 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 ## Fields Using EDTF in This Database
 
 ### FALL (Case)
+
 - `meldedatum` - Date case was reported
 - `tatzeit_von` - Start of abuse period
 - `tatzeit_bis` - End of abuse period
 
 ### BETROFFENER (Affected Person)
+
 - `geburtsdatum_edtf` - Date of birth (often approximate for privacy)
 
 ### BESCHULDIGTER (Accused Person)
+
 - `geburtsdatum_edtf` - Date of birth
 - `weihedatum` - Ordination date (may be uncertain in historical records)
 
 ### KIRCHLICHE_INSTITUTION (Church Institution)
+
 - `gruendungsjahr` - Year of foundation
 - `aufloesung_jahr` - Year of dissolution
 
@@ -114,8 +118,8 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 
 ```json
 {
-  "tatzeit_von": "1985~",
-  "tatzeit_bis": "1986~"
+	"tatzeit_von": "1985~",
+	"tatzeit_bis": "1986~"
 }
 ```
 
@@ -125,8 +129,8 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 
 ```json
 {
-  "tatzeit_von": "1985/1987",
-  "tatzeit_bis": "1987?"
+	"tatzeit_von": "1985/1987",
+	"tatzeit_bis": "1987?"
 }
 ```
 
@@ -136,7 +140,7 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 
 ```json
 {
-  "geburtsdatum_edtf": "1960/1965"
+	"geburtsdatum_edtf": "1960/1965"
 }
 ```
 
@@ -146,8 +150,8 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 
 ```json
 {
-  "gruendungsjahr": "1850~",
-  "aufloesung_jahr": "197X"
+	"gruendungsjahr": "1850~",
+	"aufloesung_jahr": "197X"
 }
 ```
 
@@ -157,8 +161,8 @@ Note: This is EDTF Level 2; use with caution and document clearly.
 
 ```json
 {
-  "tatzeit_von": "1982",
-  "tatzeit_bis": "1985/1987"
+	"tatzeit_von": "1982",
+	"tatzeit_bis": "1985/1987"
 }
 ```
 
@@ -170,6 +174,7 @@ EDTF serves **dual purposes** in this research:
 2. **Privacy**: Allows generalization of dates to protect individual identities
 
 For example:
+
 - Exact birth date `1965-03-17` could be re-identified when combined with other data
 - Approximate birth date `1965~` or `1960/1970` maintains analytical utility while protecting privacy
 
@@ -192,6 +197,7 @@ _table=Faelle
 ### In Analysis Scripts
 
 Python libraries for EDTF parsing:
+
 - `edtf` - Python implementation of EDTF
 - `python-edtf` - Alternative parser
 
@@ -214,6 +220,7 @@ start, end = date_obj.lower_strict(), date_obj.upper_strict()
 ### Validation
 
 When validating EDTF strings:
+
 1. Use EDTF parser libraries (don't write your own)
 2. Document which EDTF level is supported (recommend Level 1)
 3. Provide guidance to data entry personnel
@@ -229,14 +236,14 @@ When validating EDTF strings:
 
 ## Comparison with ISO 8601
 
-| Feature | ISO 8601 | EDTF |
-|---------|----------|------|
-| Exact dates | ✅ `1985-06-15` | ✅ `1985-06-15` |
-| Partial dates | ❌ | ✅ `1985-06`, `1985` |
-| Uncertainty | ❌ | ✅ `1985?` |
-| Approximation | ❌ | ✅ `1985~` |
-| Ranges | ✅ `1985-06-15/1985-08-20` | ✅ `1985/1987` |
-| Decades | ❌ | ✅ `198X` (Level 2) |
+| Feature       | ISO 8601                   | EDTF                 |
+| ------------- | -------------------------- | -------------------- |
+| Exact dates   | ✅ `1985-06-15`            | ✅ `1985-06-15`      |
+| Partial dates | ❌                         | ✅ `1985-06`, `1985` |
+| Uncertainty   | ❌                         | ✅ `1985?`           |
+| Approximation | ❌                         | ✅ `1985~`           |
+| Ranges        | ✅ `1985-06-15/1985-08-20` | ✅ `1985/1987`       |
+| Decades       | ❌                         | ✅ `198X` (Level 2)  |
 
 EDTF extends ISO 8601 with features needed for cultural heritage and historical research.
 

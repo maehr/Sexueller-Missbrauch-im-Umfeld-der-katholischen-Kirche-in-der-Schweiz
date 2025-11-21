@@ -6,18 +6,18 @@ The FACHGREMIUM entity represents expert panels, review boards, commissions, and
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| id | String (PK) | Yes | Unique identifier for the committee | Auto-generated (e.g., FG-001) |
-| name | String | Yes | Official name of the committee | Free text |
-| typ | String | Yes | Type of committee | See Committee Type vocabulary |
-| traegerschaft | String | No | Sponsoring/operating organization | Free text |
-| einrichtungsdatum | Date | No | Date of establishment | Standard date format |
-| aufloesung_datum | Date | No | Date of dissolution (if applicable) | Standard date format |
-| mandat | Text | No | Mandate and responsibilities | Free text |
-| zusammensetzung | Text | No | Composition of the committee | Free text |
-| berichtswesen | Text | No | Reporting structure and outputs | Free text |
-| anmerkungen | Text | No | Additional notes | Free text |
+| Field Name        | Type        | Required | Description                         | Controlled Vocabulary         |
+| ----------------- | ----------- | -------- | ----------------------------------- | ----------------------------- |
+| id                | String (PK) | Yes      | Unique identifier for the committee | Auto-generated (e.g., FG-001) |
+| name              | String      | Yes      | Official name of the committee      | Free text                     |
+| typ               | String      | Yes      | Type of committee                   | See Committee Type vocabulary |
+| traegerschaft     | String      | No       | Sponsoring/operating organization   | Free text                     |
+| einrichtungsdatum | Date        | No       | Date of establishment               | Standard date format          |
+| aufloesung_datum  | Date        | No       | Date of dissolution (if applicable) | Standard date format          |
+| mandat            | Text        | No       | Mandate and responsibilities        | Free text                     |
+| zusammensetzung   | Text        | No       | Composition of the committee        | Free text                     |
+| berichtswesen     | Text        | No       | Reporting structure and outputs     | Free text                     |
+| anmerkungen       | Text        | No       | Additional notes                    | Free text                     |
 
 ## Cargo Table Declaration
 
@@ -40,6 +40,7 @@ _table=Fachgremien
 ## Controlled Vocabularies
 
 ### Typ (Committee Type)
+
 - `unabhaengige_kommission` - Independent commission
 - `kirchliche_kommission` - Church commission
 - `beratungsgremium` - Advisory board
@@ -60,16 +61,16 @@ _table=Fachgremien
 
 ```json
 {
-  "id": "FG-001",
-  "name": "Unabhängige Expertenkommission Sexueller Missbrauch im Kontext der Katholischen Kirche",
-  "typ": "unabhaengige_kommission",
-  "traegerschaft": "Schweizerische Bischofskonferenz",
-  "einrichtungsdatum": "2019-09-01",
-  "aufloesung_datum": null,
-  "mandat": "Untersuchung von Fällen sexuellen Missbrauchs im Kontext der katholischen Kirche in der Schweiz; Erstellung eines wissenschaftlichen Berichts; Empfehlungen für Prävention und Aufarbeitung",
-  "zusammensetzung": "Historiker, Juristinnen, Psychologen, Theologinnen; interdisziplinär besetzt; keine aktiven Kirchenvertreter",
-  "berichtswesen": "Zwischenberichte an die Bischofskonferenz; Endbericht geplant für 2026; öffentliche Publikation vorgesehen",
-  "anmerkungen": "Erste umfassende wissenschaftliche Aufarbeitung für die gesamte Schweiz"
+	"id": "FG-001",
+	"name": "Unabhängige Expertenkommission Sexueller Missbrauch im Kontext der Katholischen Kirche",
+	"typ": "unabhaengige_kommission",
+	"traegerschaft": "Schweizerische Bischofskonferenz",
+	"einrichtungsdatum": "2019-09-01",
+	"aufloesung_datum": null,
+	"mandat": "Untersuchung von Fällen sexuellen Missbrauchs im Kontext der katholischen Kirche in der Schweiz; Erstellung eines wissenschaftlichen Berichts; Empfehlungen für Prävention und Aufarbeitung",
+	"zusammensetzung": "Historiker, Juristinnen, Psychologen, Theologinnen; interdisziplinär besetzt; keine aktiven Kirchenvertreter",
+	"berichtswesen": "Zwischenberichte an die Bischofskonferenz; Endbericht geplant für 2026; öffentliche Publikation vorgesehen",
+	"anmerkungen": "Erste umfassende wissenschaftliche Aufarbeitung für die gesamte Schweiz"
 }
 ```
 
@@ -95,6 +96,7 @@ This entity enables analysis of:
 ### Comparative Analysis
 
 The entity allows comparison of:
+
 - Church-initiated vs. independent commissions
 - National vs. diocesan-level committees
 - Historical commissions vs. ongoing review boards
@@ -103,6 +105,7 @@ The entity allows comparison of:
 ### "Trading Zone" Documentation
 
 Expert committees often serve as "Trading Zones" where:
+
 - Historians and church representatives harmonize terminology
 - Different language regions coordinate approaches
 - Academic and pastoral perspectives meet
@@ -113,24 +116,28 @@ This entity documents these collaborative spaces.
 ## Types of Expert Committees in Context
 
 ### Independent Commissions
+
 - Established with autonomy from church hierarchy
 - Often include external experts (historians, jurists, psychologists)
 - Tasked with comprehensive investigations
 - May have subpoena or access rights to archives
 
 ### Church Commissions
+
 - Established by dioceses or religious orders
 - May include both internal and external members
 - Often focused on specific dioceses or regions
 - Varying degrees of independence
 
 ### Advisory Boards
+
 - Provide ongoing consultation
 - May review individual cases
 - Advise on prevention and policy
 - Often permanent rather than temporary
 
 ### Victim Protection/Support Committees
+
 - Focus on victim support and compensation
 - May include victim representatives
 - Bridge between victims and institutions

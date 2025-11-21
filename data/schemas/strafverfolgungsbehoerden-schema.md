@@ -6,16 +6,16 @@ The STRAFVERFOLGUNGSBEHOERDE entity represents prosecuting authorities, law enfo
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| id | String (PK) | Yes | Unique identifier for the authority | Auto-generated (e.g., SVB-001) |
-| name | String | Yes | Official name of the authority | Free text |
-| typ | String | Yes | Type of authority | See Authority Type vocabulary |
-| kanton | String | Yes | Canton | See Canton vocabulary |
-| ort | String | No | Location/seat | Free text |
-| zustaendigkeit | Text | No | Area of responsibility | Free text |
-| kontaktinformationen | Text | No | Contact information | Free text |
-| anmerkungen | Text | No | Additional notes | Free text |
+| Field Name           | Type        | Required | Description                         | Controlled Vocabulary          |
+| -------------------- | ----------- | -------- | ----------------------------------- | ------------------------------ |
+| id                   | String (PK) | Yes      | Unique identifier for the authority | Auto-generated (e.g., SVB-001) |
+| name                 | String      | Yes      | Official name of the authority      | Free text                      |
+| typ                  | String      | Yes      | Type of authority                   | See Authority Type vocabulary  |
+| kanton               | String      | Yes      | Canton                              | See Canton vocabulary          |
+| ort                  | String      | No       | Location/seat                       | Free text                      |
+| zustaendigkeit       | Text        | No       | Area of responsibility              | Free text                      |
+| kontaktinformationen | Text        | No       | Contact information                 | Free text                      |
+| anmerkungen          | Text        | No       | Additional notes                    | Free text                      |
 
 ## Cargo Table Declaration
 
@@ -36,6 +36,7 @@ _table=Strafverfolgungsbehoerden
 ## Controlled Vocabularies
 
 ### Typ (Authority Type)
+
 - `staatsanwaltschaft` - Public Prosecutor's Office
 - `kantonspolizei` - Cantonal Police
 - `stadtpolizei` - City Police
@@ -48,6 +49,7 @@ _table=Strafverfolgungsbehoerden
 - `sonstiges` - Other
 
 ### Kanton (Canton)
+
 - `ag` - Aargau
 - `ai` - Appenzell Innerrhoden
 - `ar` - Appenzell Ausserrhoden
@@ -84,14 +86,14 @@ _table=Strafverfolgungsbehoerden
 
 ```json
 {
-  "id": "SVB-001",
-  "name": "Staatsanwaltschaft Basel-Stadt",
-  "typ": "staatsanwaltschaft",
-  "kanton": "bs",
-  "ort": "Basel",
-  "zustaendigkeit": "Strafverfolgung im Kanton Basel-Stadt, inkl. Sexualdelikte",
-  "kontaktinformationen": "Binningerstrasse 21, 4001 Basel, Tel: +41 61 267 87 87",
-  "anmerkungen": "Zuständig für alle Strafverfahren im Kanton Basel-Stadt seit 2011 (vorher Untersuchungsrichter)"
+	"id": "SVB-001",
+	"name": "Staatsanwaltschaft Basel-Stadt",
+	"typ": "staatsanwaltschaft",
+	"kanton": "bs",
+	"ort": "Basel",
+	"zustaendigkeit": "Strafverfolgung im Kanton Basel-Stadt, inkl. Sexualdelikte",
+	"kontaktinformationen": "Binningerstrasse 21, 4001 Basel, Tel: +41 61 267 87 87",
+	"anmerkungen": "Zuständig für alle Strafverfahren im Kanton Basel-Stadt seit 2011 (vorher Untersuchungsrichter)"
 }
 ```
 
@@ -117,6 +119,7 @@ This entity enables analysis of:
 ### Institutional Comparison
 
 Tracking state authorities allows comparison of:
+
 - Church institutional responses vs. state responses
 - Timing: when church acted vs. when state was involved
 - Outcomes: church measures vs. legal proceedings
@@ -125,6 +128,7 @@ Tracking state authorities allows comparison of:
 ### Historical Context
 
 The schema accounts for:
+
 - Changes in Swiss criminal procedure (e.g., abolition of examining magistrates)
 - Evolution of victim support services
 - Changes in statute of limitations

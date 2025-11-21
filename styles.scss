@@ -8,16 +8,18 @@ $gold: #ffc845;
 $orange: #fc4c02;
 $berry: #bf0d3e;
 
+// Base colors (must be defined before use)
+$light: #fafafa;
+$dark: #333333;
+
 // 2. Bootstrap Color Mapping
 $primary: $blue;
-$secondary: $cyan;
+$secondary: $dark; // Changed from $cyan for better contrast
 $success: $apple;
-$info: $cyan;
+$info: $blue; // Changed from $cyan for better contrast
 $warning: $gold;
 $danger: $berry;
 
-$light: #fafafa;
-$dark: #333333;
 $body-color: $dark;
 $body-bg: #ffffff;
 
@@ -36,6 +38,10 @@ $headings-font-weight: 700;
 $h1-font-size: 2.75rem;
 $h2-font-size: 2.2rem;
 $h3-font-size: 1.6rem;
+
+// Figure captions
+$figure-caption-color: $dark;
+$figure-caption-font-size: 0.9rem;
 
 // 4. Component Variables (Replaces manual CSS rules)
 

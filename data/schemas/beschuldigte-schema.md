@@ -6,24 +6,24 @@ The BESCHULDIGTER entity represents a person accused of sexual abuse. This typic
 
 ## Fields
 
-| Field Name | Type | Required | Description | Controlled Vocabulary |
-|------------|------|----------|-------------|----------------------|
-| id | String (PK) | Yes | Unique identifier for the person | Auto-generated (e.g., BESCH-001) |
-| name_pseudonym | String | Yes | Pseudonymized name or identifier | Free text |
-| geschlecht | String | No | Gender | See Gender vocabulary |
-| geburtsdatum_edtf | Date | No | Date of birth (approximate if necessary) | EDTF format as string |
-| geburtsort | String | No | Place of birth | Free text |
-| funktion_rolle | String | No | Function/role in the church | See Role vocabulary |
-| ordensgemeinschaft | String | No | Religious order/congregation | Free text or order vocabulary |
-| bistum_diozese | String | No | Diocese or jurisdiction | See Diocese vocabulary |
-| weihedatum | Date | No | Ordination date | EDTF format as string |
-| taetigkeitsorte | List | No | Locations/parishes where active | List of strings |
-| taetigkeitszeitraeume | List | No | Periods of activity at locations | List of date ranges |
-| status_verfahren | String | No | Status of proceedings | See Proceedings Status vocabulary |
-| massnahmen_kirche | Text | No | Measures taken by church | Free text |
-| massnahmen_staat | Text | No | Measures taken by state | Free text |
-| versetzungshistorie | Text | No | History of transfers/reassignments | Free text |
-| anmerkungen | Text | No | Additional notes | Free text |
+| Field Name            | Type        | Required | Description                              | Controlled Vocabulary             |
+| --------------------- | ----------- | -------- | ---------------------------------------- | --------------------------------- |
+| id                    | String (PK) | Yes      | Unique identifier for the person         | Auto-generated (e.g., BESCH-001)  |
+| name_pseudonym        | String      | Yes      | Pseudonymized name or identifier         | Free text                         |
+| geschlecht            | String      | No       | Gender                                   | See Gender vocabulary             |
+| geburtsdatum_edtf     | Date        | No       | Date of birth (approximate if necessary) | EDTF format as string             |
+| geburtsort            | String      | No       | Place of birth                           | Free text                         |
+| funktion_rolle        | String      | No       | Function/role in the church              | See Role vocabulary               |
+| ordensgemeinschaft    | String      | No       | Religious order/congregation             | Free text or order vocabulary     |
+| bistum_diozese        | String      | No       | Diocese or jurisdiction                  | See Diocese vocabulary            |
+| weihedatum            | Date        | No       | Ordination date                          | EDTF format as string             |
+| taetigkeitsorte       | List        | No       | Locations/parishes where active          | List of strings                   |
+| taetigkeitszeitraeume | List        | No       | Periods of activity at locations         | List of date ranges               |
+| status_verfahren      | String      | No       | Status of proceedings                    | See Proceedings Status vocabulary |
+| massnahmen_kirche     | Text        | No       | Measures taken by church                 | Free text                         |
+| massnahmen_staat      | Text        | No       | Measures taken by state                  | Free text                         |
+| versetzungshistorie   | Text        | No       | History of transfers/reassignments       | Free text                         |
+| anmerkungen           | Text        | No       | Additional notes                         | Free text                         |
 
 ## Cargo Table Declaration
 
@@ -52,11 +52,13 @@ _table=Beschuldigte
 ## Controlled Vocabularies
 
 ### Geschlecht (Gender)
+
 - `maennlich` - Male
 - `weiblich` - Female
 - `unbekannt` - Unknown
 
 ### Funktion_Rolle (Role)
+
 - `priester` - Priest
 - `diakon` - Deacon
 - `bischof` - Bishop
@@ -70,6 +72,7 @@ _table=Beschuldigte
 - `sonstiges` - Other
 
 ### Bistum_Diozese (Diocese)
+
 - `basel` - Diocese of Basel
 - `chur` - Diocese of Chur
 - `lausanne_genf_freiburg` - Diocese of Lausanne, Geneva and Fribourg
@@ -81,6 +84,7 @@ _table=Beschuldigte
 - `unbekannt` - Unknown
 
 ### Status_Verfahren (Proceedings Status)
+
 - `vorwurf_bekannt` - Allegation known
 - `kirchliche_untersuchung` - Church investigation
 - `staatsanwaltliche_untersuchung` - Prosecutorial investigation
@@ -103,22 +107,26 @@ _table=Beschuldigte
 
 ```json
 {
-  "id": "BESCH-001",
-  "name_pseudonym": "Pfarrer X",
-  "geschlecht": "maennlich",
-  "geburtsdatum_edtf": "1940/1945",
-  "geburtsort": "Zürich",
-  "funktion_rolle": "priester",
-  "ordensgemeinschaft": null,
-  "bistum_diozese": "basel",
-  "weihedatum": "1968",
-  "taetigkeitsorte": ["Pfarrei St. Martin, Basel", "Pfarrei St. Peter, Liestal", "Pfarrei St. Anton, Muttenz"],
-  "taetigkeitszeitraeume": ["1970-1985", "1985-1995", "1995-2005"],
-  "status_verfahren": "verurteilung",
-  "massnahmen_kirche": "Suspendierung vom Dienst nach Bekanntwerden der Vorwürfe im Jahr 2003",
-  "massnahmen_staat": "Verurteilung zu 3 Jahren Freiheitsstrafe im Jahr 2005",
-  "versetzungshistorie": "Auffällige Versetzungsmuster: Drei Versetzungen in 25 Jahren, jeweils kurz nach informellen Beschwerden",
-  "anmerkungen": "Versetzungshistorie deutet auf systematische Vertuschung hin"
+	"id": "BESCH-001",
+	"name_pseudonym": "Pfarrer X",
+	"geschlecht": "maennlich",
+	"geburtsdatum_edtf": "1940/1945",
+	"geburtsort": "Zürich",
+	"funktion_rolle": "priester",
+	"ordensgemeinschaft": null,
+	"bistum_diozese": "basel",
+	"weihedatum": "1968",
+	"taetigkeitsorte": [
+		"Pfarrei St. Martin, Basel",
+		"Pfarrei St. Peter, Liestal",
+		"Pfarrei St. Anton, Muttenz"
+	],
+	"taetigkeitszeitraeume": ["1970-1985", "1985-1995", "1995-2005"],
+	"status_verfahren": "verurteilung",
+	"massnahmen_kirche": "Suspendierung vom Dienst nach Bekanntwerden der Vorwürfe im Jahr 2003",
+	"massnahmen_staat": "Verurteilung zu 3 Jahren Freiheitsstrafe im Jahr 2005",
+	"versetzungshistorie": "Auffällige Versetzungsmuster: Drei Versetzungen in 25 Jahren, jeweils kurz nach informellen Beschwerden",
+	"anmerkungen": "Versetzungshistorie deutet auf systematische Vertuschung hin"
 }
 ```
 
@@ -147,6 +155,7 @@ This schema enables detection of:
 ### Quellenkritik Integration
 
 The `versetzungshistorie` field is particularly important for source criticism:
+
 - Documents official vs. informal explanations for transfers
 - Captures discrepancies in institutional records
 - Enables comparison of church records with witness testimonies
@@ -156,6 +165,7 @@ The `versetzungshistorie` field is particularly important for source criticism:
 ⚠️ **Note**: While accused persons have reduced privacy expectations compared to victims, this schema still uses pseudonyms in the research database. Real identifying information is stored separately in secure infrastructure.
 
 However:
+
 - Public figures (e.g., bishops) may be identifiable from role/location combinations
 - Convicted individuals may have public records
 - Research ethics still require careful handling of all personal data

@@ -24,13 +24,25 @@ website:
       - icon: github
         url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/
     left:
-      - text: Readme
-        href: index.qmd
+      - text: Paper
+        href: paper/index.qmd
+      - text: Data Documentation
+        href: documentation/data-model-overview.qmd
       - text: Report
         href: report.md
 
   sidebar:
     contents:
+      - text: Paper
+        href: paper/index.qmd
+      - section: Data Documentation
+        contents:
+          - documentation/data-model-overview.qmd
+          - data/schemas/index.qmd
+          - text: MediaWiki Templates
+            href: templates/index.qmd
+      - href: report.md
+        contents: project-management/*
       - section: Sexueller Missbrauch
         href: index.qmd
         contents:
@@ -46,8 +58,6 @@ website:
             href: LICENSE-AGPL.md
           - text: Security
             href: SECURITY.md
-      - href: report.md
-        contents: project-management/*
 
 format:
   html:
