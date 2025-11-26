@@ -105,6 +105,83 @@ Detailed deployment and configuration documentation is available:
 - `src/LocalSettings.php` - MediaWiki configuration
 - `src/example.env` - Environment variables template
 
+## 🛠️ Usage
+
+### User Management
+
+#### Create a New User with Admin Privileges
+
+To create a new user with superuser privileges (bureaucrat and sysop):
+
+```bash
+docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script createAndPromote.php --user "Username" --password "Password" --bureaucrat --sysop
+```
+
+#### Superuser Group
+
+The `superuser` group is a custom user group with elevated permissions configured in `LocalSettings.php`. Users in this group have the following additional permissions:
+
+- **delete**: Ability to delete pages
+- **editinterface**: Ability to edit the MediaWiki interface (MediaWiki namespace)
+
+To assign a user to the superuser group, use the MediaWiki Special:UserRights page or run:
+
+```bash
+docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script createAndPromote.php --user "Username" --custom-groups superuser
+```
+
+Alternatively, through the web interface:
+
+1. Navigate to `Special:UserRights`
+2. Enter the username
+3. Check the "superuser" group checkbox
+4. Save the changes
+
+### Update the Database Schema
+
+```bash
+docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/update.php --quick
+docker-compose -f src/docker-compose.prod.yml exec mediawiki_staging php maintenance/update.php --quick
+```
+
+### Run Queue Jobs
+
+```bash
+docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+```
+
+### Backup the Database
+
+```bash
+./src/backup_db.sh
+```
+
+### Restore the Database
+
+```bash
+./src/restore_db.sh backups/schema_backup_2024-12-01_10-45.sql backups/data_backup_2024-12-01_10-45.sql
+```
+
+## 🔧 Troubleshooting
+
+### Fix Permissions
+
+If you encounter permission issues with images:
+
+```bash
+docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
+docker exec -it mediawiki chmod -R 755 /var/www/html/images
+docker exec -it mediawiki_staging chown -R www-data:www-data /var/www/html/images
+docker exec -it mediawiki_staging chmod -R 755 /var/www/html/images
+```
+
+### Reset Admin Password
+
+```bash
+docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script changePassword.php --user=ADMIN_USERNAME --password=NEW_PASSWORD
+docker-compose -f src/docker-compose.prod.yml exec mediawiki_staging php maintenance/run.php --script changePassword.php --user=ADMIN_USERNAME --password=NEW_PASSWORD
+```
+
 ## 🔬 Use
 
 These data are openly available to everyone and can be used for any research or educational purpose. If you use this data in your research, please cite as specified in [CITATION.cff](CITATION.cff). The following citation formats are also available through _Zenodo_:

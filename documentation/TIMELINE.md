@@ -1,0 +1,411 @@
+# 🚀 Entwicklungs-Timeline: MediaWiki Forschungsumgebung
+
+## Chronologische Übersicht der Entwicklung
+
+Diese Timeline dokumentiert die wichtigsten Meilensteine in der Entwicklung der MediaWiki-basierten Forschungsumgebung für das Projekt zur Aufarbeitung sexuellen Missbrauchs in der katholischen Kirche der Schweiz.
+
+```{mermaid}
+%%{init: {
+    'theme': 'default',
+    'themeCSS': '
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+    ',
+    'gantt': {
+        'fontSize': 16,
+        'barHeight': 18,
+        'barGap': 2,
+        'tickInterval': '3month'
+    },
+    'themeVariables': {
+        'useMaxWidth': false,
+        'maxWidth': '600px'
+    }
+}}%%
+gantt
+    dateFormat  YYYY-MM-DD
+    axisFormat  %y-Q%q
+    todayMarker off
+
+    section Vorbereitung & Setup
+    Pilotstudie                         :done,    2022-05-01, 2023-04-30
+    Pilotbericht publiziert             :milestone, 2023-09-30, 1d
+    Evaluation und Testumgebung aufsetzen :done,  2024-01-01, 2024-04-30
+
+    section Modellierung, Testing & Migration
+    Modellierung                        :done,    2024-07-01, 2024-08-31
+    Testing                             :done,    2024-09-01, 2024-10-05
+    Datenbereinigung und Migration in Produktionsumgebung : 2024-11-01, 2025-04-15
+
+    section Betrieb & Auswertung
+    Betrieb & Weiterentwicklung         : 2025-04-16, 2026-12-31
+    Auswertung                          : 2025-10-01, 2026-12-15
+
+```
+
+## 2024-2025: Projektentwicklung und -migration
+
+### Februar-März 2024: Konzeptionsphase
+
+- **21.02.2024**: Erste Projektbesprechung inkl. Vor- und Nachbereitung (2h)
+- **23.02.2024 & 29.02.2024**: Machbarkeitsstudien (4h total)
+- **27.02.2024**: Review Leitfaden Datenschutz (0,5h)
+- **05.03.2024 - 20.03.2024**: Koordination IT-Anforderungen und erste Infrastruktur-Planung
+
+### April-Mai 2024: Infrastruktur-Setup
+
+- **08.04.2024 - 11.04.2024**: Intensive IT-Koordination und erste Server-Konfiguration (3h total)
+- **08.05.2024**: Koordination IT/Research - erste Entwicklungsrichtung definiert (2h)
+- **10.05.2024**: LeoMed Demo - Evaluierung ETHZ-Infrastruktur (1h)
+- **16.05.2024 - 07.06.2024**: Kontinuierliche Server-Setup-Arbeiten auf UZH-Infrastruktur
+
+### Juni 2024: Server-Konfiguration und erste Tests
+
+- **12.06.2024 - 17.06.2024**: Intensive Server-Setup-Phase (4h total)
+- **Server**: `[SERVERNAME MASKIERT]`.uzh.ch mit Podman-Containern
+- **Erste MediaWiki-Installation**: Grundlegende Funktionalitäten implementiert
+
+### Juli-August 2024: Prototyp-Entwicklung
+
+- **22.07.2024**: Umfangreicher Workshop inkl. Vor- und Nachbereitung (8h)
+- **25.07.2024**: Modellierung des ersten Prototyps (4h)
+- **05.08.2024 - 15.08.2024**: Intensive Prototyp-Entwicklungsphase (18h total)
+  - Extension-Integration (Cargo, Page Forms, Page Schemas)
+  - Erste Formulare und Template-System
+  - **Kernentitäten definiert**: Fall, Beschuldigter, Betroffener, Kirchliche_Institution, Fachgremium, Strafverfolgungsbehörde
+
+### September 2024: Testing und Verfeinerung
+
+- **29.09.2024 - 26.09.2024**: Ausführliche Testphasen und Benutzer-Feedback (3,25h total)
+- **24.09.2024 & 26.09.2024**: PDF Export/Upload-Funktionalität implementiert (2,5h total)
+
+### Oktober-November 2024: Stabilisierung und Schulung
+
+- **03.10.2024**: Debugging und Neustart-Probleme (0,75h)
+- **07.10.2024**: Podman/Systemd-Korrekturen (1h)
+- **11.10.2024**: Erste Benutzerschulung mit Vor- und Nachbereitung (2h)
+- **17.10.2024**: Caching-Probleme lösen und Anleitung erstellen (3h)
+- **30.10.2024**: 502-Fehler Debugging - erste Stabilitätsprobleme (1h)
+- **12.11.2024 - 20.11.2024**: Koordination Setup Biomed und LeoMed-Zugang
+
+### November 2024 - März 2025: LeoMed-Migration Vorbereitung
+
+- **29.11.2024**: LeoMed Workshop - Evaluierung neuer Infrastruktur (5h)
+- **30.11.2024 - 04.12.2024**: Migrations-Testumgebung aufsetzen (6,5h total)
+- **10.12.2024 - 13.12.2024**: Debugging LeoMed Wiki und Koordination (2,25h total)
+- **17.12.2024 - 22.12.2024**: Vorbereitung Testdatenmigration und Datenmodell-Anpassungen (8h total)
+- **26.12.2024 - 18.01.2025**: Datenmodell und Dokumentation verfeinern (6h total)
+
+### Februar-April 2025: Produktions-Migration zu ETHZ
+
+#### **UZH-Phase (bis April 2025)**
+
+- **Server**: `[SERVERNAME MASKIERT]`.uzh.ch
+- **Technologie**: Podman-basierte Container
+- **Herausforderungen**:
+  - Instabile Serverperformance
+  - Speicher-Probleme
+  - Häufige Ausfälle (dokumentiert ab Oktober 2024)
+
+#### **ETHZ-Migration (März-April 2025)**
+
+- **07.02.2025**: Sitzung vor Ort mit Vor- und Nachbereitung (3h)
+- **08.03.2025 & 14.03.2025**: LeoMed-Zugriff einrichten (1h total)
+- **01.04.2025 - 03.04.2025**: Datenimport und Setup Wiki Production beginnen (4h total)
+- **07.04.2025 - 08.04.2025**: Intensive Setup Wiki Production (12h total)
+- **09.04.2025**: Umfangreiche Datenmigration vor Ort (9h)
+- **10.04.2025 - 17.04.2025**: Datenmigration und Fileserver-Setup (15h total)
+
+#### **ETHZ-Infrastruktur Details**
+
+- **Produktions-Server**: `[PROD-SERVER MASKIERT]`.leomed.ethz.ch (LeoMed-Infrastruktur)
+- **Test-Server**: `[TEST-SERVER MASKIERT]`.leomed.ethz.ch
+- **Technologie**: Docker-basierte Container mit `docker-compose`
+- **Vorteile**:
+  - Deutlich verbesserte Stabilität
+  - Professionelle Backup-Strategien (180-Tage-Retention)
+  - Spezialisierte Infrastruktur für sensible Forschungsdaten
+  - GUI-Zugang über OnDemand-Dashboard
+
+### April-Juli 2025: Produktion und Optimierung
+
+- **23.04.2025**: Datenmigration und Abfragen optimieren (4h)
+- **24.04.2025 - 25.04.2025**: Debugging mit Mattia (4h total)
+- **02.05.2025 & 12.05.2025**: Weitere Debugging-Sessions (1,5h total)
+- **14.05.2025**: Koordinations-Sitzung mit Vor- und Nachbereitung (2h)
+- **02.07.2025**: Projekt-Review Sitzung mit Vor- und Nachbereitung (1,25h)
+- **03.07.2025**: Beginn Wunschliste-Bearbeitung (2h)
+- **22.07.2025 - 25.07.2025**: Intensive Wunschliste-Bearbeitung (11h total)
+
+### Aktuelle Entwicklungsphase (September 2025)
+
+#### **Datenmodell-Verfeinerung**
+
+- **12.09.2025**: Wunschliste abarbeiten und Systemoptimierung (3h)
+- **September 12, 2025**: Ersetzung "Informationsstabilität" durch "Quellenkritik"
+  - Bessere Reflexion der methodologischen Herangehensweise
+  - Anpassung aller betroffenen Formulare und Templates
+  - Bereinigung nicht verwendeter Seiten
+
+#### **Produktions-Setup**
+
+- **Dual-Environment**:
+  - Produktions-System (Port 8080)
+  - Staging-System (Port 8081) für Tests
+- **Zusätzliche Services**:
+  - PHPMyAdmin für Datenbank-Management
+  - Caddy File-Server für Dokumenten-Zugriff
+- **Automatisierung**:
+  - Tägliche Backup-Scripts
+  - Synchronisation Produktion → Staging
+  - Automatische Job-Verarbeitung
+
+### Oktober-November 2025: Aktuelle Optimierungen und Dokumentation
+
+- **10.10.2025**: Debugging (3,00h)
+- **12.10.2025**: Debugging (2,00h)
+- **15.10.2025**: Backup Solution - Abklärungen (0,50h)
+- **03.11.2025**: User-Erstellung und -Verwaltung (0,50h)
+- **10.11.2025**: Abklärung System-Integration (1,00h)
+- **21.11.2025**: Dokumentation und Handbücher (6,00h)
+- **26.11.2025**: Sitzung (0,50h)
+- **26.11.2025**: Mail an Projektleitung (0,50h)
+
+---
+
+## Technologische Meilensteine
+
+### MediaWiki-Konfiguration Evolution
+
+#### **Version 1.42.1 → 1.43.1**
+
+- Update auf neuere MediaWiki-Version
+- Verbesserte Extension-Kompatibilität
+- Erweiterte Sicherheitsfeatures
+
+#### **Extension-Entwicklung**:
+
+```
+Phase 1: Basis-Extensions
+- Cargo (strukturierte Daten)
+- Page Forms (Formulare)
+- Page Schemas (Schema-Management)
+
+Phase 2: Erweiterte Funktionalität
+- VisualEditor (benutzerfreundliche Bearbeitung)
+- PdfBook (Export-Funktionen)
+- DataTransfer (Import/Export)
+- ReplaceText (Bulk-Änderungen)
+
+Phase 3: Spezialisierte Tools
+- CategoryTree (Navigation)
+- Cite (Quellenangaben)
+- SyntaxHighlight (Code-Darstellung)
+```
+
+### Container-Orchestrierung Evolution
+
+#### **Development Setup**:
+
+```yaml
+Einfache Konfiguration:
+  - MediaWiki + MariaDB
+  - Grundlegende Volumes
+  - Lokale Entwicklung
+```
+
+#### **Production Setup**:
+
+```yaml
+Komplexe Konfiguration:
+  - MediaWiki + MariaDB (Produktion)
+  - MediaWiki + MariaDB (Staging)
+  - PHPMyAdmin (Datenbank-Management)
+  - Caddy (File-Server)
+  - Umfangreiche Environment-Variablen
+```
+
+---
+
+## Datenschutz und Compliance Timeline
+
+### **Datenschutz-Anforderungen**
+
+- **Sensible Daten**: Dokumentation von Missbrauchsfällen erfordert höchste Sicherheitsstandards
+- **Rechtliche Compliance**: Einhaltung schweizerischer und europäischer Datenschutzgesetze
+- **Anonymisierung**: Implementierung von Nummernsystemen statt Namen für Betroffene
+
+### **Sicherheitsmaßnahmen Evolution**
+
+```
+Phase 1: Grundlegende Sicherheit
+- Geschlossenes Wiki (keine öffentliche Leseberechtigung)
+- Benutzer-Authentifizierung
+
+Phase 2: Erweiterte Sicherheit
+- Rollenbasierte Zugriffskontrolle
+- Template-Schutz für kritische Vorlagen
+- SSL/TLS-Verschlüsselung
+
+Phase 3: Enterprise-Sicherheit
+- LeoMed-Infrastruktur mit spezialisiertem Datenschutz
+- Professionelle Backup-Strategien
+- Audit-Trails für Datenänderungen
+```
+
+---
+
+## Forschungsworkflow-Entwicklung
+
+### **Datenerfassung Evolution**
+
+#### **Manuelle Phase**:
+
+- Direkte Wiki-Bearbeitung
+- Freie Textfelder
+- Inkonsistente Datenstrukturen
+
+#### **Strukturierte Phase**:
+
+- Formular-basierte Eingabe
+- Vordefinierte Felder
+- Automatische Kategorisierung
+
+#### **Validierte Phase**:
+
+- Schema-validierte Eingabe
+- Pflichtfelder und Datentyp-Prüfungen
+- Staging-Tests vor Produktions-Deployment
+
+### **Analyse-Entwicklung**
+
+```
+Phase 1: Manuelle Auswertung
+- Wiki-Kategorien
+- Manuelle Seitensammlung
+
+Phase 2: Cargo-Abfragen
+- SQL-ähnliche Abfragen
+- Automatische Tabellen-Generierung
+- Export-Funktionen
+
+Phase 3: Erweiterte Analytics
+- Komplexe relationale Abfragen
+- PDF-Export für Berichte
+- Dashboard-Visualisierungen
+```
+
+---
+
+## Arbeitsaufwand-Analyse
+
+### Gesamtaufwand und Verteilung
+
+Basierend auf detaillierter Zeiterfassung von Februar 2024 bis November 2025:
+
+**Gesamtaufwand**: \~163+ Stunden über 22 Monate (Aktualisiert)
+
+### Phasen-spezifische Aufwände
+
+#### **Konzeption und Prototyping (Feb-Aug 2024): \~45 Stunden**
+
+- Machbarkeitsstudien und Koordination: 15h
+- Workshop und Modellierung: 12h
+- Prototyp-Entwicklung: 18h
+
+#### **Testing und Stabilisierung (Sep-Nov 2024): \~15 Stunden**
+
+- Benutzer-Tests und Feedback: 8h
+- Debugging und Problemlösung: 7h
+
+#### **Migration und Setup (Dez 2024-Apr 2025): \~65 Stunden**
+
+- LeoMed-Evaluierung und Vorbereitung: 20h
+- Datenmigration und Setup: 35h
+- Vor-Ort-Arbeit: 10h
+
+#### **Produktion und Optimierung (Mai-Nov 2025): \~38 Stunden** (Aktualisiert)
+
+- Debugging und Verfeinerung: 15h
+- Feature-Entwicklung (Wunschliste): 17h
+- Aktuelle Arbeiten (Okt-Nov 2025): 6h (5,5h Debugging/System + 0,5h Koordination)
+
+### Aktivitäts-Kategorien
+
+- **Server-Setup und Infrastruktur**: \~40% des Gesamtaufwands\*\*
+- **Entwicklung und Anpassung**: \~35% des Gesamtaufwands\*\*
+- **Koordination und Meetings**: \~15% des Gesamtaufwands\*\*
+- **Testing und Debugging**: \~10% des Gesamtaufwands\*\*
+
+---
+
+## Lessons Learned Timeline
+
+### **Technische Erkenntnisse**
+
+- **Juli-August 2024**: Extension-Kombination (Cargo, Page Forms, Page Schemas) erweist sich als sehr effektiv
+- **Oktober 2024**: Erste Stabilitätsprobleme mit UZH-Infrastruktur erkannt (502-Fehler, Caching-Probleme)
+- **November-Dezember 2024**: Staging-Umgebungen erweisen sich als essentiell für sichere Entwicklung
+- **März-April 2025**: Migration zeigt Wichtigkeit stabiler Infrastruktur - LeoMed-Setup löst UZH-Probleme
+- **Juli 2025**: Automatisierung und strukturierte Entwicklungsprozesse verbessern Zuverlässigkeit erheblich
+- **Oktober 2025**: Kontinuierliches, kleineres Debugging ist notwendig zur Systempflege.
+
+### **Forschungsworkflow-Erkenntnisse**
+
+- **August 2024**: Strukturierte Eingabe über Formulare verbessert Datenqualität dramatisch
+- **Oktober 2024**: Benutzerschulungen zeigen Notwendigkeit benutzerfreundlicher Oberflächen
+- **April 2025**: Produktions-Migration ermöglicht breiteren Forscher-Zugang
+- **September 2025**: Terminologie-Evolution ("Quellenkritik") zeigt Notwendigkeit flexibler Systeme
+
+### **Projektmanagement-Erkenntnisse**
+
+- **Arbeitsaufwand**: Gesamtaufwand von ca. 163+ Stunden über 22 Monate dokumentiert
+- **Schwerpunkte**: Server-Setup und Datenmigration benötigten die meiste Zeit
+- **Iterative Entwicklung**: Kontinuierliche kleine Verbesserungen effektiver als große Sprünge
+- **Koordination**: Regelmäßige Vor-Ort-Termine essentiell für komplexe Migrations-Phasen
+
+---
+
+## Zukünftige Meilensteine (Geplant)
+
+### **Q4 2025 und darüber hinaus**
+
+- Weitere Feature-Entwicklung basierend auf Benutzerfeedback
+- API-Entwicklung für externe Tool-Integration
+- Erweiterte Analytics und Reporting-Funktionen
+
+### **Langfristige Vision**
+
+- Integration mit anderen Forschungsdatenbanken
+- Automatisierte Datenanalyse-Tools
+- Publikations-Integration und Export-Funktionen
+
+---
+
+## Methodische Reflexion
+
+### Arbeitsweise-Evolution
+
+Die detaillierte Zeiterfassung zeigt die Evolution der Arbeitsweise:
+
+- **Frühe Phase (2024)**: Explorative Herangehensweise mit längeren Konzeptionsphasen
+- **Entwicklungsphase (Ende 2024)**: Fokussierte Entwicklungs-Sessions
+- **Migrationsphase (2025)**: Konzentrierte, intensive Arbeitsphasen
+- **Optimierungsphase (Mitte 2025)**: Regelmäßige, kleinere Verbesserungen und reaktive Problemlösung
+
+### Erfolgsfaktoren
+
+1.  **Dokumentation der Arbeitszeit**: Ermöglicht präzise Projektplanung
+2.  **Flexibilität**: Anpassung an sich ändernde Anforderungen
+3.  **Iterative Entwicklung**: Kontinuierliche Verbesserung statt Big-Bang-Ansätze
+4.  **Persönlicher Kontakt**: Vor-Ort-Termine für kritische Phasen
+
+---
+
+_Diese Timeline wird kontinuierlich aktualisiert, um neue Entwicklungen zu reflektieren._

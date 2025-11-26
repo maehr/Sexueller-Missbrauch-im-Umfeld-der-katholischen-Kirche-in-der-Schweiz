@@ -88,43 +88,19 @@ Das Datenmodell entwickelte sich schrittweise um folgende Hauptentitäten:
 
 ### Kern-Extensions
 
-#### Cargo Extension
+Das Projekt nutzt eine Kombination von MediaWiki-Extensions für strukturierte Datenerfassung:
 
-- **Zweck**: Strukturierte Datenspeicherung und -abfrage
-- **Funktionalität**: Automatische Tabellenverwaltung, komplexe Abfragen
-- **Entwicklung**: Von einfachen Listen zu komplexen relationalen Abfragen
+- **Cargo**: Strukturierte Datenspeicherung und -abfrage (von einfachen Listen zu komplexen relationalen Abfragen)
+- **Page Forms**: Benutzerfreundliche Formulare (von Basis-Formularen zu spezialisierten Eingabemasken)
+- **Page Schemas**: Zentrale Schema-Definition mit automatischer Generierung von Vorlagen
 
-#### Page Forms Extension
+Weitere Extensions für erweiterte Funktionalität: VisualEditor, PdfBook, DataTransfer, ReplaceText.
 
-- **Zweck**: Benutzerfreundliche Dateneingabe
-- **Entwicklung**: Von grundlegenden Formularen zu spezialisierten Eingabemasken
-- **Beitrag**: Ermöglicht Nicht-Technikern die strukturierte Dateneingabe
-
-#### Page Schemas Extension
-
-- **Zweck**: Zentrale Schema-Definition
-- **Vorteil**: Automatische Generierung von Vorlagen und Formularen
-- **Konsistenz**: Sicherstellung einheitlicher Datenstrukturen
-
-### Weitere wichtige Extensions:
-
-- **VisualEditor**: Vereinfachte Bearbeitung für Nicht-Techniker
-- **PdfBook**: Export von Daten als PDF für Berichte
-- **DataTransfer**: Import/Export-Funktionalitäten für Datenaustausch
-- **ReplaceText**: Bulk-Änderungen für Datenbereinigung
+> **Detaillierte Konfiguration**: Siehe [CARGO_CONFIGURATION.md](../src/CARGO_CONFIGURATION.md) und [PAGEFORMS_CONFIGURATION.md](../src/PAGEFORMS_CONFIGURATION.md)
 
 ### Konfigurationsentwicklung
 
-#### Sicherheit und Zugriff:
-
-- **Geschlossenes Wiki**: Nur registrierte Benutzer können lesen und bearbeiten
-- **Rollenbasierte Berechtigungen**: Unterschiedliche Zugriffsebenen für verschiedene Benutzertypen
-- **Template-Schutz**: Schutz kritischer Vorlagen vor unbeabsichtigten Änderungen
-
-#### Performance-Optimierung:
-
-- **Caching deaktiviert**: Für Entwicklungsumgebung zur sofortigen Aktualisierung
-- **Debug-Modi**: Konfigurierbare Debug-Ausgaben für Entwicklung und Fehlerbehebung
+Das Wiki verwendet ein geschlossenes Modell mit rollenbasierten Berechtigungen und Template-Schutz. Caching ist in der Entwicklungsumgebung deaktiviert für sofortige Aktualisierungen.
 
 ### Infrastruktur-Migration: UZH → ETHZ
 
@@ -159,73 +135,9 @@ Das Datenmodell entwickelte sich schrittweise um folgende Hauptentitäten:
 
 ### Deployment-Evolution
 
-#### Entwicklungsumgebungen:
+Das System entwickelte sich von einer einfachen Entwicklungsumgebung zu einem professionellen Setup mit drei Umgebungen (Development, Staging, Production) und umfangreicher Automatisierung (tägliche Backups, Staging-Sync, automatische Job-Verarbeitung).
 
-- **Development**: Lokale Entwicklung mit Hot-Reload
-- **Staging**: Testumgebung für Validierung von Änderungen
-- **Production**: Live-System für aktive Forschung
-
-#### Automatisierung:
-
-- **Backup-Scripts**: Automatische tägliche Datensicherung
-- **Sync-Scripts**: Synchronisation zwischen Produktions- und Testumgebung
-- **Job-Processing**: Automatische Verarbeitung von Wiki-Jobs
-
-## Technische Architektur-Entwicklung
-
-### Container-Orchestrierung
-
-#### Docker-Compose Evolution:
-
-```yaml
-# Frühe Version (Entwicklung)
-- Einfache MediaWiki + MariaDB
-- Grundlegende Volume-Mappings
-- Lokale Entwicklung fokussiert
-
-# Aktuelle Version (Produktion)
-- MediaWiki + MariaDB + Staging-Umgebung
-- PHPMyAdmin für Datenbank-Management
-- Caddy File-Server für Dokumenten-Zugriff
-- Umfangreiche Environment-Konfiguration
-```
-
-#### Volume-Management:
-
-- **Daten-Persistierung**: Externe Volume-Mappings für Datenerhaltung
-- **Image-Management**: Getrennte Verzeichnisse für Produktions- und Test-Daten
-- **Backup-Integration**: Direkte Pfade für Backup-Prozesse
-
-### Netzwerk und Sicherheit
-
-#### Port-Konfiguration:
-
-- **8080**: Produktions-MediaWiki
-- **8081**: Staging-MediaWiki
-- **8082**: PHPMyAdmin für Staging
-- **8090**: Caddy File-Server
-
-#### Umgebungsvariablen:
-
-- **Sensible Daten**: Externe .env-Dateien für Passwörter und Schlüssel
-- **Umgebungstrennung**: Separate Konfigurationen für Produktion und Staging
-- **Debug-Modi**: Konfigurierbare Debug-Level
-
-## Entwicklungsworkflow und Qualitätssicherung
-
-### Datenerfassung-Workflow:
-
-1. **Schema-Definition**: Entwicklung in Page Schemas
-2. **Formular-Generierung**: Automatische Erstellung durch Page Forms
-3. **Template-Anpassung**: Manuelle Optimierung der Anzeige
-4. **Daten-Validierung**: Tests mit Staging-Umgebung
-5. **Produktions-Deployment**: Transfer in Live-System
-
-### Backup und Recovery:
-
-- **Tägliche Backups**: Automatisierte Schema- und Daten-Sicherung
-- **Versionskontrolle**: Git-basierte Nachverfolgung von Konfigurationsänderungen
-- **Recovery-Tests**: Regelmäßige Validierung der Backup-Integrität
+> **Detaillierte Deployment-Dokumentation**: Siehe [DEPLOYMENT.qmd](../src/DEPLOYMENT.qmd) für vollständige Architektur, Workflows und Troubleshooting
 
 ## Erkenntnisse und Lessons Learned
 

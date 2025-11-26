@@ -6,9 +6,11 @@ This document provides an overview of the data model and data entry templates fo
 
 The database separates **data model** (persistent structure) from **data entry** (UI/forms), enabling independent evolution of structure and interface.
 
+> **Single Source of Truth**: Detailed schema definitions are maintained in `data/schemas/`. This document provides a high-level overview with links to detailed specifications.
+
 ## Directory Structure
 
-```text
+``` text
 data/
 ├── schemas/              # Entity schemas and data model
 │   ├── *-schema.md      # Entity definitions
@@ -23,24 +25,90 @@ data/
 
 ## Core Entities
 
-The database tracks six primary entities:
+The database tracks six primary entities with their relationships:
 
 ```{mermaid}
-graph LR
-    Fall[FALL<br/>Case]
-    Betroffener[BETROFFENER<br/>Affected Person]
-    Beschuldigter[BESCHULDIGTER<br/>Accused Person]
-    Institution[KIRCHLICHE_INSTITUTION<br/>Church Institution]
-    Behoerde[STRAFVERFOLGUNGSBEHOERDE<br/>Law Enforcement]
-    Gremium[FACHGREMIUM<br/>Expert Committee]
+classDiagram
 
-    Fall -->|victim| Betroffener
-    Fall -->|perpetrator| Beschuldigter
-    Fall -->|context| Institution
-    Fall -->|prosecuted by| Behoerde
-    Fall -->|reviewed by| Gremium
-    Beschuldigter -->|affiliated with| Institution
-    Betroffener -.->|context| Institution
+%% === Core Entity Definitions ===
+
+class Kirchliche_Institution {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Fachgremium {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Strafverfolgungsbehörde {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Beschuldigter {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Sterbedatum : Date
+  +Institutioneller_Kontext : List[Page]
+  +Funktion : List[String]
+  +Weihegrad : String
+  +Weihedatum : Date
+}
+
+class Betroffener {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Institutioneller_Kontext : List[Page]
+}
+
+class Fall {
+  +Betroffener : Page
+  +Beschuldigter : Page
+  +Funktion : List[String]
+  +Tatzeitpunkt_Tatzeitraum : String
+  +Frequenz : String
+  +Physischer_Kontakt : String
+  +Art_des_Missbrauch : List[String]
+  +Tatort : List[String]
+  +Kanton : String
+  +Tatkontext : String
+  +Institutioneller_Kontext : List[Page]
+  +Meldung_an_Kirche : Date
+  +Ägide : String
+  +Fachgremien : List[Page]
+  +Kanonische_Voruntersuchung : String
+  +Genugtuungskommission_behandelt : String
+  +Strafverfolgungsbehörden_informiert : String
+  +Strafverfolgungsbehörden : List[Page]
+  +Strafverfolgungsbehörden_Urteil : String
+  +Quellenkritik : String
+  +Alter_Betroffener : String
+  +Alter_Betroffener_gesichert : Boolean
+  +Alter_Betroffener_operationalisiert : String
+  +Alter_Beschuldigter : String
+  +Alter_Beschuldigter_gesichert : Boolean
+  +Beziehung_Betroffener_Beschuldigter : List[String]
+}
+
+%% === Relationships ===
+
+Fall --> Betroffener : Betroffener
+Fall --> Beschuldigter : Beschuldigter
+Fall --> Kirchliche_Institution : Institutioneller_Kontext
+Fall --> Fachgremium : Fachgremien
+Fall --> Strafverfolgungsbehörde : Strafverfolgungsbehörden
+Beschuldigter --> Kirchliche_Institution : Institutioneller_Kontext
+Betroffener --> Kirchliche_Institution : Institutioneller_Kontext
 ```
 
 ### 1. FALL (Case)
@@ -83,8 +151,8 @@ Review boards, commissions, advisory panels with type, mandate, and composition.
 
 See detailed diagram: [erm-diagram.qmd](../data/schemas/erm-diagram.qmd)
 
-- Cases link to affected persons, accused persons, institutions, authorities, and committees
-- Many-to-many relationships enable tracking of institutional transfers and multi-entity cases
+-   Cases link to affected persons, accused persons, institutions, authorities, and committees
+-   Many-to-many relationships enable tracking of institutional transfers and multi-entity cases
 
 ## EDTF Date Handling
 
@@ -108,9 +176,9 @@ The data model integrates **Quellenkritik** as scored assessments (1-10) to asse
 
 Three template types define data entry:
 
-1. **Vorlagen (Display)** - Format entity pages and store to Cargo
-2. **Formulare (Forms)** - Interactive entry with validation and controlled vocabularies
-3. **Kategorien (Categories)** - Cargo table structure and category membership
+1.  **Vorlagen (Display)** - Format entity pages and store to Cargo
+2.  **Formulare (Forms)** - Interactive entry with validation and controlled vocabularies
+3.  **Kategorien (Categories)** - Cargo table structure and category membership
 
 See [Templates documentation](../data/templates/index.qmd) for details.
 
@@ -120,10 +188,10 @@ See [Templates documentation](../data/templates/index.qmd) for details.
 
 **Privacy by Design**:
 
-1. Pseudonymization (no real names)
-2. EDTF dates (protect re-identification)
-3. Separate storage (real data isolated)
-4. Access controls and audit logging
+1.  Pseudonymization (no real names)
+2.  EDTF dates (protect re-identification)
+3.  Separate storage (real data isolated)
+4.  Access controls and audit logging
 
 ## Research Significance
 
@@ -131,9 +199,9 @@ Enables pattern detection (transfers, geographic distribution), quantitative ana
 
 ## Technical Stack
 
-- **Database**: Semantic MediaWiki + Cargo + Page Forms
-- **Analysis**: Python, R, Jupyter (scripts in `src/` and `analysis/`)
-- **Version Control**: Git/GitHub
+-   **Database**: Semantic MediaWiki + Cargo + Page Forms
+-   **Analysis**: Python, R, Jupyter (scripts in `src/` and `analysis/`)
+-   **Version Control**: Git/GitHub
 
 ## Workflow
 

@@ -85,7 +85,7 @@ services:
     ports:
       - '8090:80'
     volumes:
-      - /cluster/work/histuzh:/mnt/cluster/work/histuzh
+      - /path/to/shared/storage:/mnt/shared/storage
     command: >
       caddy file-server --root /mnt --listen :80 --browse
     restart: always

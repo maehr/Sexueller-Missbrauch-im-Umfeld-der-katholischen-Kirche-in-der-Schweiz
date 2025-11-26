@@ -50,7 +50,7 @@ graph TB
         DB_Data_Prod[💾 Production DB Data<br/>./db_data]
         DB_Data_Staging[💾 Staging DB Data<br/>./staging_db_data]
         Backups[💾 Backup Storage<br/>./backups]
-        ClusterWork[📁 Cluster Work Files<br/>/cluster/work/histuzh]
+        ClusterWork[📁 Shared Storage<br/>/path/to/shared/storage]
     end
 
     User --> Caddy
@@ -124,7 +124,7 @@ The development workflow follows containerized development practices with live r
 flowchart TD
     Start([👨‍💻 Developer Starts Work]) --> Clone[📥 Clone Repository]
     Clone --> EnvSetup[⚙️ Setup .env File]
-    EnvSetup --> DevBuild[🔨 docker-compose -f deployment/docker-compose.dev.yml up --build]
+    EnvSetup --> DevBuild[🔨 docker-compose -f src/docker-compose.dev.yml up --build]
 
     DevBuild --> DevRunning{🏃 Development Environment Running}
     DevRunning --> |Yes| DevWork[💻 Development Work]
@@ -162,16 +162,16 @@ flowchart TD
 
 ``` bash
 # Start development environment
-docker-compose -f deployment/docker-compose.dev.yml up -d --build
+docker-compose -f src/docker-compose.dev.yml up -d --build
 
 # View logs
-docker-compose -f deployment/docker-compose.dev.yml logs -f
+docker-compose -f src/docker-compose.dev.yml logs -f
 
 # Update database schema
-docker-compose -f deployment/docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
+docker-compose -f src/docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
 
 # Run queue jobs
-docker-compose -f deployment/docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+docker-compose -f src/docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
 ```
 
 ## Production Deployment {#production-deployment}
@@ -180,7 +180,7 @@ Production deployment follows a systematic approach ensuring high availability a
 
 ```{mermaid}
 flowchart TD
-    PrepImage[🔨 Build Docker Image<br/>docker build -f deployment/Dockerfile -t mediawiki:latest .]
+    PrepImage[🔨 Build Docker Image<br/>docker build -f src/Dockerfile -t mediawiki:latest .]
     SaveImage[💾 Save Image<br/>docker image save mediawiki -o mediawiki_image.tar]
 
     subgraph "Target Server Preparation"
@@ -235,8 +235,8 @@ flowchart TD
 ### Production Deployment Commands
 
 ``` bash
-# 1. Build and save image (local) - Dockerfile is in deployment directory
-docker build -f deployment/Dockerfile -t mediawiki:latest .
+# 1. Build and save image (local) - Dockerfile is in src directory
+docker build -f src/Dockerfile -t mediawiki:latest .
 docker image save mediawiki -o mediawiki_image.tar
 
 # 2. Transfer to production server
@@ -244,7 +244,7 @@ rsync -av -e "ssh -J user@jump-server" ./mediawiki_image.tar server-user@prod-se
 
 # 3. Deploy on production server
 docker load < mediawiki_image.tar
-docker-compose -f deployment/docker-compose.prod.yml up -d
+docker-compose -f src/docker-compose.prod.yml up -d
 
 # 4. Post-deployment tasks
 docker exec mediawiki php maintenance/update.php --quick
@@ -315,7 +315,7 @@ flowchart TD
 
 ``` bash
 # Synchronize production to staging
-cd /path/to/deployment
+cd /path/to/src
 ./sync_prod_to_staging.sh
 
 # Verify staging environment
@@ -347,8 +347,8 @@ flowchart TD
     end
 
     subgraph "Retention Management"
-        RetentionPolicy[⏳ 180 Days Retention<br/>LeoMed Policy]
-        AutoCleanup[🧹 Automatic Cleanup]
+        RetentionPolicy[⏳ LeoMed Server: 180 Days<br/>MediaWiki Backups: No Auto-Cleanup]
+        ManualCleanup[🧹 Manual Cleanup Required]
     end
 
     CronJob --> BackupScript
@@ -363,7 +363,7 @@ flowchart TD
     SelectBackup --> RestoreDB
 
     BackupStorage --> RetentionPolicy
-    RetentionPolicy --> AutoCleanup
+    RetentionPolicy --> ManualCleanup
 
     style CronJob fill:#e3f2fd
     style BackupStorage fill:#fff3e0
@@ -374,10 +374,10 @@ flowchart TD
 
 ``` bash
 # Manual backup
-./deployment/backup_db.sh
+./src/backup_db.sh
 
 # Restore from backup
-./deployment/restore_db.sh backups/prod_backup_2024-12-01_10-45.sql
+./src/restore_db.sh backups/prod_backup_2024-12-01_10-45.sql
 
 # Direct database operations
 docker exec -it db mariadb -u root -p
@@ -448,7 +448,7 @@ The system consists of several containerized components working together, built 
 
 ### Dockerfile Configuration
 
-The deployment includes a custom Dockerfile (`deployment/Dockerfile`) that extends the official MediaWiki 1.43.1 image with:
+The deployment includes a custom Dockerfile (`src/Dockerfile`) that extends the official MediaWiki 1.43.1 image with:
 
 -   **MediaWiki Extensions**: Cargo, DataTransfer, PageForms, PageSchemas, and PdfBook extensions
 -   **System Packages**: Git, OpenSSL, and htmldoc for enhanced functionality
@@ -505,7 +505,7 @@ graph TB
         ImagesStaging[📁 ./staging_mediawiki_images]
         LocalSettings[⚙️ ./LocalSettings.php]
         StagingSettings[⚙️ ./staging_LocalSettings.php]
-        ClusterWork[📁 /cluster/work/histuzh]
+        ClusterWork[📁 /path/to/shared/storage]
     end
 
     subgraph "Environment Configuration"
@@ -664,10 +664,10 @@ flowchart TD
 
 ``` bash
 # Check container status
-docker-compose -f deployment/docker-compose.prod.yml ps
+docker-compose -f src/docker-compose.prod.yml ps
 
 # View logs
-docker-compose -f deployment/docker-compose.prod.yml logs -f mediawiki
+docker-compose -f src/docker-compose.prod.yml logs -f mediawiki
 
 # Check disk space
 df -h
@@ -734,14 +734,14 @@ flowchart TD
 ``` bash
 # Check service status
 docker ps -a
-docker-compose -f deployment/docker-compose.prod.yml ps
+docker-compose -f src/docker-compose.prod.yml ps
 
 # View detailed logs
 docker logs mediawiki --tail 100
 docker logs db --tail 100
 
 # Restart services
-docker-compose -f deployment/docker-compose.prod.yml restart
+docker-compose -f src/docker-compose.prod.yml restart
 
 # Clean up resources
 docker system prune -f

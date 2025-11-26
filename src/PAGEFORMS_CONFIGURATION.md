@@ -237,13 +237,13 @@ When you change the structure of forms or templates:
 
 ```bash
 # Update MediaWiki
-docker exec mediawiki php maintenance/update.php --quick
+docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
 
-# Recreate Cargo tables
-docker exec mediawiki php extensions/Cargo/maintenance/cargoRecreateData.php --table=TableName
+# Recreate Cargo tables if using Cargo
+docker-compose -f docker-compose.dev.yml exec mediawiki php extensions/Cargo/maintenance/cargoRecreateData.php --table=TableName
 
-# Run pending jobs
-docker exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+# Process job queue
+docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
 ```
 
 ### Batch Editing Pages

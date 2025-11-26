@@ -92,10 +92,10 @@ After making changes to Cargo table structures, you need to recreate the tables:
 
 ```bash
 # Update database schema
-docker exec mediawiki php maintenance/update.php --quick
+docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
 
 # Recreate Cargo tables
-docker exec mediawiki php extensions/Cargo/maintenance/cargoRecreateData.php --table=TableName
+docker-compose -f docker-compose.dev.yml exec mediawiki php extensions/Cargo/maintenance/cargoRecreateData.php --table=TableName
 ```
 
 ## Advanced Configuration Options
@@ -119,7 +119,7 @@ If Cargo tables are not being created:
 
 1. Check that the extension is properly loaded in LocalSettings.php
 2. Verify database permissions
-3. Run the update script: `docker exec mediawiki php maintenance/update.php --quick`
+3. Run the update script: `docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick`
 4. Check the MediaWiki logs for error messages
 
 ### Query Performance Issues
