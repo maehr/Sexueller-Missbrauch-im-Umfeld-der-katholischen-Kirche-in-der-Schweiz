@@ -155,7 +155,7 @@ Der Umzug von UZH zu ETHZ illustriert dabei die Bedeutung von Datenschutz und sp
 Für technische Details siehe:
 
 - **[EVOLUTION.md](EVOLUTION.md)** - Detaillierte Entwicklungsgeschichte mit technischem Fokus
-- **[TIMELINE.md](TIMELINE.md)** - Chronologische Projekthistorie mit Arbeitsaufwand
+- **[TIMELINE.qmd](TIMELINE.qmd)** - Chronologische Projekthistorie mit Arbeitsaufwand
 - **[DEPLOYMENT.qmd](../src/DEPLOYMENT.qmd)** - Vollständige Deployment-Architektur und -Workflows
 - **[Data Model Overview](data-model-overview.qmd)** - Datenmodell und Entitätsbeziehungen
 

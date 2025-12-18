@@ -770,4 +770,4 @@ docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
 -   [LeoMed User Documentation](https://unlimited.ethz.ch/spaces/LeoMed2/pages/80691191/LeoMed+user+documentation)
 -   [Data Transfer Guide](https://unlimited.ethz.ch/spaces/LeoMed2/pages/87050871/Data+transfer+with+scp+sftp+or+rsync)
 -   [Project Evolution](../documentation/EVOLUTION.md)
--   [Project Timeline](../documentation/TIMELINE.md)
+-   [Project Timeline](../documentation/TIMELINE.qmd)
