@@ -28,10 +28,6 @@ graph TB
         Researcher[👨‍🔬 Researchers]
     end
 
-    subgraph "Load Balancer / Reverse Proxy"
-        Caddy[🔄 Caddy Proxy<br/>SSL Termination]
-    end
-
     subgraph "Application Layer"
         MW_Prod[📖 MediaWiki Production<br/>Port 8080]
         MW_Staging[📖 MediaWiki Staging<br/>Port 8081]
@@ -53,12 +49,10 @@ graph TB
         ClusterWork[📁 Shared Storage<br/>/path/to/shared/storage]
     end
 
-    User --> Caddy
-    Admin --> Caddy
-    Researcher --> Caddy
+    User --> MW_Prod
+    Admin --> MW_Prod
+    Researcher --> MW_Prod
 
-    Caddy --> MW_Prod
-    Caddy --> MW_Staging
     Admin --> PhpMyAdmin
     Admin --> FileServer
 
@@ -78,7 +72,7 @@ graph TB
     style MW_Staging fill:#fff3e0
     style DB_Prod fill:#e8f5e8
     style DB_Staging fill:#fff8e1
-    style Caddy fill:#f3e5f5
+    style DB_Staging fill:#fff8e1
 ```
 
 ## Deployment Environments {#deployment-environments}
@@ -160,7 +154,7 @@ flowchart TD
 
 ### Development Commands
 
-```bash
+``` bash
 # Start development environment
 docker-compose -f src/docker-compose.dev.yml up -d --build
 
@@ -198,7 +192,7 @@ flowchart TD
     subgraph "Deployment Execution"
         StopServices[⏹️ Stop Existing Services<br/>docker-compose down]
         StartServices[▶️ Start New Services<br/>docker-compose up -d]
-        HealthCheck[🏥 Health Check Services]
+
     end
 
     subgraph "Post-Deployment"
@@ -218,23 +212,23 @@ flowchart TD
 
     AccessCheck --> StopServices
     StopServices --> StartServices
-    StartServices --> HealthCheck
+    StartServices --> SchemaUpdate
 
-    HealthCheck --> SchemaUpdate
+
     SchemaUpdate --> QueueJobs
     QueueJobs --> FinalTest
 
-    HealthCheck --> |Failed| StopServices
+
     FinalTest --> |Failed| StopServices
 
     style PrepImage fill:#e3f2fd
-    style HealthCheck fill:#fff3e0
+
     style FinalTest fill:#e8f5e8
 ```
 
 ### Production Deployment Commands
 
-```bash
+``` bash
 # 1. Build and save image (local) - Dockerfile is in src directory
 docker build -f src/Dockerfile -t mediawiki:latest .
 docker image save mediawiki -o mediawiki_image.tar
@@ -256,7 +250,7 @@ docker exec mediawiki php maintenance/runJobs.php --maxjobs=1000
 The staging environment provides a production-like testing environment with data synchronization capabilities:
 
 ```{mermaid}
-flowchart TD
+flowchart LR
     subgraph "Production Environment"
         ProdMW[📖 Production MediaWiki]
         ProdDB[(🗄️ Production Database)]
@@ -313,7 +307,7 @@ flowchart TD
 
 ### Staging Sync Commands
 
-```bash
+``` bash
 # Synchronize production to staging
 cd /path/to/src
 ./sync_prod_to_staging.sh
@@ -372,7 +366,7 @@ flowchart TD
 
 ### Database Commands
 
-```bash
+``` bash
 # Manual backup
 ./src/backup_db.sh
 
@@ -382,64 +376,6 @@ flowchart TD
 # Direct database operations
 docker exec -it db mariadb -u root -p
 docker exec mediawiki php maintenance/update.php --quick
-```
-
-## CI/CD Pipeline {#cicd-pipeline}
-
-The CI/CD pipeline handles documentation building and deployment through GitHub Actions:
-
-```{mermaid}
-flowchart TD
-    subgraph "Source Control"
-        Commit[💾 Git Commit]
-        Push[📤 Git Push]
-        PR[🔄 Pull Request]
-    end
-
-    subgraph "GitHub Actions Pipeline"
-        Trigger[⚡ Workflow Trigger]
-        Lint[🔍 Lint Check<br/>Prettier]
-        Build[🔨 Build & Optimize<br/>Quarto + JamPack]
-        Test[🧪 Dead Link Check<br/>wget spider]
-        Deploy[🚀 Deploy to GitHub Pages]
-    end
-
-    subgraph "Artifacts"
-        BuildArtifacts[📦 Built Site Artifacts]
-        StaticSite[📄 GitHub Pages Site]
-    end
-
-    subgraph "Quality Gates"
-        LintPass{✅ Lint Pass?}
-        BuildPass{✅ Build Pass?}
-        TestPass{✅ Tests Pass?}
-    end
-
-    Commit --> Push
-    Push --> Trigger
-    PR --> Trigger
-
-    Trigger --> Lint
-    Lint --> LintPass
-    LintPass --> |Yes| Build
-    LintPass --> |No| Lint
-
-    Build --> BuildPass
-    BuildPass --> |Yes| BuildArtifacts
-    BuildPass --> |No| Build
-
-    BuildArtifacts --> Test
-    Test --> TestPass
-    TestPass --> |Yes| Deploy
-    TestPass --> |No| Test
-
-    Deploy --> StaticSite
-
-    style Trigger fill:#e3f2fd
-    style LintPass fill:#fff3e0
-    style BuildPass fill:#fff3e0
-    style TestPass fill:#e8f5e8
-    style Deploy fill:#e8f5e8
 ```
 
 ## Infrastructure Components {#infrastructure-components}
@@ -460,7 +396,6 @@ graph TB
         subgraph "Web Services"
             MW[🌐 MediaWiki Container<br/>mediawiki:latest<br/>Port 80→8080]
             MWS[🌐 MediaWiki Staging<br/>mediawiki:latest<br/>Port 80→8081]
-            Caddy[🔄 Caddy Proxy<br/>caddy:latest<br/>Port 443]
             PMA[🗄️ phpMyAdmin<br/>phpmyadmin:latest<br/>Port 80→8082]
             FS[📁 File Server<br/>caddy:2<br/>Port 80→8090]
         end
@@ -582,60 +517,9 @@ flowchart TD
 | MediaWiki | Direct URL | MediaWiki accounts | Content management |
 | Database | phpMyAdmin | Database credentials | Database administration |
 
-## Monitoring and Maintenance {#monitoring-and-maintenance}
-
-Regular monitoring and maintenance ensure system reliability:
-
-```{mermaid}
-flowchart TD
-    subgraph "Automated Monitoring"
-        CronJobs[⏰ Cron Jobs]
-        HealthChecks[🏥 Health Checks]
-        LogRotation[📜 Log Rotation]
-    end
-
-    subgraph "Manual Monitoring"
-        SystemHealth[🖥️ System Health]
-        DiskSpace[💾 Disk Space]
-        Performance[⚡ Performance Metrics]
-    end
-
-    subgraph "Maintenance Tasks"
-        Updates[🔄 System Updates]
-        Cleanup[🧹 Cleanup Tasks]
-        Optimization[⚡ Database Optimization]
-    end
-
-    subgraph "Alert Systems"
-        FailureAlerts[🚨 Failure Alerts]
-        ResourceAlerts[📊 Resource Alerts]
-        SecurityAlerts[🔒 Security Alerts]
-    end
-
-    CronJobs --> HealthChecks
-    HealthChecks --> SystemHealth
-    SystemHealth --> Performance
-
-    CronJobs --> LogRotation
-    LogRotation --> Cleanup
-
-    SystemHealth --> DiskSpace
-    DiskSpace --> ResourceAlerts
-
-    Performance --> Optimization
-    HealthChecks --> FailureAlerts
-
-    Updates --> SystemHealth
-    Cleanup --> Optimization
-
-    style CronJobs fill:#e3f2fd
-    style HealthChecks fill:#fff3e0
-    style FailureAlerts fill:#ffebee
-```
-
 ### Monitoring Commands
 
-```bash
+``` bash
 # Check container status
 docker-compose -f src/docker-compose.prod.yml ps
 
@@ -704,7 +588,7 @@ flowchart TD
 
 ### Troubleshooting Commands
 
-```bash
+``` bash
 # Check service status
 docker ps -a
 docker-compose -f src/docker-compose.prod.yml ps
@@ -742,5 +626,5 @@ docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
 -   [Main README](../README.md) - Project overview and quick start
 -   [LeoMed User Documentation](https://unlimited.ethz.ch/spaces/LeoMed2/pages/80691191/LeoMed+user+documentation)
 -   [Data Transfer Guide](https://unlimited.ethz.ch/spaces/LeoMed2/pages/87050871/Data+transfer+with+scp+sftp+or+rsync)
--   [Project Evolution](../documentation/EVOLUTION.md)
+-   [Project Evolution](../documentation/SYSTEM_ARCHITECTURE.md)
 -   [Project Timeline](../documentation/TIMELINE.qmd)

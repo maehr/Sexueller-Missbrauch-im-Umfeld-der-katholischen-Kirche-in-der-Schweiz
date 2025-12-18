@@ -1,4 +1,4 @@
-# Evolution der MediaWiki-Forschungsumgebung
+# Systemarchitektur und Entwicklungshistorie
 
 Dieses Dokument dokumentiert die iterative Entwicklung der MediaWiki-basierten Forschungsumgebung für das Projekt "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts" an der Universität Zürich.
 

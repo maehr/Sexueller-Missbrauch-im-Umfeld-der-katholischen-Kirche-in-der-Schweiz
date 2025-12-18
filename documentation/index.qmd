@@ -5,9 +5,8 @@ Welcome to the documentation for the "Sexual Abuse in the Environment of the Cat
 ## 📚 Project Documentation
 
 -   [**Data Model Overview**](data-model-overview.qmd): Detailed explanation of the entities, relationships, and data structure used in the Semantic MediaWiki.
--   [**Project History**](SUMMARY.md): A narrative summary of the project's evolution from a simple wiki to a structured research database (in German).
+-   [**Project History**](SYSTEM_ARCHITECTURE.md): A narrative summary of the project's evolution from a simple wiki to a structured research database (in German).
 -   [**Timeline**](TIMELINE.qmd): A chronological log of project milestones and development efforts.
--   [**Evolution**](EVOLUTION.md): Technical details on the evolution of the system architecture.
 
 ## 🛠️ Technical Documentation
 

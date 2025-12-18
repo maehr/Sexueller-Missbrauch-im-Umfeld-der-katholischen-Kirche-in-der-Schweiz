@@ -252,12 +252,12 @@ This is separate from the structured `Vorlage_Fall.xml` and provides space for q
 
 The detailed structure of each entity template is defined by its corresponding schema. Please refer to the [**Data Schemas**](../schemas/index.qmd) for field definitions, types, and relationships.
 
--   [**Beschuldigter (Accused Person)**](../data/schemas/beschuldigte-schema.md)
--   [**Betroffener (Affected Person)**](../data/schemas/betroffene-schema.md)
--   [**Fall (Case)**](../data/schemas/faelle-schema.md)
--   [**Kirchliche Institution**](../data/schemas/kirchliche-institutionen-schema.md)
--   [**Fachgremium**](../data/schemas/fachgremien-schema.md)
--   [**Strafverfolgungsbehörde**](../data/schemas/strafverfolgungsbehoerden-schema.md)
+-   [**Beschuldigter (Accused Person)**](../schemas/beschuldigte-schema.md)
+-   [**Betroffener (Affected Person)**](../schemas/betroffene-schema.md)
+-   [**Fall (Case)**](../schemas/faelle-schema.md)
+-   [**Kirchliche Institution**](../schemas/kirchliche-institutionen-schema.md)
+-   [**Fachgremium**](../schemas/fachgremien-schema.md)
+-   [**Strafverfolgungsbehörde**](../schemas/strafverfolgungsbehoerden-schema.md)
 
 ### Analysis and Quality Control
 
