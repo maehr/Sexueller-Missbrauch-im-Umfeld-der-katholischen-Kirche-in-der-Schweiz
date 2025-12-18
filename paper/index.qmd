@@ -37,11 +37,14 @@ author:
     roles:
       - methodology
       - validation
+      - formal analysis
       - investigation
       - data curation
       - writing - review & editing
 abstract: |
-  Der vorliegende Artikel beschreibt die Entwicklung, Einführung und den Einsatz einer Forschungsdatenbank sowie ihre epistemologischen Implikationen im Rahmen des historischen Forschungsprojekts *Sexueller Missbrauch im Umfeld der römisch-katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts*. Die zentrale These lautet, dass ein hoher Aufwand für den Aufbau einer maßgeschneiderten, sicheren und kollaborativen digitalen Forschungsumgebung keinen rein vorbereitenden technischen Schritt darstellt, sondern ein fundamentales methodisches Investment. Die für dieses Projekt entwickelte Datenbank ist nicht nur ein Behälter für Daten, sondern ein epistemologisches Instrument, das die Art und Weise, wie historische Fragen gestellt und beantwortet werden können, entscheidend verändert und erweitert hat.
+  This article analyzes the methodological and epistemological implications of developing and implementing a digital research environment for a historical project on sexual abuse in the context of the Catholic Church in Switzerland. Starting from the limitations of conventional spreadsheet-based data collection, the paper describes the transition to a specialized, semantic MediaWiki database hosted in a high-security environment. The authors argue that this technical infrastructure is not merely an auxiliary tool but a fundamental methodological investment that shapes the historical knowledge-building process. Using the example of negotiated data modeling—such as the operational shift from the field ‘'information stability’' to the category ‘'source criticism’'—the text demonstrates how hermeneutic inquiries and digital structures mutually influence one another. By facilitating a workflow that alternates between qualitative *Close Reading* and quantitative *Distant Reading*, the relational database enables the reconstruction of systemic patterns, such as the systematic practice of transferring accused clerics, which are difficult to grasp using traditional, analog methods.
+
+  Dieser Beitrag analysiert die methodischen und epistemologischen Implikationen des Aufbaus einer digitalen Forschungsumgebung im Rahmen eines historischen Projekts zur Aufarbeitung von sexuellem Missbrauch im Umfeld der katholischen Kirche in der Schweiz. Ausgehend von den Limitationen der Datenerfassung mittels Tabellenkalkulation wird die Entwicklung einer spezialisierten, semantischen MediaWiki-Datenbank in einer hochsicheren Infrastruktur beschrieben. Der Artikel argumentiert, dass diese technische Infrastruktur nicht bloßes Hilfsmittel, sondern ein zentrales methodisches Investment darstellt, das den historischen Erkenntnisprozess formt. Am Beispiel der aushandelnden Datenmodellierung – etwa bei der operationalen Überführung des Feldes ›Informationsstabilität‹ in die Kategorie ›Quellenkritik‹ – wird gezeigt, wie sich hermeneutische Fragestellungen und digitale Strukturen wechselseitig beeinflussen. Die Datenbank ermöglicht durch die Verknüpfung von qualitativem *Close Reading* und quantitativem *Distant Reading* die Aufdeckung systemischer Muster, wie etwa die Praxis der systematischen Versetzung beschuldigter Kleriker, die mit traditionellen, analogen Methoden schwer zu erreichen sind.
 keywords:
   - Sexueller Missbrauch
   - Katholische Kirche
@@ -50,77 +53,10 @@ keywords:
   - Forschungsdatenmanagement
   - MediaWiki
   - Relationale Datenbank
-date: today
-bibliography: references.bib
+# date: today
 format:
   html: default
 ---
-
-## Von der gesellschaftlichen Dringlichkeit zur digitalen Methode: Einleitung und These {#sec-introduction}
-
-### Ein Forschungsprojekt von hoher gesellschaftlicher Dringlichkeit
-
-2022 gab die katholische Kirche in der Schweiz – die Schweizer Bischofskonferenz (SBK), die Römisch-Katholische Zentralkonferenz der Schweiz (RKZ) und die Konferenz der Vereinigungen der Orden und weiterer Gemeinschaften des gottgeweihten Lebens in der Schweiz (KOVOS) – ein Forschungsprojekt in Auftrag, das die systematische historische Aufarbeitung sexuellen Missbrauchs, begangen durch Kleriker und Ordensangehörige in der Schweiz seit den 1950er-Jahren, zum Ziel hatte. Durchgeführt wurde die Untersuchung von einem unabhängigen Forschungsteam von Historiker\*innen und Sozialwissenschaftler\*innen der Universität Zürich, was die wissenschaftliche Integrität und Unabhängigkeit der Untersuchung gewährleisten soll.
-
-Die Ergebnisse der Vorstudie erschütterten die Schweizer Öffentlichkeit und markierten eine Zäsur in der Erforschung und Aufarbeitung sexualisierter Gewalt im kirchlichen Kontext der Schweiz [@Bignasca2023]. Das Forschungsteam beschrieb ein großes Spektrum an Fällen – von problematischen Grenzüberschreitungen bis hin zu schwersten systematischen Missbräuchen, die über Jahre hinweg andauerten. Insgesamt wurden 1002 Fälle, 510 Beschuldigte und 921 Betroffene identifiziert, wobei kirchliche Verantwortungsträger zahlreiche Fälle verschwiegen, vertuschten oder bagatellisierten. Beschuldigte und überführte Kleriker wurden zudem systematisch versetzt, mitunter auch ins Ausland, um eine Strafverfolgung zu vermeiden und einen weiteren Einsatz zu ermöglichen. Die Studie belegte, dass sexueller Missbrauch in der katholischen Kirche der Schweiz während der ganzen Untersuchungsperiode nachgewiesen werden konnte, in 74 % der aktenkundigen Fälle Minderjährige betraf und sich über das ganze Land erstreckte. Die Ergebnisse bestätigten ein jahrzehntelanges Muster des »Ignorierens, Schweigens und Bagatellisierens« durch kirchliche Verantwortungsträger.
-
-Nach Abschluss des einjährigen Pilotprojekts und der Veröffentlichung des ersten Berichts im September 2023 begann die Planung des dreijährigen Hauptprojekts (2024–2026). Während die Pilotphase vor allem der Erschließung der Quellenlage, der Bestimmung der Forschungsschwerpunkte und der methodischen Grundlagen diente, rückten nun Fragen der Datenverarbeitung und -strukturierung in den Vordergrund.
-
-Im Rahmen der Pilotphase hatten die Forschenden erstmals Zugang zu umfangreichen kirchlichen Archiven erhalten, die zuvor für wissenschaftliche Untersuchungen verschlossen waren. Diese Bestände umfassten zehntausende Seiten an Personalakten, Korrespondenzen, interne Untersuchungsberichte und Verwaltungsdossiers. Hinzu kamen Quellen aus staatskirchenrechtlichen Strukturen, den äusserst heterogenen Ordensarchiven und den ebenfalls sehr vielfältigen staatlichen Behörden auf verschiedenen Ebenen. Schliesslich kamen auch Aussagen und Berichte von Betroffenen und Zeitzeug\*innen hinzu, die in Gesprächen mit den Forschenden von den Übergriffen berichteten, die sie im Umfeld der katholischen Kirche erlebt hatten.
-
-Die Menge, Vielfalt und Sensibilität des Materials machten deutlich, dass eine herkömmliche gemeinsame Dateiablage den Anforderungen eines interdisziplinären, dezentral arbeitenden Forschungsteams nicht genügen würde. Im Zuge der Planung mussten daher grundlegende Entscheidungen darüber getroffen werden, welche Art von Datenbank eingesetzt, welche Daten erfasst und in welcher Form sie verarbeitet werden sollten. Dabei galt es, verschiedene Ansprüche miteinander zu verbinden: die wissenschaftliche Nachvollziehbarkeit der Datenerfassung, den Schutz personenbezogener und vertraulicher Informationen, die Kompatibilität mit unterschiedlichen Archivsystemen sowie die langfristige Sicherung und Wiederverwendbarkeit der Forschungsdaten.
-
-Der vorliegende Artikel beschreibt diese Diskussion und analysiert die Entwicklung, die Einführung und den Einsatz einer Forschungsdatenbank sowie ihre epistemologischen Implikationen im Rahmen des historischen Forschungsprojekts *Sexueller Missbrauch im Umfeld der römisch-katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts* [@Bignasca2023]. Im Folgenden diskutiert der Beitrag zunächst den Wandel des Arbeitsprozesses von einer geteilten Excel-Tabelle hin zu einer spezialisierten Forschungsumgebung und zeigt, wie sich dabei Quellenarbeit und Datenmodellierung verschränken. Anschließend rückt die kollaborative Dimension in den Fokus: Die Datenbankentwicklung wird als soziotechnischer Aushandlungsprozess beschrieben, in dem sich methodische, sprachliche und institutionelle Differenzen niederschlagen. Darauf aufbauend werden die neuen Erkenntnishorizonte skizziert, die das relationale Datenmodell eröffnet – insbesondere im Hinblick auf systemische Muster der Vertuschung. Den Abschluss bilden ein systematisierendes Fazit, Empfehlungen für ähnliche Projekte sowie eine Reflexion der Grenzen des Ansatzes.
-
-### Die methodischen Herausforderungen hochsensibler, heterogener Daten
-
-Das Forschungsvorhaben stand von Beginn an vor zwei zentralen methodischen Herausforderungen: Zum einen sollte das Projekt den ethischen Standards im Umgang mit sensiblen personenbezogenen Daten gerecht werden und die rechtlichen Vorgaben im Umgang mit Personendaten einhalten. Die konsultierten Quellen dokumentieren schwerste Rechtsverletzungen und tiefes menschliches Leid. Sie enthalten große Mengen an sensiblen und besonders schützenswerten Personendaten. Sexuelle Missbräuche sind vielfach dokumentiert durch medizinische Berichte, intime persönliche Schilderungen, Unterlagen aus Strafverfahren, teilweise auch private Kommunikation oder Fotografien. Dies erlegt dem Projekt eine außerordentliche ethische Verantwortung auf und erfordert eine technische Infrastruktur, die Sicherheit, Datenschutz und einen betroffenen-zentrierten Ansatz als oberste Prioritäten behandelt.
-
-Zum anderen war und ist das Projekt mit einer zutiefst fragmentierten und heterogenen Archivlandschaft konfrontiert. Die Quellenlage vereinte unterschiedliche institutionelle, sprachliche und regionale Kontexte und umfasste sowohl schriftliche als auch mündliche Überlieferungen. So unterscheidet sich beispielsweise der Professionalisierungsgrad zwischen einzelnen kirchlichen Institutionen erheblich. Während einige Archive über moderne digitale Verzeichnisse verfügten, die eine selbstständige Arbeit ermöglichten, war in anderen eine enge Zusammenarbeit mit den lokalen Archivar\*innen unerlässlich, da nur sie die ›innere Logik‹ der Bestände kannten. Diese Heterogenität ist keine rein technische Unannehmlichkeit, sondern ein historisches Faktum von großer Aussagekraft. Sie spiegelt die unterschiedlichen Prioritäten, Ressourcen und institutionellen Kulturen der Bistümer über Jahrzehnte wider. Eine unstrukturierte, lückenhafte oder gar nicht erst erfolgte Aktenführung kann als Indiz für eine Kultur der Verschleierung gewertet werden. Die Pilotstudie konnte für zwei Diözesen sogar die bewusste Vernichtung von Akten nachweisen.
-
-Folglich galt es, Informationen aus verschiedenen Archiven, Dokumenttypen und Erhebungsformaten so zu erfassen, dass sie vergleichbar, auswertbar und wissenschaftlich überprüfbar bleiben. Die heterogene Quellenbasis erforderte eine strukturierte und zugleich flexible Form der Datenerhebung, -speicherung und -auswertung.
-
-### Infrastruktur als methodisches Investment
-
-Die zentrale These dieses Artikels lautet, dass ein hoher Aufwand für den Aufbau einer maßgeschneiderten, sicheren und kollaborativen digitalen Forschungsumgebung keinen rein vorbereitenden technischen Schritt darstellt, sondern ein **fundamentales methodisches Investment**. Diese Investition ist für den Erfolg dieses Projekts zentral. Sie prägt den Forschungsprozess mit und erlaubt historische Erkenntnisse, die mit traditionellen, analogen Methoden schwer zu erreichen sind. Die für dieses Projekt entwickelte Datenbank ist somit nicht nur ein Behälter für Daten, sondern ein **epistemologisches Instrument**, das die Art und Weise, wie historische Fragen gestellt und beantwortet werden können, entscheidend verändert und erweitert hat.
-
-Mareike König [-@Konig2020] und Simone Lässig [-@Lassig2021] fordern, dass sich die Geschichtswissenschaft der digitalen Transformation des Fachs anerkennt und kritisch gestaltet. Wir haben diese Forderung ernst genommen und sind die daraus erwachsenden Herausforderungen mit theoretisch fundierten Strategien angegangen. Bei unserem Forschungsprojekt bestand nicht nur ein erhöhter Koordinationsaufwand, weil das Team für die Hauptstudie nochmals vergrößert wurde, sondern auch, weil sich mit dem Ausdifferenzieren der Rollen verschiedenen disziplinäre Hintergründe versammelten, die mit sich unterschiedlichem Hintergrundwissen, Problemlösungsansätzen, Erwartungen und Werkzeugen an die Arbeit machten.
-
-Wir reagierten mit einem wissenschaftlichen Projektmanagement auf diese Herausforderung, das sich die Heterogenität der Gruppe zunutze gemacht hat und den gemeinsamen Forschungsrahmen als Trading Zone [@Kemman2021] begreift und die divergierenden Ansprüchen der Stakeholder, bestehend aus Auftraggebende, Betroffene, Forschende und Öffentlichkeit, konsequent mitdenkt [@Neubert2020; @Mahr2024]. Innerhalb der Trading Zone mussten ein gemeinsames Modell [@Flanders2018] und eine geteilte Beschreibungssprache ausgebildet werden, die dem hermeneutischen Anspruch des Projekts auch unter digitalen Bedingungen Rechnung trägt [@Fickers2020]. Dafür mussten in einem iterativen Prozess konventionelle Forschungspraktiken expliziert, ins Digitale übersetzt und in ein kontinuierlich angepasstes Forschungsdatenmanagement [@Lemaire2018] eingebettet werden. Das schuf die Grundlage dafür, dass computergestützte Methoden gewinnbringend vom gesamten Team eingesetzt werden konnten und Daten und Werkzeuge, soweit es der Persönlichkeitsschutz zulässt, offen und frei zugänglich zur Verfügung gestellt werden können.
-
-## Von der Excel-Tabelle zur Forschungsumgebung: Der Wandel des Arbeitsprozesses {#sec-historical-context}
-
-Der Übergang von einer geteilten Excel-Tabelle zu einer datenbankgestützten Forschungsumgebung markiert den Kern des hier vertretenen Arguments: Die digitale Infrastruktur ist nicht nur eine logistische Voraussetzung, sondern ein methodisches Instrument. Am Beispiel des Wechsels von der Pilot- zur Hauptstudie lässt sich zeigen, wie sich die Logik der Quellen in ein Datenmodell übersetzt, wie dies die alltägliche Forschungsarbeit verändert und welche epistemischen Effekte daraus entstehen.
-
-### Die Logik der Quellen als Strukturbasis
-
-Die Struktur der Excel-Tabelle folgt im Grundsatz der inneren Logik der Quellen. Ausgangspunkt war jeweils ein Fall, dem eine betroffene und eine beschuldigte Person zugeordnet wurden. Seit der Jahrtausendwende haben sich Betroffene von sexuellem Missbrauch bei kirchlichen und unabhängigen Anlaufstellen gemeldet und ihre persönliche Geschichte geschildert. Gleichzeitig führt die katholische Kirche zu jedem kirchlichen Angestellten mit einer sogenannten ›missio‹ – einem bischöflichen Auftrag – ein Personendossier. Diese Dossiers enthalten unter anderem auch Hinweise auf Missbrauchsfälle und den Umgang der Verantwortlichen mit der beschuldigten Person. Damit sind die zentralen Quellen zum kirchlichen Missbrauch personenzentriert und stellen die individuelle Tat in den Mittelpunkt. Dieser Logik folgte auch die Excel-Liste.
-
-In ihrer definitiven Ausführung vor dem Abschluss des Pilotprojekts enthielt sie pro Fall eine Zeile mit folgenden Angaben:
-
--   **Beschuldigte Personen**: Funktion, Name und eine jeweils eindeutige Identifikationsnummer.
--   **Betroffene Personen**: Geschlecht, Geburtsdatum, Alter zum Tatzeitpunkt.
--   **Tatkontext**: Zeitraum, Frequenz und Dauer der Taten, Art der Beziehung zwischen betroffener und beschuldigter Person sowie die zeitliche Einordnung.
--   **Institutionellem Kontext**: Tatort, Art der Institution, deren Träger, das zuständige Bistum und der Kanton.
--   **Quellen und Nachvollziehbarkeit**: Herkunft der Information, Signaturen, Serverpfade und Informant\*innen.
--   **Institutioneller Umgang**: Fall-Bearbeitungen durch kirchliche Fachgremien, Genugtuungskommissionen sowie staatliche und kirchliche Behörden.
--   **Qualitativen Inhalten**: Zusammenfassung des Übergriffs, beschriebene Folgen, Hinweise auf Literatur- und Medienberichte sowie weitere mögliche Bestände und Bemerkungen.
-
-Insgesamt stellte die Tabelle eine prosopographische und institutionelle Grundlage dar, die sowohl quantitative als auch qualitative Analysen zu Häufigkeit, Kontext und institutionellem Umgang mit den Fällen erlaubte.
-
-So wichtig die Zusammenführung heterogener Quellen in einem zentralen Excel-File für eine ›Auslegeordnung‹ zum Thema war, so schnell zeigten sich die Beschränkungen und Probleme, die sich dadurch ergaben. Eine Excel-Tabelle, die über tausend Zeilen und gleichzeitig pro Zeile mehrere lange Textfelder enthält, erwies sich als zunehmend als unübersichtlich und fehleranfällig. Es kam wiederholt vor, dass bei Dutzenden Spalten versehentlich die falschen ausgewählt und Informationen so falsch verknüpft wurden.
-
-Die methodische Herausforderung bestand somit darin, ein System zu entwickeln, das diese disparaten, inkonsistenten und teils bewusst unvollständigen Quellen aufnehmen, harmonisieren und in eine kohärente, analysierbare Form bringen kann, ohne dabei die wichtigen Informationen über ihre Herkunft und ihren archivalischen Kontext zu verlieren.
-
-Um die heterogenen Daten langfristig konsistent, nachvollziehbar und kollaborativ verarbeiten zu können, entschied sich das Forschungsteam im Rahmen des Hauptprojekts für den Aufbau einer Forschungsdatenbank auf Basis eines **MediaWiki-Systems** mit den Erweiterungen **Cargo** und **PageForm** [@Krabina2023]. Dabei handelt es sich um ein semantisches Wiki-System, das unstrukturierte Texte und strukturierte Daten in derselben Darstellung vereinen kann. Die Kombination von Freitext und strukturierten Daten erwies sich insbesondere für die historische Analyse von sexuellem Missbrauch als zentral, da viele Aspekte der Quellen nur qualitativ erfassbar sind – etwa narrative Beschreibungen, Kontextinformationen oder Reaktionen auf Meldungen durch kirchliche oder staatliche Akteure.
-
-![Die Startseite des projektinternen MediaWikis der Universität Zürich zum Forschungsprojekt Sexueller Missbrauch im Umfeld der katholischen Kirche mit Links zu Anleitungen zur Benutzung des Wikis. \[Screenshot: eigene Darstellung, CC BY-NC-SA 4.0\]](images/image1.png){#fig-wiki-startpage width="80%"}
-
-Ebenfalls wurden die Sicherheitsmaßnahmen deutlich ausgebaut und die gesamte digitale Infrastruktur des Projekts auf die Lösung **›LeoMed‹** der ETH Zürich verlegt [@Okoniewski2024], die eine hochsichere Serverumgebung bietet – ursprünglich für die Bedürfnisse der medizinischen Forschung konzipiert. LeoMed ermöglicht es Wissenschaftler\*innen, sicher mit sensiblen Forschungsdaten zu arbeiten. Die Plattform stellt dafür eine hochsichere Umgebung bereit, in der technische und organisatorische Maßnahmen die Vertraulichkeit, Integrität und Verfügbarkeit der Daten gewährleisten.
-
-...
-
-## References {.appendix}
-
-::: {#refs}
+::: {.callout-warning}
+The paper is submitted to _[Zeitschrift für digitale Geisteswissenschaften](https://zfdg.de/)_ (ZfdG). It is currently under peer review and not yet published.
 :::
