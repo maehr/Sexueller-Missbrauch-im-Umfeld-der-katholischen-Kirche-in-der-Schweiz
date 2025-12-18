@@ -10,7 +10,7 @@ The database separates **data model** (persistent structure) from **data entry**
 
 ## Directory Structure
 
-``` text
+```text
 data/
 ├── schemas/              # Entity schemas and data model
 │   ├── *-schema.md      # Entity definitions

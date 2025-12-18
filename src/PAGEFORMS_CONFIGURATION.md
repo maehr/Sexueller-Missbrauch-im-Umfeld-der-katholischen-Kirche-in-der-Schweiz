@@ -8,147 +8,29 @@ Page Forms is a MediaWiki extension that allows users to create and edit wiki pa
 
 ## Installation
 
-The PageForms extension is installed automatically in the Docker image. See the `Dockerfile`:
+The PageForms extension is installed automatically in the Docker image. See the [**Dockerfile**](Dockerfile) for details.
 
-```dockerfile
-# Clone and set up the Page Forms extension
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms /var/www/html/extensions/PageForms
+## Configuration
 
-# Also install related extensions
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageSchemas /var/www/html/extensions/PageSchemas
-```
+The extension is loaded and configured in [**LocalSettings.php**](LocalSettings.php). Key configurations include:
 
-## Configuration in LocalSettings.php
-
-### Basic Extension Loading
-
-The extension is loaded in `LocalSettings.php` with the following lines:
-
-```php
-wfLoadExtension( 'PageForms' );
-wfLoadExtension( 'PageSchemas' );  // Recommended companion extension
-```
-
-### Related Extensions
-
-PageForms works best with these companion extensions (all included in our setup):
-
-```php
-wfLoadExtension( 'Cargo' );         // For structured data storage
-wfLoadExtension( 'DataTransfer' );  // For data import/export
-wfLoadExtension( 'PageSchemas' );   // For schema definitions
-```
-
-### File Upload Configuration
-
-Forms often include file upload fields. The following settings enable file uploads:
-
-```php
-$wgEnableUploads = true;
-$wgMaxUploadSize = 1024 * 1024 * 50; // Set upload limit to 50MB
-$wgUseImageMagick = true;
-$wgImageMagickConvertCommand = '/usr/bin/convert';
-
-// Allowed file extensions
-$wgFileExtensions = [
-    'png', 'gif', 'jpg', 'jpeg',
-    'doc', 'xls', 'mpp', 'pdf', 'ppt',
-    'tiff', 'bmp', 'docx', 'xlsx', 'pptx',
-    'ps', 'odt', 'ods', 'odp', 'odg',
-    'csv', 'tsv'
-];
-```
-
-### Visual Editor Integration
-
-PageForms works with VisualEditor for a better editing experience:
-
-```php
-wfLoadExtension( 'VisualEditor' );
-```
+- Loading `PageForms` and `PageSchemas` extensions.
+- Enabling file uploads and defining allowed extensions.
+- Integration with `VisualEditor`.
 
 ## Usage in This Project
 
-PageForms is used extensively in this project for:
-
-1. **Structured Data Entry**: Providing user-friendly forms for entering research data
-2. **Data Validation**: Ensuring data consistency through form field validation
-3. **Template Integration**: Working with MediaWiki templates to structure page content
-4. **Cargo Integration**: Automatically storing form data in Cargo tables
+PageForms is used extensively for structured data entry, validation, and template integration.
 
 ### Example Form Definition
 
-Forms are defined in the Template namespace. Example form structure:
-
-```mediawiki
-<noinclude>
-This is the 'Person' form.
-To create a page with this form, enter the page name below;
-if a page with that name already exists, you will be sent to a form to edit that page.
-
-{{#forminput:form=Person}}
-</noinclude><includeonly>
-{{{info|page name=<Person[LastName]>, <Person[FirstName]>}}}
-
-{{{for template|Person}}}
-'''First Name:'''
-{{{field|FirstName|mandatory}}}
-
-'''Last Name:'''
-{{{field|LastName|mandatory}}}
-
-'''Date of Birth:'''
-{{{field|DateOfBirth|input type=datepicker}}}
-
-'''Institution:'''
-{{{field|Institution|input type=combobox|values from namespace=Institution}}}
-
-'''Notes:'''
-{{{field|Notes|input type=textarea|rows=5}}}
-
-{{{end template}}}
-
-{{{standard input|save}}} {{{standard input|cancel}}}
-</includeonly>
-```
+Forms are defined in the `Form:` namespace. They define the layout and fields for data entry.
 
 ### Example Template with Cargo
 
-Templates store data in Cargo tables:
+Templates in the `Template:` namespace use `#cargo_store` to save form data into Cargo tables.
 
-```mediawiki
-<noinclude>
-This is the 'Person' template.
-It should be called in the following format:
-<pre>
-{{Person
-|FirstName=
-|LastName=
-|DateOfBirth=
-|Institution=
-|Notes=
-}}
-</pre>
-</noinclude><includeonly>
-{{#cargo_store:
-_table=Persons
-|PersonID={{{LastName}}}, {{{FirstName}}}
-|FirstName={{{FirstName|}}}
-|LastName={{{LastName|}}}
-|DateOfBirth={{{DateOfBirth|}}}
-|Institution={{{Institution|}}}
-|Notes={{{Notes|}}}
-}}
-
-== Person Information ==
-* '''Name:''' {{{FirstName}}} {{{LastName}}}
-* '''Date of Birth:''' {{{DateOfBirth}}}
-* '''Institution:''' [[{{{Institution}}}]]
-* '''Notes:''' {{{Notes}}}
-
-[[Category:Person]]
-</includeonly>
-```
+For the actual implementation of forms and templates used in this project, see the [**Data Templates**](../data/templates/index.qmd).
 
 ## Form Input Types
 

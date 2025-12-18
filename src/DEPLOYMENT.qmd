@@ -160,7 +160,7 @@ flowchart TD
 
 ### Development Commands
 
-``` bash
+```bash
 # Start development environment
 docker-compose -f src/docker-compose.dev.yml up -d --build
 
@@ -234,7 +234,7 @@ flowchart TD
 
 ### Production Deployment Commands
 
-``` bash
+```bash
 # 1. Build and save image (local) - Dockerfile is in src directory
 docker build -f src/Dockerfile -t mediawiki:latest .
 docker image save mediawiki -o mediawiki_image.tar
@@ -313,7 +313,7 @@ flowchart TD
 
 ### Staging Sync Commands
 
-``` bash
+```bash
 # Synchronize production to staging
 cd /path/to/src
 ./sync_prod_to_staging.sh
@@ -372,7 +372,7 @@ flowchart TD
 
 ### Database Commands
 
-``` bash
+```bash
 # Manual backup
 ./src/backup_db.sh
 
@@ -448,36 +448,9 @@ The system consists of several containerized components working together, built 
 
 ### Dockerfile Configuration
 
-The deployment includes a custom Dockerfile (`src/Dockerfile`) that extends the official MediaWiki 1.43.1 image with:
+The deployment includes a custom Dockerfile (`src/Dockerfile`) that extends the official MediaWiki 1.43.1 image with necessary extensions (Cargo, DataTransfer, PageForms, PageSchemas, PdfBook), system packages, and custom branding assets.
 
--   **MediaWiki Extensions**: Cargo, DataTransfer, PageForms, PageSchemas, and PdfBook extensions
--   **System Packages**: Git, OpenSSL, and htmldoc for enhanced functionality
--   **Custom Assets**: UZH logo integration
--   **Proper Permissions**: Configured file permissions for web server access
-
-``` dockerfile
-FROM mediawiki:1.43.1
-
-# Install necessary packages for MediaWiki extensions
-RUN echo "deb https://deb.debian.org/debian/ bookworm main contrib non-free" >> /etc/apt/sources.list && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends git openssl htmldoc && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install MediaWiki extensions from official repositories
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/Cargo /var/www/html/extensions/Cargo
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/DataTransfer /var/www/html/extensions/DataTransfer
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageForms /var/www/html/extensions/PageForms
-RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/PageSchemas /var/www/html/extensions/PageSchemas
-RUN git clone https://github.com/debtcompliance/PdfBook/ /var/www/html/extensions/PdfBook
-
-# Integrate custom branding assets
-COPY assets/uzh-logo.svg /var/www/html/resources/assets/uzh-logo.svg
-RUN chown www-data:www-data /var/www/html/resources/assets/uzh-logo.svg
-
-# Set proper permissions for MediaWiki
-RUN chown -R www-data:www-data /var/www/html/extensions
-```
+See the [**Dockerfile**](Dockerfile) for the complete build instructions.
 
 ### Container Architecture
 
@@ -662,7 +635,7 @@ flowchart TD
 
 ### Monitoring Commands
 
-``` bash
+```bash
 # Check container status
 docker-compose -f src/docker-compose.prod.yml ps
 
@@ -731,7 +704,7 @@ flowchart TD
 
 ### Troubleshooting Commands
 
-``` bash
+```bash
 # Check service status
 docker ps -a
 docker-compose -f src/docker-compose.prod.yml ps

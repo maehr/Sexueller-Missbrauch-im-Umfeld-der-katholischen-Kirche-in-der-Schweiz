@@ -129,8 +129,8 @@ Das Wiki verwendet ein geschlossenes Modell mit rollenbasierten Berechtigungen u
 #### Zu ETHZ LeoMed (secure-server.leomed.ethz.ch)
 
 - **Verbesserte Stabilität**: Zuverlässige Server-Performance
-- **GUI-Zugang**: Web-basierter Zugang über OnDemand-Dashboard
-- **SSH-Zugang**: Sichere Kommandozeilen-Zugriffe über Jump-Server
+- **GUI-Zugang**: Web-basierter Zugang über Dashboard
+- **SSH-Zugang**: Sichere Kommandozeilen-Zugriffe
 - **Docker-basiert**: Modernere Container-Orchestrierung
 
 ### Deployment-Evolution
@@ -158,20 +158,6 @@ Das System entwickelte sich von einer einfachen Entwicklungsumgebung zu einem pr
 - **Datenschutz-Compliance**: Spezialisierte Infrastrukturen bieten besseren Schutz
 - **Migration-Planung**: Graduelle Migration reduziert Risiken
 - **Automatisierung**: Scripts für Routine-Aufgaben verbessern Zuverlässigkeit
-
-## Zukünftige Entwicklung
-
-### Geplante Verbesserungen:
-
-- **API-Integration**: Externe Datenquellen-Anbindung
-- **Analytics**: Erweiterte Analyse-Funktionen für Forschungsdaten
-- **Collaboration**: Verbesserte Funktionen für Teamarbeit
-
-### Skalierbarkeit:
-
-- **Datenvolumen**: Vorbereitung auf größere Datensätze
-- **Benutzer**: Unterstützung für mehr simultane Forscher
-- **Funktionalität**: Modulare Erweiterung für neue Forschungsbereiche
 
 ---
 

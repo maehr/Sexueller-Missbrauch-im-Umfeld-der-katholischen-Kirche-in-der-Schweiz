@@ -27,11 +27,9 @@ website:
       - text: Paper
         href: paper/index.qmd
       - text: Data Documentation
-        href: documentation/data-model-overview.qmd
+        href: documentation/index.qmd
       - text: Deployment
         href: src/index.qmd
-      - text: Report
-        href: report.md
 
   sidebar:
     contents:
@@ -39,7 +37,7 @@ website:
         href: paper/index.qmd
       - section: Data Documentation
         contents:
-          - documentation/data-model-overview.qmd
+          - documentation/index.qmd
           - data/schemas/index.qmd
           - text: MediaWiki Templates
             href: data/templates/index.qmd
@@ -53,8 +51,6 @@ website:
             href: src/CARGO_CONFIGURATION.md
           - text: PageForms Extension Configuration
             href: src/PAGEFORMS_CONFIGURATION.md
-      - href: report.md
-        contents: project-management/*
       - section: Sexueller Missbrauch
         href: index.qmd
         contents:

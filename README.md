@@ -20,49 +20,28 @@ It contains the data models, schemas, methodologies, and analysis scripts discus
 
 **⚠️ IMPORTANT NOTE ON DATA PRIVACY:** Due to strict ethical standards, GDPR/DSGVO regulations, and the highly sensitive nature of the source material (containing severe rights violations and medical records), **this repository contains NO real personal data.** Any datasets provided here are **synthetic (dummy data)** generated solely to demonstrate the data structure and functionality of the analysis scripts. Real research data is stored securely within the [ETH Zürich _LeoMed_ infrastructure](https://sis.id.ethz.ch/services/sensitiveresearchdata/).
 
-## 🧩 Abstract
-
-The investigation of sexual abuse within the Swiss Catholic Church presents a dual challenge: managing a fragmented, heterogeneous archive landscape and adhering to the highest ethical standards regarding sensitive personal data.
-
-This repository documents the project's transition from a "shared Excel table" workflow to a secure, relational, and collaborative research database built on Semantic MediaWiki. We posit that this technical infrastructure is not merely a logistical container but a **methodological investment**. By moving to a relational data model, the project was able to:
-
-1. **Operationalize "Quellenkritik" (Source Criticism):** Moving beyond simple "truth values" to a scored assessment of source reliability, provenance, and institutional perspective.
-2. **Uncover Systemic Patterns:** Enabling the quantitative detection of concealment strategies, such as the systematic transfer of accused clerics across parish and diocesan borders.
-3. **Enable Collaborative Hermeneutics:** Creating a "Trading Zone" where historians and data scientists harmonize disparate archival sources (e.g., varying clerical titles across language regions).
-
-This repository allows the digital history community to replicate our technical framework and adapt our data models for similar sensitive research contexts.
-
 ## 📁 Repository Structure
 
 The structure of this repository follows the [Advanced Structure for Data Analysis](https://the-turing-way.netlify.app/project-design/project-repo/project-repo-advanced.html) of _The Turing Way_ and is organized as follows:
 
-- `analysis/`: scripts and notebooks used to analyze the data
-- `build/`: scripts and notebooks used to build the data
 - `data/`: data files, including schemas, controlled vocabularies, and MediaWiki templates
   - `data/schemas/`: data model definitions and entity schemas
   - `data/templates/`: MediaWiki templates and forms for data entry
 - `documentation/`: documentation for the data and the repository
-- `paper/`: the research paper submitted to ZfdG
-- `project-management/`: project management documents (e.g., meeting notes, project plans, etc.)
+- `paper/`: the abstract of the research paper submitted to ZfdG
 - `src/`: deployment infrastructure and configuration files
   - Infrastructure-as-Code examples (Docker Compose, Dockerfile)
   - MediaWiki configuration and extension setup
   - Comprehensive deployment documentation
-- `test/`: tests for the data and source code
-- `report.md`: a report describing the analysis of the data
 
 ## 📊 Data Description
 
 The data in this repository consists of:
 
 - **Data Models and Schemas**: Relational database schemas developed for Semantic MediaWiki, including entity relationships for persons, institutions, events, and archival sources
-- **Synthetic Datasets**: Dummy data that demonstrates the structure and functionality of the analysis scripts without containing any real personal information
-- **Analysis Scripts**: Python scripts for data processing, statistical analysis, and visualization
-- **Methodology Documentation**: Documentation of the research methodology, data collection procedures, and ethical considerations
 
 **Important Notes**:
 
-- All datasets provided are **synthetic (dummy data)** generated for demonstration purposes only
 - Real research data containing sensitive personal information is stored securely within the ETH Zürich _LeoMed_ infrastructure
 - Data models include field names, descriptions, and controlled vocabularies maintained as part of the repository
 - Code is released under GNU Affero General Public License v3.0 (AGPL-3.0)
@@ -70,117 +49,22 @@ The data in this repository consists of:
 
 ## 🚀 Deployment & Infrastructure
 
-This repository includes comprehensive Infrastructure-as-Code examples and deployment documentation for the MediaWiki-based research database. The deployment setup uses Docker and includes:
+This repository includes comprehensive Infrastructure-as-Code examples and deployment documentation for the MediaWiki-based research database.
 
-- **MediaWiki 1.43.1** with custom extensions (Cargo, PageForms, PageSchemas, DataTransfer, PdfBook)
-- **MariaDB 11** for database storage
-- **Caddy** as reverse proxy and file server
-- **phpMyAdmin** for database administration (staging)
-
-### Quick Start
-
-For local development:
-
-```bash
-cd src
-cp example.env .env
-# Edit .env with your configuration
-docker-compose -f docker-compose.dev.yml up -d --build
-```
-
-### Documentation
-
-Detailed deployment and configuration documentation is available:
+Detailed deployment and configuration documentation is available in the [**src/**](src/index.qmd) directory:
 
 - **[Deployment Overview](src/index.qmd)** - File structure and quick start
 - **[Comprehensive Deployment Guide](src/DEPLOYMENT.qmd)** - Complete deployment workflows with architecture diagrams
 - **[Cargo Configuration](src/CARGO_CONFIGURATION.md)** - Cargo extension setup and usage
 - **[PageForms Configuration](src/PAGEFORMS_CONFIGURATION.md)** - PageForms extension setup and usage
 
-### Infrastructure Files
-
-- `src/Dockerfile` - Custom MediaWiki image with all required extensions
-- `src/docker-compose.dev.yml` - Development environment configuration
-- `src/docker-compose.prod.yml` - Production and staging environment configuration
-- `src/LocalSettings.php` - MediaWiki configuration
-- `src/example.env` - Environment variables template
-
 ## 🛠️ Usage
 
-### User Management
-
-#### Create a New User with Admin Privileges
-
-To create a new user with superuser privileges (bureaucrat and sysop):
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script createAndPromote.php --user "Username" --password "Password" --bureaucrat --sysop
-```
-
-#### Superuser Group
-
-The `superuser` group is a custom user group with elevated permissions configured in `LocalSettings.php`. Users in this group have the following additional permissions:
-
-- **delete**: Ability to delete pages
-- **editinterface**: Ability to edit the MediaWiki interface (MediaWiki namespace)
-
-To assign a user to the superuser group, use the MediaWiki Special:UserRights page or run:
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script createAndPromote.php --user "Username" --custom-groups superuser
-```
-
-Alternatively, through the web interface:
-
-1. Navigate to `Special:UserRights`
-2. Enter the username
-3. Check the "superuser" group checkbox
-4. Save the changes
-
-### Update the Database Schema
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/update.php --quick
-docker-compose -f src/docker-compose.prod.yml exec mediawiki_staging php maintenance/update.php --quick
-```
-
-### Run Queue Jobs
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
-```
-
-### Backup the Database
-
-```bash
-./src/backup_db.sh
-```
-
-### Restore the Database
-
-```bash
-./src/restore_db.sh backups/schema_backup_2024-12-01_10-45.sql backups/data_backup_2024-12-01_10-45.sql
-```
+For instructions on user management, database schema updates, and backups, please refer to the [**Deployment Overview**](src/index.qmd#usage).
 
 ## 🔧 Troubleshooting
 
-### Fix Permissions
-
-If you encounter permission issues with images:
-
-```bash
-docker exec -it mediawiki chown -R www-data:www-data /var/www/html/images
-docker exec -it mediawiki chmod -R 755 /var/www/html/images
-docker exec -it mediawiki_staging chown -R www-data:www-data /var/www/html/images
-docker exec -it mediawiki_staging chmod -R 755 /var/www/html/images
-```
-
-### Reset Admin Password
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php --script changePassword.php --user=ADMIN_USERNAME --password=NEW_PASSWORD
-docker-compose -f src/docker-compose.prod.yml exec mediawiki_staging php maintenance/run.php --script changePassword.php --user=ADMIN_USERNAME --password=NEW_PASSWORD
-```
+Common issues and solutions are documented in the [**Troubleshooting section**](src/DEPLOYMENT.qmd#troubleshooting).
 
 ## 🔬 Use
 

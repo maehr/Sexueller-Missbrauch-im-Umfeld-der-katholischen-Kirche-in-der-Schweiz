@@ -2,16 +2,11 @@
 
 This repository is a **GitHub template** for FAIR and open research data documentation. These guidelines align with `TODO.md` and apply when interacting with the repo using agents (e.g., Copilot, Cursor, other AI tools).
 
-> **Two contexts**
->
-> - **Template maintenance**: you are improving this template for reuse.
-> - **Project instances**: a user has created a new repo _from_ this template and is customizing it.
->
-> Rules below state which context they target. When unspecified, they apply to both.
+> **Two contexts**: **Template maintenance** (improving the template) vs. **Project instances** (customizing a new repo from this template).
 
 ## 1) Use Preview Mode During Interactive Sessions (Both)
 
-- **Always run `quarto preview` (or `uv run quarto preview`)** while iterating on docs. Live reload for `.qmd`, `.md`, and assets.
+- **Always run `quarto preview`** while iterating on docs. Live reload for `.qmd`, `.md`, and assets.
 - **Do not run production commands inside agent sessions** unless explicitly requested by the human maintainer:
   - Avoid: `quarto render`, `quarto publish gh-pages`.
 - Keep the preview server running while editing.
@@ -30,7 +25,6 @@ This template includes placeholders like: `USERNAME`, `REPO_NAME`, `FULLNAME`, `
     - `_brand.yml`
     - `CODE_OF_CONDUCT.md`
     - `package.json`
-    - `pyproject.toml`
     - `README.template.md` → after replacement, **rename to `README.md`** when finalized
     - `SECURITY.md`
   - Leave any non-project template placeholders untouched only if the file explicitly documents template behavior for reuse.
@@ -39,8 +33,6 @@ This template includes placeholders like: `USERNAME`, `REPO_NAME`, `FULLNAME`, `
 
 - Run **`npm run format`** before commits to enforce Prettier.
 - Use **`npm run check`** to verify formatting without writing changes.
-- For Python code, use **`uv run ruff check`** to lint and **`uv run ruff format`** to format.
-- For Python type checking, use **`uv run ty check`**.
 
 ## 4) Commits and Changelog (Both)
 
@@ -70,12 +62,6 @@ Place new files accordingly.
 2. Commit `package.json` and `package-lock.json`
 3. If needed: `npm run prepare` to reinit Husky hooks
 
-### Python (uv)
-
-1. Edit `pyproject.toml`
-2. `uv sync` to refresh `uv.lock`
-3. Commit both files
-
 ## 7) Documentation Practices (Both)
 
 - Prefer `.qmd` for executable, reproducible docs; `.md` for static content.
@@ -85,8 +71,6 @@ Place new files accordingly.
 ## 8) Testing and CI (Both)
 
 - `npm run check` for formatting
-- `uv run ruff check` for Python linting
-- `uv run ty check` for Python type checking
 - `quarto preview` to detect rendering issues
 - Run and validate scripts in `src/`, `build/`, and `analysis/`
 - Confirm `.github/workflows/` still pass for changes
@@ -126,43 +110,12 @@ Place new files accordingly.
 | Command                   | Purpose                                          |
 | ------------------------- | ------------------------------------------------ |
 | `quarto preview`          | Live preview with reload                         |
-| `uv run quarto preview`   | Preview in the pinned Python env                 |
 | `npm run check`           | Verify formatting                                |
 | `npm run format`          | Apply Prettier formatting                        |
-| `uv run ruff check`       | Lint Python code                                 |
-| `uv run ruff format`      | Format Python code                               |
-| `uv run ty check`         | Type check Python code                           |
 | `npm run commit`          | Conventional Commits wizard                      |
 | `npm run changelog`       | Generate changelog from commits                  |
 | `npm run prepare`         | Setup Husky git hooks                            |
-| `uv sync`                 | Sync Python dependencies                         |
 | `quarto render`           | **Production render** (avoid in agent sessions)  |
 | `quarto publish gh-pages` | **Production publish** (avoid in agent sessions) |
-
-## 14) Finalization Workflow Checklist (Project instances)
-
-Follow `TODO.md`, then:
-
-1. Replace placeholders across listed files.
-2. Customize `.qmd` docs and verify with `quarto preview`.
-3. Format files: `npm run format` and `uv run ruff format`.
-4. Lint Python code: `uv run ruff check`.
-5. Type check Python code: `uv run ty check` (if applicable).
-6. Commit via `npm run commit`.
-7. Generate `CHANGELOG.md` with `npm run changelog`.
-8. When ready, delete the template `README.md` and rename `README.template.md` → `README.md`.
-9. Enable Pages and publish with `quarto publish gh-pages`.
-10. After first release, update `ZENODO_RECORD`, `DOI`, and DOI badge.
-11. Verify security alerts and branch protection.
-
-## 15) Verification Steps (Project instances)
-
-- `npm run check` passes.
-- `uv run ruff check` passes without errors.
-- `uv run ty check` passes (if applicable).
-- `quarto preview` renders without errors.
-- GitHub Pages site loads as expected.
-- README links work.
-- Security alerts and branch protection are active.
 
 **Principle**: Prefer preview over production during agent sessions. Preserve template placeholders unless customizing a project instance. Keep changes reproducible, FAIR-aligned, and verifiable.
