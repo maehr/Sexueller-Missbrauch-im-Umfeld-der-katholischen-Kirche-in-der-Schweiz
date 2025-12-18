@@ -74,21 +74,6 @@ _table=Strafverfolgungsbehörden
 
 - **Fälle** (Many-to-Many): Cases may be reported to or investigated by authorities
 
-## Example Record
-
-```json
-{
-	"id": "SVB-001",
-	"name": "Staatsanwaltschaft Basel-Stadt",
-	"typ": "staatsanwaltschaft",
-	"kanton": "bs",
-	"ort": "Basel",
-	"zustaendigkeit": "Strafverfolgung im Kanton Basel-Stadt, inkl. Sexualdelikte",
-	"kontaktinformationen": "Binningerstrasse 21, 4001 Basel, Tel: +41 61 267 87 87",
-	"anmerkungen": "Zuständig für alle Strafverfahren im Kanton Basel-Stadt seit 2011 (vorher Untersuchungsrichter)"
-}
-```
-
 ## Validation Rules
 
 1. `Name` serves as the page title and must be unique

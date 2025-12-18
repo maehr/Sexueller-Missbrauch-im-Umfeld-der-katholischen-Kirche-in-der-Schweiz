@@ -160,26 +160,7 @@ Forms use dropdown fields populated from controlled vocabularies:
 {{{field|status|input type=dropdown|values=offen,in_bearbeitung,abgeschlossen}}}
 ```
 
-Or from vocabulary files:
-
-``` wikitext
-{{{field|kanton|input type=combobox|values from url=vocabularies/kantone.json}}}
-```
-
-Note: The path should be relative to the wiki root or configured based on your MediaWiki installation's vocabulary file location.
-
-### Conditional Fields
-
-Fields can be shown/hidden based on other field values:
-
-``` wikitext
-{{{field|ausgang|input type=dropdown|values=...}}}
-{{{field|ausgang_details|input type=textarea|hidden|show on select=ausgang=>verurteilung,freispruch}}}
-```
-
 ### EDTF Date Fields
-
-Date fields support EDTF format:
 
 ``` wikitext
 {{{field|tatzeit_von|input type=text|placeholder=YYYY or YYYY~ or YYYY/YYYY}}}
@@ -187,76 +168,12 @@ Date fields support EDTF format:
 
 With help text explaining EDTF syntax.
 
-### Source Criticism Scoring
-
-Forms include guidance for source criticism scoring:
-
-``` wikitext
-{{{field|quellenkritik_score|input type=dropdown|values=1,2,3,4,5,6,7,8,9,10}}}
-{{{info|1=sehr unzuverlässig, 10=hochzuverlässig}}}
-```
-
 ## Relationship Management
 
 Forms manage entity relationships using:
 
 1.  **Autocomplete fields**: Link to existing entities
-2.  **Multiple instance templates**: Add multiple related entities in one form
-3.  **Cargo queries**: Display related entities on view pages
-
-Example:
-
-``` wikitext
-{{{field|betroffene|input type=tokens|values from category=Betroffene|list}}}
-```
-
-## Customization
-
-### Adding Fields
-
-1.  Update the Cargo declaration in the category file
-2.  Add the field to the template (for display)
-3.  Add the field to the form (for input)
-4.  Recreate Cargo table
-5.  Update schema documentation in `data/schemas/`
-
-### Modifying Display
-
-Templates can be customized to change how data is displayed without affecting the data model. Common customizations:
-
--   Changing field labels
--   Reordering fields
--   Adding sections/subsections
--   Changing formatting (bold, italic, etc.)
--   Adding explanatory text
-
-### Form Layouts
-
-Forms support various layouts:
-
--   Standard (vertical)
--   Spreadsheet (tabular for repeated fields)
--   Two-column
--   Tabs/Sections
-
-## Validation
-
-Forms can include:
-
--   Required fields
--   Field type validation (number, date, email, etc.)
--   Regular expression validation
--   Custom JavaScript validation
-
-## Testing
-
-After making changes:
-
-1.  Test form entry with various inputs
-2.  Verify data is stored correctly in Cargo
-3.  Check template display
-4.  Test queries and aggregations
-5.  Validate relationships between entities
+2.  **Cargo queries**: Display related entities on view pages
 
 ## Privacy Considerations
 
@@ -274,7 +191,6 @@ Real research data is stored in ETH Zürich LeoMed infrastructure, not in a publ
 
 -   Data Model: [../schemas/index.qmd](../schemas/index.qmd)
 -   Schema Files: [../schemas/](../schemas/)
--   Controlled Vocabularies: [../schemas/vocabularies/](../schemas/vocabularies/)
 
 ## Extension Documentation
 

@@ -102,33 +102,6 @@ _table=Beschuldigte
 - **Fälle** (Many-to-Many): Accused persons are involved in one or more cases
 - **Kirchliche Institutionen** (Many-to-Many): Affiliated with or assigned to church institutions
 
-## Example Record
-
-```json
-{
-	"id": "BESCH-001",
-	"name_pseudonym": "Pfarrer X",
-	"geschlecht": "maennlich",
-	"geburtsdatum_edtf": "1940/1945",
-	"geburtsort": "Zürich",
-	"funktion_rolle": "priester",
-	"ordensgemeinschaft": null,
-	"bistum_diozese": "basel",
-	"weihedatum": "1968",
-	"taetigkeitsorte": [
-		"Pfarrei St. Martin, Basel",
-		"Pfarrei St. Peter, Liestal",
-		"Pfarrei St. Anton, Muttenz"
-	],
-	"taetigkeitszeitraeume": ["1970-1985", "1985-1995", "1995-2005"],
-	"status_verfahren": "verurteilung",
-	"massnahmen_kirche": "Suspendierung vom Dienst nach Bekanntwerden der Vorwürfe im Jahr 2003",
-	"massnahmen_staat": "Verurteilung zu 3 Jahren Freiheitsstrafe im Jahr 2005",
-	"versetzungshistorie": "Auffällige Versetzungsmuster: Drei Versetzungen in 25 Jahren, jeweils kurz nach informellen Beschwerden",
-	"anmerkungen": "Versetzungshistorie deutet auf systematische Vertuschung hin"
-}
-```
-
 ## Validation Rules
 
 1. `Nummer` is mandatory (required field in form)

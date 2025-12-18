@@ -88,26 +88,6 @@ _table=Kirchliche_Institutionen
 - **Beschuldigte** (Many-to-Many): Accused persons are affiliated with institutions
 - **Betroffene** (Many-to-Many): Affected persons may have been associated with institutions
 
-## Example Record
-
-```json
-{
-	"id": "INST-001",
-	"name": "Pfarrei St. Martin",
-	"name_historisch": ["Pfarrei zum Heiligen Martin", "St. Martinskirche Pfarrei"],
-	"typ": "pfarrei",
-	"bistum_ordensgemeinschaft": "Bistum Basel",
-	"ort_gemeinde": "Basel",
-	"kanton": "bs",
-	"adresse": "Martinsplatz 1, 4051 Basel",
-	"gruendungsjahr": "1850",
-	"aufloesung_jahr": null,
-	"traegerschaft": "Römisch-katholische Kirchgemeinde Basel",
-	"sprachregion": "deutschschweiz",
-	"anmerkungen": "Große Innenstadtpfarrei mit angeschlossener Grundschule bis 1980"
-}
-```
-
 ## Validation Rules
 
 1. `Name` serves as the page title and must be unique

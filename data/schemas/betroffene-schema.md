@@ -73,24 +73,6 @@ _table=Betroffene
 - **Fälle** (Many-to-Many): Affected persons are involved in one or more cases
 - **Kirchliche Institutionen** (Many-to-Many): May have contacted or been associated with institutions
 
-## Example Record
-
-```json
-{
-	"id": "BET-001",
-	"name_pseudonym": "Person A",
-	"geschlecht": "maennlich",
-	"geburtsdatum_edtf": "1965~",
-	"geburtsort": "Basel (anonymisiert)",
-	"kontaktstatus": "aktiv",
-	"erstkontakt_datum": "2023-05-20",
-	"beziehung_institution": "Ehemaliger Messdiener",
-	"zeitraum_kontakt": "1978-1982",
-	"unterstuetzung_erhalten": "beratung, therapie",
-	"anmerkungen": "Person hat sich direkt an die Forschungsgruppe gewandt. Bereit zur weiteren Zusammenarbeit."
-}
-```
-
 ## Validation Rules
 
 1. `Nummer` is mandatory (required field in form)

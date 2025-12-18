@@ -45,23 +45,6 @@ _table=Fachgremien
 
 - **Fälle** (Many-to-Many): Committees review or evaluate cases
 
-## Example Record
-
-```json
-{
-	"id": "FG-001",
-	"name": "Unabhängige Expertenkommission Sexueller Missbrauch im Kontext der Katholischen Kirche",
-	"typ": "unabhaengige_kommission",
-	"traegerschaft": "Schweizerische Bischofskonferenz",
-	"einrichtungsdatum": "2019-09-01",
-	"aufloesung_datum": null,
-	"mandat": "Untersuchung von Fällen sexuellen Missbrauchs im Kontext der katholischen Kirche in der Schweiz; Erstellung eines wissenschaftlichen Berichts; Empfehlungen für Prävention und Aufarbeitung",
-	"zusammensetzung": "Historiker, Juristinnen, Psychologen, Theologinnen; interdisziplinär besetzt; keine aktiven Kirchenvertreter",
-	"berichtswesen": "Zwischenberichte an die Bischofskonferenz; Endbericht geplant für 2026; öffentliche Publikation vorgesehen",
-	"anmerkungen": "Erste umfassende wissenschaftliche Aufarbeitung für die gesamte Schweiz"
-}
-```
-
 ## Validation Rules
 
 1. `Name` serves as the page title and must be unique

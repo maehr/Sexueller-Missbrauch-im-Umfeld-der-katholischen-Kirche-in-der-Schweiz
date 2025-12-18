@@ -40,12 +40,6 @@ Available entity schemas:
 
 The [edtf-documentation.md](edtf-documentation.md) file documents Extended Date/Time Format (EDTF) fields used throughout the database for handling uncertain, approximate, or partial dates.
 
-### 4. Controlled Vocabularies
-
-Machine-readable controlled vocabulary files:
-
--   [vocabularies/](vocabularies/) - JSON files with controlled terms for various fields
-
 ## Schema Format
 
 Each entity schema follows this structure:
@@ -74,26 +68,16 @@ _table=TableName
 ```
 ````
 
-## Example Record
-
-``` json
-{
-  "field_name": "example_value",
-  ...
-}
-```
-
 ## Usage
 
 These schemas serve as:
 
-1. **Developer Reference**: Technical specification for database structure
-2. **Validation Source**: Machine-readable format for data validation scripts
-3. **Documentation**: Clear record of data model decisions and evolution
-4. **Import/Export**: Foundation for data transformation scripts
+1.  **Developer Reference**: Technical specification for database structure
+2.  **Validation Source**: Machine-readable format for data validation scripts
+3.  **Documentation**: Clear record of data model decisions and evolution
+4.  **Import/Export**: Foundation for data transformation scripts
 
 ## Related
 
-- See [../templates/](../templates/) for PageForms and data entry templates
-- See [../../documentation/](../../documentation/) for methodology documentation
-```
+-   See [../templates/](../templates/) for PageForms and data entry templates
+-   See [../../documentation/](../../documentation/) for methodology documentation \`\`\`

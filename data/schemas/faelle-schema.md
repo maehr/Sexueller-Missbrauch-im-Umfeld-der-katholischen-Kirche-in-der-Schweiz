@@ -109,39 +109,6 @@ _table=Fälle
 - **Strafverfolgungsbehörden** (Many-to-Many): Cases may be reported to law enforcement
 - **Fachgremien** (Many-to-Many): Cases may be reviewed by expert committees
 
-## Example Record
-
-```json
-{
-	"Betroffener": "Person A",
-	"Alter Betroffener": "12",
-	"Alter Betroffener gesichert": true,
-	"Alter Betroffener operationalisiert": "minderjährig",
-	"Beschuldigter": "Pfarrer X",
-	"Funktion": "Pfarrer",
-	"Alter Beschuldigter": "45",
-	"Alter Beschuldigter gesichert": false,
-	"Tatkontext": "Messdienergruppe",
-	"Institutioneller Kontext": ["Pfarrei St. Martin Basel", "Bistum Basel"],
-	"Meldung an Kirche": "2023-03-15",
-	"Ägide": "Bistum Basel 1996-2010: Kurt Koch",
-	"Fachgremien": ["Unabhängige Expertenkommission"],
-	"Kanonische Voruntersuchung": "Ja",
-	"Genugtuungskommission behandelt": "Ja",
-	"Strafverfolgungsbehörden informiert": "Ja",
-	"Strafverfolgungsbehörden": ["Staatsanwaltschaft Basel-Stadt"],
-	"Strafverfolgungsbehörden Urteil": "Verurteilung zu 3 Jahren bedingt",
-	"Tatort": "Basel",
-	"Kanton": "BS",
-	"Tatzeitpunkt Tatzeitraum": "1985/1990",
-	"Art des Missbrauch": "Sexueller Missbrauch mit Körperkontakt",
-	"Physischer Kontakt": "Ja",
-	"Beziehung Betroffener Beschuldigter": "Messdiener zu Pfarrer",
-	"Frequenz": "Mehrmals monatlich über 5 Jahre",
-	"Quellenkritik": "Primärquelle: Brief der betroffenen Person. Sekundärquelle: Kirchliche Akten. Gut dokumentiert."
-}
-```
-
 **Note:** Page references (Betroffener, Beschuldigter, etc.) use the actual page title as it appears in the wiki.
 
 ## Validation Rules

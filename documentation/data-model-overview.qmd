@@ -156,19 +156,9 @@ See detailed diagram: [erm-diagram.qmd](../data/schemas/erm-diagram.qmd)
 
 ## EDTF Date Handling
 
-The database uses **Extended Date/Time Format (EDTF)** for uncertain (`1985?`), approximate (`1985~`), partial (`1985`), and range (`1985/1990`) dates. This accommodates incomplete records and protects privacy.
+The project uses **Extended Date/Time Format (EDTF)** for uncertain (`1985?`), approximate (`1985~`), partial (`1985`), and range (`1985/1990`) dates. This accommodates incomplete records and protects privacy.
 
 **Documentation**: [edtf-documentation.md](../data/schemas/edtf-documentation.md)
-
-## Controlled Vocabularies
-
-Machine-readable vocabularies (geographic, institutional, personal, case-related) ensure consistency and enable analysis. Each includes German, French, and Italian labels.
-
-**Directory**: [vocabularies/](../data/schemas/vocabularies/)
-
-## Source Criticism
-
-The data model integrates **Quellenkritik** as scored assessments (1-10) to assess source reliability, document provenance, and enable quantitative analysis of documentation quality and systematic gaps.
 
 ## Data Entry Templates
 
@@ -185,13 +175,6 @@ See [Templates documentation](../data/templates/index.qmd) for details.
 ## Privacy and Ethics
 
 ⚠️ **CRITICAL**: This repository documents structure only. Real research data is stored in **ETH Zürich LeoMed** secure infrastructure under GDPR/DSGVO and research ethics protocols.
-
-**Privacy by Design**:
-
-1.  Pseudonymization (no real names)
-2.  EDTF dates (protect re-identification)
-3.  Separate storage (real data isolated)
-4.  Access controls and audit logging
 
 ## Research Significance
 
