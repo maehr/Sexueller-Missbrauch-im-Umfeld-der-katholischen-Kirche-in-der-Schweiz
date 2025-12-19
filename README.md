@@ -7,8 +7,7 @@ This repository accompanies the paper "Sexueller Missbrauch im Umfeld der kathol
 [![GitHub stars](https://img.shields.io/github/stars/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/stargazers)
 [![Code license](https://img.shields.io/github/license/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/blob/main/LICENSE-AGPL.md)
 [![Data license](https://img.shields.io/github/license/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/blob/main/LICENSE-CCBY.md)
-
-<!-- [![DOI](https://zenodo.org/badge/1101078008.svg)](https://zenodo.org/badge/latestdoi/ZENODO_RECORD) -->
+[![DOI](https://zenodo.org/badge/1101078008.svg)](https://zenodo.org/badge/latestdoi/17985875)
 
 ## 📋 Short Description
 
@@ -68,20 +67,20 @@ Common issues and solutions are documented in the [**Troubleshooting section**](
 
 These data are openly available to everyone and can be used for any research or educational purpose. If you use this data in your research, please cite as specified in [CITATION.cff](CITATION.cff). The following citation formats are also available through _Zenodo_:
 
-- [BibTeX](https://zenodo.org/record/ZENODO_RECORD/export/hx)
-- [CSL](https://zenodo.org/record/ZENODO_RECORD/export/csl)
-- [DataCite](https://zenodo.org/record/ZENODO_RECORD/export/dcite4)
-- [Dublin Core](https://zenodo.org/record/ZENODO_RECORD/export/xd)
-- [DCAT](https://zenodo.org/record/ZENODO_RECORD/export/dcat)
-- [JSON](https://zenodo.org/record/ZENODO_RECORD/export/json)
-- [JSON-LD](https://zenodo.org/record/ZENODO_RECORD/export/schemaorg_jsonld)
-- [GeoJSON](https://zenodo.org/record/ZENODO_RECORD/export/geojson)
-- [MARCXML](https://zenodo.org/record/ZENODO_RECORD/export/xm)
+- [BibTeX](https://zenodo.org/record/17985875/export/hx)
+- [CSL](https://zenodo.org/record/17985875/export/csl)
+- [DataCite](https://zenodo.org/record/17985875/export/dcite4)
+- [Dublin Core](https://zenodo.org/record/17985875/export/xd)
+- [DCAT](https://zenodo.org/record/17985875/export/dcat)
+- [JSON](https://zenodo.org/record/17985875/export/json)
+- [JSON-LD](https://zenodo.org/record/17985875/export/schemaorg_jsonld)
+- [GeoJSON](https://zenodo.org/record/17985875/export/geojson)
+- [MARCXML](https://zenodo.org/record/17985875/export/xm)
 
 _Zenodo_ provides an [API (REST & OAI-PMH)](https://developers.zenodo.org/) to access the data. For example, the following command will return the metadata for the most recent version of the data
 
 ```bash
-curl -i https://zenodo.org/api/records/ZENODO_RECORD
+curl -i https://zenodo.org/api/records/17985875
 ```
 
 ## 💬 Support
