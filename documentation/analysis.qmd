@@ -1,0 +1,50 @@
+# Data Analysis and Quality Control
+
+This document describes the analytics dashboard and quality control measures implemented in the wiki.
+
+## Analytics Dashboard (`Cargo_Test.xml`)
+
+A comprehensive analytics page using Cargo queries for statistical analysis and data quality monitoring.
+
+**Query Categories:**
+
+1.  **Summary Statistics:**
+    -   Total counts: Cases, accused persons, victims
+    -   Source criticism score distribution
+    -   Contact type distribution (physical/non-physical)
+2.  **Abuse Type Analysis:**
+    -   Non-physical abuse types
+    -   Physical abuse type combinations
+    -   Individual physical abuse types (with multiple counting)
+3.  **Demographic Analysis:**
+    -   Ordination grades of accused persons
+    -   Functions of accused in cases
+    -   Gender distribution (victims and accused)
+    -   Nationality of accused
+    -   Birth decade cohorts of accused
+    -   Birth date known/unknown by institution
+4.  **Contextual Data:**
+    -   Victim age categories at time of incident
+    -   Canton of incident
+    -   Compensation fund treatment
+    -   Expert committee involvement
+    -   Prosecution information and verdicts
+    -   Temporal patterns (timeline chart with limit=1000)
+5.  **Data Quality Checks (Troubleshooting):**
+    -   Persons without gender specification
+    -   Inconsistent function/ordination combinations
+    -   Cases missing physical contact classification (St.Gallen and Chur)
+    -   Accused persons missing birth dates (by institution, e.g., Basel)
+    -   Age specifications with wrong format (using "-" instead of proper format)
+    -   Cases with placeholder "FachgremiumFehlt"
+    -   Cases missing source criticism scores
+    -   Basel cases missing Ägide information
+
+**Implementation Notes:**
+
+-   Uses inline format for simple counts
+-   Uses table format for distributions
+-   Uses line chart for temporal analysis
+-   Includes link=all parameter to make table entries clickable
+-   Uses HOLDS operator for list field queries
+-   Uses BINARY comparison for exact page name matching

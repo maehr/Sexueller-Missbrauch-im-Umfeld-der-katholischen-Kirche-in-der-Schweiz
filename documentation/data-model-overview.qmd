@@ -10,7 +10,7 @@ The database separates **data model** (persistent structure) from **data entry**
 
 ## Directory Structure
 
-```text
+``` text
 data/
 ├── schemas/              # Entity schemas and data model
 │   ├── *-schema.md      # Entity definitions
@@ -27,89 +27,9 @@ data/
 
 The database tracks six primary entities with their relationships:
 
-```{mermaid}
-classDiagram
+The database tracks six primary entities with their relationships.
 
-%% === Core Entity Definitions ===
-
-class Kirchliche_Institution {
-  +Name : String
-  +Typ : List[String]
-}
-
-class Fachgremium {
-  +Name : String
-  +Typ : List[String]
-}
-
-class Strafverfolgungsbehörde {
-  +Name : String
-  +Typ : List[String]
-}
-
-class Beschuldigter {
-  +Nummer : String
-  +Vorname : String
-  +Nachname : String
-  +Geschlecht : String
-  +Geburtsdatum : Date
-  +Geburtsdatum_gesichert : Boolean
-  +Sterbedatum : Date
-  +Institutioneller_Kontext : List[Page]
-  +Funktion : List[String]
-  +Weihegrad : String
-  +Weihedatum : Date
-}
-
-class Betroffener {
-  +Nummer : String
-  +Vorname : String
-  +Nachname : String
-  +Geschlecht : String
-  +Geburtsdatum : Date
-  +Geburtsdatum_gesichert : Boolean
-  +Institutioneller_Kontext : List[Page]
-}
-
-class Fall {
-  +Betroffener : Page
-  +Beschuldigter : Page
-  +Funktion : List[String]
-  +Tatzeitpunkt_Tatzeitraum : String
-  +Frequenz : String
-  +Physischer_Kontakt : String
-  +Art_des_Missbrauch : List[String]
-  +Tatort : List[String]
-  +Kanton : String
-  +Tatkontext : String
-  +Institutioneller_Kontext : List[Page]
-  +Meldung_an_Kirche : Date
-  +Ägide : String
-  +Fachgremien : List[Page]
-  +Kanonische_Voruntersuchung : String
-  +Genugtuungskommission_behandelt : String
-  +Strafverfolgungsbehörden_informiert : String
-  +Strafverfolgungsbehörden : List[Page]
-  +Strafverfolgungsbehörden_Urteil : String
-  +Quellenkritik : String
-  +Alter_Betroffener : String
-  +Alter_Betroffener_gesichert : Boolean
-  +Alter_Betroffener_operationalisiert : String
-  +Alter_Beschuldigter : String
-  +Alter_Beschuldigter_gesichert : Boolean
-  +Beziehung_Betroffener_Beschuldigter : List[String]
-}
-
-%% === Relationships ===
-
-Fall --> Betroffener : Betroffener
-Fall --> Beschuldigter : Beschuldigter
-Fall --> Kirchliche_Institution : Institutioneller_Kontext
-Fall --> Fachgremium : Fachgremien
-Fall --> Strafverfolgungsbehörde : Strafverfolgungsbehörden
-Beschuldigter --> Kirchliche_Institution : Institutioneller_Kontext
-Betroffener --> Kirchliche_Institution : Institutioneller_Kontext
-```
+For a detailed visual representation of the relationships, please refer to the [Entity-Relationship Model (ERM)](../data/schemas/erm-diagram.qmd).
 
 ### 1. FALL (Case)
 
