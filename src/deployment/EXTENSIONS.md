@@ -51,7 +51,7 @@ PageForms is used for structured data entry, validation, and template integratio
 - **Forms** are defined in the `Form:` namespace.
 - **Templates** in the `Template:` namespace use `#cargo_store` to save form data into Cargo tables.
 
-For actual implementation, see the [Data Templates](../../data/wiki/).
+For actual implementation, see the [Data Templates](../../data/index.qmd).
 
 ### Permissions
 

@@ -5,7 +5,7 @@ This directory contains the source code, deployment configuration, and maintenan
 ## Directory Structure
 
 -   [**deployment/**](deployment/DEPLOYMENT.qmd): Deployment documentation and extension configurations.
--   [**maintenance/**](maintenance/): Database backup, restore, and synchronization scripts.
+-   [**maintenance/**](#maintenance): Database backup, restore, and synchronization scripts.
 -   **LocalSettings.php**: MediaWiki configuration file.
 
 ## Deployment Documentation
@@ -28,7 +28,7 @@ docker-compose -f docker-compose.dev.yml up -d --build
 docker-compose -f docker-compose.prod.yml up -d
 ```
 
-## Maintenance
+## Maintenance {#maintenance}
 
 Scripts are located in `src/maintenance/`:
 
