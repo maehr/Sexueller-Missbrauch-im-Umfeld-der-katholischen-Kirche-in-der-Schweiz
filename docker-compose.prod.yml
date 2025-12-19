@@ -1,0 +1,91 @@
+services:
+  mediawiki:
+    container_name: mediawiki
+    image: mediawiki:latest
+    ports:
+      - '8080:80'
+    volumes:
+      - ./mediawiki_images:/var/www/html/images
+      - ./src/LocalSettings.php:/var/www/html/LocalSettings.php
+    environment:
+      MW_DB_SERVER: ${DB_CONTAINER_NAME}
+      MW_DB_NAME: ${DB_NAME}
+      MW_DB_USER: ${DB_USER}
+      MW_DB_PASSWORD: ${DB_PASSWORD}
+      MW_SERVER: ${MW_SERVER}
+      MW_SECRET_KEY: ${MW_SECRET_KEY}
+      MW_UPGRADE_KEY: ${MW_UPGRADE_KEY}
+      MW_DEBUG: ${MW_DEBUG}
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    container_name: ${DB_CONTAINER_NAME}
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+
+  # Staging environment
+  mediawiki_staging:
+    container_name: mediawiki_staging
+    image: mediawiki:latest
+    ports:
+      - '8081:80' # Staging server runs on port 8081
+    volumes:
+      - ./staging_mediawiki_images:/var/www/html/images
+      - ./src/staging_LocalSettings.php:/var/www/html/LocalSettings.php
+    environment:
+      MW_DB_SERVER: ${STAGING_DB_CONTAINER_NAME}
+      MW_DB_NAME: ${STAGING_DB_NAME}
+      MW_DB_USER: ${STAGING_DB_USER}
+      MW_DB_PASSWORD: ${STAGING_DB_PASSWORD}
+      MW_SERVER: ${STAGING_MW_SERVER}
+      MW_SECRET_KEY: ${STAGING_MW_SECRET_KEY}
+      MW_UPGRADE_KEY: ${STAGING_MW_UPGRADE_KEY}
+      MW_DEBUG: ${STAGING_MW_DEBUG}
+    depends_on:
+      - db_staging
+    restart: always
+
+  db_staging:
+    container_name: ${STAGING_DB_CONTAINER_NAME}
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: ${STAGING_DB_NAME}
+      MYSQL_USER: ${STAGING_DB_USER}
+      MYSQL_PASSWORD: ${STAGING_DB_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+      - ./staging_db_data:/var/lib/mysql
+    restart: always
+
+  phpmyadmin_staging:
+    container_name: phpmyadmin_staging
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - '8082:80'
+    environment:
+      PMA_HOST: ${STAGING_DB_CONTAINER_NAME}
+      PMA_USER: ${STAGING_DB_USER}
+      PMA_PASSWORD: ${STAGING_DB_PASSWORD}
+    depends_on:
+      - db_staging
+
+  caddy_fileserver:
+    container_name: caddy_fileserver
+    image: caddy:2
+    ports:
+      - '8090:80'
+    volumes:
+      - /path/to/shared/storage:/mnt/shared/storage
+    command: >
+      caddy file-server --root /mnt --listen :80 --browse
+    restart: always

@@ -1,0 +1,162 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</sitename>
+    <dbname>my_wiki</dbname>
+    <base>http://server.domain.ltd:PORT/index.php/Hauptseite</base>
+    <generator>MediaWiki 1.43.1</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</namespace>
+      <namespace key="5" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts Diskussion</namespace>
+      <namespace key="6" case="first-letter">Datei</namespace>
+      <namespace key="7" case="first-letter">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="first-letter">Vorlage</namespace>
+      <namespace key="11" case="first-letter">Vorlage Diskussion</namespace>
+      <namespace key="12" case="first-letter">Hilfe</namespace>
+      <namespace key="13" case="first-letter">Hilfe Diskussion</namespace>
+      <namespace key="14" case="first-letter">Kategorie</namespace>
+      <namespace key="15" case="first-letter">Kategorie Diskussion</namespace>
+      <namespace key="106" case="first-letter">Formular</namespace>
+      <namespace key="107" case="first-letter">Formular Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Hauptseite</title>
+    <ns>0</ns>
+    <id>1</id>
+    <revision>
+      <id>21329</id>
+      <parentid>20517</parentid>
+      <timestamp>2025-11-14T10:19:38Z</timestamp>
+      <contributor>
+        <username>MagdaKaspar</username>
+        <id>4</id>
+      </contributor>
+      <comment>/* Achtung Stolpersteine! */</comment>
+      <origin>21329</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="8557" sha1="e5ood3uxgirpetf9mpz9w2fo0o095op" xml:space="preserve">= Willkommen im Wiki des Projekts / Bienvenue sur le wiki du projet: "Sexueller Missbrauch im Umfeld der katholischen Kirche"! =
+
+== Quicklinks ==
+'''How to:'''
+
+* Datenformat: [[EDTF]]
+* Stabilität der Information: [[Quellenkritik]]
+* Funktionen: [[WeihegradeFunktionen]]
+
+'''Communication:'''
+
+* [[Aufgaben Wiki]] (Vous trouverez ici une liste indiquant qui évalue quelles archives / Hier findet ihr eine Liste, wer welche Archive bearbeitet)
+* [[Wunschliste]] (Fehler, Änderungen am Wiki / Erreurs, modifications du wiki)
+* [[Teamforum]] (Fragen an Team, Diskussion / Questions au team, discussion)
+* [[Funktionen-questions]] (Liste mit Fällen, wo die Funktionen unklar sind).
+* [[Grenzfälle]] (case or not?)
+
+'''Additional information and research'''
+
+* [[Schlagworte]] (Mots-clés relatifs à des phénomènes ou circonstances particulières qui peuvent se retrouver d'une situation à l'autre.)
+
+* [[Glossar]] (Eine begonnene Sammlung an Begriffen, fur welche eine gemeinsame Begriffsklarung hilfreich ware)
+
+* [[Individuals]] (This page is intended for individuals who have played a role in abuse cases without being victims, relatives, or perpetrators of abuse. This page is intended for individuals who have played a role in abuse cases without being victims, relatives, or perpetrators of abuse)
+
+* [[Collective actors]] (This page is intended for collective actors such as associations (e.g. victims' associations) or bodies other than those provided for in our Wiki model)
+
+== Achtung Stolpersteine! ==
+'''Art des Missbrauchs''' 
+
+* Orale Penetration am Opfer --&gt; Something going into the mouth of the victim (most likely penis, but not necessarily)
+* vaginale Penetration am Opfer --&gt; Something going into the vagina of the victim (most likely penis, but not necessarily)
+* anale Penetration am Opfer --&gt; something going into the anus of the victim (most likely penis, but not necessarily)
+* and the same for x Penetration am Täter --&gt; something going into the Body of the Täter (most likely Penis)
+* attouchement sur les seins / Berührung der Brüste → es handelt sich nicht um Berührung der Genitalien, sondern Berührung über oder unter den Kleidern
+'''Funktionen'''
+
+* Les "chanoines réguliers" (Grand-Saint-Bernard ou Saint-Maurice) sont à catégoriser comme "Pater" et non "Chorherren" (même si la traduction en allemand est "Augustiner-Chorherren vom Grossen St. Bernhard" et "Augustiner-Chorherren von St. Moritz"). Ils suivent la règle de St-Augustin.
+* Les "chanoines" (responsables du chapitre d'une cathédrale, d'une basilique) sont catégorisés comme "Chorherr/Domherr/Stifstherr/Kanoniker".
+* Les prêtres réguliers (attachés à un ordre) sont catégorisés dans "Pater", pas dans "Ordensbruder".
+* Un "Ordensbruder" est un homme non ordonné (non prêtre) qui vit dans une communauté.
+* Une "Ordenschwester" est une femme qui peut être religieuse (elle a prononcé des vœux) ou non (laïque ou vierge consacrée qui vit dans la communauté). ⇒ Dissymétrie entre les hommes et les femmes !
+* Ein Ordenspriester ist auch ein Ordenspriester, wenn er in einer Pfarrei arbeitet. Er ist ein Ordenspriester, wenn er einem Orden angehört.
+
+'''Sonstiges'''
+
+* Wenn wir mehrere Ägiden haben, ordnen wir die erste zu und vermerken den Rest im Freitext. 
+* Den Institutionellen Kontext geben wir den bei den Betroffenen auch an, wenn sie Teil der Institution waren (Schüler in Internat, Ministrant in Pfarrei etc.), aber nicht "Kapuziner" bspw., wenn ein Schüler von einem Kapuziner missbraucht wurde.  Bei Priestern geben wir alle Institutionelle Kontexte an.ï
+* Das Wiki verträgt keine ' . Bitte durch etwas anderes ersetzen.
+* Bei den Fällen wird die Funktion des Priesters während des Falles angegeben. Auf seiner Beschuldigtenseite werden alle Funktionionen angegeben.
+* If you change the name of eg. a Täter through "more --&gt; move", you have to reselect the renamed Täter in the cases that are connected to the Täter.
+
+= Grundlagen =
+* '''Bitte klicke nicht auf «Quelltext bearbeiten»'''. Wenn du eine Seite bearbeiten möchtest, klicke auf «Bearbeiten». / '''Merci de ne pas cliquer sur «Quelltext bearbeiten»'''. Si tu veux modifier une page, clique sur «Bearbeiten».
+* Bitte achte darauf zunächst alle Institutionen, Organisationen und Personen zu erfassen, bevor du einen Fall erfasst. / Assure-toi de saisir d'abord toutes les institutions, organisations et personnes avant de créer un cas.
+
+== Wie recherchiere ich auf dem Wiki? / Comment faire des recherches sur le wiki ? ==
+Um Informationen zu suchen, kannst du die Suchfunktion oben rechts auf jeder Seite verwenden. Gib den Namen eines Falls, einer Person oder einer Institution ein und durchsuche die Seiten. / Pour rechercher des informations, utilise la fonction de recherche en haut à droite de chaque page. Entre le nom d'un cas, d'une personne ou d'une institution et parcours les résultats.
+
+* [[:Kategorie:Fälle|Fälle anzeigen]]
+
+* [[:Kategorie:Betroffene|Betroffene anzeigen]]
+
+* [[:Kategorie:Beschuldigte|Beschuldigte anzeigen]]
+
+* [[:Kategorie:Kirchliche Institutionen|Kirchliche Institutionen anzeigen]]
+
+* [[:Kategorie:Fachgremien|Fachgremien anzeigen]]
+
+* [[:Kategorie:Strafverfolgungsbehörden|Strafverfolgungsbehörden anzeigen]]
+
+Zusätzlich kannst du dynamisch durch die Kategorienstruktur navigieren / Tu peux également naviguer de manière dynamique dans la structure des catégories :
+
+* [[Spezial:Kategorien]]
+
+== Wie erfasse ich einen Fall und alle beteiligten Personen bzw. Institutionen? / Comment saisir un cas et toutes les personnes ou institutions impliquées ? ==
+Achtung: es ist wichtig zunächst alle Institutionen, Organisationen und Personen zu erfassen, bevor ein Fall erstellt wird. Bitte haltet euch an folgenden Ablauf / Attention : il est important de saisir d'abord toutes les institutions, organisations et personnes avant de créer un cas. Merci de suivre les étapes suivantes :
+# Prüfe, ob die involvierten Institutionen bereits erfasst sind. Wenn nicht, füge sie hinzu / Vérifie si les institutions impliquées sont déjà saisies. Sinon, ajoute-les :
+#* [[Formular:Fachgremium|Fachgremium erfassen]]
+#* [[Formular:Kirchliche Institution|Kirchliche Institution erfassen]]
+#* [[Formular:Strafverfolgungsbehörde|Strafverfolgungsbehörde erfassen]]
+# Füge alle involvierten Personen hinzu / Ajoute toutes les personnes impliquées :
+#* [[Spezial:Mit Formular bearbeiten/Betroffener|Betroffener erfassen]]
+#* [[Spezial:Mit Formular bearbeiten/Beschuldigter|Beschuldigter erfassen]]
+# Füge den Fall hinzu / Ajoute le cas: 
+#* [[Spezial:Mit Formular bearbeiten/Fall|Fall erfassen]]
+
+== Wie lade ich Bilder und andere Dokumente hoch? / Comment téléverser des sources et d'autres documents ? ==
+'''ATTENTION: We don't upload Sources to the Wiki! Instead, we link the files in our Filesystem using the following address: http://server.domain.ltdPORT/cluster/work/histuzh/''' 
+
+Für Fotos, etc: Klicke auf der Seite, wo du etwas hochladen möchtest, auf «Bearbeiten» (Achtung: nicht «Quelltext bearbeiten»). Klicke auf «Einfügen», dann auf «Bilder und Medien» und dann auf «Hochladen». Folge den Anweisungen (du musst eine Beschreibung und einen Anzeigetext angeben) 
+
+Pour les photos: Sur la page où tu veux télécharger un fichier, clique sur «Bearbeiten»  (attention : pas sur «Quelltext bearbeiten»). Clique sur «Quelltext bearbeiten», puis sur «Bilder und Medien», ensuite sur «Hochladen». Suis les instructions (tu devras indiquer une description et un texte d'affichage).
+
+= Fortgeschrittene Aufgaben =
+
+* Für Fragen und Unterstützung kannst Du die Dokumentation nutzen oder das Support-Team kontaktieren: &lt;nowiki&gt;https://www.mediawiki.org/wiki/Help:Editing_pages/de&lt;/nowiki&gt;
+
+* Cargo-Abfragen: [[Cargo Test|Beispielabfragen]]
+
+* Wie mache ich eine Datenbankabfrage (Cargo Query)?: [[Spezial:CargoQuery]] 
+
+* Wie lade ich mehrere Dateien auf einmal hoch?: [[Spezial:Exportieren]] 
+* Wie exportiere ich einen Fall zu PDF?: «Als PDF Datei ausgeben» anklicken. / Cliquer sur «Als PDF Datei ausgeben»
+
+= Administrator*innen Aufgaben =
+
+* Wie verändere ich das Datenmodell?: https://workingwithmediawiki.com/book/chapter18.html#magicparlabel-5871
+* Wie füge ich Benutzer hinzu und gebe ihnen eine bestimmte Rolle (Mitarbeitende, Admin)?: https://workingwithmediawiki.com/book/chapter8.html
+* Wie können Daten wiederhergestellt werden?: https://workingwithmediawiki.com/book/chapter3.html#magicparlabel-742
+
+[[Kategorie:Anleitungen]]</text>
+      <sha1>e5ood3uxgirpetf9mpz9w2fo0o095op</sha1>
+    </revision>
+  </page>
+</mediawiki>

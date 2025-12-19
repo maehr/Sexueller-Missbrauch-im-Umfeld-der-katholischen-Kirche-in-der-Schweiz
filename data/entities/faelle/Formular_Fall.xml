@@ -1,0 +1,150 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</sitename>
+    <dbname>my_wiki</dbname>
+    <base>http://server.domain.ltd:PORT/index.php/Hauptseite</base>
+    <generator>MediaWiki 1.43.1</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</namespace>
+      <namespace key="5" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts Diskussion</namespace>
+      <namespace key="6" case="first-letter">Datei</namespace>
+      <namespace key="7" case="first-letter">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="first-letter">Vorlage</namespace>
+      <namespace key="11" case="first-letter">Vorlage Diskussion</namespace>
+      <namespace key="12" case="first-letter">Hilfe</namespace>
+      <namespace key="13" case="first-letter">Hilfe Diskussion</namespace>
+      <namespace key="14" case="first-letter">Kategorie</namespace>
+      <namespace key="15" case="first-letter">Kategorie Diskussion</namespace>
+      <namespace key="106" case="first-letter">Formular</namespace>
+      <namespace key="107" case="first-letter">Formular Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Formular:Fall</title>
+    <ns>106</ns>
+    <id>20</id>
+    <revision>
+      <id>15516</id>
+      <parentid>15165</parentid>
+      <timestamp>2025-09-12T09:48:34Z</timestamp>
+      <contributor>
+        <username>MoritzMaehr</username>
+        <id>1</id>
+      </contributor>
+      <comment>Informationsstabilität durch Quellenkritik ersetzen</comment>
+      <origin>15516</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="9350" sha1="b0rbcfptn8zyon02ct7eoq2ds9kxxk9" xml:space="preserve">&lt;noinclude&gt;
+
+Dies ist das Formular „Fall“.
+Um eine Seite mit diesem Formular zu erstellen, gib den Seitennamen in das Eingabefeld unten ein.
+Sofern bereits eine Seite dieses Namens vorhanden ist, wirst du automatisch zum Bearbeitungsformular der Seite weitergeleitet.
+
+{{#forminput:form=Fall|autocomplete on category=Fälle}}
+
+&lt;/noinclude&gt;&lt;includeonly&gt;
+&lt;div style="border: 2px solid red; background-color: #ffeeee; padding: 1em; font-weight: bold;"&gt;
+ '''Achtung:''' Vor dem Fall immer Betroffene und Beschuldigte erfassen!
+&lt;/div&gt;
+{{{info|page name=&lt;Fall[Betroffener]&gt; &lt;Fall[Beschuldigter]&gt;|create title=Fall erfassen}}}
+&lt;div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"&gt;&lt;/div&gt;
+{{{for template|Fall}}}
+{| class="formtable"
+! [[Spezial:Mit_Formular_bearbeiten/Betroffener|Neuer Betroffener erfassen]] Betroffener: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Wähle eine/n Betroffene/n aus, den/die du zuvor erfasst hast.&lt;/p&gt;
+| {{{field|Betroffener|input type=combobox|values from category=Betroffene|mandatory}}}
+|-
+! Alter Betroffener: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Alter des Betroffenen zum Zeitpunkt der Tat&lt;/p&gt;
+| {{{field|Alter Betroffener}}}
+|-
+! Alter Betroffener gesichert: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Kreuze an, ob das Geburtsdatum gesichert ist. Wenn du das Geburtsdatum nicht kennst, dann lass das Feld leer.&lt;/p&gt;
+| {{{field|Alter Betroffener gesichert|input type=checkbox}}}
+|-
+! Alter Betroffener operationalisiert: 
+| {{{field|Alter Betroffener operationalisiert|input type=radiobutton|values=minderjährig,volljährig}}}
+|-
+! [[Spezial:Mit_Formular_bearbeiten/Beschuldigter|Neuer Beschuldigter erfassen]] Beschuldigter: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Wähle eine/n Beschuldigte/n aus, den/die du zuvor erfasst hast.&lt;/p&gt;
+| {{{field|Beschuldigter|input type=combobox|values from category=Beschuldigte|mandatory}}}
+|-
+! Funktion: 
+| {{{field|Funktion|input type=checkboxes|values=Priester,Pfarrer,Kaplan/Vikar/Pfarrhelfer (geweiht),Ordensbruder/Ordensschwester,Pater,Spiritual,Pfarr-Resignat,Katechet/-in,Pastoralassistent/-in,Gemeindeleiter/-in,Sakristan/-in,Diakon,Ständiger Diakon,Chorherr/Domherr,Novize/Novizin,Diözesanbischof,Erzbischof,Weihbischof,Apostolischer Vikar,Titularbischof,Kardinal,Lehrer/-in,Vorsteher/-in Gemeinschaft,Erzieher/-in,Rektor/Direktor/Präfekt,Missionar/-in,Andere}}}
+|-
+! Alter Beschuldigter: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Alter des Beschuldigten zum Zeitpunkt der Tat&lt;/p&gt;
+| {{{field|Alter Beschuldigter}}}
+|-
+! Alter Beschuldigter gesichert: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Kreuze an, ob das Geburtsdatum gesichert ist. Wenn du das Geburtsdatum nicht kennst, dann lass das Feld leer.&lt;/p&gt;
+| {{{field|Alter Beschuldigter gesichert|input type=checkbox}}}
+|-
+! Beziehung Betroffener Beschuldigter: 
+| {{{field|Beziehung Betroffener Beschuldigter}}}
+|-
+! Tatzeitpunkt Tatzeitraum: 
+| {{{field|Tatzeitpunkt Tatzeitraum|input type=text}}}
+|-
+! Frequenz: 
+| {{{field|Frequenz|input type=radiobutton|values=einmalig,mehrmalig}}}
+|-
+! Physischer Kontakt: 
+| {{{field|Physischer Kontakt|input type=radiobutton|values=kein physischer Kontakt,physischer Kontakt}}}
+|-
+! Art des Missbrauch: 
+| {{{field|Art des Missbrauch|input type=checkboxes|values=Kuss,Zungenkuss,Umarmung,Exhibition des Opfers,Exhibition des Täters,Selbstbefriedigung des Opfers,Selbstbefriedigung des Täters,Berührungen über den Kleidern,Berührung unter den Kleidern,Berührungen der Genitalien des Opfers,Berührungen der Genitalien des Täters,orale Penetration am Opfer,orale Penetration am Täter,vaginale Penetration am Opfer,vaginale Penetration am Täter,anale Penetration am Opfer,anale Penetration am Täter,Andere,Versuch}}}
+|-
+! Tatort: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib den Tatort an. Es handelt sich dabei um den Namen des geografischen Ortes, also die Stadt in dem das Ferienlager war, der Ort in dem der Beichtstuhl steht, der Ort in sich der Wald befindet, wo der Missbrauch stattfand.&lt;/p&gt;
+| {{{field|Tatort|input type=text with autocomplete}}}
+|-
+! Kanton: 
+| {{{field|Kanton|input type=radiobutton|values=Aargau,Appenzell Ausserrhoden,Appenzell Innerrhoden,Basel-Landschaft,Basel-Stadt,Bern,Freiburg,Genf,Glarus,Graubünden,Jura,Luzern,Neuenburg,Nidwalden,Obwalden,Schaffhausen,Schwyz,Solothurn,St. Gallen,Tessin,Thurgau,Uri,Waadt,Wallis,Zug,Zürich,Fürstentum Liechtenstein,Ausland,andere}}}
+|-
+! Tatkontext: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib den Tatkontext an. Es handelt sich dabei um den Kontext in dem der Missbrauch stattfand, also z.B. Ferienlager, Beichte, Pfarrhaus, Schule, etc.&lt;/p&gt;
+| {{{field|Tatkontext|input type=text}}}
+|-
+! [[Spezial:Mit_Formular_bearbeiten/Kirchliche_Institution|Neue kirchliche Institutionen erfassen]] Institutioneller Kontext: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib den institutionellen Kontext an, also die Verantwortungsträger. Beispielsweise die Pfarrei, die involviert ist, das Bistum das die Verantwortung trägt, die Ordensgemeinschaft, der der Täter angehört. Mehrfachauswahl möglich. Institutionen bitte zuvor erfassen.&lt;/p&gt;
+| {{{field|Institutioneller Kontext|input type=tokens|values from category=Kirchliche_Institutionen}}}
+|-
+! Meldung an Kirche: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib das Datum an, an dem die kirchlichen Verantwortungsträger vom Fall erfahren haben. Leer lassen, wenn die Kirche nicht informiert wurde.&lt;/p&gt;
+| {{{field|Meldung an Kirche|input type=date}}}
+|-
+! Ägide: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Bei mehreren Ägiden: Gib die erste Ägide an, die von dem Fall erfahren hat.&lt;/p&gt;
+| {{{field|Ägide|input type=dropdown|values=Bistum Basel 1936-1967: Franz von Streng,Bistum Basel 1967-1982: Anton Hänggi,Bistum Basel 1982-1993: Otto Wüst,Bistum Basel 1994-1995: Hansjörg Vogel,Bistum Basel 1996-2010: Kurt Koch,Bistum Basel 2010-:  Felix Gmür,Bistum LGF 1945-1970: François Charrière,Bistum LGF 1970-1995: Pierre Mamie,Bistum LGF 1995-1998: Amédée Grab,Bistum LGF 1999-2010 Bernard Genoud,Bistum LGF 2011-: Charles Morerod,Bistum Sitten 1952-1977: Nestor Adam,Bistum Sitten 1977-1995: Henry Schwery,Bistum Sitten 1995-2014 Norbert Brunner,Bistum Sitten 2014-: Jean-Marie Lovey,Bistum Chur 1941-1962: Christianus Caminada,Bistum Chur 1962-1990: Johannes Vonderach,Bistum Chur 1990-1997: Wolfgang Haas,Bistum Chur 1997-2007: Amédéé Grab,Bistum Chur 2007-2019: Vitus Huonder,Bistum Chur 2019-2021: AA Pierre Bürcher,Bistum Chur 2021-: Joseph Maria Bonnemain,Bistum St. Gallen 1938-1957: Joseph Meile,Bistum St. Gallen 1957-1976: Joseph Hasler,Bistum St. Gallen 1976-1994: Otmar Mäder,Bistum St. Gallen 1995-2006: Ivo Fürer,Bistum St. Gallen 2006-2025: Markus Büchel,Bistum St. Gallen 2025-: Beat Grögli,Bistum Lugano 1971-1978: Giuseppe Martinoli,Bistum Lugano 1978-1985: Ernesto Togni,Bistum Lugano 1986-1995: Eugenio Corecco,Bistum Lugano 1995-2004: Giuseppe Torti,Bistum Lugano 2004-2013: Pier Giacomo Grampa,Bistum Lugano 2013-2022: Valerio Lazzeri,Bistum Lugano 2022-: AA Alain de Raemy,Andere}}}
+|-
+! [[Spezial:Mit_Formular_bearbeiten/Fachgremium|Neues Fachgremium erfassen]] Fachgremien: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib die Fachgremien an, die mit dem Fall befasst sind. Mehrfachauswahl möglich. Fachgremien bitte zuvor erfassen.&lt;/p&gt;
+| {{{field|Fachgremien|input type=tokens|values from category=Fachgremien}}}
+|-
+! Kanonische Voruntersuchung: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib an, ob es eine kanonische Voruntersuchung gab. Erläutere im Freitext untern die genauen Umstände.&lt;/p&gt;
+| {{{field|Kanonische Voruntersuchung|input type=radiobutton|values=Ja,Nein,Andere}}}
+|-
+! Genugtuungskommission behandelt: 
+| {{{field|Genugtuungskommission behandelt|input type=radiobutton|values=Ja - angenommen,Ja - abgelehnt,Ja - Ergebnis unklar,Nein}}}
+|-
+! Strafverfolgungsbehörden informiert: 
+| {{{field|Strafverfolgungsbehörden informiert|input type=radiobutton|values=Ja,Nein,andere}}}
+|-
+! [[Spezial:Mit_Formular_bearbeiten/Strafverfolgungsbehörde|Neue Strafverfolgungsbehörde erfassen]] Strafverfolgungsbehörden: &lt;br&gt;&lt;p class="pfFieldDescription" style="font-size:0.7em; color:gray;"&gt;Gib die Strafverfolgungsbehörden an, die mit dem Fall befasst sind. Mehrfachauswahl möglich. Strafverfolgungsbehörden bitte zuvor erfassen.&lt;/p&gt;
+| {{{field|Strafverfolgungsbehörden|input type=tokens|values from category=Strafverfolgungsbehörden}}}
+|-
+! Strafverfolgungsbehörden Urteil: 
+| {{{field|Strafverfolgungsbehörden Urteil|input type=radiobutton|values=Nichtannahme,Freigesprochen,Verurteilt,Eingestellt}}}
+|-
+! Quellenkritik: 
+| {{{field|Quellenkritik|input type=radiobutton|values=Score 1,Score 2,Score 3}}}
+|}
+{{{end template}}}
+
+'''Freitext:'''
+
+{{{standard input|free text|placeholder=== Beschreibung des Falls ==     == Kanonische Untersuchungen und Strafverfolgungsbehörden ==     == Quellen, Literatur und Medien ==|rows=10}}}
+&lt;/includeonly&gt;</text>
+      <sha1>b0rbcfptn8zyon02ct7eoq2ds9kxxk9</sha1>
+    </revision>
+  </page>
+</mediawiki>

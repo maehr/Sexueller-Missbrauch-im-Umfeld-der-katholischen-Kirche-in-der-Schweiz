@@ -1,0 +1,62 @@
+---
+title: "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz"
+subtitle: "Aufbau einer partizipativen, iterativen und sicheren Forschungsdatenbank"
+author:
+  - name: Moritz Mähr
+    affiliations:
+      - name: Universität Bern
+    orcid: 0000-0002-1367-1618
+    email: moritz.maehr@gmail.com
+    roles:
+      - conceptualization
+      - methodology
+      - software
+      - validation
+      - formal analysis
+      - data curation
+      - writing - original draft
+      - writing - review & editing
+      - visualization
+  - name: Lucas Federer
+    affiliations:
+      - name: Universität Zürich
+    orcid: 0000-0002-3071-3058
+    email: lucas.federer@uzh.ch
+    roles:
+      - methodology
+      - validation
+      - formal analysis
+      - investigation
+      - data curation
+      - writing - review & editing
+  - name: Magda Kaspar
+    affiliations:
+      - name: Universität Zürich
+    orcid: 0000-0003-3102-9749
+    email: magda.kaspar@uzh.ch
+    roles:
+      - methodology
+      - validation
+      - formal analysis
+      - investigation
+      - data curation
+      - writing - review & editing
+abstract: |
+  This article analyzes the methodological and epistemological implications of developing and implementing a digital research environment for a historical project on sexual abuse in the context of the Catholic Church in Switzerland. Starting from the limitations of conventional spreadsheet-based data collection, the paper describes the transition to a specialized, semantic MediaWiki database hosted in a high-security environment. The authors argue that this technical infrastructure is not merely an auxiliary tool but a fundamental methodological investment that shapes the historical knowledge-building process. Using the example of negotiated data modeling—such as the operational shift from the field ‘'information stability’' to the category ‘'source criticism’'—the text demonstrates how hermeneutic inquiries and digital structures mutually influence one another. By facilitating a workflow that alternates between qualitative *Close Reading* and quantitative *Distant Reading*, the relational database enables the reconstruction of systemic patterns, such as the systematic practice of transferring accused clerics, which are difficult to grasp using traditional, analog methods.
+
+  Dieser Beitrag analysiert die methodischen und epistemologischen Implikationen des Aufbaus einer digitalen Forschungsumgebung im Rahmen eines historischen Projekts zur Aufarbeitung von sexuellem Missbrauch im Umfeld der katholischen Kirche in der Schweiz. Ausgehend von den Limitationen der Datenerfassung mittels Tabellenkalkulation wird die Entwicklung einer spezialisierten, semantischen MediaWiki-Datenbank in einer hochsicheren Infrastruktur beschrieben. Der Artikel argumentiert, dass diese technische Infrastruktur nicht bloßes Hilfsmittel, sondern ein zentrales methodisches Investment darstellt, das den historischen Erkenntnisprozess formt. Am Beispiel der aushandelnden Datenmodellierung – etwa bei der operationalen Überführung des Feldes ›Informationsstabilität‹ in die Kategorie ›Quellenkritik‹ – wird gezeigt, wie sich hermeneutische Fragestellungen und digitale Strukturen wechselseitig beeinflussen. Die Datenbank ermöglicht durch die Verknüpfung von qualitativem *Close Reading* und quantitativem *Distant Reading* die Aufdeckung systemischer Muster, wie etwa die Praxis der systematischen Versetzung beschuldigter Kleriker, die mit traditionellen, analogen Methoden schwer zu erreichen sind.
+keywords:
+  - Sexueller Missbrauch
+  - Katholische Kirche
+  - Schweiz
+  - Digital History
+  - Forschungsdatenmanagement
+  - MediaWiki
+  - Relationale Datenbank
+# date: today
+format:
+  html: default
+---
+::: {.callout-warning}
+The paper is submitted to _[Zeitschrift für digitale Geisteswissenschaften](https://zfdg.de/)_ (ZfdG). It is currently under peer review and not yet published.
+:::

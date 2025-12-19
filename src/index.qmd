@@ -1,0 +1,37 @@
+# Source and Deployment
+
+This directory contains the source code, deployment configuration, and maintenance scripts for the MediaWiki instance.
+
+## Directory Structure
+
+-   [**deployment/**](deployment/DEPLOYMENT.qmd): Deployment documentation and extension configurations.
+-   [**maintenance/**](#maintenance): Database backup, restore, and synchronization scripts.
+-   **LocalSettings.php**: MediaWiki configuration file.
+
+## Deployment Documentation
+
+For comprehensive deployment instructions, see the [**Deployment Guide**](deployment/DEPLOYMENT.qmd).
+
+## Quick Start
+
+### Development
+
+``` bash
+# Start development environment
+docker-compose -f docker-compose.dev.yml up -d --build
+```
+
+### Production
+
+``` bash
+# Deploy to production
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+## Maintenance {#maintenance}
+
+Scripts are located in `src/maintenance/`:
+
+-   `backup_db.sh`: Backup the database.
+-   `restore_db.sh`: Restore the database.
+-   `sync_prod_to_staging.sh`: Sync production data to staging.

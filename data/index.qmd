@@ -1,0 +1,76 @@
+# Data Model and Schemas
+
+This directory contains the formal data model definitions and schemas for the research database on sexual abuse in the Swiss Catholic Church.
+
+## Architecture
+
+The database separates **data model** (persistent structure) from **data entry** (UI/forms), enabling independent evolution of structure and interface.
+
+> **Single Source of Truth**: Detailed schema definitions are maintained in this directory. This document provides a high-level overview with links to detailed specifications.
+
+## Core Entities
+
+The database tracks six primary entities with their relationships. For a detailed visual representation of the relationships, please refer to the [Entity-Relationship Model (ERM)](erm-diagram.qmd).
+
+### 1. FALL (Case)
+
+Central entity representing individual abuse cases with timeline, source criticism score, institutional response, and legal proceedings. - **Schema**: [faelle-schema.md](entities/faelle/faelle-schema.md)
+
+### 2. BETROFFENER (Affected Person)
+
+Pseudonymized victims/survivors with demographics, contact status, and institutional relationships. - **Schema**: [betroffene-schema.md](entities/betroffene/betroffene-schema.md)
+
+### 3. BESCHULDIGTER (Accused Person)
+
+Accused individuals (clergy, employees, volunteers) with clerical roles, institutional affiliations, and transfer history. - **Schema**: [beschuldigte-schema.md](entities/beschuldigte/beschuldigte-schema.md)
+
+### 4. KIRCHLICHE_INSTITUTION (Church Institution)
+
+Churches, schools, homes, religious orders with type, location, and diocese/order affiliation. - **Schema**: [kirchliche-institutionen-schema.md](entities/kirchliche-institutionen/kirchliche-institutionen-schema.md)
+
+### 5. STRAFVERFOLGUNGSBEHOERDE (Law Enforcement)
+
+Prosecuting authorities and victim support services with type, jurisdiction, and area of responsibility. - **Schema**: [strafverfolgungsbehoerden-schema.md](entities/strafverfolgungsbehoerden/strafverfolgungsbehoerden-schema.md)
+
+### 6. FACHGREMIUM (Expert Committee)
+
+Review boards, commissions, advisory panels with type, mandate, and composition. - **Schema**: [fachgremien-schema.md](entities/fachgremien/fachgremien-schema.md)
+
+## Schema Format
+
+Each entity schema follows this structure:
+
+```` markdown
+# Entity Name
+
+## Description
+Brief description of the entity and its role in the data model.
+
+## Fields
+| Field Name | Type | Required | Description | Controlled Vocabulary |
+| ---------- | ---- | -------- | ----------- | --------------------- |
+| field_name | type | yes/no   | description | link if applicable    |
+
+## Cargo Table Declaration
+```cargo
+{{#cargo_declare:
+_table=TableName
+|FieldName=Type
+|...
+}}
+```
+````
+
+## EDTF Date Handling
+
+The project uses **Extended Date/Time Format (EDTF)** for uncertain (`1985?`), approximate (`1985~`), partial (`1985`), and range (`1985/1990`) dates. This accommodates incomplete records and protects privacy.
+
+**Documentation**: [edtf-documentation.md](vocabularies/edtf-documentation.md)
+
+## Privacy and Ethics
+
+⚠️ **CRITICAL**: This repository documents structure only. Real research data is stored in **ETH Zürich LeoMed** secure infrastructure under GDPR/DSGVO and research ethics protocols.
+
+## Versioning
+
+Schemas use Semantic Versioning (MAJOR: breaking changes, MINOR: add fields, PATCH: documentation). Vocabularies versioned separately. Changes documented in CHANGELOG.

@@ -1,8 +1,12 @@
 {
-	"name": "REPO_NAME",
-	"description": "SHORT_DESCRIPTION",
-	"author": "FULLNAME <[INSERT CONTACT METHOD]>",
-	"url": "https://github.com/USERNAME/REPO_NAME/issues",
+	"name": "sexueller-missbrauch-im-umfeld-der-katholischen-kirche-in-der-schweiz",
+	"description": "Replication Kit and Technical Framework for historical research on sexual abuse in the Swiss Catholic Church",
+	"author": "Moritz Mähr <moritz.maehr@gmail.com>",
+	"contributors": [
+		"Lucas Federer <lucas.federer@uzh.ch>",
+		"Magda Kaspar <magda.kaspar@uzh.ch>"
+	],
+	"url": "https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues",
 	"license": "AGPL-3.0",
 	"scripts": {
 		"check": "prettier --check .",

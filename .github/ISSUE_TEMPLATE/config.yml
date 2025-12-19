@@ -1,8 +1,8 @@
 contact_links:
-  - name: Are you looking for documentation on REPO_NAME?
-    url: https://USERNAME.github.io/REPO_NAME
-    about: Please see the documentation for REPO_NAME on its GitHub Pages page.
-  - name: Do you want to discuss REPO_NAME with the community?
-    url: https://github.com/USERNAME/REPO_NAME/discussions
-    about: Please see the discussions page for REPO_NAME.
+  - name: Are you looking for documentation on this project?
+    url: https://maehr.github.io/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz
+    about: Please see the documentation for this project on its GitHub Pages page.
+  - name: Do you want to discuss this project with the community?
+    url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/discussions
+    about: Please see the discussions page for this project.
 blank_issues_enabled: true

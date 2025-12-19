@@ -1,1 +1,58 @@
-# Go to https://citation-file-format.github.io/ to learn more about the Citation File Format.
+cff-version: 1.2.0
+message: 'If you use this repository or data, please cite it as below.'
+title: 'Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz'
+abstract: 'This repository serves as the Replication Kit and Technical Framework for the historical research project investigating sexual abuse in the Swiss Catholic Church since the mid-20th century. It contains the data models, schemas, methodologies, and analysis scripts discussed in the associated article.'
+type: dataset
+authors:
+  - family-names: Mähr
+    given-names: Moritz
+    email: moritz.maehr@gmail.com
+    affiliation: Universität Bern
+    orcid: https://orcid.org/0000-0002-1367-1618
+    gnd: http://d-nb.info/gnd/1300499354
+    roles:
+      - conceptualization: lead
+      - methodology: equal
+      - software: lead
+      - validation: equal
+      - formal-analysis: equal
+      - data-curation: equal
+      - writing-original-draft: lead
+      - writing-review-editing: equal
+      - visualization: lead
+  - family-names: Federer
+    given-names: Lucas
+    email: lucas.federer@uzh.ch
+    affiliation: Universität Zürich
+    orcid: https://orcid.org/0000-0002-3071-3058
+    gnd: http://d-nb.info/gnd/1175975443
+    roles:
+      - methodology: equal
+      - validation: equal
+      - formal-analysis: equal
+      - investigation: equal
+      - data-curation: equal
+      - writing-review-editing: equal
+  - family-names: Kaspar
+    given-names: Magda
+    email: magda.kaspar@uzh.ch
+    affiliation: Universität Zürich
+    orcid: https://orcid.org/0000-0003-3102-9749
+    roles:
+      - methodology: equal
+      - validation: equal
+      - investigation: equal
+      - data-curation: equal
+      - writing-review-editing: equal
+repository-code: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz
+url: https://maehr.github.io/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz
+keywords:
+  - sexual abuse
+  - catholic church
+  - switzerland
+  - historical research
+  - semantic mediawiki
+  - digital history
+  - research data
+license: AGPL-3.0
+license-url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/blob/main/LICENSE-AGPL.md

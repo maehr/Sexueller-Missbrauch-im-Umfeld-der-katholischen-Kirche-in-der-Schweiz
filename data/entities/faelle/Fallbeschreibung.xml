@@ -1,0 +1,57 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</sitename>
+    <dbname>my_wiki</dbname>
+    <base>http://server.domain.ltd:PORT/index.php/Hauptseite</base>
+    <generator>MediaWiki 1.43.1</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts</namespace>
+      <namespace key="5" case="first-letter">Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz seit Mitte des 20. Jahrhunderts Diskussion</namespace>
+      <namespace key="6" case="first-letter">Datei</namespace>
+      <namespace key="7" case="first-letter">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="first-letter">Vorlage</namespace>
+      <namespace key="11" case="first-letter">Vorlage Diskussion</namespace>
+      <namespace key="12" case="first-letter">Hilfe</namespace>
+      <namespace key="13" case="first-letter">Hilfe Diskussion</namespace>
+      <namespace key="14" case="first-letter">Kategorie</namespace>
+      <namespace key="15" case="first-letter">Kategorie Diskussion</namespace>
+      <namespace key="106" case="first-letter">Formular</namespace>
+      <namespace key="107" case="first-letter">Formular Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Fallbeschreibung</title>
+    <ns>0</ns>
+    <id>9</id>
+    <revision>
+      <id>14</id>
+      <timestamp>2025-04-09T07:05:00Z</timestamp>
+      <contributor>
+        <username>MoritzMaehr</username>
+        <id>1</id>
+      </contributor>
+      <comment>Die Seite wurde neu angelegt: «== Beschreibung des Falls ==  ''Bitte beschreibe den Fall''  == Kanonische Untersuchungen und Strafverfolgungsbehörden ==  ''Bitte ergänze Details zu kirchlichen und staatlichen Verfahren''  == Quellen, Literatur und Medien ==  ''Bitte gib die Quellen an''»</comment>
+      <origin>14</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="258" sha1="sg4qxi34lbocha1n7zyzf6eb61m5f23" xml:space="preserve">== Beschreibung des Falls == 
+''Bitte beschreibe den Fall''
+
+== Kanonische Untersuchungen und Strafverfolgungsbehörden == 
+''Bitte ergänze Details zu kirchlichen und staatlichen Verfahren''
+
+== Quellen, Literatur und Medien == 
+''Bitte gib die Quellen an''</text>
+      <sha1>sg4qxi34lbocha1n7zyzf6eb61m5f23</sha1>
+    </revision>
+  </page>
+</mediawiki>

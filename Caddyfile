@@ -1,0 +1,5 @@
+localhost {
+    reverse_proxy mediawiki:80
+    encode gzip
+    tls internal
+}

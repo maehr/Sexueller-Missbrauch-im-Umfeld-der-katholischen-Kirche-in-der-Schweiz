@@ -1,0 +1,196 @@
+# Entity-Relationship Model (ERM)
+
+This diagram shows the relationships between the main entities in the research database.
+
+## Mermaid Diagram
+
+```{mermaid}
+classDiagram
+
+%% === Core Entity Definitions ===
+
+class Kirchliche_Institution {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Fachgremium {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Strafverfolgungsbehörde {
+  +Name : String
+  +Typ : List[String]
+}
+
+class Beschuldigter {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Sterbedatum : Date
+  +Institutioneller_Kontext : List[Page]
+  +Funktion : List[String]
+  +Weihegrad : String
+  +Weihedatum : Date
+}
+
+class Betroffener {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Institutioneller_Kontext : List[Page]
+}
+
+class Fall {
+  +Betroffener : Page
+  +Beschuldigter : Page
+  +Funktion : List[String]
+  +Tatzeitpunkt_Tatzeitraum : String
+  +Frequenz : String
+  +Physischer_Kontakt : String
+  +Art_des_Missbrauch : List[String]
+  +Tatort : List[String]
+  +Kanton : String
+  +Tatkontext : String
+  +Institutioneller_Kontext : List[Page]
+  +Meldung_an_Kirche : Date
+  +Ägide : String
+  +Fachgremien : List[Page]
+  +Kanonische_Voruntersuchung : String
+  +Genugtuungskommission_behandelt : String
+  +Strafverfolgungsbehörden_informiert : String
+  +Strafverfolgungsbehörden : List[Page]
+  +Strafverfolgungsbehörden_Urteil : String
+  +Informationsstabilität : String
+  +Alter_Betroffener : String
+  +Alter_Betroffener_gesichert : Boolean
+  +Alter_Betroffener_operationalisiert : String
+  +Alter_Beschuldigter : String
+  +Alter_Beschuldigter_gesichert : Boolean
+  +Beziehung_Betroffener_Beschuldigter : List[String]
+}
+
+%% === Relationships ===
+
+Fall --> Betroffener : Betroffener
+Fall --> Beschuldigter : Beschuldigter
+Fall --> Kirchliche_Institution : Institutioneller_Kontext
+Fall --> Fachgremium : Fachgremien
+Fall --> Strafverfolgungsbehörde : Strafverfolgungsbehörden
+Beschuldigter --> Kirchliche_Institution : Institutioneller_Kontext
+Betroffener --> Kirchliche_Institution : Institutioneller_Kontext
+```
+
+## Entity Descriptions
+
+### FALL (Case)
+
+Central entity representing an individual case of abuse. Links affected persons, accused persons, institutions, and authorities.
+
+### BETROFFENER (Affected Person)
+
+Represents a victim or affected person. May be linked to multiple cases and institutions.
+
+### BESCHULDIGTER (Accused Person)
+
+Represents an accused individual. May be affiliated with multiple institutions and involved in multiple cases.
+
+### KIRCHLICHE_INSTITUTION (Church Institution)
+
+Represents a church institution (diocese, parish, religious order, school, etc.) where abuse occurred or that is relevant to a case.
+
+### STRAFVERFOLGUNGSBEHOERDE (Law Enforcement Authority)
+
+Represents a prosecuting authority or law enforcement agency involved in investigating or prosecuting cases.
+
+### FACHGREMIUM (Expert Committee)
+
+Represents an expert panel, review board, or commission that evaluates cases, provides assessments, or makes recommendations.
+
+## Relationship Descriptions
+
+### FALL ↔ BETROFFENER
+
+A case involves one or more affected persons. An affected person may be involved in multiple cases.
+
+### FALL ↔ BESCHULDIGTER
+
+A case involves one or more accused persons. An accused person may be involved in multiple cases.
+
+### FALL ↔ KIRCHLICHE_INSTITUTION
+
+A case is associated with one or more church institutions (location of abuse, institution of accused, etc.).
+
+### FALL ↔ STRAFVERFOLGUNGSBEHOERDE
+
+A case may be reported to or investigated by law enforcement authorities.
+
+### FALL ↔ FACHGREMIUM
+
+A case may be reviewed or evaluated by expert committees.
+
+### BESCHULDIGTER ↔ KIRCHLICHE_INSTITUTION
+
+An accused person may be affiliated with one or more church institutions (employment, membership, assignment).
+
+### BETROFFENER ↔ KIRCHLICHE_INSTITUTION
+
+An affected person may have contacted or been associated with church institutions.
+
+## Normalization Notes
+
+The data model follows **Third Normal Form (3NF)** principles:
+
+1.  **No repeating groups**: Each entity has atomic values
+2.  **Full functional dependency**: All non-key attributes depend on the entire primary key
+3.  **No transitive dependencies**: Non-key attributes depend only on the primary key
+
+This enables:
+
+-   Detection of patterns across entities (e.g., repeated transfers of accused clergy)
+-   Flexible querying and reporting
+-   Data integrity through referential constraints
+-   Scalability as the research progresses
+
+## Source Criticism Integration
+
+The data model integrates **Quellenkritik (source criticism)** as a scored assessment rather than simple truth values:
+
+-   Each FALL includes a `quellenkritik_score` field
+-   Scores assess source reliability, provenance, and institutional perspective
+-   Enables quantitative analysis of concealment strategies
+-   Supports detection of systemic patterns in documentation
+
+## EDTF Date Handling
+
+The model uses **Extended Date/Time Format (EDTF)** for dates that may be:
+
+-   Uncertain (e.g., "circa 1985")
+-   Approximate (e.g., "mid-1980s")
+-   Partial (e.g., "1985" without day/month)
+-   Ranges (e.g., "1985/1990")
+
+See [edtf-documentation.md](vocabularies/edtf-documentation.md) for details.
+
+## Future Extensions
+
+Potential extensions to the data model:
+
+1.  **Archival Sources**: Link cases to specific archival documents and collections
+2.  **Temporal Tracking**: Add versioning to track changes in case status over time
+3.  **Geographic Data**: Add geospatial coordinates for mapping and spatial analysis
+4.  **Document Attachments**: Reference system for scanned documents (stored securely)
+5.  **Network Analysis**: Enhanced relationship tracking for social network analysis
+
+## References
+
+-   Semantic MediaWiki: https://www.semantic-mediawiki.org/
+-   Cargo Extension: https://www.mediawiki.org/wiki/Extension:Cargo
+-   EDTF Specification: https://www.loc.gov/standards/datetime/

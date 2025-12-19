@@ -2,13 +2,13 @@ project:
   type: website
 
 website:
-  title: REPO_NAME
-  favicon: android-chrome-512x512.png
+  title: Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz
+  favicon: logo.png
   open-graph: true
   twitter-card: true
-  site-url: https://USERNAME.github.io/REPO_NAME/
-  repo-url: https://github.com/USERNAME/REPO_NAME/
-  issue-url: https://github.com/USERNAME/REPO_NAME/issues/new/choose
+  site-url: https://maehr.github.io/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/
+  repo-url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/
+  issue-url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues/new/choose
   repo-actions: [edit, issue]
   page-navigation: true
   bread-crumbs: true
@@ -17,21 +17,51 @@ website:
     show-item-context: true
     type: overlay
   navbar:
-    logo: android-chrome-512x512.png
+    logo: logo.svg
     logo-alt: ''
-    title: REPO_NAME
+    title: Sexueller Missbrauch
     tools:
       - icon: github
-        url: https://github.com/USERNAME/REPO_NAME/
+        url: https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/
     left:
-      - text: Readme
-        href: index.qmd
-      - text: Report
-        href: report.md
+      - text: Paper
+        href: paper/index.qmd
+      - text: Data Documentation
+        href: data/index.qmd
+      - text: Deployment
+        href: src/index.qmd
+      - text: Project Information
+        href: meta/SYSTEM_ARCHITECTURE.md
 
   sidebar:
     contents:
-      - section: REPO_NAME
+      - text: Paper
+        href: paper/index.qmd
+      - section: Data Documentation
+        contents:
+          - text: Overview
+            href: data/index.qmd
+          - text: Analysis & Quality
+            href: analysis/index.qmd
+          - text: ER Diagram
+            href: data/erm-diagram.qmd
+          - text: EDTF Documentation
+            href: data/vocabularies/edtf-documentation.md
+      - section: Deployment & Infrastructure
+        contents:
+          - text: Overview
+            href: src/index.qmd
+          - text: Comprehensive Deployment Guide
+            href: src/deployment/DEPLOYMENT.qmd
+          - text: Extensions Configuration
+            href: src/deployment/EXTENSIONS.md
+      - section: Project Information
+        contents:
+          - text: System Architecture
+            href: meta/SYSTEM_ARCHITECTURE.md
+          - text: Timeline
+            href: meta/TIMELINE.qmd
+      - section: General
         href: index.qmd
         contents:
           - text: Changelog
@@ -46,19 +76,20 @@ website:
             href: LICENSE-AGPL.md
           - text: Security
             href: SECURITY.md
-      - href: report.md
-        contents: project-management/*
 
 format:
   html:
+    page-layout: full
     toc: true
     theme:
       - brand
       - cosmo
-    css: styles.css
+      - styles.scss
     code-copy: true
     code-overflow: wrap
     canonical-url: true
+    mermaid:
+      theme: neutral
 
 freeze: true
 
