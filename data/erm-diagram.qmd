@@ -5,75 +5,87 @@ This diagram shows the relationships between the main entities in the research d
 ## Mermaid Diagram
 
 ```{mermaid}
-erDiagram
-    FALL ||--o{ BETROFFENER : "involves"
-    FALL ||--o{ BESCHULDIGTER : "involves"
-    FALL }o--|| KIRCHLICHE_INSTITUTION : "associated-with"
-    FALL }o--o| STRAFVERFOLGUNGSBEHOERDE : "reported-to"
-    FALL }o--o| FACHGREMIUM : "reviewed-by"
+classDiagram
 
-    BESCHULDIGTER }o--o{ KIRCHLICHE_INSTITUTION : "affiliated-with"
-    BETROFFENER }o--o| KIRCHLICHE_INSTITUTION : "contacted"
+%% === Core Entity Definitions ===
 
-    STRAFVERFOLGUNGSBEHOERDE }o--o{ FALL : "investigates"
-    FACHGREMIUM }o--o{ FALL : "evaluates"
+class Kirchliche_Institution {
+  +Name : String
+  +Typ : List[String]
+}
 
-    FALL {
-        string fallnummer PK
-        string titel
-        date meldedatum
-        string status
-        string quellenkritik_score
-        text zusammenfassung
-        string edtf_zeitraum
-    }
+class Fachgremium {
+  +Name : String
+  +Typ : List[String]
+}
 
-    BETROFFENER {
-        string id PK
-        string name_pseudonym
-        string geschlecht
-        date geburtsdatum_edtf
-        string kontaktstatus
-        text anmerkungen
-    }
+class Strafverfolgungsbehörde {
+  +Name : String
+  +Typ : List[String]
+}
 
-    BESCHULDIGTER {
-        string id PK
-        string name_pseudonym
-        string funktion_rolle
-        string ordensgemeinschaft
-        date geburtsdatum_edtf
-        string status_verfahren
-        text anmerkungen
-    }
+class Beschuldigter {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Sterbedatum : Date
+  +Institutioneller_Kontext : List[Page]
+  +Funktion : List[String]
+  +Weihegrad : String
+  +Weihedatum : Date
+}
 
-    KIRCHLICHE_INSTITUTION {
-        string id PK
-        string name
-        string typ
-        string bistum_ordensgemeinschaft
-        string ort_kanton
-        date gruendungsjahr
-        text anmerkungen
-    }
+class Betroffener {
+  +Nummer : String
+  +Vorname : String
+  +Nachname : String
+  +Geschlecht : String
+  +Geburtsdatum : Date
+  +Geburtsdatum_gesichert : Boolean
+  +Institutioneller_Kontext : List[Page]
+}
 
-    STRAFVERFOLGUNGSBEHOERDE {
-        string id PK
-        string name
-        string typ
-        string kanton
-        string zustaendigkeit
-        text kontaktinformationen
-    }
+class Fall {
+  +Betroffener : Page
+  +Beschuldigter : Page
+  +Funktion : List[String]
+  +Tatzeitpunkt_Tatzeitraum : String
+  +Frequenz : String
+  +Physischer_Kontakt : String
+  +Art_des_Missbrauch : List[String]
+  +Tatort : List[String]
+  +Kanton : String
+  +Tatkontext : String
+  +Institutioneller_Kontext : List[Page]
+  +Meldung_an_Kirche : Date
+  +Ägide : String
+  +Fachgremien : List[Page]
+  +Kanonische_Voruntersuchung : String
+  +Genugtuungskommission_behandelt : String
+  +Strafverfolgungsbehörden_informiert : String
+  +Strafverfolgungsbehörden : List[Page]
+  +Strafverfolgungsbehörden_Urteil : String
+  +Informationsstabilität : String
+  +Alter_Betroffener : String
+  +Alter_Betroffener_gesichert : Boolean
+  +Alter_Betroffener_operationalisiert : String
+  +Alter_Beschuldigter : String
+  +Alter_Beschuldigter_gesichert : Boolean
+  +Beziehung_Betroffener_Beschuldigter : List[String]
+}
 
-    FACHGREMIUM {
-        string id PK
-        string name
-        string typ
-        date einrichtungsdatum
-        string mandat
-        text zusammensetzung
-    }
+%% === Relationships ===
+
+Fall --> Betroffener : Betroffener
+Fall --> Beschuldigter : Beschuldigter
+Fall --> Kirchliche_Institution : Institutioneller_Kontext
+Fall --> Fachgremium : Fachgremien
+Fall --> Strafverfolgungsbehörde : Strafverfolgungsbehörden
+Beschuldigter --> Kirchliche_Institution : Institutioneller_Kontext
+Betroffener --> Kirchliche_Institution : Institutioneller_Kontext
 ```
 
 ## Entity Descriptions
@@ -165,7 +177,7 @@ The model uses **Extended Date/Time Format (EDTF)** for dates that may be:
 -   Partial (e.g., "1985" without day/month)
 -   Ranges (e.g., "1985/1990")
 
-See [edtf-documentation.md](edtf-documentation.md) for details.
+See [edtf-documentation.md](vocabularies/edtf-documentation.md) for details.
 
 ## Future Extensions
 

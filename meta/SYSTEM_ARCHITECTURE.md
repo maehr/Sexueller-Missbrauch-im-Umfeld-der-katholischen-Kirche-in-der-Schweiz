@@ -96,7 +96,7 @@ Das Projekt nutzt eine Kombination von MediaWiki-Extensions für strukturierte D
 
 Weitere Extensions für erweiterte Funktionalität: VisualEditor, PdfBook, DataTransfer, ReplaceText.
 
-> **Detaillierte Konfiguration**: Siehe [CARGO_CONFIGURATION.md](../src/CARGO_CONFIGURATION.md) und [PAGEFORMS_CONFIGURATION.md](../src/PAGEFORMS_CONFIGURATION.md)
+> **Detaillierte Konfiguration**: Siehe [Extensions Configuration](../src/deployment/EXTENSIONS.md)
 
 ### Konfigurationsentwicklung
 
@@ -137,7 +137,7 @@ Das Wiki verwendet ein geschlossenes Modell mit rollenbasierten Berechtigungen u
 
 Das System entwickelte sich von einer einfachen Entwicklungsumgebung zu einem professionellen Setup mit drei Umgebungen (Development, Staging, Production) und umfangreicher Automatisierung (tägliche Backups, Staging-Sync, automatische Job-Verarbeitung).
 
-> **Detaillierte Deployment-Dokumentation**: Siehe [DEPLOYMENT.qmd](../src/DEPLOYMENT.qmd) für vollständige Architektur, Workflows und Troubleshooting
+> **Detaillierte Deployment-Dokumentation**: Siehe [Deployment Guide](../src/deployment/DEPLOYMENT.qmd) für vollständige Architektur, Workflows und Troubleshooting
 
 ## Erkenntnisse und Lessons Learned
 

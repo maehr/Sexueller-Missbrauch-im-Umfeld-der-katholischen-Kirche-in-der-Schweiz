@@ -87,7 +87,7 @@ Phase 3: Spezialisierte Tools
 
 #### **Development Setup**:
 
-```yaml
+``` yaml
 Einfache Konfiguration:
   - MediaWiki + MariaDB
   - Grundlegende Volumes
@@ -96,7 +96,7 @@ Einfache Konfiguration:
 
 #### **Production Setup**:
 
-```yaml
+``` yaml
 Komplexe Konfiguration:
   - MediaWiki + MariaDB (Produktion)
   - MediaWiki + MariaDB (Staging)

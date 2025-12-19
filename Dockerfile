@@ -22,7 +22,7 @@ RUN git clone -b REL1_43 https://gerrit.wikimedia.org/r/mediawiki/extensions/Pag
 RUN git clone https://github.com/debtcompliance/PdfBook/ /var/www/html/extensions/PdfBook
 
 # Copy the UZH logo and set permissions
-COPY assets/uzh-logo.svg /var/www/html/resources/assets/uzh-logo.svg
+COPY src/assets/uzh-logo.svg /var/www/html/resources/assets/uzh-logo.svg
 RUN chown www-data:www-data /var/www/html/resources/assets/uzh-logo.svg
 
 # Set correct permissions for the extensions and certificates

@@ -44,7 +44,7 @@ The [edtf-documentation.md](edtf-documentation.md) file documents Extended Date/
 
 Each entity schema follows this structure:
 
-````markdown
+```` markdown
 # Entity Name
 
 ## Description

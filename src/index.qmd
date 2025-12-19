@@ -1,108 +1,37 @@
-# Deployment
+# Source and Deployment
 
-This directory contains all deployment configuration and scripts for the MediaWiki instance.
+This directory contains the source code, deployment configuration, and maintenance scripts for the MediaWiki instance.
 
-## 📖 Comprehensive Documentation
+## Directory Structure
 
-For complete deployment documentation including system architecture diagrams, deployment workflows, and troubleshooting guides, see:
+-   [**deployment/**](deployment/DEPLOYMENT.qmd): Deployment documentation and extension configurations.
+-   [**maintenance/**](maintenance/): Database backup, restore, and synchronization scripts.
+-   **LocalSettings.php**: MediaWiki configuration file.
 
-[**📋 Comprehensive Deployment Documentation**](DEPLOYMENT.qmd)
+## Deployment Documentation
 
-This document includes:
-
--   System architecture with Mermaid diagrams
--   Development, staging, and production workflows
--   Database management and backup procedures
--   CI/CD pipeline visualization
--   Security and access control
--   Monitoring and troubleshooting guides
-
-## Files
-
-### Documentation
-
--   `DEPLOYMENT.qmd` - Comprehensive deployment documentation with Mermaid diagrams
--   `CARGO_CONFIGURATION.md` - Cargo extension configuration and usage guide
--   `PAGEFORMS_CONFIGURATION.md` - PageForms extension configuration and usage guide
-
-### Infrastructure as Code
-
--   `Dockerfile` - Custom MediaWiki image with required extensions and configurations
--   `docker-compose.dev.yml` - Docker Compose configuration for development environment
--   `docker-compose.prod.yml` - Docker Compose configuration for production environment
-
-### Configuration Files
-
--   `LocalSettings.php` - MediaWiki configuration file for production
--   `staging_LocalSettings.php` - MediaWiki configuration file for staging
--   `example.env` - Environment variables template
--   `Caddyfile` - Caddy reverse proxy configuration
-
-### Scripts
-
--   `backup_db.sh` - Database backup script
--   `restore_db.sh` - Database restore script
--   `setup_services_podman.sh` - Podman service setup script
--   `sync_prod_to_staging.sh` - Production to staging synchronization script
+For comprehensive deployment instructions, see the [**Deployment Guide**](deployment/DEPLOYMENT.qmd).
 
 ## Quick Start
 
-### Development Environment
+### Development
 
-To start a local development environment:
-
-1.  **Copy the environment template:**
-
-    ```bash
-    cd src
-    cp example.env .env
-    ```
-
-2.  **Edit the `.env` file** with your desired configuration.
-
-3.  **Start the development environment:**
-
-    ```bash
-    docker-compose -f docker-compose.dev.yml up -d --build
-    ```
-
-4.  **Access MediaWiki** at `http://localhost:8080`.
-
-5.  **Update database schema**:
-
-    ```bash
-    docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
-    ```
-
-### Production Environment
-
-For production deployment instructions, see the [Comprehensive Deployment Documentation](DEPLOYMENT.qmd).
-
-## Usage
-
-### User Management
-
-To create a new user with superuser privileges:
-
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/run.php createAndPromote --user "Username" --password "Password" --bureaucrat --sysop
+``` bash
+# Start development environment
+docker-compose -f docker-compose.dev.yml up -d --build
 ```
 
-### Database Schema
+### Production
 
-```bash
-docker-compose -f src/docker-compose.prod.yml exec mediawiki php maintenance/update.php --quick
+``` bash
+# Deploy to production
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
-### Backups
+## Maintenance
 
-```bash
-./src/backup_db.sh
-```
+Scripts are located in `src/maintenance/`:
 
-## Additional Resources
-
--   [**Comprehensive Deployment Guide**](DEPLOYMENT.qmd) - Architecture, workflows, and troubleshooting
--   [**Cargo Configuration**](CARGO_CONFIGURATION.md) - Cargo extension setup
--   [**PageForms Configuration**](PAGEFORMS_CONFIGURATION.md) - PageForms extension setup
--   [Main README](../README.md) - Project overview
+-   `backup_db.sh`: Backup the database.
+-   `restore_db.sh`: Restore the database.
+-   `sync_prod_to_staging.sh`: Sync production data to staging.

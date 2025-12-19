@@ -1,5 +1,5 @@
 ---
-title: Open Research Data
+title: Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz
 ---
 
 {{< include README.md >}}

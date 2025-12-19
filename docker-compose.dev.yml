@@ -1,12 +1,12 @@
 services:
   mediawiki:
     container_name: mediawiki
-    build: ..
+    build: .
     ports:
       - '8080:80'
     volumes:
       - mediawiki_images:/var/www/html/images
-      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./src/LocalSettings.php:/var/www/html/LocalSettings.php
     environment:
       MW_DB_TYPE: mysql
       MW_DB_SERVER: ${DB_SERVER}

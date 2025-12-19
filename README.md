@@ -1,7 +1,5 @@
 # Sexual Abuse in the Environment of the Catholic Church in Switzerland
 
-## Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz
-
 This repository accompanies the paper "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz: Aufbau einer partizipativen, iterativen und sicheren Forschungsdatenbank" submitted to the _[Zeitschrift für digitale Geisteswissenschaften](https://zfdg.de/)_ (ZfdG). It documents the technical framework and methodological approach developed for the [ongoing research project at the University of Zurich's Department of History](https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html), which investigates sexual abuse within the Swiss Catholic Church from the mid-20th century to the present (Main Study: 2024–2026).
 
 [![GitHub issues](https://img.shields.io/github/issues/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)
@@ -25,14 +23,15 @@ It contains the data models, schemas, methodologies, and analysis scripts discus
 The structure of this repository follows the [Advanced Structure for Data Analysis](https://the-turing-way.netlify.app/project-design/project-repo/project-repo-advanced.html) of _The Turing Way_ and is organized as follows:
 
 - `data/`: data files, including schemas, controlled vocabularies, and MediaWiki templates
-  - `data/schemas/`: data model definitions and entity schemas
-  - `data/templates/`: MediaWiki templates and forms for data entry
-- `documentation/`: documentation for the data and the repository
+  - `data/entities/`: component-based entity definitions (schemas + templates)
+  - `data/vocabularies/`: controlled vocabularies
+  - `data/wiki/`: general MediaWiki templates
+- `analysis/`: analysis scripts and documentation
+- `meta/`: project history and architecture documentation
 - `paper/`: the abstract of the research paper submitted to ZfdG
 - `src/`: deployment infrastructure and configuration files
-  - Infrastructure-as-Code examples (Docker Compose, Dockerfile)
-  - MediaWiki configuration and extension setup
-  - Comprehensive deployment documentation
+  - `src/deployment/`: deployment documentation and configuration
+  - `src/maintenance/`: maintenance scripts
 
 ## 📊 Data Description
 
@@ -54,9 +53,8 @@ This repository includes comprehensive Infrastructure-as-Code examples and deplo
 Detailed deployment and configuration documentation is available in the [**src/**](src/index.qmd) directory:
 
 - **[Deployment Overview](src/index.qmd)** - File structure and quick start
-- **[Comprehensive Deployment Guide](src/DEPLOYMENT.qmd)** - Complete deployment workflows with architecture diagrams
-- **[Cargo Configuration](src/CARGO_CONFIGURATION.md)** - Cargo extension setup and usage
-- **[PageForms Configuration](src/PAGEFORMS_CONFIGURATION.md)** - PageForms extension setup and usage
+- **[Comprehensive Deployment Guide](src/deployment/DEPLOYMENT.qmd)** - Complete deployment workflows with architecture diagrams
+- **[Extensions Configuration](src/deployment/EXTENSIONS.md)** - Cargo and PageForms setup
 
 ## 🛠️ Usage
 
@@ -64,7 +62,7 @@ For instructions on user management, database schema updates, and backups, pleas
 
 ## 🔧 Troubleshooting
 
-Common issues and solutions are documented in the [**Troubleshooting section**](src/DEPLOYMENT.qmd#troubleshooting).
+Common issues and solutions are documented in the [**Troubleshooting section**](src/deployment/DEPLOYMENT.qmd#troubleshooting).
 
 ## 🔬 Use
 

@@ -6,7 +6,7 @@ services:
       - '8080:80'
     volumes:
       - ./mediawiki_images:/var/www/html/images
-      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./src/LocalSettings.php:/var/www/html/LocalSettings.php
     environment:
       MW_DB_SERVER: ${DB_CONTAINER_NAME}
       MW_DB_NAME: ${DB_NAME}
@@ -40,7 +40,7 @@ services:
       - '8081:80' # Staging server runs on port 8081
     volumes:
       - ./staging_mediawiki_images:/var/www/html/images
-      - ./staging_LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./src/staging_LocalSettings.php:/var/www/html/LocalSettings.php
     environment:
       MW_DB_SERVER: ${STAGING_DB_CONTAINER_NAME}
       MW_DB_NAME: ${STAGING_DB_NAME}

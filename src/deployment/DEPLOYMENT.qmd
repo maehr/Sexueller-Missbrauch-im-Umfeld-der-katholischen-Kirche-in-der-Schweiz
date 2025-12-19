@@ -102,13 +102,13 @@ Staging mirrors production. Before deploying new features:
 
 ## Infrastructure Components {#infrastructure-components}
 
-The system is built on a custom Dockerfile (`src/Dockerfile`) extending MediaWiki 1.43.1.
+The system is built on a custom Dockerfile (`Dockerfile`) extending MediaWiki 1.43.1.
 
 -   **Web Services**: MediaWiki (Prod/Staging), phpMyAdmin, Caddy File Server.
 -   **Database**: MariaDB 11.
 -   **Storage**: Local volumes for DB data and images; Shared storage for cluster work.
 
-See the [**Dockerfile**](Dockerfile) for details.
+See the [**Dockerfile**](../../Dockerfile) for details.
 
 ## Security and Access {#security-and-access}
 
@@ -132,13 +132,13 @@ Common issues (Service Down, DB Error, Storage Full) can be diagnosed by checkin
 **Start Environment** {#cmd-dev-start}
 
 ``` bash
-docker-compose -f src/docker-compose.dev.yml up -d --build
+docker-compose -f docker-compose.dev.yml up -d --build
 ```
 
 **View Logs** {#cmd-dev-logs}
 
 ``` bash
-docker-compose -f src/docker-compose.dev.yml logs -f
+docker-compose -f docker-compose.dev.yml logs -f
 ```
 
 ### Operations Commands (Prod/Staging) {#cmd-ops}
@@ -146,7 +146,7 @@ docker-compose -f src/docker-compose.dev.yml logs -f
 **Build Image (Local)** {#cmd-ops-build}
 
 ``` bash
-docker build -f src/Dockerfile -t mediawiki:latest .
+docker build -f Dockerfile -t mediawiki:latest .
 docker image save mediawiki -o mediawiki_image.tar
 ```
 
@@ -158,13 +158,13 @@ rsync -av -e "ssh -J user@jump-server" ./mediawiki_image.tar user@prod-server:/p
 
 # Load & Restart
 docker load < mediawiki_image.tar
-docker-compose -f src/docker-compose.prod.yml up -d
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
 **Sync Prod to Staging** {#cmd-ops-sync}
 
 ``` bash
-./src/sync_prod_to_staging.sh
+./src/maintenance/sync_prod_to_staging.sh
 ```
 
 **Post-Deployment Tasks** {#cmd-ops-post}
@@ -180,20 +180,20 @@ docker exec mediawiki php maintenance/runJobs.php --maxjobs=1000
 
 ``` bash
 # Backup
-./src/backup_db.sh
+./src/maintenance/backup_db.sh
 
 # Restore
-./src/restore_db.sh backups/prod_backup_YYYY-MM-DD.sql
+./src/maintenance/restore_db.sh backups/prod_backup_YYYY-MM-DD.sql
 ```
 
 **Maintenance** {#cmd-maint-update}
 
 ``` bash
 # Update Schema
-docker-compose -f src/docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
+docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/update.php --quick
 
 # Run Jobs
-docker-compose -f src/docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
+docker-compose -f docker-compose.dev.yml exec mediawiki php maintenance/runJobs.php --maxjobs=1000
 ```
 
 ### Troubleshooting Commands {#cmd-trouble}
@@ -201,7 +201,7 @@ docker-compose -f src/docker-compose.dev.yml exec mediawiki php maintenance/runJ
 **Service Status** {#cmd-trouble-status}
 
 ``` bash
-docker-compose -f src/docker-compose.prod.yml ps
+docker-compose -f docker-compose.prod.yml ps
 docker ps -a
 ```
 
@@ -215,7 +215,7 @@ docker logs db --tail 100
 **Restart Services** {#cmd-trouble-restart}
 
 ``` bash
-docker-compose -f src/docker-compose.prod.yml restart
+docker-compose -f docker-compose.prod.yml restart
 ```
 
 **Check Connectivity** {#cmd-trouble-db}
