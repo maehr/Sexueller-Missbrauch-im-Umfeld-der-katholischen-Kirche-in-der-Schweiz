@@ -1,0 +1,15 @@
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelectorAll('.footnotes .citation').forEach((citation) => {
+			const first = citation.firstChild;
+			if (first?.nodeType === Node.TEXT_NODE) {
+				first.textContent = first.textContent.replace(/^\s*\(/, '');
+			}
+
+			const last = citation.lastChild;
+			if (last?.nodeType === Node.TEXT_NODE) {
+				last.textContent = last.textContent.replace(/\)\s*$/, '');
+			}
+		});
+	});
+</script>
