@@ -1,4 +1,6 @@
-# Comprehensive Deployment Documentation
+---
+title: Comprehensive Deployment Documentation
+---
 
 This document provides a complete overview of the deployment architecture, processes, and environments for the Missbrauch Kath Info Wiki MediaWiki instance.
 

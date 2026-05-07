@@ -1,4 +1,6 @@
-# Data Schemas and Data Model
+---
+title: Data Schemas and Data Model
+---
 
 This directory contains the formal data model definitions for the research database on sexual abuse in the Swiss Catholic Church.
 
@@ -79,5 +81,5 @@ These schemas serve as:
 
 ## Related
 
--   See [../templates/](../templates/) for PageForms and data entry templates
--   See [../../documentation/](../../documentation/) for documentation overview
+-   See [../entities/](../entities/) for MediaWiki PageForms and templates
+-   See [../index.qmd](../index.qmd) for the documentation overview

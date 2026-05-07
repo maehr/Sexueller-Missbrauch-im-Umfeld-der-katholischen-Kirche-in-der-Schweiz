@@ -1,4 +1,6 @@
-# 🚀 Entwicklungs-Timeline: MediaWiki Forschungsumgebung
+---
+title: "Entwicklungs-Timeline: MediaWiki Forschungsumgebung"
+---
 
 ## Chronologische Übersicht der Entwicklung
 

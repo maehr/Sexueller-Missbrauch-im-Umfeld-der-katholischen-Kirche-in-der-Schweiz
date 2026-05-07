@@ -1,4 +1,6 @@
-# Data Model and Schemas
+---
+title: Data Model and Schemas
+---
 
 This directory contains the formal data model definitions and schemas for the research database on sexual abuse in the Swiss Catholic Church.
 

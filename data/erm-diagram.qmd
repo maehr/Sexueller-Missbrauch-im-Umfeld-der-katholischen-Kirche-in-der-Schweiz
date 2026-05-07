@@ -1,4 +1,6 @@
-# Entity-Relationship Model (ERM)
+---
+title: Entity-Relationship Model (ERM)
+---
 
 This diagram shows the relationships between the main entities in the research database.
 

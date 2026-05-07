@@ -1,6 +1,6 @@
 # Sexual Abuse in the Environment of the Catholic Church in Switzerland
 
-This repository accompanies the paper "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz: Aufbau einer partizipativen, iterativen und sicheren Forschungsdatenbank" submitted to the _[Zeitschrift für digitale Geisteswissenschaften](https://zfdg.de/)_ (ZfdG). It documents the technical framework and methodological approach developed for the [ongoing research project at the University of Zurich's Department of History](https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html), which investigates sexual abuse within the Swiss Catholic Church from the mid-20th century to the present (Main Study: 2024–2026).
+This repository accompanies the paper "Sexueller Missbrauch im Umfeld der katholischen Kirche in der Schweiz: Aufbau einer partizipativen, iterativen und sicheren Forschungsdatenbank", which is in open peer review at the _[Zeitschrift für digitale Geisteswissenschaften](https://zfdg.de/)_ (ZfdG). It documents the technical framework and methodological approach developed for the [ongoing research project at the University of Zurich's Department of History](https://www.hist.uzh.ch/de/fachbereiche/neuzeit/privatdozierende/meier/forschung/forschungsprojekte/sexueller-missbrauch.html), which investigates sexual abuse within the Swiss Catholic Church from the mid-20th century to the present (Main Study: 2024–2026).
 
 [![GitHub issues](https://img.shields.io/github/issues/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/issues)
 [![GitHub forks](https://img.shields.io/github/forks/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz.svg)](https://github.com/maehr/Sexueller-Missbrauch-im-Umfeld-der-katholischen-Kirche-in-der-Schweiz/network)
@@ -27,7 +27,7 @@ The structure of this repository follows the [Advanced Structure for Data Analys
   - `data/wiki/`: general MediaWiki templates
 - `analysis/`: analysis scripts and documentation
 - `meta/`: project history and architecture documentation
-- `paper/`: the abstract of the research paper submitted to ZfdG
+- `paper/`: the research paper currently in open peer review at ZfdG
 - `src/`: deployment infrastructure and configuration files
   - `src/deployment/`: deployment documentation and configuration
   - `src/maintenance/`: maintenance scripts

@@ -1,4 +1,6 @@
-# Source and Deployment
+---
+title: Source and Deployment
+---
 
 This directory contains the source code, deployment configuration, and maintenance scripts for the MediaWiki instance.
 
