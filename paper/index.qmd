@@ -45,7 +45,7 @@ author:
 date: 2026-05-12
 doi: 10.17175/2026_006
 bibliography: references.bib
-csl: https://raw.githubusercontent.com/citation-style-language/styles/master/zeitschrift-fur-digitale-geisteswissenschaften.csl
+csl: zeitschrift-fur-digitale-geisteswissenschaften.csl
 reference-section-title: Bibliografie
 nocite: "@*"
 crossref:
