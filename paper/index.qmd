@@ -69,7 +69,7 @@ format:
 ---
 
 ::: callout-note
-Open Review in der *Zeitschrift für digitale Geisteswissenschaften* 11 (2026). DOI: [10.17175/2026_006](https://doi.org/10.17175/2026_006). Letzte Überprüfung aller Verweise: 13.04.2026.
+Open Peer Review in der *Zeitschrift für digitale Geisteswissenschaften* 11 (2026). DOI: [10.17175/2026_006](https://doi.org/10.17175/2026_006).
 :::
 
 ## 1. Von der gesellschaftlichen Dringlichkeit zur digitalen Methode: Einleitung und These
