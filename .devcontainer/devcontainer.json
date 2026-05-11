@@ -1,5 +1,5 @@
 {
-	"name": "Open-Research-Data Template",
+	"name": "Sexueller Missbrauch Research Data",
 	"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
 	"remoteUser": "codespace",
 	"features": {
@@ -37,7 +37,7 @@
 					"editor.formatOnSave": true
 				}
 			},
-			"openFiles": ["README.md", "README.template.md"]
+			"openFiles": ["README.md", "paper/index.qmd"]
 		}
 	}
 }

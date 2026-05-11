@@ -1,4 +1,6 @@
-# Data Schemas and Data Model
+---
+title: Data Schemas and Data Model
+---
 
 This directory contains the formal data model definitions for the research database on sexual abuse in the Swiss Catholic Church.
 
@@ -15,7 +17,7 @@ This separates the **persistent data structure** (what is stored) from the **dat
 
 ### 1. Entity-Relationship Model (ERM)
 
-The [erm-diagram.qmd](erm-diagram.qmd) file contains a Mermaid diagram showing relationships between all entities in the database.
+The [erm-diagram.qmd](../erm-diagram.qmd) file contains a Mermaid diagram showing relationships between all entities in the database.
 
 ### 2. Entity Schemas
 
@@ -29,16 +31,16 @@ Each entity has a dedicated schema file defining:
 
 Available entity schemas:
 
--   [beschuldigte-schema.md](beschuldigte-schema.md) - Accused persons
--   [betroffene-schema.md](betroffene-schema.md) - Affected persons/victims
--   [fachgremien-schema.md](fachgremien-schema.md) - Expert committees
--   [faelle-schema.md](faelle-schema.md) - Cases
--   [kirchliche-institutionen-schema.md](kirchliche-institutionen-schema.md) - Church institutions
--   [strafverfolgungsbehoerden-schema.md](strafverfolgungsbehoerden-schema.md) - Law enforcement authorities
+-   [beschuldigte-schema.md](../entities/beschuldigte/beschuldigte-schema.md) - Accused persons
+-   [betroffene-schema.md](../entities/betroffene/betroffene-schema.md) - Affected persons/victims
+-   [fachgremien-schema.md](../entities/fachgremien/fachgremien-schema.md) - Expert committees
+-   [faelle-schema.md](../entities/faelle/faelle-schema.md) - Cases
+-   [kirchliche-institutionen-schema.md](../entities/kirchliche-institutionen/kirchliche-institutionen-schema.md) - Church institutions
+-   [strafverfolgungsbehoerden-schema.md](../entities/strafverfolgungsbehoerden/strafverfolgungsbehoerden-schema.md) - Law enforcement authorities
 
 ### 3. EDTF Date Fields
 
-The [edtf-documentation.md](edtf-documentation.md) file documents Extended Date/Time Format (EDTF) fields used throughout the database for handling uncertain, approximate, or partial dates.
+The [edtf-documentation.md](../vocabularies/edtf-documentation.md) file documents Extended Date/Time Format (EDTF) fields used throughout the database for handling uncertain, approximate, or partial dates.
 
 ## Schema Format
 
@@ -79,5 +81,5 @@ These schemas serve as:
 
 ## Related
 
--   See [../templates/](../templates/) for PageForms and data entry templates
--   See [../../documentation/](../../documentation/) for documentation overview
+-   See [../entities/](../entities/) for MediaWiki PageForms and templates
+-   See [../index.qmd](../index.qmd) for the documentation overview

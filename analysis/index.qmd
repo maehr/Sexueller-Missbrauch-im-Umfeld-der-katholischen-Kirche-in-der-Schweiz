@@ -1,4 +1,6 @@
-# Data Analysis and Quality Control
+---
+title: Data Analysis and Quality Control
+---
 
 This document describes the analytics dashboard and quality control measures implemented in the wiki.
 
